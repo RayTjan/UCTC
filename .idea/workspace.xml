@@ -20,10 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c65294d-07bd-4a7d-a67f-97ac44bb5c5d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/customStyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/3rdRoleBlades/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +178,11 @@
       <updated>1606198670618</updated>
       <workItem from="1606198671749" duration="1651000" />
       <workItem from="1606216830838" duration="47000" />
-      <workItem from="1606293536751" duration="3962000" />
+      <workItem from="1606293536751" duration="5664000" />
+      <workItem from="1606318138171" duration="599000" />
+      <workItem from="1606406166557" duration="645000" />
+      <workItem from="1606439922500" duration="1498000" />
+      <workItem from="1606962905191" duration="2415000" />
     </task>
     <servers />
   </component>
@@ -193,11 +199,13 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2341" y="116" key="FileChooserDialogImpl" timestamp="1606216876045">
-      <screen x="1920" y="0" width="1280" height="720" />
+    <state x="505" y="139" key="FileChooserDialogImpl" timestamp="1606963076316">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
+    <state x="505" y="139" key="FileChooserDialogImpl/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1606963076316" />
     <state x="2341" y="116" key="FileChooserDialogImpl/0.0.1536.864/1920.0.1280.720@1920.0.1280.720" timestamp="1606216876045" />
     <state x="277" y="77" key="SettingsEditor" timestamp="1606295441575">
       <screen x="0" y="0" width="1536" height="864" />

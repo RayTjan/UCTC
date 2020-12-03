@@ -20,6 +20,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('program', \App\Http\Controllers\ProgramController::class);
+Route::resource('action', \App\Http\Controllers\ActionPlanController::class);
+Route::resource('task', \App\Http\Controllers\TaskController::class);
+Route::resource('client', \App\Http\Controllers\ClientController::class);
+Route::resource('proposal', \App\Http\Controllers\ProposalController::class);
+
+
+
 
 Auth::routes();
 
