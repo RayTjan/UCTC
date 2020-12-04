@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Program;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProgramController extends Controller
@@ -15,7 +16,7 @@ class ProgramController extends Controller
     public function index()
     {
         $programs = Program::all();
-        return view('', compact('programs'));
+        return view('3rdRoleBlades.listProgram', compact('programs'));
     }
 
     /**
@@ -25,8 +26,8 @@ class ProgramController extends Controller
      */
     public function create()
     {
-        $programs = Program::all();
-        return view( '',compact('programs'));
+        $users = User::all();
+        return view( '3rdRoleBlades.addProgram',compact('users'));
     }
 
     /**
@@ -38,7 +39,7 @@ class ProgramController extends Controller
     public function store(Request $request)
     {
         Program::create($request->all());
-        return redirect()->route('');
+        return redirect()->route('program.index');
     }
 
     /**
@@ -60,7 +61,7 @@ class ProgramController extends Controller
      */
     public function edit(Program $program)
     {
-        return view('',compact('program'));
+        return view('3rdRoleBlades.editProgram',compact('program'));
 
     }
 
@@ -74,7 +75,7 @@ class ProgramController extends Controller
     public function update(Request $request, Program $program)
     {
         $program->update($request->all());
-        return redirect()->route('');
+        return redirect()->route('program.index');
     }
 
     /**

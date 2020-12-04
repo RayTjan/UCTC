@@ -20,11 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c65294d-07bd-4a7d-a67f-97ac44bb5c5d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/3rdRoleBlades/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/3rdRoleBlades/addClient.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/3rdRoleBlades/detailProgram.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/3rdRoleBlades/listClient.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/3rdRoleBlades/listProgram.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProgramController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProgramController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Program.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Program.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_25_092448_create_programs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_25_092448_create_programs_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/3rdRoleBlades/addProgram.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/3rdRoleBlades/addProgram.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/3rdRoleBlades/index.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -182,7 +190,10 @@
       <workItem from="1606318138171" duration="599000" />
       <workItem from="1606406166557" duration="645000" />
       <workItem from="1606439922500" duration="1498000" />
-      <workItem from="1606962905191" duration="2415000" />
+      <workItem from="1606962905191" duration="3961000" />
+      <workItem from="1607034364902" duration="670000" />
+      <workItem from="1607040272131" duration="1339000" />
+      <workItem from="1607044373060" duration="4651000" />
     </task>
     <servers />
   </component>
@@ -202,6 +213,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="499" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606965919472">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="499" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1606965919472" />
     <state x="505" y="139" key="FileChooserDialogImpl" timestamp="1606963076316">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -211,13 +226,13 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="277" y="77" key="SettingsEditor/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1606295441575" />
-    <state x="479" y="149" width="577" height="566" key="find.popup" timestamp="1606297194832">
+    <state x="479" y="149" width="577" height="566" key="find.popup" timestamp="1607051969499">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="479" y="149" width="577" height="566" key="find.popup/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1606297194832" />
-    <state x="425" y="197" key="run.anything.popup" timestamp="1606198848722">
+    <state x="479" y="149" width="577" height="566" key="find.popup/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1607051969499" />
+    <state x="425" y="197" key="run.anything.popup" timestamp="1607050812602">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="425" y="197" key="run.anything.popup/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1606198848722" />
+    <state x="425" y="197" key="run.anything.popup/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1607050812602" />
   </component>
 </project>
