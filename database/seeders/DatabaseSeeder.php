@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Role;
 use App\Models\Type;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -17,7 +18,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $role = new Role();
+        $role->name = 'Admin';
+        $role->description = 'Something';
+        $role->save();
 
+        $role = new Role();
+        $role->name = "Staff";
+        $role->description = "Something";
+        $role->save();
+
+        $role = new Role();
+        $role->name = "User";
+        $role->description = "Something";
+        $role->save();
 
         $category = new Category();
         $category->name = 'Long-term';

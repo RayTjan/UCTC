@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\ActivationEvent;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -69,6 +70,26 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role_id' => $data['role_id'],
+            'activation_token'=>Str::random(20),
+
         ]);
+    }
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        $user = $this->create($request->all());
+
+        if(empty($user)){
+            redirect()->route('register');
+        }
+
+        event(new ActivationEvent($user));
+        // Mail::to($user->email)->send(new ActivationMail($user));
+        //register email to newsletter table and send notification to other email to other user of new presence
+        //insert newsletter
+        //1 event bisa punya banyak n listener
+
+        return redirect('login')->with('Success','Registration complete, please verify your email!');
     }
 }

@@ -19,6 +19,7 @@ class CreateProgramsTable extends Migration
             $table->text("description")->nullable();
             $table->text('status');
             $table->text('goal');
+
             $table->date('program_date');
             $table->unsignedBigInteger('created_by')->nullable();
 
