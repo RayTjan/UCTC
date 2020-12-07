@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Program;
+use App\Models\Type;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -27,7 +29,9 @@ class ProgramController extends Controller
     public function create()
     {
         $users = User::all();
-        return view( '3rdRoleBlades.addProgram',compact('users'));
+        $categories = Category::all();
+        $types = Type::all();
+        return view( '3rdRoleBlades.addProgram',compact('users','categories','types'));
     }
 
     /**

@@ -16,6 +16,8 @@
                 <tr>
                     <th scope="col">Title</th>
                     <th scope="col">View</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Category</th>
                     <th scope="col">Description</th>
                     <th scope="col">Status</th>
                     <th scope="col">Goal</th>
@@ -28,6 +30,8 @@
                     <tr>
                         <td>{{$program->name}}</td>
                         <td><a href="@auth(){{route('program.show',$program)}}@endauth">View</a></td>
+                        <td>{{$program->categorized->name}}</td>
+                        <td>{{$program->classified->name}}</td>
                         <td>{{$program->description}}</td>
                         <td>{{$program->status}}</td>
                         <td>{{$program->goal}}</td>

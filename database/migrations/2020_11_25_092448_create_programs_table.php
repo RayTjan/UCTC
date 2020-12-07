@@ -20,9 +20,14 @@ class CreateProgramsTable extends Migration
             $table->text('status');
             $table->text('goal');
             $table->date('program_date');
-            $table->timestamps();
             $table->unsignedBigInteger('created_by')->nullable();
+
+            $table->timestamps();
+
             $table->foreign('created_by')->references('id')->on('users');
+
+
+
         });
     }
 

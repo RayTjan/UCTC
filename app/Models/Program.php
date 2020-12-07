@@ -16,13 +16,20 @@ class Program extends Model
         'program_date',
         'program_category_id',
         'program_type_id ',
-        'created_by'
+        'created_by',
+        'type',
+        'category',
     ];
 
+    public function categorized(){
+        return $this->belongsTo(Category::class,'category','id');
+    }
+    public function classified(){
+        return $this->belongsTo(Type::class,'type','id');
+    }
     public function creator(){
         return $this->belongsTo(User::class,'created_by','id');
     }
-
     public function committees(){
         return $this->belongsToMany(User::class)->withPivot('is_approved')->withTimestamps();
     }

@@ -27,14 +27,22 @@
                         <label>Program Date / Deadline:</label>
                         <input type="date" class="form-control" name="program_date" required>
                     </div>
-{{--                    <div class="form-group">--}}
-{{--                        <select name="created_by" class="custom-select">--}}
-{{--                            @foreach($users as $user)--}}
-{{--                                <option value="{{$user->id}}">{{$user->name . '(' . $user->email . ')'}}></option>--}}
-{{--                            @endforeach--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
-
+                    <div class="form-group">
+                        <label>Category:</label>
+                        <select name="category" class="custom-select">
+                            @foreach($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Type:</label>
+                        <select name="type" class="custom-select">
+                            @foreach($types as $type)
+                                <option value="{{$type->id}}">{{$type->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
