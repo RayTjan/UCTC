@@ -2,7 +2,7 @@
 @section('content')
     <div class="container" style="margin-top: 20px;">
         <div class="row">
-            <h1 class="col">Event View</h1>
+            <h1 class="col">Program View</h1>
         </div>
         <div class="row">
             {{-- auth to limit content, it cannot be accessed until login --}}
@@ -26,9 +26,8 @@
                 <tbody>
                 @foreach($programs as $program)
                     <tr>
-                        <td><a href="@auth(){{route('program.edit',$event)}}@endauth">{{$program->name}}</a></td>
                         <td>{{$program->name}}</td>
-                        <td><a href="@auth(){{route('$program.show',$event)}}@endauth">View</a></td>
+                        <td><a href="@auth(){{route('program.show',$program)}}@endauth">View</a></td>
                         <td>{{$program->description}}</td>
                         <td>{{$program->status}}</td>
                         <td>{{$program->goal}}</td>

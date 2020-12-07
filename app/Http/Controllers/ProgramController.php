@@ -45,12 +45,19 @@ class ProgramController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Program  $program
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Program $program)
+    public function show($id)
     {
-        //
+        $program = Program::findOrFail($id);
+
+        $programs = Program::all()->except($id)->pluck('id');
+        $committeeList = User::whereNotIn('id',function ($query) use ($programs){
+            $query->select('user_id')->from('program_user')->whereNotIn('program_id',$programs);
+        })->where('role_id',3)->get();
+
+        return view('3rdRoleBlades.detailProgram',compact('program','committeeList'));
     }
 
     /**
@@ -87,6 +94,6 @@ class ProgramController extends Controller
     public function destroy(Program $program)
     {
         $program->delete();
-        return redirect()->back();
+        return redirect()->route('program.index');
     }
 }

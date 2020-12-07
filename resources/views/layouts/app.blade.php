@@ -35,7 +35,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" href="{{ route('program.index') }}">
+                                Program List
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" href="{{ route('user.index') }}">
+                                User List
+                            </a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
