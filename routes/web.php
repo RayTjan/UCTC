@@ -22,6 +22,7 @@ Route::get('/', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('program', \App\Http\Controllers\ProgramController::class);
 Route::resource('user', \App\Http\Controllers\UserController::class);
+Route::get('activate', [\App\Http\Controllers\Auth\ActivationController::class, 'activate'])->name('activate');
 
 Route::resource('action', \App\Http\Controllers\ActionPlanController::class);
 Route::resource('task', \App\Http\Controllers\TaskController::class);

@@ -8,7 +8,12 @@ use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ActivationMail;
+
 
 class RegisterController extends Controller
 {
@@ -84,8 +89,8 @@ class RegisterController extends Controller
             redirect()->route('register');
         }
 
-        event(new ActivationEvent($user));
-        // Mail::to($user->email)->send(new ActivationMail($user));
+//        event(new ActivationEvent($user));
+         Mail::to($user->email)->send(new ActivationMail($user));
         //register email to newsletter table and send notification to other email to other user of new presence
         //insert newsletter
         //1 event bisa punya banyak n listener
@@ -93,3 +98,4 @@ class RegisterController extends Controller
         return redirect('login')->with('Success','Registration complete, please verify your email!');
     }
 }
+//event,listener, mailvendor, MAILTRAP
