@@ -27,12 +27,9 @@
 
     <div id="app">
         @include('tools.navbar')
-        {{--        <p id="special">something</p>--}}
         <main class="py-4 blacktest">
-{{--            <p class="special">something</p>--}}
             @yield('content')
-            <p class="special">something</p>
-            <p class="special">something</p>
+
         </main>
     </div>
 </body>
