@@ -15,7 +15,6 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-
         return view('1stRoleBlades.listUser', compact('users'));
     }
 
@@ -48,7 +47,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findorFail($id);
+        return view('3rdRoleBlades.profile',compact('user'));
     }
 
     /**

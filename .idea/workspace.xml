@@ -20,37 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c65294d-07bd-4a7d-a67f-97ac44bb5c5d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/js/customScript.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/3rdRoleBlades/profile.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/tools/navbar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CommitteeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CommitteeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProgramController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProgramController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ActionPlan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ActionPlan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Program.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Program.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Proposal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Proposal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Role.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Task.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Type.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Type.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_25_092448_create_programs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_25_092448_create_programs_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_03_024833_create_tasks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_03_024833_create_tasks_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_03_024854_create_action_plans_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_03_024854_create_action_plans_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_03_024950_create_proposals_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_03_024950_create_proposals_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_03_025020_create_clients_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_03_025020_create_clients_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_05_003452_pivot_program_user_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_05_003452_pivot_program_user_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_07_130526_create_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_07_130526_create_categories_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_07_130712_create_types_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_07_130712_create_types_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_07_141749_additions_to_users.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_07_141749_additions_to_users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_07_142717_create_roles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_07_142717_create_roles_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_07_142819_additions_to_programs.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/1stRoleBlades/listUser.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/1stRoleBlades/listUser.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/3rdRoleBlades/detailProgram.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/3rdRoleBlades/detailProgram.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/3rdRoleBlades/listProgram.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/3rdRoleBlades/listProgram.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/customStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/customStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/customScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/customScript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/3rdRoleBlades/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/3rdRoleBlades/dashboard.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,13 +177,14 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sidebar-03" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\uctcweb\resources\views\tools" />
       <recent name="C:\Users\Ray\Documents\GitHub\uctcweb\app\Http\Controllers\Auth" />
     </key>
   </component>
@@ -248,7 +230,14 @@
       <workItem from="1607789761871" duration="2429000" />
       <workItem from="1607828467272" duration="1192000" />
       <workItem from="1607847994994" duration="8200000" />
-      <workItem from="1607900684566" duration="3155000" />
+      <workItem from="1607900684566" duration="6037000" />
+      <workItem from="1607915105606" duration="339000" />
+      <workItem from="1607916888112" duration="272000" />
+      <workItem from="1607917174798" duration="1153000" />
+      <workItem from="1607921698513" duration="2124000" />
+      <workItem from="1607923844551" duration="84000" />
+      <workItem from="1607954943598" duration="797000" />
+      <workItem from="1607955754487" duration="4037000" />
     </task>
     <servers />
   </component>
@@ -289,10 +278,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="277" y="77" key="SettingsEditor/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1606295441575" />
-    <state x="2319" y="124" width="557" height="566" key="find.popup" timestamp="1607850079535">
-      <screen x="1920" y="0" width="1280" height="720" />
+    <state x="482" y="232" width="577" height="566" key="find.popup" timestamp="1607956474496">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="482" y="232" width="577" height="566" key="find.popup/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1607848509050" />
+    <state x="482" y="232" width="577" height="566" key="find.popup/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1607956474496" />
     <state x="2319" y="124" width="557" height="566" key="find.popup/0.0.1536.864/1920.0.1280.720@1920.0.1280.720" timestamp="1607850079535" />
     <state x="425" y="197" key="run.anything.popup" timestamp="1607050812602">
       <screen x="0" y="0" width="1536" height="864" />

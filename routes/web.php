@@ -1,5 +1,8 @@
 <?php
 
+use http\Client\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
 //    return redirect()->route('program.index');
-    return view('home');
+    return view('3rdRoleBlades.dashboard');
 });
 
 
