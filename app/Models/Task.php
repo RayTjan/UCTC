@@ -15,5 +15,13 @@ class Task extends Model
         'status',
         'description',
         'due_date',
+        'action_plan',
+        'PIC',
     ];
+    public function taskPlan(){
+        return $this->belongsTo(ActionPlan::class,'action_plan','id');
+    }
+    public function pic(){
+        return $this->belongsTo(User::class,'PIC','id');
+    }
 }

@@ -16,10 +16,10 @@ class CreateActionPlansTable extends Migration
         Schema::create('uctc_action_plans', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('status');
             $table->string('description');
-            $table->date('due_date');
+            $table->unsignedBigInteger('program')->nullable();
             $table->timestamps();
+            $table->foreign('program')->references('id')->on('uctc_programs');
         });
     }
 

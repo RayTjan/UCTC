@@ -56,11 +56,19 @@ class ProgramController extends Controller
     {
         $program = Program::findOrFail($id);
         $programs = Program::all()->except($id)->pluck('id');
+
+        $committees = User::whereIn('id',function ($query) use ($programs){
+            $query->select('uctc_user_id')->from('uctc_program_user')->where('is_approved','1')->whereNotIn('uctc_program_id',$programs);
+        })->get();
+
         $committeeList = User::whereNotIn('id',function ($query) use ($programs){
             $query->select('uctc_user_id')->from('uctc_program_user')->whereNotIn('uctc_program_id',$programs);
         })->where('role_id',3)->get();
 
-        return view('3rdRoleBlades.detailProgram',compact('program','committeeList'));
+//        dd(User::whereIn('id',function ($query) use ($programs){
+//            $query->select('uctc_user_id')->from('uctc_program_user')->where('is_approved','1')->whereNotIn('uctc_program_id',$programs);
+//        })->get());
+        return view('3rdRoleBlades.detailProgram',compact('program','committeeList','committees'));
     }
 
     /**

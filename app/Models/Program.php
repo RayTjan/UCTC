@@ -22,7 +22,9 @@ class Program extends Model
         'type',
         'category',
     ];
-
+    public function hasPlans(){
+        return $this->hasMany(ActionPlan::class, 'program','id');
+    }
     public function categorized(){
         return $this->belongsTo(Category::class,'category','id');
     }

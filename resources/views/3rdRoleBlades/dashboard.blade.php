@@ -2,14 +2,15 @@
 @section('content')
     <div class="container" style="margin-top: 20px;">
         <h1>DASHBOARD</h1>
-        <p>
+        <div class="big">
+        <p class="smol1">
             I'm baby kale chips affogato ennui lumbersexual, williamsburg paleo quinoa
             iceland normcore tumeric. Kitsch coloring book retro, seitan schlitz
             tattooed biodiesel vexillologist neutra. Synth mumblecore deep v, umami
             selfies normcore gluten-free snackwave. Seitan ramps drinking vinegar
             venmo keytar, humblebrag VHS post-ironic tacos godard pour-over.
         </p>
-        <p>
+        <p  class="smol2">
             Sartorial kogi taxidermy, kickstarter synth yr irony ennui everyday carry
             retro helvetica stumptown cloud bread squid echo park. Etsy cloud bread
             sartorial quinoa tacos beard mumblecore shaman tumblr pop-up. Twee retro
@@ -20,7 +21,7 @@
             carry fam. Offal fingerstache taxidermy, man bun venmo PBR&amp;B helvetica
             thundercats everyday carry tote bag artisan cray wolf jianbing.
         </p>
-        <p>
+        <p class="smol3">
             Taxidermy thundercats whatever austin. VHS helvetica ethical, dreamcatcher
             enamel pin YOLO shabby chic locavore man bun crucifix pabst chillwave
             pop-up vegan. Air plant mlkshk ethical echo park tumeric, whatever
@@ -31,6 +32,7 @@
             literally 90's before they sold out, 3 wolf moon banh mi seitan chambray
             cliche offal tote bag occupy pug.
         </p>
+        </div>
         <p>
             Post-ironic hot chicken salvia yr yuccie ugh cold-pressed keffiyeh franzen
             viral taxidermy mustache slow-carb crucifix vape. Taiyaki yuccie hell of

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Program;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -47,7 +48,7 @@ class CommitteeController extends Controller
     }
     public function approve($id, Request $request){
         $user = User::findOrFail($id);
-        $program = $user->attends->where('program_id','=',$request->selected_program)->first();
+        $program = $user->attends->where('id','=',$request->selected_program)->first();
         $program->pivot->update([
             'is_approved' => '1',
         ]);
@@ -59,7 +60,7 @@ class CommitteeController extends Controller
     public  function reject($id, Request $request)
     {
         $user = User::findOrFail($id);
-        $program = $user->attends->where('program_id', '=', $request->selected_program)->first();
+        $program = $user->attends->where('id', '=', $request->selected_program)->first();
         $program->pivot->update([
             'is_approved' => '2',
         ]);
@@ -112,4 +113,5 @@ class CommitteeController extends Controller
     {
         //
     }
+
 }

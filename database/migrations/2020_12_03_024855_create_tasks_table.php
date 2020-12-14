@@ -16,10 +16,14 @@ class CreateTasksTable extends Migration
         Schema::create('uctc_tasks', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('status');
+            $table->enum('status',['0','1'])->default('0');
             $table->string('description');
             $table->date('due_date');
+            $table->unsignedBigInteger('action_plan')->nullable();
+            $table->unsignedBigInteger('PIC')->nullable();
             $table->timestamps();
+            $table->foreign('action_plan')->references('id')->on('uctc_action_plans');
+            $table->foreign('PIC')->references('id')->on('uctc_users');
         });
     }
 

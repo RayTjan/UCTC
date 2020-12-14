@@ -20,18 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c65294d-07bd-4a7d-a67f-97ac44bb5c5d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/3rdRoleBlades/profile.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/tools/navbar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ActionPlanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ActionPlanController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CommitteeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CommitteeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProgramController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProgramController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ActionPlan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ActionPlan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Program.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Program.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Task.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_03_024833_create_tasks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_03_024855_create_tasks_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_03_024854_create_action_plans_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_03_024854_create_action_plans_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/customStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/customStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/customScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/customScript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/3rdRoleBlades/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/3rdRoleBlades/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/3rdRoleBlades/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/3rdRoleBlades/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/3rdRoleBlades/detailProgram.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/3rdRoleBlades/detailProgram.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -238,6 +240,10 @@
       <workItem from="1607923844551" duration="84000" />
       <workItem from="1607954943598" duration="797000" />
       <workItem from="1607955754487" duration="4037000" />
+      <workItem from="1607961745153" duration="4506000" />
+      <workItem from="1607975175753" duration="1076000" />
+      <workItem from="1607976312600" duration="1553000" />
+      <workItem from="1607979870619" duration="643000" />
     </task>
     <servers />
   </component>
@@ -261,10 +267,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="483" y="195" key="#Log_Highlighting_(ideolog)/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1607791146793" />
-    <state x="499" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1607863900732">
+    <state x="499" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1607964438768">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="499" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1607863900732" />
+    <state x="499" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1607964438768" />
     <state x="505" y="139" key="FileChooserDialogImpl" timestamp="1607394312209">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -287,9 +293,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="425" y="197" key="run.anything.popup/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1607050812602" />
-    <state x="2223" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1607780473889">
-      <screen x="1920" y="0" width="1280" height="720" />
+    <state x="364" y="49" width="807" height="814" key="search.everywhere.popup" timestamp="1607964510304">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
+    <state x="364" y="49" width="807" height="814" key="search.everywhere.popup/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1607964510304" />
     <state x="2223" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1536.864/1920.0.1280.720@1920.0.1280.720" timestamp="1607780473889" />
   </component>
 </project>
