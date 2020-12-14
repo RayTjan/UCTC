@@ -13,14 +13,13 @@ class AdditionsToPrograms extends Migration
      */
     public function up()
     {
-        Schema::table('programs', function (Blueprint $table) {
+        Schema::table('uctc_programs', function (Blueprint $table) {
             $table->unsignedBigInteger('role')->nullable();
-
             $table->unsignedBigInteger('type')->nullable();
             $table->unsignedBigInteger('category')->nullable();
-            $table->foreign('role')->references('id')->on('roles');
-            $table->foreign('category')->references('id')->on('categories');
-            $table->foreign('type')->references('id')->on('types');
+            $table->foreign('role')->references('id')->on('uctc_roles');
+            $table->foreign('category')->references('id')->on('uctc_categories');
+            $table->foreign('type')->references('id')->on('uctc_types');
 
         });
     }
@@ -32,7 +31,7 @@ class AdditionsToPrograms extends Migration
      */
     public function down()
     {
-        Schema::table('programs', function (Blueprint $table) {
+        Schema::table('uctc_programs', function (Blueprint $table) {
             $table->dropColumn('type');
             $table->dropColumn('category');
         });

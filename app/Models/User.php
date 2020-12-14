@@ -11,6 +11,7 @@ use Laravel\Passport\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    public $table = 'uctc_users';
 
     /**
      * The attributes that are mass assignable.
@@ -46,14 +47,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function createEvents(){
+    public function createProgram(){
         return $this->hasMany(Program::class, 'created_by','id');
     }
     public function role() {
         return $this->belongsTo(Role::class);
     }
     public function attends(){
-        return $this->belongsToMany(Program::class)->withPivot('is_approved')->withTimestamps();
+        return $this->belongsToMany(Program::class, 'uctc_program_user','uctc_user_id', 'uctc_program_id')->withPivot('is_approved')->withTimestamps();
     }
     public function isAdmin(){
         if($this->role->name == 'Admin' && $this->is_login == '1' && $this->is_active =='1'&& $this->is_verified =='1'){

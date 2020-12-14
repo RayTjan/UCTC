@@ -55,10 +55,9 @@ class ProgramController extends Controller
     public function show($id)
     {
         $program = Program::findOrFail($id);
-
         $programs = Program::all()->except($id)->pluck('id');
         $committeeList = User::whereNotIn('id',function ($query) use ($programs){
-            $query->select('user_id')->from('program_user')->whereNotIn('program_id',$programs);
+            $query->select('uctc_user_id')->from('uctc_program_user')->whereNotIn('uctc_program_id',$programs);
         })->where('role_id',3)->get();
 
         return view('3rdRoleBlades.detailProgram',compact('program','committeeList'));
@@ -92,11 +91,12 @@ class ProgramController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Program  $program
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Program $program)
+    public function destroy(int $id)
     {
+        $program = Program::findOrFail($id);
         $program->delete();
         return redirect()->route('program.index');
     }

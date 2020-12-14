@@ -13,7 +13,7 @@ class CreateTasksTable extends Migration
      */
     public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('uctc_tasks', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('status');
@@ -30,6 +30,6 @@ class CreateTasksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('uctc_tasks');
     }
 }

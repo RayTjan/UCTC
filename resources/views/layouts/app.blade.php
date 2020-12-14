@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script type="text/javascript" src="{{ URL::asset('js/customScript.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -44,6 +45,9 @@
                             <a class="nav-link active" href="{{ route('user.index') }}">
                                 User List
                             </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="btn btn-primary" onclick="myFunction()">Try Js</button>
                         </li>
                     </ul>
 

@@ -5,19 +5,23 @@
             <h1 class="col">{{$program->name}}</h1>
         </div>
         <h3>{{$program->program_date}}</h3>
-
-        <div class="row">
-            {{-- auth to limit content, it cannot be accessed until login --}}
-            <div class="col-md-2">
-                <a href="{{route('program.destroy', $program)}}" class="btn btn-danger btn-block" role="button" aria-pressed="true">Delete Program</a>
-            </div>
-        </div>
+        <form action="{{ route('program.destroy' , $program)}}" method="POST">
+            {{ csrf_field() }}
+            <input name="_method" type="hidden" value="DELETE">
+            <button type="submit" class="btn btn-danger">Delete Program</button>
+        </form>
+{{--        <div class="row">--}}
+{{--            <div class="col-md-2">--}}
+{{--                <a href="{{route('program.destroy', $program)}}" class="btn btn-danger btn-block" role="button" aria-pressed="true">Delete Program</a>--}}
+{{--            </div>--}}
+{{--        </div>--}}
         <h3>{{$program->status}}</h3>
         <h4>Goal</h4>
         <p>{{$program->goal}}</p>
         <h4>Description</h4>
         <p>{{$program->description}}</p>
-
+        <h4>Creator</h4>
+        <p>{{$program->creator->name}}</p>
         <button type="button" class="btn btn-dark btn-circle float-right" title="Add Committee"
                 data-toggle="modal"
                 data-target="#addCommittee">Add</button>
@@ -34,17 +38,20 @@
                     <!-- Modal body -->
                     <div class="modal-body" style="text-align: left;">
                         @if(count($committeeList) > 0)
-                            <form action="{{route ('committee.store')}}" method="post">
-                                {{ csrf_field() }}
+                            <p>{{$program->id}}</p>
+                            <form action="{{route ('committee.store')}}" method="POST">
                                 <div class="form-group">
+                                    {{ csrf_field() }}
+                                    <input name="selected_program" type="hidden" value="{{$program->id}}">
                                     <label>Select Committee</label>
                                     <select name="user_id" class="custom-select" required>
                                         @foreach($committeeList as $committee)
                                             <option value="{{$committee->id}}" title="{{$committee->name}}">{{$committee->name}}</option>
                                         @endforeach
                                     </select>
+                                    <input name="selected_program" type="hidden" value="{{$program->id}}">
+
                                 </div>
-                                <input name="event_id" type="hidden" value="{{$program->id}}">
                                 <div class="form-group">
                                     <button class="btn btn-primary" type="submit">Add Committee</button>
                                 </div>

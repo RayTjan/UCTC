@@ -13,9 +13,10 @@ class CreateProposalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('proposals', function (Blueprint $table) {
+        Schema::create('uctc_proposals', function (Blueprint $table) {
             $table->id();
             $table->string('proposal');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateProposalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proposals');
+        Schema::dropIfExists('uctc_proposals');
     }
 }

@@ -36,29 +36,35 @@ class CommitteeController extends Controller
     public function store(Request $request)
     {
         $user = User::findOrFail($request->user_id);
-        $attend = $user->attends()->syncWithoutDetaching($request->event_id,['is_approved'=>'0']);//KEY COMMAND
-        return empty($attend)?redirect()->back()->with('Fail',"Failed to add new committee") : redirect()->back()->with('Success',"committee Added Successfully");
+        if ($request->selected_program != null){
+//            dd($request->selected_program);
+            $attend = $user->attends()->syncWithoutDetaching($request->selected_program, ['is_approved'=>'0']);
+            return empty($attend)?redirect()->back()->with('Fail',"Failed to add new committee") : redirect()->back()->with('Success',"committee Added Successfully");
+        }
+        else{
+            return redirect()->back()->with('WHAT',"Failed to add new committee");
+        }
     }
     public function approve($id, Request $request){
         $user = User::findOrFail($id);
-        $event = $user->attends->where('id','=',$request->event_id)->first();
-        $event->pivot->update([
+        $program = $user->attends->where('id','=',$request->selected_program)->first();
+        $program->pivot->update([
             'is_approved' => '1',
         ]);
 
-        return empty($event) ? redirect()->back()->with('Fail', "Failed to update status")
+        return empty($program) ? redirect()->back()->with('Fail', "Failed to update status")
             : redirect()->back()->with('Success', 'Success guest: #('.$user->name.') approved');
 
     }
     public  function reject($id, Request $request)
     {
         $user = User::findOrFail($id);
-        $event = $user->attends->where('id', '=', $request->event_id)->first();
-        $event->pivot->update([
+        $program = $user->attends->where('id', '=', $request->selected_program)->first();
+        $program->pivot->update([
             'is_approved' => '2',
         ]);
 
-        return empty($event) ? redirect()->back()->with('Fail', "Failed to update status")
+        return empty($program) ? redirect()->back()->with('Fail', "Failed to update status")
             : redirect()->back()->with('Success', 'Success guest: #('.$user->name.') approved');
     }
 

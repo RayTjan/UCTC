@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
     use HasFactory;
+    protected $table = 'uctc_clients';
 
     protected $fillable = [
         'name',
