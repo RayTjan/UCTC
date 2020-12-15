@@ -35,7 +35,8 @@ class ActionPlanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        ActionPlan::create($request->all());
+        return redirect()->back();
     }
 
     /**

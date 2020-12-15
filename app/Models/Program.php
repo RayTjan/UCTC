@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Program extends Model
 {
     use HasFactory;
+    public $table = 'uctc_programs';
+
     protected $fillable= [
         'name',
         'description',
@@ -20,7 +22,9 @@ class Program extends Model
         'type',
         'category',
     ];
-
+    public function hasPlans(){
+        return $this->hasMany(ActionPlan::class, 'program','id');
+    }
     public function categorized(){
         return $this->belongsTo(Category::class,'category','id');
     }
@@ -31,6 +35,6 @@ class Program extends Model
         return $this->belongsTo(User::class,'created_by','id');
     }
     public function committees(){
-        return $this->belongsToMany(User::class)->withPivot('is_approved')->withTimestamps();
+        return $this->belongsToMany(User::class,'uctc_program_user','uctc_program_id', 'uctc_user_id')->withPivot('is_approved')->withTimestamps();
     }
 }

@@ -10903,3 +10903,8 @@ a.text-dark:focus {
   }
 }
 
+.special {
+    background-color: black;
+    color: white;
+}
+

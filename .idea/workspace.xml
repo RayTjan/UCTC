@@ -21,9 +21,19 @@
   <component name="ChangeListManager">
     <list default="true" id="2c65294d-07bd-4a7d-a67f-97ac44bb5c5d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ActionPlanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ActionPlanController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CommitteeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CommitteeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProgramController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProgramController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ActionPlan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ActionPlan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Program.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Program.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Task.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_03_024833_create_tasks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_03_024855_create_tasks_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_03_024854_create_action_plans_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_03_024854_create_action_plans_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/customStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/customStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/3rdRoleBlades/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/3rdRoleBlades/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/3rdRoleBlades/detailProgram.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/3rdRoleBlades/detailProgram.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,13 +179,14 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../guestbook" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sidebar-03" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\uctcweb\resources\views\tools" />
       <recent name="C:\Users\Ray\Documents\GitHub\uctcweb\app\Http\Controllers\Auth" />
     </key>
   </component>
@@ -215,6 +226,24 @@
       <workItem from="1607395704404" duration="2448000" />
       <workItem from="1607566129838" duration="4055000" />
       <workItem from="1607570371805" duration="618000" />
+      <workItem from="1607572837884" duration="1865000" />
+      <workItem from="1607648014730" duration="2563000" />
+      <workItem from="1607768156488" duration="7988000" />
+      <workItem from="1607789761871" duration="2429000" />
+      <workItem from="1607828467272" duration="1192000" />
+      <workItem from="1607847994994" duration="8200000" />
+      <workItem from="1607900684566" duration="6037000" />
+      <workItem from="1607915105606" duration="339000" />
+      <workItem from="1607916888112" duration="272000" />
+      <workItem from="1607917174798" duration="1153000" />
+      <workItem from="1607921698513" duration="2124000" />
+      <workItem from="1607923844551" duration="84000" />
+      <workItem from="1607954943598" duration="797000" />
+      <workItem from="1607955754487" duration="4037000" />
+      <workItem from="1607961745153" duration="4506000" />
+      <workItem from="1607975175753" duration="1076000" />
+      <workItem from="1607976312600" duration="1553000" />
+      <workItem from="1607979870619" duration="643000" />
     </task>
     <servers />
   </component>
@@ -234,10 +263,14 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="499" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1607568025429">
+    <state x="483" y="195" key="#Log_Highlighting_(ideolog)" timestamp="1607791146793">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="499" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1607568025429" />
+    <state x="483" y="195" key="#Log_Highlighting_(ideolog)/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1607791146793" />
+    <state x="499" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1607964438768">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="499" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1607964438768" />
     <state x="505" y="139" key="FileChooserDialogImpl" timestamp="1607394312209">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -251,14 +284,19 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="277" y="77" key="SettingsEditor/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1606295441575" />
-    <state x="482" y="232" width="577" height="566" key="find.popup" timestamp="1607397892623">
+    <state x="482" y="232" width="577" height="566" key="find.popup" timestamp="1607956474496">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="482" y="232" width="577" height="566" key="find.popup/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1607397892623" />
-    <state x="2319" y="124" width="557" height="566" key="find.popup/0.0.1536.864/1920.0.1280.720@1920.0.1280.720" timestamp="1607394984001" />
+    <state x="482" y="232" width="577" height="566" key="find.popup/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1607956474496" />
+    <state x="2319" y="124" width="557" height="566" key="find.popup/0.0.1536.864/1920.0.1280.720@1920.0.1280.720" timestamp="1607850079535" />
     <state x="425" y="197" key="run.anything.popup" timestamp="1607050812602">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="425" y="197" key="run.anything.popup/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1607050812602" />
+    <state x="364" y="49" width="807" height="814" key="search.everywhere.popup" timestamp="1607964510304">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="364" y="49" width="807" height="814" key="search.everywhere.popup/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1607964510304" />
+    <state x="2223" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1536.864/1920.0.1280.720@1920.0.1280.720" timestamp="1607780473889" />
   </component>
 </project>

@@ -29,7 +29,13 @@
                 @foreach($programs as $program)
                     <tr>
                         <td>{{$program->name}}</td>
-                        <td><a href="@auth(){{route('program.show',$program)}}@endauth">View</a></td>
+{{--                        <td><form action="{{ route('program.show' , $program)}}" method="POST">--}}
+{{--                            <input name="_method" type="hidden" value="DELETE">--}}
+{{--                            {{ csrf_field() }}--}}
+{{--                            <button type="submit" class="btn btn-primary">View</button>--}}
+{{--                        </form>--}}
+{{--                        </td>--}}
+                        <td><a href="{{route('program.show',$program)}}">View</a></td>
                         <td>{{$program->categorized->name}}</td>
                         <td>{{$program->classified->name}}</td>
                         <td>{{$program->description}}</td>

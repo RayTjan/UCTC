@@ -13,13 +13,13 @@ class CreateActionPlansTable extends Migration
      */
     public function up()
     {
-        Schema::create('action_plans', function (Blueprint $table) {
+        Schema::create('uctc_action_plans', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('status');
             $table->string('description');
-            $table->date('due_date');
+            $table->unsignedBigInteger('program')->nullable();
             $table->timestamps();
+            $table->foreign('program')->references('id')->on('uctc_programs');
         });
     }
 
@@ -30,6 +30,6 @@ class CreateActionPlansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('action_plans');
+        Schema::dropIfExists('uctc_action_plans');
     }
 }

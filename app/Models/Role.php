@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     use HasFactory;
+    protected $table = 'uctc_roles';
+
     protected $fillable = ['name', 'description'];
 
     public function users()

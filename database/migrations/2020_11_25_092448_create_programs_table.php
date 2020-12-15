@@ -13,22 +13,16 @@ class CreateProgramsTable extends Migration
      */
     public function up()
     {
-        Schema::create('programs', function (Blueprint $table) {
+        Schema::create('uctc_programs', function (Blueprint $table) {
             $table->id();
             $table->string("name");
             $table->text("description")->nullable();
             $table->text('status');
             $table->text('goal');
-
             $table->date('program_date');
             $table->unsignedBigInteger('created_by')->nullable();
-
             $table->timestamps();
-
-            $table->foreign('created_by')->references('id')->on('users');
-
-
-
+            $table->foreign('created_by')->references('id')->on('uctc_users');
         });
     }
 
@@ -39,6 +33,6 @@ class CreateProgramsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('programs');
+        Schema::dropIfExists('uctc_programs');
     }
 }
