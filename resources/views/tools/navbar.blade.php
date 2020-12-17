@@ -6,7 +6,7 @@
                 <span class="link-text logo-text">GUEST</span>
             @else
                 <a href="{{ route('user.show',\Illuminate\Support\Facades\Auth::id()) }}" class="nav-link">
-                    <span class="link-text logo-text">{{\Illuminate\Support\Facades\Auth::user()->name}}</span>
+                    <span class="link-text logo-text">{{\Illuminate\Support\Facades\Auth::user()->identity->name}}</span>
                     @endif
                 <svg
                     aria-hidden="true"

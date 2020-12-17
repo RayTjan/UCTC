@@ -54,7 +54,7 @@ class CommitteeController extends Controller
         ]);
 
         return empty($program) ? redirect()->back()->with('Fail', "Failed to update status")
-            : redirect()->back()->with('Success', 'Success guest: #('.$user->name.') approved');
+            : redirect()->back()->with('Success', 'Success guest: #('.$user->identity->name.') approved');
 
     }
     public  function reject($id, Request $request)
@@ -66,7 +66,7 @@ class CommitteeController extends Controller
         ]);
 
         return empty($program) ? redirect()->back()->with('Fail', "Failed to update status")
-            : redirect()->back()->with('Success', 'Success guest: #('.$user->name.') approved');
+            : redirect()->back()->with('Success', 'Success guest: #('.$user->identity->name.') approved');
     }
 
     /**
