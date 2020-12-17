@@ -176,7 +176,7 @@ class DatabaseSeeder extends Seeder
         $user->password = Hash::make('something');
         $user->role_id = 3;
         $user->identity_id = 1;
-        $user->identity_type="App\Models\User";
+        $user->identity_type="App\Models\Student";
         $user->save();
 
         $user = new User();
@@ -184,7 +184,7 @@ class DatabaseSeeder extends Seeder
         $user->password = Hash::make('something');
         $user->role_id = 3;
         $user->identity_id = 2;
-        $user->identity_type="App\Models\User";
+        $user->identity_type="App\Models\Student";
         $user->save();
 
         $user = new User();
@@ -192,7 +192,7 @@ class DatabaseSeeder extends Seeder
         $user->password = Hash::make('something');
         $user->role_id = 3;
         $user->identity_id = 3;
-        $user->identity_type="App\Models\User";
+        $user->identity_type="App\Models\Student";
         $user->save();
     }
 }
