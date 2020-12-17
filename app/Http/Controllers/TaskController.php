@@ -36,7 +36,8 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         Task::create($request->all());
-        return redirect()->back();    }
+        return redirect()->back();
+    }
 
     /**
      * Display the specified resource.

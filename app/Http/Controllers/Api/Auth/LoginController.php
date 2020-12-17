@@ -31,7 +31,7 @@ class LoginController extends Controller
             'is_verified'=>'1',
         ];
 
-        $check = DB::table('users')->where('email',$request->email)->first();
+        $check = DB::table('uctc_users')->where('email',$request->email)->first();
 
         if ($check->is_verified == '1'){
             if ($check->is_active =='1'){
