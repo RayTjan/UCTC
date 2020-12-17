@@ -20,20 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c65294d-07bd-4a7d-a67f-97ac44bb5c5d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ActionPlanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ActionPlanController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CommitteeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CommitteeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProgramController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProgramController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ActionPlan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ActionPlan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Program.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Program.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Task.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_03_024833_create_tasks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_03_024855_create_tasks_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_03_024854_create_action_plans_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_03_024854_create_action_plans_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/customStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/customStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/3rdRoleBlades/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/3rdRoleBlades/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/3rdRoleBlades/detailProgram.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/3rdRoleBlades/detailProgram.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +166,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sidebar-03" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -244,6 +231,7 @@
       <workItem from="1607975175753" duration="1076000" />
       <workItem from="1607976312600" duration="1553000" />
       <workItem from="1607979870619" duration="643000" />
+      <workItem from="1608219614757" duration="282000" />
     </task>
     <servers />
   </component>
@@ -284,11 +272,12 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="277" y="77" key="SettingsEditor/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1606295441575" />
-    <state x="482" y="232" width="577" height="566" key="find.popup" timestamp="1607956474496">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state x="603" y="279" width="722" height="682" key="find.popup" timestamp="1608219657584">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="482" y="232" width="577" height="566" key="find.popup/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1607956474496" />
     <state x="2319" y="124" width="557" height="566" key="find.popup/0.0.1536.864/1920.0.1280.720@1920.0.1280.720" timestamp="1607850079535" />
+    <state x="603" y="279" width="722" height="682" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1608219657584" />
     <state x="425" y="197" key="run.anything.popup" timestamp="1607050812602">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
