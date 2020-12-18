@@ -46,7 +46,7 @@
                                     <label>Select Committee</label>
                                     <select name="user_id" class="custom-select" required>
                                         @foreach($committeeList as $committee)
-                                            <option value="{{$committee->id}}" title="{{$committee->name}}">{{$committee->name}}</option>
+                                            <option value="{{$committee->id}}" title="{{$committee->identity->name}}">{{$committee->identity->name}}</option>
                                         @endforeach
                                     </select>
                                     <input name="selected_program" type="hidden" value="{{$program->id}}">
@@ -78,7 +78,7 @@
             @foreach($program->committees as $committee)
                 <tr>
                     <td>{{$committee->id}}</td>
-                    <td>{{$committee->name}}</td>
+                    <td>{{$committee->identity->name}}</td>
                     <td>{{$committee->email}}</td>
                     <td>@if($committee->pivot->is_approved == 0) <p class="text-warning">Pending</p>
                         @elseif($committee->pivot->is_approved == 1) <p class="text-success">Approved</p>
@@ -192,7 +192,7 @@
                                             <label>Select PIC</label>
                                             <select name="PIC" class="custom-select" required>
                                                 @foreach($committees as $participated)
-                                                    <option value="{{$participated->id}}" title="{{$participated->name}}">{{$participated->email}}</option>
+                                                    <option value="{{$participated->id}}" title="{{$participated->identity->name}}">{{$participated->email}}</option>
                                                 @endforeach
                                             </select>
                                             <input name="action_plan" type="hidden" value="{{$action_plan->id}}">
