@@ -142,7 +142,7 @@
 
 
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/test" class="nav-link">
                 <svg
                     aria-hidden="true"
                     focusable="false"
@@ -166,7 +166,7 @@
                         ></path>
                     </g>
                 </svg>
-                <span class="link-text">Shuttle</span>
+                <span class="link-text">Template Gan</span>
             </a>
         </li>
 
@@ -197,6 +197,10 @@
                         ></path>
                     </g>
                 </svg>
+
+            </a>
+        </li>
+        <li>
                 <svg
                     class="theme-icon"
                     id="solarIcon"

@@ -22,10 +22,16 @@ Route::get('/', function () {
     return view('3rdRoleBlades.dashboard');
 });
 
+Route::get('/test', function () {
+//    return redirect()->route('program.index');
+    return view('3rdRoleBlades.test');
+});
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('program', \App\Http\Controllers\ProgramController::class);
 Route::resource('user', \App\Http\Controllers\UserController::class);
+
 Route::get('activate', [\App\Http\Controllers\Auth\ActivationController::class, 'activate'])->name('activate');
 
 Route::resource('action', \App\Http\Controllers\ActionPlanController::class);

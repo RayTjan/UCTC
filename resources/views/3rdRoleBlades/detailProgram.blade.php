@@ -19,8 +19,8 @@
             <div class="row align-items-center">
                 <h6 class="col-md-1 font-weight-bold float-left">Creator&nbsp;&nbsp;&nbsp;: </h6>
                 <p class="col-md-1 font-weight-bold circular bluestar">
-    {{--                {{$program->creator->name}}--}}
-                    unchch
+                    {{$program->creator->identity->name}}
+{{--                    unchch--}}
                 </p>
             </div>
 
@@ -97,6 +97,24 @@
                         <img src="https://res.cloudinary.com/mhmd/image/upload/v1570786269/hoverSet-10_ccl30n.jpg" alt="image" class="card-img">
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="clearfix">
+            <h5 class="float-right font-weight-bold">Budgeting</h5>
+        </div>
+        <div class="clearfix">
+            <h3 class="float-right">Rp. 500.000</h3>
+        </div>
+
+        <div class="d-flex justify-content-between mb-5">
+            <div>
+                <a href="#" class="circular yellowstar font-weight-bold p-2 yellow-hover">Status</a>
+                <a href="#" class="circular bluestar font-weight-bold p-2 blue-hover">Action Plan</a>
+                <a href="#" class="circular purplestar font-weight-bold p-2 purple-hover">Detail</a>
+            </div>
+            <div>
+                <a href="#" class="circular graystar font-weight-bold p-2 gray-hover">Detail</a>
             </div>
         </div>
 

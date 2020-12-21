@@ -68,6 +68,7 @@ class ProgramController extends Controller
 //        dd(User::whereIn('id',function ($query) use ($programs){
 //            $query->select('uctc_user_id')->from('uctc_program_user')->where('is_approved','1')->whereNotIn('uctc_program_id',$programs);
 //        })->get());
+
         return view('3rdRoleBlades.detailProgram',compact('program','committeeList','committees'));
     }
 
@@ -108,4 +109,5 @@ class ProgramController extends Controller
         $program->delete();
         return redirect()->route('program.index');
     }
+
 }
