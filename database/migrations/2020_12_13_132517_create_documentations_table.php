@@ -13,9 +13,11 @@ class CreateDocumentationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('documentations', function (Blueprint $table) {
+        Schema::create('uctc_documentations', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('program')->nullable();
             $table->timestamps();
+            $table->foreign('program')->references('id')->on('uctc_programs');
         });
     }
 

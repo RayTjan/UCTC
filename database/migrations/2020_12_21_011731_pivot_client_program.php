@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReportsTable extends Migration
+class PivotClientProgram extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateReportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('uctc_reports', function (Blueprint $table) {
+
+        Schema::create('uctc_client_program', function (Blueprint $table) {
             $table->id();
-            $table->string('report');
-            $table->string('status');
-            $table->unsignedBigInteger('program')->nullable();
+            $table->foreignId('uctc_client_id')->constrained();
+            $table->foreignId('uctc_program_id')->constrained();
             $table->timestamps();
-            $table->foreign('program')->references('id')->on('uctc_programs');
         });
     }
 
@@ -30,6 +29,6 @@ class CreateReportsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reports');
+        //
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReportsTable extends Migration
+class CreateFinancesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateReportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('uctc_reports', function (Blueprint $table) {
+        Schema::create('uctc_finances', function (Blueprint $table) {
             $table->id();
-            $table->string('report');
-            $table->string('status');
+            $table->string('name');
+            $table->integer('value');
+            $table->string('type');
             $table->unsignedBigInteger('program')->nullable();
             $table->timestamps();
             $table->foreign('program')->references('id')->on('uctc_programs');
@@ -30,6 +31,6 @@ class CreateReportsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reports');
+        Schema::dropIfExists('finances');
     }
 }

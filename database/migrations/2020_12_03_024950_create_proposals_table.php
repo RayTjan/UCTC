@@ -17,7 +17,9 @@ class CreateProposalsTable extends Migration
             $table->id();
             $table->string('proposal');
             $table->string('status');
+            $table->unsignedBigInteger('program')->nullable();
             $table->timestamps();
+            $table->foreign('program')->references('id')->on('uctc_programs');
         });
     }
 
