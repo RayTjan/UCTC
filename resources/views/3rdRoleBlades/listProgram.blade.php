@@ -1,12 +1,14 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container" style="margin-top: 20px;">
+    <div class="container clearfix" style="margin-top: 20px;">
         <div class="row">
             <h1 class="col font-weight-bold">Program View</h1>
         </div>
-        <div class="row float-right">
+
+        @auth()
+        <div class="clearfix">
             {{-- auth to limit content, it cannot be accessed until login --}}
-            <div class="col-md-2">
+            <div class="float-right">
 {{--                <a href="{{route('program.create')}}" class="btn btn-primary btn-block" role="button" aria-pressed="true">New Program</a>--}}
                 <a href="{{route('program.create')}}" role="button" aria-pressed="true">
                 <svg
@@ -17,7 +19,7 @@
                     role="img"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512"
-                    class="svg-inline--fa fa-angle-double-right fa-w-14 fa-5x iconplus"
+                    class="svg-inline--fa fa-angle-double-right fa-w-14 fa-5x iconplus float-right"
                 >
                     <g>
                         <path
@@ -31,7 +33,9 @@
 
             </div>
         </div>
-        <div class="row clearfix mt-5" style="margin-top: 30px;">
+        @endauth
+
+        <div class="row" style="margin-top: 30px;">
             <link href='//fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
             <div class="quiz-window">

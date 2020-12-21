@@ -266,6 +266,16 @@ main {
     background-color: green;
 }
 
+/*circular text*/
+.circular {
+    color: white;
+    border: 0.5vh solid #bdc2c1;
+    border-color: #d6d6d6;
+    background: #d6d6d6;
+    border-radius: 4vh;
+    text-align: center;
+}
+
 /*cobaaa*/
 .a-none{
     text-decoration: none;
@@ -404,13 +414,18 @@ button, select, input {
     border-color: #A10CCE;
     background: #A10CCE;
 }
-.rhodiumstar {
-    border-color: #743a7f;
-    background: #a0409d;
+.bluestar {
+    border-color: #0092FF;
+    background: #0092FF;
 }
-.platinumstar {
-    border-color: #10393b;
-    background: #2b5770;
+.toscastar {
+    border-color: #15819D;
+    background: #15819D;
+}
+
+.greenstar {
+    border-color: #0E9E52;
+    background: #0E9E52;
 }
 
 .guiz-awards-buttons {
@@ -445,7 +460,7 @@ button, select, input {
 
 /*icon++*/
 .iconplus {
-    width: 6vh;
+    width: 13%;
     border: 1vh solid #F9C03D;
     background-color: #F9C03D;
     border-radius: 2vh;
@@ -455,3 +470,115 @@ button, select, input {
     background-color: #EFB93D;
     border-color: #EFB93D;
 }
+
+/*image*/
+.hover {
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 60%;
+}
+
+.hover-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 90;
+    transition: all 0.4s;
+}
+
+.hover img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.3s;
+}
+
+.hover-5::after {
+    content: '';
+    width: 100%;
+    height: 10px;
+    background: #F9C03D;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    display: block;
+    transition: all 0.3s;
+    z-index: 999;
+}
+
+.hover-5-title {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    transition: all 0.3s;
+    padding: 2rem 3rem;
+    z-index: 99;
+}
+
+.hover-5-title span {
+    transition: all 0.4s;
+    opacity: 0;
+    color: #F9C03D;
+}
+
+.hover-5:hover .hover-overlay {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.hover-5:hover .hover-5-title {
+    bottom: 0;
+}
+
+.hover-5:hover .hover-5-title span {
+    opacity: 1;
+}
+
+.hover-5:hover::after {
+    bottom: 0;
+}
+
+/*modalpic*/
+.modalpic-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-clip: padding-box;
+    border: 1px solid transparent;
+    border-radius: 0.3rem;
+    outline: 0;
+}
+
+.modalpic-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: calc(0.3rem - 1px);
+    border-top-right-radius: calc(0.3rem - 1px);
+}
+
+.modalpic-body {
+    position: relative;
+    flex: 1 1 auto;
+    padding: 1rem;
+}
+
+.btn-modal {
+    position: absolute;
+    right: 4vh;
+    color: white;
+}
+
+.btn-modal:hover {
+    color: darkred;
+}
+
+
+
+

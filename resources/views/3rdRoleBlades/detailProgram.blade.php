@@ -2,31 +2,110 @@
 @section('content')
     <div class="container" style="margin-top: 20px;">
         <div class="row">
-            <h1 class="col">{{$program->name}}</h1>
+            <h1 class="col font-weight-bold">{{$program->name}}</h1>
         </div>
         <h3>{{$program->program_date}}</h3>
-        <form action="{{ route('program.destroy' , $program)}}" method="POST">
-            {{ csrf_field() }}
-            <input name="_method" type="hidden" value="DELETE">
-            <button type="submit" class="btn btn-danger">Delete Program</button>
-        </form>
-{{--        <div class="row">--}}
-{{--            <div class="col-md-2">--}}
-{{--                <a href="{{route('program.destroy', $program)}}" class="btn btn-danger btn-block" role="button" aria-pressed="true">Delete Program</a>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-        <h3>{{$program->status}}</h3>
-        <h4>Goal</h4>
-        <p>{{$program->goal}}</p>
-        <h4>Description</h4>
-        <p>{{$program->description}}</p>
-        <h4>Creator</h4>
-        <p>{{$program->creator->name}}</p>
+{{--        <form action="{{ route('program.destroy' , $program)}}" method="POST">--}}
+{{--            {{ csrf_field() }}--}}
+{{--            <input name="_method" type="hidden" value="DELETE">--}}
+{{--            <button type="submit" class="btn btn-danger">Delete Program</button>--}}
+{{--        </form>--}}
+
+        <h6>{{$program->status}}</h6>
+        <div class="ml-4">
+            <h6 class="font-weight-bold">Goal</h6>
+            <p class="ml-3">{{$program->goal}}</p>
+
+            <div class="row align-items-center">
+                <h6 class="col-md-1 font-weight-bold float-left">Creator&nbsp;&nbsp;&nbsp;: </h6>
+                <p class="col-md-1 font-weight-bold circular bluestar">
+    {{--                {{$program->creator->name}}--}}
+                    unchch
+                </p>
+            </div>
+
+            <div class="row align-items-center">
+                <h6 class="col-md-1 font-weight-bold float-left tab1">Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </h6>
+                <p class="col-md-2 font-weight-bold circular toscastar">
+                    @if($program->category == 1)
+                        Long-Term
+                    @else
+                        Short-Term
+                    @endif
+                </p>
+            </div>
+
+            <div class="row align-items-center">
+                <h6 class="col-md-1 font-weight-bold float-left">Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </h6>
+                <p class="col-md-1 font-weight-bold circular purplestar">
+                    {{$program->status}}
+                </p>
+            </div>
+
+            <div class="row align-items-center">
+                <h6 class="col-1 font-weight-bold float-left pr-1">Proposal :</h6>
+                <p class="col-md-1 font-weight-bold circular greenstar">
+                    Approved
+                </p>
+            </div>
+
+            <h6 class="font-weight-bold">Description</h6>
+            <p class="ml-3">{{$program->description}}</p>
+
+        </div>
+
+{{--        image--}}
+        <div class="">
+            <h2 class="col font-weight-bold text-center">Documentations</h2>
+
+            <div class="container-fluid py-3">
+                <div class="row">
+
+{{--                    foreach here--}}
+                    <div class="col-md-3 mb-lg-0" style="padding: 10px;">
+                        <div class="hover hover-5 text-white rounded">
+                            <img src="https://res.cloudinary.com/mhmd/image/upload/v1570786269/hoverSet-10_ccl30n.jpg" alt="image">
+                            <button type="button"
+                               data-toggle="modal"
+                               data-target="#imgview">
+                            <div class="hover-overlay">
+
+                            </div>
+                            </button>
+                        </div>
+                    </div>
+{{--                    endforeach--}}
+
+                    <div class="col-md-3 mb-lg-0" style="padding: 10px;">
+                        <div class="hover hover-5 text-white rounded"><img src="https://res.cloudinary.com/mhmd/image/upload/v1570786269/hoverSet-10_ccl30n.jpg" alt="image">
+                            <div class="hover-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+{{--        modal image--}}
+
+        <div class="modal fade" id="imgview">
+            <div class="modal-dialog">
+                <div class="modalpic-content">
+                    <!-- Modal body -->
+                    <div class="modalpic-body text-center">
+                        <button type="button" class="close btn-modal" data-dismiss="modal">&times;</button>
+                        <img src="https://res.cloudinary.com/mhmd/image/upload/v1570786269/hoverSet-10_ccl30n.jpg" alt="image" class="card-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{{--        ray stuff--}}
+
         <button type="button" class="btn btn-dark btn-circle float-right" title="Add Committee"
                 data-toggle="modal"
                 data-target="#addCommittee">Recruit</button>
-        <br>
-        <br>
+
         <div class="modal fade" id="addCommittee">
             <div class="modal-dialog">
                 <div class="modal-content">
