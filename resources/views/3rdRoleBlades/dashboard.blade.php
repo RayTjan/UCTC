@@ -2,15 +2,73 @@
 @section('content')
     <div class="container" style="margin-top: 20px;">
         <h1>DASHBOARD</h1>
+
         <div class="big">
-        <p class="smol1">
-            I'm baby kale chips affogato ennui lumbersexual, williamsburg paleo quinoa
-            iceland normcore tumeric. Kitsch coloring book retro, seitan schlitz
-            tattooed biodiesel vexillologist neutra. Synth mumblecore deep v, umami
-            selfies normcore gluten-free snackwave. Seitan ramps drinking vinegar
-            venmo keytar, humblebrag VHS post-ironic tacos godard pour-over.
-        </p>
-        <p  class="smol2">
+            <div class="smol1">
+                <h3 class="font-weight-bold">Recents</h3>
+                <div class="row">
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box inner-bg-change">
+                            <div class="inner inner-bg-change">
+                                <h2 class="font-weight-bold">Coding School</h2>
+
+                                <p>17/12/2020</p>
+                            </div>
+                            <a href="#" class="small-box-footer blackhex">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3>44</h3>
+
+                                <p>User Registrations</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-person-add"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3>44</h3>
+
+                                <p>User Registrations</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-person-add"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3>44</h3>
+
+                                <p>User Registrations</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-person-add"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                </div>
+            </div>
+
+
+        <p  class="smol3">
             Sartorial kogi taxidermy, kickstarter synth yr irony ennui everyday carry
             retro helvetica stumptown cloud bread squid echo park. Etsy cloud bread
             sartorial quinoa tacos beard mumblecore shaman tumblr pop-up. Twee retro
@@ -21,17 +79,124 @@
             carry fam. Offal fingerstache taxidermy, man bun venmo PBR&amp;B helvetica
             thundercats everyday carry tote bag artisan cray wolf jianbing.
         </p>
-        <p class="smol3">
-            Taxidermy thundercats whatever austin. VHS helvetica ethical, dreamcatcher
-            enamel pin YOLO shabby chic locavore man bun crucifix pabst chillwave
-            pop-up vegan. Air plant mlkshk ethical echo park tumeric, whatever
-            crucifix godard scenester locavore pork belly yuccie vape. +1 gochujang
-            put a bird on it, pork belly whatever selfies vaporware occupy banh mi
-            normcore VHS. Cornhole normcore hashtag tilde. Hell of yr try-hard DIY raw
-            denim banjo, enamel pin irony polaroid copper mug tofu. Dreamcatcher lomo
-            literally 90's before they sold out, 3 wolf moon banh mi seitan chambray
-            cliche offal tote bag occupy pug.
-        </p>
+
+
+            <div class="smol2">
+                <div class="{{--card-header--}}">
+{{--                    <h3 class="card-title">--}}
+{{--                        <i class="ion ion-clipboard mr-1"></i>--}}
+{{--                        Tasks List--}}
+{{--                    </h3>--}}
+
+                    <h3 class="font-weight-bold">Tasks List</h3>
+
+{{--                    <div class="card-tools">--}}
+{{--                        <ul class="pagination pagination-sm">--}}
+{{--                            <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>--}}
+{{--                            <li class="page-item"><a href="#" class="page-link">1</a></li>--}}
+{{--                            <li class="page-item"><a href="#" class="page-link">2</a></li>--}}
+{{--                            <li class="page-item"><a href="#" class="page-link">3</a></li>--}}
+{{--                            <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+                </div>
+                <!-- /.card-header -->
+                <div class="card card-body direct-chat-messages card-bg-change">
+                    <ul class="todo-list">
+                        <li>
+                            <!-- drag handle -->
+                            <span class="handle">
+                      <i class="fa fa-ellipsis-v"></i>
+                      <i class="fa fa-ellipsis-v"></i>
+                    </span>
+                            <!-- checkbox -->
+                            <input type="checkbox" value="" name="">
+                            <!-- todo text -->
+                            <span class="text">Design a nice theme</span>
+                            <!-- Emphasis label -->
+                            <small class="badge badge-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+                            <!-- General tools such as edit or delete-->
+                            <div class="tools">
+                                <i class="fa fa-edit"></i>
+                                <i class="fa fa-trash-o"></i>
+                            </div>
+                        </li>
+                        <li>
+                    <span class="handle">
+                      <i class="fa fa-ellipsis-v"></i>
+                      <i class="fa fa-ellipsis-v"></i>
+                    </span>
+                            <input type="checkbox" value="" name="">
+                            <span class="text">Make the theme responsive</span>
+                            <small class="badge badge-info"><i class="fa fa-clock-o"></i> 4 hours</small>
+                            <div class="tools">
+                                <i class="fa fa-edit"></i>
+                                <i class="fa fa-trash-o"></i>
+                            </div>
+                        </li>
+                        <li>
+                    <span class="handle">
+                      <i class="fa fa-ellipsis-v"></i>
+                      <i class="fa fa-ellipsis-v"></i>
+                    </span>
+                            <input type="checkbox" value="" name="">
+                            <span class="text">Let theme shine like a star</span>
+                            <small class="badge badge-warning"><i class="fa fa-clock-o"></i> 1 day</small>
+                            <div class="tools">
+                                <i class="fa fa-edit"></i>
+                                <i class="fa fa-trash-o"></i>
+                            </div>
+                        </li>
+                        <li>
+                    <span class="handle">
+                      <i class="fa fa-ellipsis-v"></i>
+                      <i class="fa fa-ellipsis-v"></i>
+                    </span>
+                            <input type="checkbox" value="" name="">
+                            <span class="text">Let theme shine like a star</span>
+                            <small class="badge badge-success"><i class="fa fa-clock-o"></i> 3 days</small>
+                            <div class="tools">
+                                <i class="fa fa-edit"></i>
+                                <i class="fa fa-trash-o"></i>
+                            </div>
+                        </li>
+                        <li>
+                    <span class="handle">
+                      <i class="fa fa-ellipsis-v"></i>
+                      <i class="fa fa-ellipsis-v"></i>
+                    </span>
+                            <input type="checkbox" value="" name="">
+                            <span class="text">Check your messages and notifications</span>
+                            <small class="badge badge-primary"><i class="fa fa-clock-o"></i> 1 week</small>
+                            <div class="tools">
+                                <i class="fa fa-edit"></i>
+                                <i class="fa fa-trash-o"></i>
+                            </div>
+                        </li>
+                        <li>
+                    <span class="handle">
+                      <i class="fa fa-ellipsis-v"></i>
+                      <i class="fa fa-ellipsis-v"></i>
+                    </span>
+                            <input type="checkbox" value="" name="">
+                            <span class="text">Let theme shine like a star</span>
+                            <small class="badge badge-secondary"><i class="fa fa-clock-o"></i> 1 month</small>
+                            <div class="tools">
+                                <i class="fa fa-edit"></i>
+                                <i class="fa fa-trash-o"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.card-body -->
+{{--                <div class="card-footer clearfix">--}}
+{{--                    <button type="button" class="btn btn-info float-right"><i class="fa fa-plus"></i> Add item</button>--}}
+{{--                </div>--}}
+            </div>
+            <!-- /.card -->
+            </section>
+
+
         </div>
         <p>
             Post-ironic hot chicken salvia yr yuccie ugh cold-pressed keffiyeh franzen

@@ -5767,7 +5767,7 @@ button.label-info:focus {
 }
 
 .bg-warning, .alert-warning, .label-warning {
-  background-color: #ffc107 !important;
+  background-color: #F9C03D !important;
 }
 
 a.bg-warning:hover, a.alert-warning:hover, a.label-warning:hover, a.bg-warning:focus, a.alert-warning:focus, a.label-warning:focus,
@@ -5777,7 +5777,7 @@ button.label-warning:hover,
 button.bg-warning:focus,
 button.alert-warning:focus,
 button.label-warning:focus {
-  background-color: #d39e00 !important;
+  background-color: #EFB93D !important;
 }
 
 .bg-danger, .alert-danger,
@@ -10547,7 +10547,7 @@ label:not(.form-check-label):not(.custom-file-label) {
   position: relative;
   text-align: center;
   padding: 3px 0;
-  color: #ffffff;
+  color: #000000;
   color: rgba(255, 255, 255, 0.8);
   display: block;
   z-index: 10;
@@ -10574,7 +10574,7 @@ label:not(.form-check-label):not(.custom-file-label) {
 
 .small-box p > small {
   display: block;
-  color: #f9f9f9;
+  color: #000000;
   font-size: 13px;
   margin-top: 5px;
 }
@@ -10590,6 +10590,7 @@ label:not(.form-check-label):not(.custom-file-label) {
   right: 10px;
   z-index: 0;
   font-size: 90px;
+    color: black;
   color: rgba(0, 0, 0, 0.15);
 }
 
@@ -10623,7 +10624,7 @@ label:not(.form-check-label):not(.custom-file-label) {
 
 .card.bg-dark,
 .card.bg-dark .card-body {
-  color: #ffffff;
+  color: #F1F1E6;
 }
 
 .card.collapsed-card .card-body,
@@ -12574,7 +12575,7 @@ a.text-muted:hover {
 .bg-warning a,
 .alert-warning a,
 .label-warning a {
-  color: #1F2D3D !important;
+  color: #000000 !important;
 }
 
 .bg-danger, .alert-danger,
@@ -12709,12 +12710,12 @@ a.text-muted:hover {
 }
 
 .bg-warning-gradient {
-  background: #ffc107;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ffc107), color-stop(1, #ffce3a));
-  background: -ms-linear-gradient(bottom, #ffc107, #ffce3a);
-  background: -moz-linear-gradient(center bottom, #ffc107 0%, #ffce3a 100%);
-  background: -o-linear-gradient(#ffce3a, #ffc107);
-  color: #1F2D3D;
+  background: #F9C03D;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #F9C03D), color-stop(1, #EFB93D));
+  background: -ms-linear-gradient(bottom, #F9C03D, #EFB93D);
+  background: -moz-linear-gradient(center bottom, #F9C03D 50%, #EFB93D 100%);
+  background: -o-linear-gradient(#F9C03D, #ffc107);
+  color: #000000;
 }
 
 .bg-danger-gradient {
