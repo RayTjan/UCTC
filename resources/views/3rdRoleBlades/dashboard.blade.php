@@ -5,65 +5,25 @@
 
         <div class="big">
             <div class="smol1">
-                <h3 class="font-weight-bold">Recents</h3>
+                <div class="position-relative">
+                    <h3 class="font-weight-bold">Recents</h3>
+                    <a href="{{ route('program.index') }}" class="seeall">see all</a>
+                </div>
                 <div class="row">
+                    @foreach($programs as $program)
+                    <!-- ./col -->
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
                         <div class="small-box inner-bg-change">
                             <div class="inner inner-bg-change">
-                                <h2 class="font-weight-bold">Coding School</h2>
+                                <h2 class="font-weight-bold">{{$program->name}}</h2>
 
-                                <p>17/12/2020</p>
+                                <p>{{$program->program_date}}</p>
                             </div>
-                            <a href="#" class="small-box-footer blackhex">More info <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{route('program.show',$program)}}" class="small-box-footer blackhex">More info <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-warning">
-                            <div class="inner">
-                                <h3>44</h3>
-
-                                <p>User Registrations</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-person-add"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-warning">
-                            <div class="inner">
-                                <h3>44</h3>
-
-                                <p>User Registrations</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-person-add"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-warning">
-                            <div class="inner">
-                                <h3>44</h3>
-
-                                <p>User Registrations</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-person-add"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
+                    @endforeach
                 </div>
             </div>
 
@@ -88,7 +48,10 @@
 {{--                        Tasks List--}}
 {{--                    </h3>--}}
 
-                    <h3 class="font-weight-bold">Tasks List</h3>
+                    <div class="position-relative">
+                        <h3 class="font-weight-bold">Tasks List</h3>
+                        <a href="" class="seeall">see all</a>
+                    </div>
 
 {{--                    <div class="card-tools">--}}
 {{--                        <ul class="pagination pagination-sm">--}}
@@ -103,6 +66,7 @@
                 <!-- /.card-header -->
                 <div class="card card-body direct-chat-messages card-bg-change">
                     <ul class="todo-list">
+
                         <li>
                             <!-- drag handle -->
                             <span class="handle">
@@ -113,79 +77,86 @@
                             <input type="checkbox" value="" name="">
                             <!-- todo text -->
                             <span class="text">Design a nice theme</span>
-                            <!-- Emphasis label -->
-                            <small class="badge badge-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
-                            <!-- General tools such as edit or delete-->
-                            <div class="tools">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
+                            <div class="float-right">
+                                <p class="">05/11/2020</p>
                             </div>
                         </li>
+
                         <li>
-                    <span class="handle">
+                            <!-- drag handle -->
+                            <span class="handle">
                       <i class="fa fa-ellipsis-v"></i>
                       <i class="fa fa-ellipsis-v"></i>
                     </span>
+                            <!-- checkbox -->
                             <input type="checkbox" value="" name="">
-                            <span class="text">Make the theme responsive</span>
-                            <small class="badge badge-info"><i class="fa fa-clock-o"></i> 4 hours</small>
-                            <div class="tools">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
+                            <!-- todo text -->
+                            <span class="text">Design a nice theme</span>
+                            <div class="float-right">
+                                <p class="">05/11/2020</p>
                             </div>
                         </li>
+
                         <li>
-                    <span class="handle">
+                            <!-- drag handle -->
+                            <span class="handle">
                       <i class="fa fa-ellipsis-v"></i>
                       <i class="fa fa-ellipsis-v"></i>
                     </span>
+                            <!-- checkbox -->
                             <input type="checkbox" value="" name="">
-                            <span class="text">Let theme shine like a star</span>
-                            <small class="badge badge-warning"><i class="fa fa-clock-o"></i> 1 day</small>
-                            <div class="tools">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
+                            <!-- todo text -->
+                            <span class="text">Design a nice theme</span>
+                            <div class="float-right">
+                                <p class="">05/11/2020</p>
                             </div>
                         </li>
+
                         <li>
-                    <span class="handle">
+                            <!-- drag handle -->
+                            <span class="handle">
                       <i class="fa fa-ellipsis-v"></i>
                       <i class="fa fa-ellipsis-v"></i>
                     </span>
+                            <!-- checkbox -->
                             <input type="checkbox" value="" name="">
-                            <span class="text">Let theme shine like a star</span>
-                            <small class="badge badge-success"><i class="fa fa-clock-o"></i> 3 days</small>
-                            <div class="tools">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
+                            <!-- todo text -->
+                            <span class="text">Design a nice theme</span>
+                            <div class="float-right">
+                                <p class="">05/11/2020</p>
                             </div>
                         </li>
+
                         <li>
-                    <span class="handle">
+                            <!-- drag handle -->
+                            <span class="handle">
                       <i class="fa fa-ellipsis-v"></i>
                       <i class="fa fa-ellipsis-v"></i>
                     </span>
+                            <!-- checkbox -->
                             <input type="checkbox" value="" name="">
-                            <span class="text">Check your messages and notifications</span>
-                            <small class="badge badge-primary"><i class="fa fa-clock-o"></i> 1 week</small>
-                            <div class="tools">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
+                            <!-- todo text -->
+                            <span class="text">Design a nice theme</span>
+                            <div class="float-right">
+                                <p class="">05/11/2020</p>
                             </div>
                         </li>
+
                         <li>
-                    <span class="handle">
+                            <!-- drag handle -->
+                            <span class="handle">
                       <i class="fa fa-ellipsis-v"></i>
                       <i class="fa fa-ellipsis-v"></i>
                     </span>
+                            <!-- checkbox -->
                             <input type="checkbox" value="" name="">
-                            <span class="text">Let theme shine like a star</span>
-                            <small class="badge badge-secondary"><i class="fa fa-clock-o"></i> 1 month</small>
-                            <div class="tools">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
+                            <!-- todo text -->
+                            <span class="text">Design a nice theme</span>
+                            <div class="float-right">
+                                <p class="">05/11/2020</p>
                             </div>
                         </li>
+
                     </ul>
                 </div>
                 <!-- /.card-body -->

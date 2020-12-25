@@ -17,10 +17,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', function () {
-//    return redirect()->route('program.index');
-    return view('3rdRoleBlades.dashboard');
-});
+//Route::get('/', function () {
+////    return redirect()->route('program.index');
+//    return view('3rdRoleBlades.dashboard');
+//});
+
+Route::get('/', 'App\Http\Controllers\DashboardController@index');
 
 Route::get('/test', function () {
 //    return redirect()->route('program.index');

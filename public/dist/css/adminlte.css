@@ -10850,7 +10850,6 @@ label:not(.form-check-label):not(.custom-file-label) {
 }
 
 .todo-list > li .tools {
-  display: none;
   float: right;
   color: #dc3545;
 }
