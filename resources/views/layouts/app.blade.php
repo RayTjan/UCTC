@@ -46,17 +46,17 @@
 </head>
 <body>
 
-
+@if(!\Request::is('login'))
     <div id="app">
-        @if(!\Request::is('login'))
         @include('tools.navbar')
-        @endif
-
         <main class="py-4 blacktest">
             @yield('content')
-
         </main>
     </div>
+@else
+    @yield('content')
+@endif
+
 
 {{--alfredoo--}}
 

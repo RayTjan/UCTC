@@ -1,30 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-
-    <div class="half light">
-        <img src="">
-    </div>
-
-    <div class="bg-cut">
-        <svg class="half" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="125%" height="125%" viewBox="250 0 1920 1080">
-            <defs>
-                <linearGradient id="linear-gradient" x1="0.53" y1="1.345" x2="0.5" y2="-0.325" gradientUnits="objectBoundingBox">
-                    <stop offset="0" stop-color="#0e2f56"/>
-                    <stop offset="1" stop-color="#0092ff"/>
-                </linearGradient>
-                <linearGradient id="linear-gradient-2" x1="0.475" y1="1.213" x2="0.412" y2="0.944" gradientUnits="objectBoundingBox">
-                    <stop offset="0" stop-color="#0092ff"/>
-                    <stop offset="1" stop-color="#004980"/>
-                </linearGradient>
-            </defs>
-            <path id="Path_524" data-name="Path 524" d="M1920.5.5v1080H1107.08q-6.345,0-12.55-.5H814.19A155.645,155.645,0,0,0,951.77,934.01q.225-4.275.23-8.59V156.58q0-4.575-.27-9.08A155.6,155.6,0,0,1,1107.08.5Z" transform="translate(14.81 -0.5)" fill="url(#linear-gradient)"/>
-            <path id="Path_1150" data-name="Path 1150" d="M814.19,1080.5V.5h813.42q6.345,0,12.55.5H1920.5a155.645,155.645,0,0,0-137.58,145.99q-.225,4.275-.23,8.59V924.42q0,4.575.27,9.08a155.6,155.6,0,0,1-155.35,147Z" transform="translate(-814.19 -0.5)" opacity="0.32" fill="url(#linear-gradient-2)"/>
-        </svg>
-    </div>
-
-    <img class="half light" src="{{asset('img/computer.jpg')}}">
+<div class="container bglogin">
 
     <div class="position-relative">
         <div class="position-absolute">
@@ -32,7 +9,6 @@
             <p class="titlelogin">manage your life better</p>
         </div>
     </div>
-    <div class="star yellowstar starcenter"></div>
 
     <div class="row justify-content-sm-end">
         <div class="col-md-8">
