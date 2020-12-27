@@ -785,13 +785,145 @@ button, select, input {
     background-position: center;
     background-size: cover;
     padding: 5% 5% 0 5%;
-    margin: auto;
+    margin: 0;
     box-sizing: border-box;
     position: relative;
 }
 
 .titlelogin {
     color: white;
+}
+
+p.titlelogin{
+    color: white;
+    margin-top: -2vh;
+}
+
+/*Profile*/
+.rounded-circle {
+    /*position: absolute;*/
+    margin-top: -30px;
+    margin-left: auto;
+    margin-right: auto;
+    /*width: 50%;*/
+    background-color: rgb(255,255,255);
+    padding: 2px;
+}
+
+.miniOption {
+    height: 30px;
+}
+
+.iconOptionCenter {
+    top: 45%;
+    right: 4%;
+}
+
+.iconOption {
+    background-color: #0E2F56;
+    color: #FFFFFF;
+    border: 1vh solid #0E2F56;
+    border-radius: 1vh;
+    display: inline-block;
+    margin: 0 1vh 0 0;
+}
+
+.btnA {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.iconOptionB {
+    background-color: #F20505;
+    color: #FFFFFF;
+    border: 1vh solid #F20505;
+    border-radius: 1vh;
+    display: inline-block;
+    margin: 0 1vh 0 0;
+}
+
+.iconOption:hover {
+    background-color: #F9C03D;
+    border-color: #F9C03D;
+    color: #fff;
+}
+
+.iconOptionB:hover {
+    background-color: #C50000;
+    border-color: #C50000;
+    color: #fff;
+}
+
+.iconOption i {
+    padding: 0 2px 0 2px;
+}
+
+.iconOptionB i {
+    padding: 0 2px 0 2px;
+}
+
+.heightProfile {
+    height: 50px;
+    background-color: rgba(54,162,177,0);
+}
+
+.heightName {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+}
+
+.profile-box {
+    width: 300px;
+    height: 400px;
+    background-color: #ffffff;
+    margin: 5px;
+
+    border: 1px solid #dee2e6;
+    border-radius: 3vh;
+}
+
+.social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+}
+
+.iconCenter {
+    max-width: 80%;
+    align-items: center;
+    margin:  0 0 0 0;
+}
+
+.iconProfile {
+    background-color: #0E2F56;
+    color: #FFFFFF;
+    border: 2vh solid #0E2F56;
+    border-radius: 4vh;
+    display: inline-block;
+    margin: 0 5vh 0 0;
+}
+
+.iconProfile i {
+    padding: 0 5px 0 5px;
+}
+
+.iconProfile:hover {
+    background-color: #F9C03D;
+    border-color: #F9C03D;
+    color: #fff;
+}
+
+.containerCustom {
+    height: 90vh;
 }
 
 

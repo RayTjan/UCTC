@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container bglogin">
+<div class="bglogin">
 
     <div class="position-relative">
         <div class="position-absolute">
