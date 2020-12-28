@@ -50,7 +50,7 @@
 
                     <div class="position-relative">
                         <h3 class="font-weight-bold">Tasks List</h3>
-                        <a href="" class="seeall">see all</a>
+                        <a href="{{ route('task.index') }}" class="seeall">see all</a>
                     </div>
 
 {{--                    <div class="card-tools">--}}
