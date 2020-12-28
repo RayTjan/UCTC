@@ -9,11 +9,11 @@
         <div class="row">
             <div class="card-task">
                 <div class="quiz-window">
-                    <div class="card-bg-change direct-chat-messages height100">
+                    <div class="card-bg-change scrollWebkit height100">
 
         {{--                    @foreach($tasks as $task)--}}
                                 <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin quizz mb-2">
-                                    <a href="" class="a-none">
+                                    <a href="{{ 'task.show' }}" class="a-none">
                                         <li class="guiz-awards-title">Test
                                             <div class="guiz-awards-subtitle">Design</div>
                                         </li>
@@ -23,7 +23,7 @@
                                 </ul>
 
                             <ul class="quiz-window-body guiz-awards-row guiz-awards-row quizz mb-2">
-                                <a href="" class="a-none">
+                                <a href="{{ 'task.show' }}" class="a-none">
                                     <li class="guiz-awards-title">Test
                                         <div class="guiz-awards-subtitle">Design</div>
                                     </li>
@@ -33,7 +33,7 @@
                             </ul>
 
                             <ul class="quiz-window-body guiz-awards-row guiz-awards-row quizz mb-2">
-                                <a href="" class="a-none">
+                                <a href="{{ 'task.show' }}" class="a-none">
                                     <li class="guiz-awards-title">Test
                                         <div class="guiz-awards-subtitle">Design</div>
                                     </li>
@@ -43,7 +43,7 @@
                             </ul>
 
                             <ul class="quiz-window-body guiz-awards-row guiz-awards-row quizz mb-2">
-                                <a href="" class="a-none">
+                                <a href="{{ 'task.show' }}" class="a-none">
                                     <li class="guiz-awards-title">Test
                                         <div class="guiz-awards-subtitle">Design</div>
                                     </li>
@@ -53,7 +53,7 @@
                             </ul>
 
                             <ul class="quiz-window-body guiz-awards-row guiz-awards-row quizz mb-2">
-                                <a href="" class="a-none">
+                                <a href="{{ 'task.show' }}" class="a-none">
                                     <li class="guiz-awards-title">Test
                                         <div class="guiz-awards-subtitle">Design</div>
                                     </li>
@@ -67,7 +67,9 @@
                 </div>
             </div>
 
+            @if($detail == 1)
             @include('3rdRoleBlades.detailTask')
+            @endif
 
         </div>
 

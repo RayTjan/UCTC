@@ -64,8 +64,38 @@
 {{--                    </div>--}}
                 </div>
                 <!-- /.card-header -->
-                <div class="card card-body direct-chat-messages card-bg-change">
+                <div class="card card-body scrollWebkit card-bg-change" style="height: 250px;">
                     <ul class="todo-list">
+
+                        <li>
+                            <!-- drag handle -->
+                            <span class="handle">
+                      <i class="fa fa-ellipsis-v"></i>
+                      <i class="fa fa-ellipsis-v"></i>
+                    </span>
+                            <!-- checkbox -->
+                            <input type="checkbox" value="" name="">
+                            <!-- todo text -->
+                            <span class="text">Design a nice theme</span>
+                            <div class="float-right">
+                                <p class="">05/11/2020</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <!-- drag handle -->
+                            <span class="handle">
+                      <i class="fa fa-ellipsis-v"></i>
+                      <i class="fa fa-ellipsis-v"></i>
+                    </span>
+                            <!-- checkbox -->
+                            <input type="checkbox" value="" name="">
+                            <!-- todo text -->
+                            <span class="text">Design a nice theme</span>
+                            <div class="float-right">
+                                <p class="">05/11/2020</p>
+                            </div>
+                        </li>
 
                         <li>
                             <!-- drag handle -->

@@ -15,7 +15,8 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = Task::all();
-        return view('3rdRoleBlades.listTask', compact('tasks'));
+        $detail = 0;
+        return view('3rdRoleBlades.listTask', compact('tasks', 'detail'));
     }
 
     /**
@@ -48,7 +49,8 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        $detail = 1;
+        return view('3rdRoleBlades.listTask', compact('detail'));
     }
 
     /**

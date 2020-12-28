@@ -959,4 +959,26 @@ p.titlelogin{
     text-align: center;
 }
 
+.scrollWebkit {
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0);
+    padding: 10px;
+    overflow: auto;
+}
 
+.scrollWebkit {
+    transition: transform .5s ease-in-out;
+}
+
+.scrollWebkit::-webkit-scrollbar {
+    width: 0.25rem;
+}
+
+.scrollWebkit::-webkit-scrollbar-track {
+    background: #666666;
+}
+
+.scrollWebkit::-webkit-scrollbar-thumb {
+    background: #333333;
+}

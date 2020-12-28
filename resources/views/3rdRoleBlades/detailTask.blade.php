@@ -17,13 +17,13 @@
 
     <div class="">
         <div class="row align-items-center">
-            <h6 class="col-md-2 font-weight-bold float-left">Creator&nbsp;&nbsp;&nbsp;: </h6>
-            <p class="col-md-2 font-weight-bold circular bluestar">
+            <h6 class="col-md-2 font-weight-bold float-left">Status&nbsp;&nbsp;&nbsp;: </h6>
+            <p class="col-md-2 font-weight-bold circular purplestar">
                 unchch
             </p>
         </div>
         <div class="row align-items-center">
-            <h6 class="col-md-2 font-weight-bold float-left">Creator&nbsp;&nbsp;&nbsp;: </h6>
+            <h6 class="col-md-2 font-weight-bold float-left">PIC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </h6>
             <p class="col-md-2 font-weight-bold circular bluestar">
                 unchch
             </p>
