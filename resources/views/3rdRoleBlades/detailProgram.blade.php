@@ -100,6 +100,9 @@
             </div>
         </div>
 
+
+        {{--        Option Menu--}}
+
         <div class="clearfix">
             <h5 class="float-right font-weight-bold">Budgeting</h5>
         </div>
@@ -109,14 +112,70 @@
 
         <div class="d-flex justify-content-between mb-5">
             <div>
-                <a href="#" class="circular yellowstar font-weight-bold p-2 yellow-hover">Status</a>
+                <a href="{{ route('committee.index') }}" class="circular yellowstar font-weight-bold p-2 yellow-hover">Committee</a>
                 <a href="#" class="circular bluestar font-weight-bold p-2 blue-hover">Action Plan</a>
-                <a href="#" class="circular purplestar font-weight-bold p-2 purple-hover">Detail</a>
+                <a href="#" class="circular purplestar font-weight-bold p-2 purple-hover">Edit</a>
             </div>
             <div>
-                <a href="#" class="circular graystar font-weight-bold p-2 gray-hover">Detail</a>
+                <button type="button"
+                        data-toggle="modal"
+                        data-target="#detailBudget"
+                        class="btnA circular graystar font-weight-bold p-2 gray-hover">Detail</button>
             </div>
         </div>
+
+{{--        Modal Detail Budget--}}
+
+        <div class="modal fade zindex1050" id="detailBudget">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header card-bg-change">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="card-bg-change scrollWebkit height100 modalCustomBody">
+
+                        {{--                    @foreach($budgets as $budget)--}}
+                        <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget pr-4 pl-4 clearfix">
+                            <li class="guiz-awards-time text-left">Antidote</li>
+                            <li class="guiz-awards-time float-right text-right">Rp. 500.000</li>
+                        </ul>
+
+                        <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget pr-4 pl-4 clearfix">
+                            <li class="guiz-awards-time text-left">Antidote</li>
+                            <li class="guiz-awards-time float-right text-right">Rp. 500.000</li>
+                        </ul>
+
+                        <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget pr-4 pl-4 clearfix">
+                            <li class="guiz-awards-time text-left">Antidote</li>
+                            <li class="guiz-awards-time float-right text-right">Rp. 500.000</li>
+                        </ul>
+
+                        <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget pr-4 pl-4 clearfix">
+                            <li class="guiz-awards-time text-left">Antidote</li>
+                            <li class="guiz-awards-time float-right text-right">Rp. 500.000</li>
+                        </ul>
+
+                        <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget pr-4 pl-4 clearfix">
+                            <li class="guiz-awards-time text-left">Antidote</li>
+                            <li class="guiz-awards-time float-right text-right">Rp. 500.000</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="card-bg-change height100 modalCustomFooter">
+                        <div class="absoluteFooter">
+                        <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget bg-change-dark pr-4 pl-4 clearfix">
+                            <li class="guiz-awards-time text-left">Total</li>
+                            <li class="guiz-awards-time float-right text-right">Rp. 500.000</li>
+                        </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+         </div>
 
 {{--        ray stuff--}}
 

@@ -67,9 +67,9 @@
                 </div>
             </div>
 
-            @if($detail == 1)
+{{--            @if($detail == 1)--}}
             @include('3rdRoleBlades.detailTask')
-            @endif
+{{--            @endif--}}
 
         </div>
 

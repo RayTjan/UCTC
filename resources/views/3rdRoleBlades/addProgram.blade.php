@@ -43,7 +43,9 @@
                             @endforeach
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="text-center">
+                        <button type="submit" class="btnA circular greenstar font-weight-bold p-2 green-hover">Submit</button>
+                    </div>
                 </form>
             </div>
         </div>

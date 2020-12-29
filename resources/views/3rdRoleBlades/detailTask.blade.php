@@ -8,7 +8,7 @@
     }
 </script>
 
-<div class="card-task-popup position-relative">
+<div class="card-task-popup scrollWebkit position-relative">
 
     <div class="row">
         <h1 class="col font-weight-bold">Coding School</h1>
@@ -33,10 +33,22 @@
 
     <h6>Description</h6>
     <div class="ml-4">
-        <p>audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw</p>
+        <p>
+            audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
+            audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
+            audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
+            audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdwaudhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
+            audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
+            audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
+            audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
+            audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
+            audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
+            audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
+
+        </p>
     </div>
 
-        <div class="position-absolute centerBottom">
+        <div class="position-static centerBottom">
             <input type="checkbox" class="custom-checkbox" id="checkBtn" onclick="EnableBtn (this)" name="checkBtn">
             already done?
             <br>
