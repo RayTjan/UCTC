@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ActionPlan;
+use App\Models\Program;
 use Illuminate\Http\Request;
 
 class ActionPlanController extends Controller
@@ -14,7 +15,9 @@ class ActionPlanController extends Controller
      */
     public function index()
     {
-        //
+        //action plan yang ada di event tsb
+        $actions = ActionPlan::all();
+        return view('3rdRoleBlades.listActionPlan', compact('actions'));
     }
 
     /**
@@ -24,7 +27,8 @@ class ActionPlanController extends Controller
      */
     public function create()
     {
-        //
+        $programs = Program::all();
+        return view( '3rdRoleBlades.addActionPlan',compact('programs'));
     }
 
     /**
@@ -36,7 +40,7 @@ class ActionPlanController extends Controller
     public function store(Request $request)
     {
         ActionPlan::create($request->all());
-        return redirect()->back();
+        return redirect()->route('action.index');
     }
 
     /**
@@ -47,7 +51,7 @@ class ActionPlanController extends Controller
      */
     public function show(ActionPlan $actionPlan)
     {
-        //
+        return view('3rdRoleBlades.listTaskAction');
     }
 
     /**

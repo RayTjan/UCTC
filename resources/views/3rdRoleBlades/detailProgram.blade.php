@@ -113,7 +113,7 @@
         <div class="d-flex justify-content-between mb-5">
             <div>
                 <a href="{{ route('committee.index') }}" class="circular yellowstar font-weight-bold p-2 yellow-hover">Committee</a>
-                <a href="#" class="circular bluestar font-weight-bold p-2 blue-hover">Action Plan</a>
+                <a href="{{ route('action.index') }}" class="circular bluestar font-weight-bold p-2 blue-hover">Action Plan</a>
                 <a href="#" class="circular purplestar font-weight-bold p-2 purple-hover">Edit</a>
             </div>
             <div>

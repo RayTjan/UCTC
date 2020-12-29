@@ -649,14 +649,6 @@ button, select, input {
     border: 1px solid #333333;
 }
 
-.bg-change-dark {
-    background-color: #23232E;
-}
-
-.bg-change-dark li {
-    color: white;
-}
-
 .modalCustomBody {
     max-height: 60vh;
 }
@@ -1023,4 +1015,13 @@ p.titlelogin{
 /*list committee*/
 .customComittee {
     width: 20%;
+}
+
+/*bg-change*/
+.bg-change-dark {
+    background-color: #23232E; !important;
+}
+
+.bg-change-dark li {
+    color: white;
 }
