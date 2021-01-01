@@ -14,8 +14,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $programs = Program::all();
-        return view('3rdRoleBlades.dashboard', compact('programs'));
+//        $programs = Program::all();
+//        return view('3rdRoleBlades.dashboard', compact('programs'));
+        return redirect()->route('login');
     }
 
     /**

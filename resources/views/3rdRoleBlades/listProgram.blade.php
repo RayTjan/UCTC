@@ -67,7 +67,7 @@
                                 "></span>
                             </li>
                             <li class="guiz-awards-title">{{$program->name}}
-                                <div class="guiz-awards-subtitle">{{$program->description}}</div>
+                                <div class="guiz-awards-subtitle">{{$program->goal}}</div>
                             </li>
                             <li class="guiz-awards-time">{{$program->program_date}}</li>
                             </a>

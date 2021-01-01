@@ -44,7 +44,7 @@
                         </select>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btnA circular greenstar font-weight-bold p-2 green-hover">Submit</button>
+                        <button type="submit" class="btnA circular greenstar font-weight-bold p-2 green-hover">Add Program</button>
                     </div>
                 </form>
             </div>

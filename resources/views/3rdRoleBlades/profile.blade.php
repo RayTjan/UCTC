@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
     <div class="row justify-content-center align-items-center containerCustom">
 
         <div class="text-center shadow-sm profile-box">
@@ -27,18 +28,40 @@
             </div>
             <div class="social">
                 <div class="iconCenter">
-                    <a href="#" class="iconProfile">
+                    <div class="iconProfile dropdown">
+                    <a class="dropbtn">
                         <i class="fa fa-envelope"></i>
                     </a>
-                    <a href="#" class="iconProfile">
-                        <i class="fa fa-phone"></i>
-                    </a>
-                    <a href="#" class="iconProfile mr-0">
-                        <i class="fa fa-address-book"></i>
-                    </a>
+
+                    <div class="dropdown-content">
+                        <div class="dropdown-item" >ezralfredi@gmail.com</div>
+                    </div>
+                    </div>
+
+                    <div class="iconProfile dropdown">
+                        <a class="dropbtn">
+                            <i class="fa fa-phone"></i>
+                        </a>
+
+                        <div class="dropdown-content">
+                            <div class="dropdown-item" >081357160052</div>
+                        </div>
+                    </div>
+
+                    <div class="iconProfile dropdown mr-0">
+                        <a class="dropbtn">
+                            <i class="fa fa-address-book"></i>
+                        </a>
+
+                        <div class="dropdown-content">
+                            <div class="dropdown-item" >Griya Sono Indah</div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
+
 
     </div>
 @endsection

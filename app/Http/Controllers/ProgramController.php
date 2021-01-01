@@ -80,8 +80,10 @@ class ProgramController extends Controller
      */
     public function edit(Program $program)
     {
-        return view('3rdRoleBlades.editProgram',compact('program'));
-
+        $users = User::all();
+        $categories = Category::all();
+        $types = Type::all();
+        return view('3rdRoleBlades.editProgram',compact('program','users','categories','types'));
     }
 
     /**

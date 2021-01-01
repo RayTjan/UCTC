@@ -114,7 +114,7 @@
             <div>
                 <a href="{{ route('committee.index') }}" class="circular yellowstar font-weight-bold p-2 yellow-hover">Committee</a>
                 <a href="{{ route('action.index') }}" class="circular bluestar font-weight-bold p-2 blue-hover">Action Plan</a>
-                <a href="#" class="circular purplestar font-weight-bold p-2 purple-hover">Edit</a>
+                <a href="{{ route('program.edit', $program) }}" class="circular purplestar font-weight-bold p-2 purple-hover">Edit</a>
             </div>
             <div>
                 <button type="button"

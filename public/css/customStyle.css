@@ -941,6 +941,10 @@ p.titlelogin{
     margin: 0 5vh 0 0;
 }
 
+.iconProfile a{
+    color: #fff;
+}
+
 .iconProfile i {
     padding: 0 5px 0 5px;
 }
@@ -954,6 +958,37 @@ p.titlelogin{
 .containerCustom {
     height: 90vh;
 }
+
+.dropbtn {
+
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f8f9fa;
+    min-width: 160px;
+    color: #212529;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+    z-index: 1;
+}
+
+.dropdown-content div {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown:hover .dropdown-content {display: block;}
+
 
 /*Tasks*/
 .card-task {
@@ -1017,6 +1052,24 @@ p.titlelogin{
     width: 20%;
 }
 
+.iconCommitteeAct svg {
+    transform: rotate(-90deg);
+    transition: var(--transition-speed);
+}
+
+.iconCommitteeAct:focus svg {
+    transform: rotate(0deg);
+    transition: var(--transition-speed);
+}
+
+.quiz-padding {
+    min-height: 65vh;
+}
+
+.btnDelete {
+    color: #F20505;
+}
+
 /*bg-change*/
 .bg-change-dark {
     background-color: #23232E; !important;
@@ -1024,4 +1077,9 @@ p.titlelogin{
 
 .bg-change-dark li {
     color: white;
+}
+
+/*edit form*/
+.budgetForm {
+    width: 90%;
 }
