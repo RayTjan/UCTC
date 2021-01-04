@@ -8,7 +8,7 @@
             <div class="smol1">
                 <div class="position-relative">
                     <h3 class="font-weight-bold">Recents</h3>
-                    <a href="{{ route('user.program.index') }}" class="seeall">see all</a>
+                    <a href="{{ route('staff.program.index') }}" class="seeall">see all</a>
                 </div>
                 <div class="d-flex boxScroll">
                     @foreach($programs as $program)
@@ -21,7 +21,7 @@
 
                                 <p>{{$program->program_date}}</p>
                             </div>
-                            <a href="{{route('user.program.show',$program)}}" class="small-box-footer blackhex">More info <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{route('staff.program.show',$program)}}" class="small-box-footer blackhex">More info <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     @endforeach
@@ -51,7 +51,7 @@
 
                     <div class="position-relative">
                         <h3 class="font-weight-bold">Tasks List</h3>
-                        <a href="{{ route('user.task.index') }}" class="seeall">see all</a>
+                        <a href="{{ route('staff.task.index') }}" class="seeall">see all</a>
                     </div>
 
 {{--                    <div class="card-tools">--}}

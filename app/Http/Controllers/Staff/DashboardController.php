@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Staff;
 
+use App\Http\Controllers\Controller;
 use App\Models\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,15 +16,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        if (Auth::id()) {
+        if (Auth::user()) {
             $programs = Program::all();
-            if (Auth::user()->isAdmin()) {
-                return view('1stRoleBlades.dashboard', compact('programs'));
-            }else if (Auth::user()->isCreator()) {
-                return view('2ndRoleBlades.dashboard', compact('programs'));
-            }else {
-                return view('3rdRoleBlades.dashboard', compact('programs'));
-            }
+            return view('2ndRoleBlades.dashboard', compact('programs'));
         }
 
         return redirect()->route('login');

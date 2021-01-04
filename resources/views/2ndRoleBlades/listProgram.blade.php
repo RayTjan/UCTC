@@ -10,7 +10,27 @@
         <div class="clearfix">
             {{-- auth to limit content, it cannot be accessed until login --}}
             <div class="float-right">
-                <a href="" class="btn btn-primary btn-block" role="button" aria-pressed="true">Join Program</a>
+{{--                <a href="{{route('program.create')}}" class="btn btn-primary btn-block" role="button" aria-pressed="true">New Program</a>--}}
+                <a href="{{route('staff.program.create')}}" role="button" aria-pressed="true">
+                <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    data-prefix="fad"
+                    data-icon="angle-double-right"
+                    role="img"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 448 512"
+                    class="svg-inline--fa fa-angle-double-right fa-w-14 fa-5x iconplus float-right"
+                >
+                    <g>
+                        <path
+                            fill="#000000"
+                            d="m408,184h-136c-4.418,0 -8,-3.582 -8,-8v-136c0,-22.09 -17.91,-40 -40,-40s-40,17.91 -40,40v136c0,4.418 -3.582,8 -8,8h-136c-22.09,0 -40,17.91 -40,40s17.91,40 40,40h136c4.418,0 8,3.582 8,8v136c0,22.09 17.91,40 40,40s40,-17.91 40,-40v-136c0,-4.418 3.582,-8 8,-8h136c22.09,0 40,-17.91 40,-40s-17.91,-40 -40,-40zM408,184"
+                            class="fa-secondary">
+                        </path>
+                    </g>
+                </svg>
+                </a>
 
             </div>
         </div>
@@ -37,7 +57,7 @@
                                 guiz-awards-row guiz-awards-row
                             @endif
                                 quizz">
-                            <a href="{{route('user.program.show',$program)}}" class="a-none">
+                            <a href="{{route('staff.program.show',$program)}}" class="a-none">
                             <li class="guiz-awards-star">
                                 <span class="
                                     @if($program->category == 1)

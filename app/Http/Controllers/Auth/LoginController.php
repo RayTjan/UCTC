@@ -68,13 +68,13 @@ class LoginController extends Controller
 
         if (Auth::attempt($admin)) {
             $this->isLogin(Auth::id());
-            return redirect()->route('program.index');
+            return redirect()->route('admin.program.index');
         } elseif (Auth::attempt($creator)) {
             $this->isLogin(Auth::id());
-            return redirect()->route('program.index');
+            return redirect()->route('staff.program.index');
         } elseif (Auth::attempt($user)) {
             $this->isLogin(Auth::id());
-            return redirect()->route('program.index');
+            return redirect()->route('user.program.index');
         }
         return redirect()->route('login');
 
@@ -91,9 +91,9 @@ class LoginController extends Controller
     }
 
     private function isLogin(int $id){
-//        $acc = User::findOrFail($id);
-//        return $acc->update([
-//            'is_login' => '1',
-//        ]);
+        $acc = User::findOrFail($id);
+        return $acc->update([
+            'is_login' => '1',
+        ]);
     }
 }

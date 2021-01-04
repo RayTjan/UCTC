@@ -8,11 +8,7 @@
     }
 </script>
 
-<div class="card-task-popup">
-    <div class="quiz-window">
-        <div class="scrollWebkit height100 position-relative pt-0 pb-0">
-
-
+<div class="card-task-popup scrollWebkit position-relative">
 
     <div class="row">
         <h1 class="col font-weight-bold">Coding School</h1>
@@ -59,8 +55,5 @@
             <button disabled="disabled" class="btn btn-success" id="BTN">Submit</button>
         </div>
 
-
-        </div>
-    </div>
 
 </div>

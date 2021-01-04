@@ -14,7 +14,7 @@
 
         {{--                    @foreach($tasks as $task)--}}
                                 <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin quizz mb-2">
-                                    <a href="" class="a-none">
+                                    <a href="{{ 'task.show' }}" class="a-none">
                                         <li class="guiz-awards-title">Test
                                             <div class="guiz-awards-subtitle">Design</div>
                                         </li>
@@ -24,7 +24,7 @@
                                 </ul>
 
                             <ul class="quiz-window-body guiz-awards-row guiz-awards-row quizz mb-2">
-                                <a href="" class="a-none">
+                                <a href="{{ 'task.show' }}" class="a-none">
                                     <li class="guiz-awards-title">Test
                                         <div class="guiz-awards-subtitle">Design</div>
                                     </li>
@@ -34,7 +34,7 @@
                             </ul>
 
                             <ul class="quiz-window-body guiz-awards-row guiz-awards-row quizz mb-2">
-                                <a href="" class="a-none">
+                                <a href="{{ 'task.show' }}" class="a-none">
                                     <li class="guiz-awards-title">Test
                                         <div class="guiz-awards-subtitle">Design</div>
                                     </li>
@@ -44,7 +44,7 @@
                             </ul>
 
                             <ul class="quiz-window-body guiz-awards-row guiz-awards-row quizz mb-2">
-                                <a href="" class="a-none">
+                                <a href="{{ 'task.show' }}" class="a-none">
                                     <li class="guiz-awards-title">Test
                                         <div class="guiz-awards-subtitle">Design</div>
                                     </li>
@@ -54,7 +54,7 @@
                             </ul>
 
                             <ul class="quiz-window-body guiz-awards-row guiz-awards-row quizz mb-2">
-                                <a href="" class="a-none">
+                                <a href="{{ 'task.show' }}" class="a-none">
                                     <li class="guiz-awards-title">Test
                                         <div class="guiz-awards-subtitle">Design</div>
                                     </li>

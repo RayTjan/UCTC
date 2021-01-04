@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Staff;
 
+use App\Http\Controllers\Controller;
+use App\Models\ActionPlan;
 use App\Models\Program;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+class ActionPlanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,18 +16,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        if (Auth::id()) {
-            $programs = Program::all();
-            if (Auth::user()->isAdmin()) {
-                return view('1stRoleBlades.dashboard', compact('programs'));
-            }else if (Auth::user()->isCreator()) {
-                return view('2ndRoleBlades.dashboard', compact('programs'));
-            }else {
-                return view('3rdRoleBlades.dashboard', compact('programs'));
-            }
-        }
-
-        return redirect()->route('login');
+        //action plan yang ada di event tsb
+        $actions = ActionPlan::all();
+        return view('2ndRoleBlades.listActionPlan', compact('actions'));
     }
 
     /**
@@ -36,7 +28,8 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        //
+        $programs = Program::all();
+        return view( '2ndRoleBlades.addActionPlan',compact('programs'));
     }
 
     /**
@@ -47,39 +40,41 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        ActionPlan::create($request->all());
+        return redirect()->route('action.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\ActionPlan  $actionPlan
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ActionPlan $actionPlan)
     {
-        //
+        return view('2ndRoleBlades.listTaskAction', compact('actionPlan'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\ActionPlan  $actionPlan
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ActionPlan $actionPlan)
     {
-        //
+        $programs = Program::all();
+        return view( '2ndRoleBlades.editActionPlan',compact('actionPlan','programs'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\ActionPlan  $actionPlan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, ActionPlan $actionPlan)
     {
         //
     }
@@ -87,10 +82,10 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\ActionPlan  $actionPlan
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ActionPlan $actionPlan)
     {
         //
     }

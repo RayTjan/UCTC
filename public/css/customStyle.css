@@ -682,6 +682,24 @@ button, select, input {
     right: 0;
 }
 
+.boxScroll {
+    overflow-x: auto;
+}
+
+.boxScroll::-webkit-scrollbar {
+    height: 0.3rem;
+}
+
+.boxScroll::-webkit-scrollbar-track {
+    background: #aaa;
+    border-radius: 1vh;
+}
+
+.boxScroll::-webkit-scrollbar-thumb {
+    background: #666666;
+    border-radius: 1vh;
+}
+
 /*login*/
 .login100-form-title {
     font-size: 24px;
@@ -716,7 +734,7 @@ button, select, input {
     width: 100%;
     background: #e6e6e6;
     height: 50px;
-    border: 0.4vh solid #666666;
+    border: 1px solid #666666;
     border-radius: 25px;
     padding: 0 30px 0 68px;
 }
@@ -777,7 +795,7 @@ button, select, input {
     line-height: 1.5;
     color: #fff;
     text-transform: uppercase;
-    border: 0.4vh solid #666666;
+    border: 1px solid #0E9E52;
 
     width: 100%;
     height: 50px;
@@ -1006,7 +1024,7 @@ p.titlelogin{
     margin: 0;
     width: 55%;
     height: 75vh;
-    padding: 2% 2% 2% 2% ;
+    padding: 3% 3% 3% 3% ;
 }
 
 .height100 {
@@ -1040,11 +1058,13 @@ p.titlelogin{
 }
 
 .scrollWebkit::-webkit-scrollbar-track {
-    background: #666666;
+    background: #aaaaaa;
+    border-radius: 1vh;
 }
 
 .scrollWebkit::-webkit-scrollbar-thumb {
-    background: #333333;
+    background: #666666;
+    border-radius: 1vh;
 }
 
 /*list committee*/
@@ -1070,6 +1090,10 @@ p.titlelogin{
     color: #F20505;
 }
 
+.btnSuccess {
+    color: #0E9E52;
+}
+
 /*bg-change*/
 .bg-change-dark {
     background-color: #23232E; !important;
@@ -1082,4 +1106,36 @@ p.titlelogin{
 /*edit form*/
 .budgetForm {
     width: 90%;
+}
+
+.sizeForm {
+    width: 44%;
+}
+
+/*admin attribute*/
+.card-attribute {
+    border: 1px solid #666666;
+    background-color: #F1F1E6;
+    border-radius: 2vh;
+    width: 25%;
+    height: 75vh;
+    padding: 2% 2% 2% 2% ;
+}
+
+.card-attribute-settings {
+    border: 1px solid #666666;
+    border-radius: 2vh;
+    margin: 0;
+    width: 43%;
+    height: 75vh;
+    padding: 2% 2% 2% 2% ;
+}
+
+.titleWidth {
+    width: 10%;
+    min-width: 100px;
+}
+
+.deleteAtt:hover {
+    color: #F20505;
 }

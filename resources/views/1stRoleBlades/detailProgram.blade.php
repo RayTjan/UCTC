@@ -113,8 +113,8 @@
 
         <div class="d-flex justify-content-between mb-5">
             <div>
-                <a href="{{ route('user.committee.index') }}" class="circular yellowstar font-weight-bold p-2 yellow-hover">Committee</a>
-                <a href="{{ route('user.task.index') }}" class="circular bluestar font-weight-bold p-2 blue-hover">Task</a>
+                <a href="{{ route('admin.committee.index') }}" class="circular yellowstar font-weight-bold p-2 yellow-hover">Committee</a>
+                <a href="{{ route('admin.program.edit', $program) }}" class="circular purplestar font-weight-bold p-2 purple-hover">Edit</a>
             </div>
             <div>
                 <button type="button"
@@ -176,5 +176,6 @@
                 </div>
             </div>
          </div>
+
 
 @endsection

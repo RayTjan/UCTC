@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use App\Models\Program;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+class CommitteeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,18 +16,15 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        if (Auth::id()) {
-            $programs = Program::all();
-            if (Auth::user()->isAdmin()) {
-                return view('1stRoleBlades.dashboard', compact('programs'));
-            }else if (Auth::user()->isCreator()) {
-                return view('2ndRoleBlades.dashboard', compact('programs'));
-            }else {
-                return view('3rdRoleBlades.dashboard', compact('programs'));
-            }
-        }
+//        $committees = User::whereIn('id',function ($query) use ($programs){
+//            $query->select('uctc_user_id')->from('uctc_program_user')->where('is_approved','1')->whereNotIn('uctc_program_id',$programs);
+//        })->get();
+//
+//        $committeeList = User::whereNotIn('id',function ($query) use ($programs){
+//            $query->select('uctc_user_id')->from('uctc_program_user')->whereNotIn('uctc_program_id',$programs);
+//        })->where('role_id',3)->get();
 
-        return redirect()->route('login');
+        return view('3rdRoleBlades.listCommittee');
     }
 
     /**
@@ -46,6 +44,13 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+    {
+       //
+    }
+    public function approve($id, Request $request){
+        //
+    }
+    public  function reject($id, Request $request)
     {
         //
     }
@@ -94,4 +99,5 @@ class DashboardController extends Controller
     {
         //
     }
+
 }

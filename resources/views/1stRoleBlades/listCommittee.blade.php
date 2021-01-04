@@ -18,7 +18,7 @@
                 {{-- auth to limit content, it cannot be accessed until login --}}
                 <div class="float-right">
                     {{--                <a href="{{route('program.create')}}" class="btn btn-primary btn-block" role="button" aria-pressed="true">New Program</a>--}}
-                    <a href="{{route('user.program.create')}}" role="button" aria-pressed="true">
+                    <a href="{{route('admin.committee.create')}}" role="button" aria-pressed="true">
                         <svg
                             aria-hidden="true"
                             focusable="false"

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Staff;
 
-use App\Models\Program;
+use App\Http\Controllers\Controller;
+use App\Models\Proposal;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+class ProposalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,18 +15,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        if (Auth::id()) {
-            $programs = Program::all();
-            if (Auth::user()->isAdmin()) {
-                return view('1stRoleBlades.dashboard', compact('programs'));
-            }else if (Auth::user()->isCreator()) {
-                return view('2ndRoleBlades.dashboard', compact('programs'));
-            }else {
-                return view('3rdRoleBlades.dashboard', compact('programs'));
-            }
-        }
-
-        return redirect()->route('login');
+        //
     }
 
     /**
@@ -53,10 +42,10 @@ class DashboardController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Proposal  $proposal
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Proposal $proposal)
     {
         //
     }
@@ -64,10 +53,10 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Proposal  $proposal
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Proposal $proposal)
     {
         //
     }
@@ -76,10 +65,10 @@ class DashboardController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Proposal  $proposal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Proposal $proposal)
     {
         //
     }
@@ -87,10 +76,10 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Proposal  $proposal
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Proposal $proposal)
     {
         //
     }
