@@ -44,7 +44,7 @@ class ProgramController extends Controller
     public function store(Request $request)
     {
         Program::create($request->all());
-        return redirect()->route('program.index');
+        return redirect()->route('staff.program.index');
     }
 
     /**
@@ -97,7 +97,7 @@ class ProgramController extends Controller
     public function update(Request $request, Program $program)
     {
         $program->update($request->all());
-        return redirect()->route('program.index');
+        return redirect()->route('staff.program.index');
     }
 
     /**
@@ -110,7 +110,7 @@ class ProgramController extends Controller
     {
         $program = Program::findOrFail($id);
         $program->delete();
-        return redirect()->route('program.index');
+        return redirect()->route('staff.program.index');
     }
 
 }

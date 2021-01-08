@@ -59,11 +59,16 @@
                             <li class="guiz-awards-time customComittee">Action</li>
                         </ul>
 
+                        @foreach($committees as $committee)
                         <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget">
-                            <li class="guiz-awards-time customComittee">Tono</li>
-                            <li class="guiz-awards-time customComittee">PIC</li>
-                            <li class="guiz-awards-time customComittee">tonoia@gmial.com</li>
-                            <li class="guiz-awards-time customComittee">Dosen</li>
+                            <li class="guiz-awards-time customComittee">{{ $committee->identity->name }}</li>
+                            <li class="guiz-awards-time customComittee">{{ $committee->role->name }}</li>
+                            <li class="guiz-awards-time customComittee">{{ $committee->identity->email }}</li>
+                            <li class="guiz-awards-time customComittee">
+                                @if($committee->pivot->is_approved == 0) <p class="text-warning">Pending</p>
+                                @elseif($committee->pivot->is_approved == 1) <p class="text-success">Approved</p>
+                                @else <p class="text-danger">Rejected</p> @endif
+                            </li>
                             <li class="guiz-awards-time customComittee">
                                 <div class="dropdown">
                                     <div class="dropdown show">
@@ -81,6 +86,9 @@
                                 </div>
                             </li>
                         </ul>
+                        @endforeach
+
+
                     </div>
                 </div>
             </div>

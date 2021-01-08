@@ -112,10 +112,14 @@
         </div>
 
         <div class="d-flex justify-content-between mb-5">
-            <div>
-                <a href="{{ route('staff.committee.index') }}" class="circular yellowstar font-weight-bold p-2 yellow-hover">Committee</a>
-                <a href="{{ route('staff.action.index') }}" class="circular bluestar font-weight-bold p-2 blue-hover">Action Plan</a>
+            <div class="">
+                <a href="{{ route('staff.committee.index', $program) }}" class="circular yellowstar font-weight-bold p-2 yellow-hover">Committee</a>
+                <a href="{{ route('staff.action.index', $program) }}" class="circular bluestar font-weight-bold p-2 blue-hover">Action Plan</a>
                 <a href="{{ route('staff.program.edit', $program) }}" class="circular purplestar font-weight-bold p-2 purple-hover">Edit</a>
+                <button type="button"
+                        data-toggle="modal"
+                        data-target="#deleteProgram"
+                        class="btnA circular redstar font-weight-bold p-2 red-hover">Delete</button>
             </div>
             <div>
                 <button type="button"
@@ -177,6 +181,31 @@
                 </div>
             </div>
          </div>
+
+{{--        Delete Program--}}
+
+        <div class="modal fade" id="deleteProgram">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Are you sure want to delete program {{ $program->name }} </h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body d-inline-block text-center" style="text-align: left;">
+                        <form action="{{ route('staff.program.destroy', $program) }}" method="post" class="d-inline-block">
+                            @csrf
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover">Yes</button>
+                        </form>
+                        <button type="button" class="btnA circular bluestar font-weight-bold p-2 blue-hover" data-dismiss="modal">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
 {{--        ray stuff--}}
 

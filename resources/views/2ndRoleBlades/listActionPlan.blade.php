@@ -56,7 +56,7 @@
                         </ul>
 
                         <?php $yes = 0; ?>
-                        @foreach($actions as $actionPlan)
+                        @foreach($program->hasPlan as $actionPlan)
                             <ul class="
                             @if($yes%2 == 0)
                                 guiz-awards-row guiz-awards-row-even
