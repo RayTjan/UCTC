@@ -66,11 +66,13 @@ Route::group([
     Route::resource('committee',\App\Http\Controllers\Staff\CommitteeController::class);
     Route::post('committee/{id}/approve', [\App\Http\Controllers\Staff\CommitteeController::class, 'approve'])->name('committee.approve');
     Route::post('committee/{id}/reject', [\App\Http\Controllers\Staff\CommitteeController::class, 'reject'])->name('committee.reject');
-    Route::resource('action', \App\Http\Controllers\Staff\ActionPlanController::class);
     Route::resource('task', \App\Http\Controllers\Staff\TaskController::class);
     Route::resource('client', \App\Http\Controllers\Staff\ClientController::class);
     Route::resource('proposal', \App\Http\Controllers\Staff\ProposalController::class);
     Route::resource('user', \App\Http\Controllers\Staff\UserController::class);
+    Route::resource('action', \App\Http\Controllers\Staff\ActionPlanController::class)->except(['index']);
+    Route::get('action/{program}', [\App\Http\Controllers\Staff\ActionPlanController::class, 'index'])->name('action.index');
+
 });
 
 Route::group([

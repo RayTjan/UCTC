@@ -7,7 +7,7 @@
         <div class="text-center shadow-sm profile-box">
             <div class="miniOption position-relative">
                 <div class="iconOptionCenter position-absolute">
-                    <a href="#" class="iconOption">
+                    <a href="{{ route('user.user.edit', $user) }}" class="iconOption">
                         <i class="fa fa-pencil"></i>
                     </a>
 
@@ -20,7 +20,19 @@
                 </div>
             </div>
             <div class="heightProfile"></div>
-            <div><img class="rounded-circle" src="https://res.cloudinary.com/mhmd/image/upload/v1570786269/hoverSet-10_ccl30n.jpg" width="100px" height="100px"></div>
+            <div class="rounded-circle profilePic" style=" background-repeat:no-repeat;
+                background-position: center;
+                background-image:url(
+
+            @if($user->picture != null)
+                /img/userpic/{{$user->picture}}
+            @else
+                https://www.mgretails.com/assets/img/default.png
+            @endif
+
+            );
+                background-size: cover;">
+            </div>
             <div class="heightName">
                 <div>
                     <h4 class="font-weight-bold">{{$user->identity->name}}</h4>

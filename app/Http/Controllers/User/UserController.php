@@ -59,7 +59,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findorFail($id);
+        return view('3rdRoleBlades.editProfile',compact('user'));
     }
 
     /**
@@ -71,7 +72,25 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($request->picture != null){
+            $data = $request->validate([
+                'picture' => 'image|mimes:png,jpg,jpeg,svg'
+            ]);
+
+            $imgName = $data['picture']->getClientOriginalName().'-'.time().'.'.$data['picture']->extension();
+            $data['picture']->move(public_path('/img/userPic'), $imgName);
+
+
+            User::where('id', $id)->update([
+                'picture' => $imgName,
+            ]);
+        }else {
+            User::where('id', $id)->update([
+                'picture' => null,
+            ]);
+        }
+
+        return redirect(route('user.user.show',\Illuminate\Support\Facades\Auth::id()));
     }
 
     /**

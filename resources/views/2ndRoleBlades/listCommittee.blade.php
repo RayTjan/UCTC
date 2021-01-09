@@ -10,7 +10,7 @@
 
     <div class="container clearfix" style="margin-top: 20px;">
         <div class="row">
-            <h1 class="col font-weight-bold">Event-Name List Committees</h1>
+            <h1 class="col font-weight-bold">{{ $program->name }} Comittees List</h1>
         </div>
 
         @auth()
@@ -18,7 +18,10 @@
                 {{-- auth to limit content, it cannot be accessed until login --}}
                 <div class="float-right">
                     {{--                <a href="{{route('program.create')}}" class="btn btn-primary btn-block" role="button" aria-pressed="true">New Program</a>--}}
-                    <a href="{{route('staff.program.create')}}" role="button" aria-pressed="true">
+                    <a href="#"
+                            title="Add Committee"
+                            data-toggle="modal"
+                            data-target="#addCommittee">
                         <svg
                             aria-hidden="true"
                             focusable="false"
@@ -41,6 +44,47 @@
 
                 </div>
             </div>
+
+{{--            modal add committee--}}
+            <div class="modal fade" id="addCommittee">
+                <div class="modal-dialog">
+                    <div class="modal-content card-bg-change">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title font-weight-bold">Add committee to {{$program->name}} </h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body" style="text-align: left;">
+                            @if(count($committeeList) > 0)
+                                <form action="{{route ('staff.committee.store')}}" method="POST">
+                                    <div class="form-group">
+                                        {{ csrf_field() }}
+                                        <input name="selected_program" type="hidden" value="{{$program->id}}">
+                                        <label>Select Committee</label>
+                                        <select name="user_id" class="custom-select" required>
+                                            @foreach($committeeList as $committee)
+                                                <option value="{{$committee->id}}" title="{{$committee->identity->name}}">{{$committee->identity->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        <input name="selected_program" type="hidden" value="{{$program->id}}">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btnA circular bluestar font-weight-bold p-2 blue-hover" type="submit">Add Committee</button>
+                                    </div>
+                                </form>
+                            @else
+                                <h1 class="h4 mb-0 font-weight-bold">No free user left</h1>
+                            @endif
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btnA circular redstar font-weight-bold p-2 red-hover" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         @endauth
 
         <div class="row" style="margin-top: 30px;">
@@ -59,16 +103,17 @@
                             <li class="guiz-awards-time customComittee">Action</li>
                         </ul>
 
-                        @foreach($committees as $committee)
+                        @foreach($program->committees as $committee)
                         <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget">
                             <li class="guiz-awards-time customComittee">{{ $committee->identity->name }}</li>
                             <li class="guiz-awards-time customComittee">{{ $committee->role->name }}</li>
                             <li class="guiz-awards-time customComittee">{{ $committee->identity->email }}</li>
                             <li class="guiz-awards-time customComittee">
-                                @if($committee->pivot->is_approved == 0) <p class="text-warning">Pending</p>
-                                @elseif($committee->pivot->is_approved == 1) <p class="text-success">Approved</p>
-                                @else <p class="text-danger">Rejected</p> @endif
+                                @if($committee->pivot->is_approved == 0) <div class="text-warning">Pending</div>
+                                @elseif($committee->pivot->is_approved == 1) <div class="text-success">Approved</div>
+                                @else <div class="text-danger">Rejected</div> @endif
                             </li>
+                            @if($committee->pivot->is_approved == 0)
                             <li class="guiz-awards-time customComittee">
                                 <div class="dropdown">
                                     <div class="dropdown show">
@@ -79,12 +124,23 @@
                                         </a>
 
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item" href="#">Edit</a>
-                                            <a class="dropdown-item btnDelete" href="#">Delete</a>
+                                            <form action="{{route('staff.committee.approve', $committee->id)}}"
+                                                         method="POST">
+                                                {{ csrf_field() }}
+                                                <input name="selected_program" type="hidden" value="{{$program->id}}">
+                                                <button class="ml-2 dropdown-item btnA btnSuccess" title="Approve" type="submit">Accept</button>
+                                            </form>
+                                            <form action="{{route('staff.committee.reject', $committee->id)}}"
+                                                  method="POST">
+                                                {{ csrf_field() }}
+                                                <input name="selected_program" type="hidden" value="{{$program->id}}">
+                                                <button class="ml-2 dropdown-item btnA btnDelete" title="Reject" type="submit">Reject</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </li>
+                            @endif
                         </ul>
                         @endforeach
 

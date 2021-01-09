@@ -105,7 +105,7 @@
 </li>
 
 <li class="nav-item">
-    <a href="{{ route('staff.action.index') }}" class="nav-link">
+    <a href="" class="nav-link">
         <svg
             aria-hidden="true"
             focusable="false"

@@ -879,6 +879,11 @@ p.titlelogin{
     padding: 2px;
 }
 
+.profilePic {
+    width: 100px;
+    height: 100px;
+}
+
 .miniOption {
     height: 30px;
 }

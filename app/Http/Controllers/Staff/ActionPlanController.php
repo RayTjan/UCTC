@@ -14,11 +14,10 @@ class ActionPlanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Program $program)
     {
-        //action plan yang ada di event tsb
-        $actions = ActionPlan::all();
-        return view('2ndRoleBlades.listActionPlan', compact('actions'));
+        dd($program->id);
+        return view('2ndRoleBlades.listActionPlan', compact('program'));
     }
 
     /**

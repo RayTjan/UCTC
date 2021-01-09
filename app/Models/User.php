@@ -26,7 +26,9 @@ class User extends Authenticatable
         'is_login',
         'role_id',
         'is_active',
-        'is_verified',    ];
+        'is_verified',
+        'picture',
+    ];
 
     /**
      * The attributes that should be hidden for arrays.
