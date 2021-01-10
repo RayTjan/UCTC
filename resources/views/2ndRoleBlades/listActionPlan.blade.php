@@ -56,7 +56,7 @@
                         </ul>
 
                         <?php $yes = 0; ?>
-                        @foreach($program->hasPlan as $actionPlan)
+                        @foreach($action as $actionPlan)
                             <ul class="
                             @if($yes%2 == 0)
                                 guiz-awards-row guiz-awards-row-even
@@ -64,7 +64,7 @@
                                 guiz-awards-row guiz-awards-row
                             @endif
                                 quizz">
-                                <a href="{{route('staff.action.show',$actionPlan)}}" class="a-none">
+                                <a href="{{route('staff.actionTask.show', $actionPlan)}}" class="a-none">
                                     <li class="guiz-awards-star">
                                 <span class="star"></span>
                                     </li>

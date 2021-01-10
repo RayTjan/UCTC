@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Staff;
 use App\Http\Controllers\Controller;
 use App\Models\ActionPlan;
 use App\Models\Program;
+use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class ActionPlanController extends Controller
+class ActionTaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,8 +28,7 @@ class ActionPlanController extends Controller
      */
     public function create()
     {
-        $programs = Program::all();
-        return view( '2ndRoleBlades.addActionPlan',compact('programs'));
+        //
     }
 
     /**
@@ -38,42 +39,46 @@ class ActionPlanController extends Controller
      */
     public function store(Request $request)
     {
-        ActionPlan::create($request->all());
-        return redirect()->route('action.index');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Program $program
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Program $program)
+    public function show($id)
     {
-        dd($program->id);
-        return view('2ndRoleBlades.listActionPlan', compact('program'));
+        $programs = Program::all()->except($id)->pluck('id');
+        $action = DB::table('uctc_action_plans')->where('program', $id)->get();
+//        $action = ActionPlan::whereIn('id', function ($query) use ($programs){
+//            $query->select('id')->from('uctc_action_plans')->where('program' = $id)
+//        })->get();
+
+//        $tasks = Task::
+        return view('2ndRoleBlades.listTaskAction', compact('action'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ActionPlan  $actionPlan
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ActionPlan $actionPlan)
+    public function edit($id)
     {
-        $programs = Program::all();
-        return view( '2ndRoleBlades.editActionPlan',compact('actionPlan','programs'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ActionPlan  $actionPlan
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ActionPlan $actionPlan)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -81,10 +86,10 @@ class ActionPlanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ActionPlan  $actionPlan
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ActionPlan $actionPlan)
+    public function destroy($id)
     {
         //
     }

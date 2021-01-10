@@ -70,9 +70,8 @@ Route::group([
     Route::resource('client', \App\Http\Controllers\Staff\ClientController::class);
     Route::resource('proposal', \App\Http\Controllers\Staff\ProposalController::class);
     Route::resource('user', \App\Http\Controllers\Staff\UserController::class);
-    Route::resource('action', \App\Http\Controllers\Staff\ActionPlanController::class)->except(['index']);
-    Route::get('action/{program}', [\App\Http\Controllers\Staff\ActionPlanController::class, 'index'])->name('action.index');
-
+    Route::resource('action', \App\Http\Controllers\Staff\ActionController::class);
+    Route::resource('actionTask', \App\Http\Controllers\Staff\ActionTaskController::class);
 });
 
 Route::group([

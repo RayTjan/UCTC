@@ -7,7 +7,7 @@ use App\Models\ActionPlan;
 use App\Models\Program;
 use Illuminate\Http\Request;
 
-class ActionPlanController extends Controller
+class ActionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -45,35 +45,39 @@ class ActionPlanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Program $program
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Program $program)
+    public function show($id)
     {
-        dd($program->id);
-        return view('2ndRoleBlades.listActionPlan', compact('program'));
+        $program = Program::findOrFail($id);
+        $action = ActionPlan::where('program',$id);
+        dd($action);
+
+        return view('2ndRoleBlades.listActionPlan', compact('program','action'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ActionPlan  $actionPlan
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ActionPlan $actionPlan)
+    public function edit($id)
     {
+        $program = Program::findOrFail($id);
         $programs = Program::all();
-        return view( '2ndRoleBlades.editActionPlan',compact('actionPlan','programs'));
+        return view( '2ndRoleBlades.editActionPlan',compact('actionPlan','programs','program'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ActionPlan  $actionPlan
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ActionPlan $actionPlan)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -81,10 +85,10 @@ class ActionPlanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ActionPlan  $actionPlan
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ActionPlan $actionPlan)
+    public function destroy($id)
     {
         //
     }

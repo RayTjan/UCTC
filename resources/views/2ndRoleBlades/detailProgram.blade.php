@@ -114,7 +114,7 @@
         <div class="d-flex justify-content-between mb-5">
             <div class="">
                 <a href="{{ route('staff.committee.show', $program) }}" class="circular yellowstar font-weight-bold p-2 yellow-hover">Committee</a>
-                <a href="{{ route('staff.action.index', $program) }}" class="circular bluestar font-weight-bold p-2 blue-hover">Action Plan</a>
+                <a href="{{ route('staff.action.show', $program) }}" class="circular bluestar font-weight-bold p-2 blue-hover">Action Plan</a>
                 <a href="{{ route('staff.program.edit', $program) }}" class="circular purplestar font-weight-bold p-2 purple-hover">Edit</a>
                 <button type="button"
                         data-toggle="modal"
