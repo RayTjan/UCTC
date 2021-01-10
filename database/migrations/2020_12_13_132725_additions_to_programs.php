@@ -14,10 +14,10 @@ class AdditionsToPrograms extends Migration
     public function up()
     {
         Schema::table('uctc_programs', function (Blueprint $table) {
-            $table->unsignedBigInteger('role')->nullable();
+            $table->unsignedBigInteger('client')->nullable();
             $table->unsignedBigInteger('type')->nullable();
             $table->unsignedBigInteger('category')->nullable();
-            $table->foreign('role')->references('id')->on('uctc_roles');
+            $table->foreign('client')->references('id')->on('uctc_clients');
             $table->foreign('category')->references('id')->on('uctc_categories');
             $table->foreign('type')->references('id')->on('uctc_types');
 
