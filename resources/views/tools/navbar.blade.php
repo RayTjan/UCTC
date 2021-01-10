@@ -10,7 +10,7 @@
                     {{ route('admin.user.show',\Illuminate\Support\Facades\Auth::id()) }}
                 @elseif(\Illuminate\Support\Facades\Auth::user()->isCreator())
                     {{ route('staff.user.show',\Illuminate\Support\Facades\Auth::id()) }}
-                @else
+                @elseif(\Illuminate\Support\Facades\Auth::user()->isUser())
                     {{ route('user.user.show',\Illuminate\Support\Facades\Auth::id()) }}
                 @endif
                     " class="nav-link">
@@ -42,13 +42,15 @@
             </a>
         </li>
 
+        @auth()
         @if(\Illuminate\Support\Facades\Auth::user()->isAdmin())
             @include('tools.menu.admin')
         @elseif(\Illuminate\Support\Facades\Auth::user()->isCreator())
             @include('tools.menu.staff')
-        @else
+        @elseif(\Illuminate\Support\Facades\Auth::user()->isUser())
             @include('tools.menu.user')
         @endif
+        @endauth
 
     </ul>
 </nav>

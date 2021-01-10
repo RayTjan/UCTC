@@ -21,7 +21,7 @@ class DashboardController extends Controller
                 return view('1stRoleBlades.dashboard', compact('programs'));
             }else if (Auth::user()->isCreator()) {
                 return view('2ndRoleBlades.dashboard', compact('programs'));
-            }else {
+            }else if ((Auth::user()->isUser())) {
                 return view('3rdRoleBlades.dashboard', compact('programs'));
             }
         }
