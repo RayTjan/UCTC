@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class UserController extends Controller
@@ -13,12 +14,12 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return UserResource
      */
     public function index()
     {
-        $users = User::all();
-        return UserResource::collection($users);
+        $userId = Auth::id();
+        return new UserResource(User::find($userId));
     }
 
     /**

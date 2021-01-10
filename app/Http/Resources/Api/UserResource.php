@@ -19,7 +19,8 @@ class UserResource extends JsonResource
             'role_id'=>$this->role_id,
             'department_id'=>$this->identity->department_id,
             'phone_number'=>$this->identity->phone,
-            'created_by'=>$this->creator->identity->name,
+            'email'=>$this->email,
+            'password'=>$this->password,
             'status'=>$this->status=='1' ? 'Open' : 'Close',
         ];
     }
