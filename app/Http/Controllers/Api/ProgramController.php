@@ -28,7 +28,10 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Program::create($request->all());
+        return response([
+            'message' => 'Adding Program Finished'
+        ]);
     }
 
     /**
@@ -51,7 +54,18 @@ class ProgramController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (Program::find($id)->name !=null){
+            Program::find($id)->update($request->all());
+            return response([
+                'message' =>  $request->name
+            ]);
+        }
+        else{
+            return response([
+                'message' => 'Updating Program Failed'
+            ]);
+        }
+
     }
 
     /**
@@ -62,6 +76,9 @@ class ProgramController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+        $program = Program::findOrFail($id);
+        $program->delete();
+        return response([
+            'message' =>  'ProgramDeleted'
+        ]);    }
 }
