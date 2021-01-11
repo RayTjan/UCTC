@@ -50,14 +50,10 @@ class ActionTaskController extends Controller
      */
     public function show($id)
     {
-        $programs = Program::all()->except($id)->pluck('id');
-        $action = DB::table('uctc_action_plans')->where('program', $id)->get();
-//        $action = ActionPlan::whereIn('id', function ($query) use ($programs){
-//            $query->select('id')->from('uctc_action_plans')->where('program' = $id)
-//        })->get();
+        $action = ActionPlan::findOrFail($id);
+        $tasks = Task::where('action_plan', $id)->get();
 
-//        $tasks = Task::
-        return view('2ndRoleBlades.listTaskAction', compact('action'));
+        return view('2ndRoleBlades.listTaskAction', compact('action','tasks'));
     }
 
     /**
