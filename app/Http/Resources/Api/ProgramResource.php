@@ -17,6 +17,7 @@ class ProgramResource extends JsonResource
         return [
             'program_title'=> $this->name,
             'description'=>$this->description,
+            'goal'=>$this->goal,
             'created_by'=>$this->creator->identity->name,
             'program_date'=>$this->program_date,
             'status'=>$this->status=='1' ? 'Open' : 'Close',
