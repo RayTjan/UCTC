@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Task;
+use App\Models\FileAttachment;
 use Illuminate\Http\Request;
 
-class TaskController extends Controller
+class FileAttachmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
-        $detail = 0;
-        return view('3rdRoleBlades.listTask', compact('tasks', 'detail'));
+        //
     }
 
     /**
@@ -27,7 +25,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('3rdRoleBlades.addAttachment');
     }
 
     /**
@@ -38,28 +36,28 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        Task::create($request->all());
-        return redirect()->back();
+        FileAttachment::create($request->all());
+        return redirect()->route('staff.program.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Task  $task
+     * @param  \App\Models\FileAttachment  $fileAttachment
      * @return \Illuminate\Http\Response
      */
-    public function show(Task $task)
+    public function show(FileAttachment $fileAttachment)
     {
-        return view('3rdRoleBlades.listTask', compact('tasks'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Task  $task
+     * @param  \App\Models\FileAttachment  $fileAttachment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Task $task)
+    public function edit(FileAttachment $fileAttachment)
     {
         //
     }
@@ -68,10 +66,10 @@ class TaskController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Task  $task
+     * @param  \App\Models\FileAttachment  $fileAttachment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Task $task)
+    public function update(Request $request, FileAttachment $fileAttachment)
     {
         //
     }
@@ -79,10 +77,10 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Task  $task
+     * @param  \App\Models\FileAttachment  $fileAttachment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Task $task)
+    public function destroy(FileAttachment $fileAttachment)
     {
         //
     }

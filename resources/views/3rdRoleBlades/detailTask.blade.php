@@ -8,56 +8,54 @@
     }
 </script>
 
-<div class="card-task-popup">
+<div class="card-task-popup detailMod" id="detailTask-{{ $con }}">
     <div class="quiz-window">
-        <div class="scrollWebkit height100 position-relative pt-0 pb-0">
+        <div class="scrollWebkit height1concon position-relative pt-con pb-con">
 
 
 
-    <div class="row">
-        <h1 class="col font-weight-bold">Coding School</h1>
-    </div>
-    <h3>15/16/2001</h3>
+            <div class="row">
+                <h1 class="col font-weight-bold">{{ $tasks[$con]->name }}</h1>
+            </div>
+            <h3>{{ str_replace("-","/",date("m-d-Y", strtotime($tasks[$con]->due_date))) }}</h3>
 
-    <div class="">
-        <div class="row align-items-center">
-            <h6 class="col-md-2 font-weight-bold float-left">Status&nbsp;&nbsp;&nbsp;: </h6>
-            <p class="col-md-2 font-weight-bold circular purplestar">
-                unchch
-            </p>
-        </div>
-        <div class="row align-items-center">
-            <h6 class="col-md-2 font-weight-bold float-left">PIC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </h6>
-            <p class="col-md-2 font-weight-bold circular bluestar">
-                unchch
-            </p>
-        </div>
+            <div class="">
+                <div class="row align-items-center">
+                    <h6 class="col-md-2 font-weight-bold float-left">Status&nbsp;&nbsp;&nbsp;: </h6>
+                    <p class="col-md-2 font-weight-bold circular purplestar">
+                        @if($tasks[$con]->status == 0)
+                            Ongoing
+                        @else
+                            Finished
+                        @endif
+                    </p>
+                </div>
+                <div class="row align-items-center">
+                    <h6 class="col-md-2 font-weight-bold float-left">PIC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </h6>
+                    <p class="col-md-2 font-weight-bold circular bluestar">
+                        {{ $tasks[$con]->pic->identity->name }}
+                    </p>
+                </div>
 
-    </div>
+            </div>
 
-    <h6>Description</h6>
-    <div class="ml-4">
-        <p>
-            audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
-            audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
-            audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
-            audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdwaudhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
-            audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
-            audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
-            audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
-            audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
-            audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
-            audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
+            <h6>Description</h6>
+            <div class="ml-4">
+                <p>
+                    {{$tasks[$con]->description}}
+                </p>
+            </div>
 
-        </p>
-    </div>
-
-        <div class="position-static centerBottom">
-            <input type="checkbox" class="custom-checkbox" id="checkBtn" onclick="EnableBtn (this)" name="checkBtn">
-            already done?
-            <br>
-            <button disabled="disabled" class="btn btn-success" id="BTN">Submit</button>
-        </div>
+            <div class="position-static centerBottom">
+                <form action="{{ route('user.file.create') }}">
+                    <input type="checkbox" class="custom-checkbox" id="checkBtn" onclick="EnableBtn (this)">
+                    already done?
+                    <br>
+                    <button disabled="disabled" class="btn btn-success" id="BTN">
+                        Submit
+                    </button>
+                </form>
+            </div>
 
 
         </div>

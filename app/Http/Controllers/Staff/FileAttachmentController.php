@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Staff;
 
 use App\Http\Controllers\Controller;
 use App\Models\FileAttachment;
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class FileAttachmentController extends Controller
@@ -23,9 +24,11 @@ class FileAttachmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $task = Task::findOrFail($id);
+        dd($task->id);
+        return view('2ndRoleBlades.addAttachment');
     }
 
     /**
@@ -36,7 +39,10 @@ class FileAttachmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //tambahin code untuk complete task
+
+        FileAttachment::create($request->all());
+        return redirect()->route('staff.program.index');
     }
 
     /**
@@ -45,9 +51,10 @@ class FileAttachmentController extends Controller
      * @param  \App\Models\FileAttachment  $fileAttachment
      * @return \Illuminate\Http\Response
      */
-    public function show(FileAttachment $fileAttachment)
+    public function show($id)
     {
-        //
+        $task = Task::findOrFail($id);
+        return view('2ndRoleBlades.addAttachment', compact('task'));
     }
 
     /**

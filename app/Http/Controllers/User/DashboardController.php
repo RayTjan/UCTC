@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Program;
+use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +19,8 @@ class DashboardController extends Controller
     {
         if (Auth::user()) {
             $programs = Program::all();
-            return view('3rdRoleBlades.dashboard', compact('programs'));
+            $tasks = Task::all();
+            return view('3rdRoleBlades.dashboard', compact('programs', 'tasks'));
         }
 
         return redirect()->route('login');
