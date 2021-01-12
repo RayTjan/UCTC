@@ -8,28 +8,32 @@
     }
 </script>
 
-<div class="card-task-popup">
+<div class="card-task-popup" id="detailTask">
     <div class="quiz-window">
         <div class="scrollWebkit height100 position-relative pt-0 pb-0">
 
 
 
             <div class="row">
-                <h1 class="col font-weight-bold">Coding School</h1>
+                <h1 class="col font-weight-bold">{{ $task->name }}</h1>
             </div>
-            <h3>15/16/2001</h3>
+            <h3>{{ str_replace("-","/",date("m-d-Y", strtotime($task->due_date))) }}</h3>
 
             <div class="">
                 <div class="row align-items-center">
                     <h6 class="col-md-2 font-weight-bold float-left">Status&nbsp;&nbsp;&nbsp;: </h6>
                     <p class="col-md-2 font-weight-bold circular purplestar">
-                        unchch
+                        @if($task->status == 0)
+                            Ongoing
+                        @else
+                            Finished
+                        @endif
                     </p>
                 </div>
                 <div class="row align-items-center">
                     <h6 class="col-md-2 font-weight-bold float-left">PIC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </h6>
                     <p class="col-md-2 font-weight-bold circular bluestar">
-                        unchch
+                        {{ $task->pic->identity->name }}
                     </p>
                 </div>
 
@@ -38,17 +42,7 @@
             <h6>Description</h6>
             <div class="ml-4">
                 <p>
-                    audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
-                    audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
-                    audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
-                    audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdwaudhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
-                    audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
-                    audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
-                    audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
-                    audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
-                    audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
-                    audhawhuhqowdoaooa djqnwonqoid adwqiheoqn ijdiojioajwd ajsiojd asdajdwo kadoa dasdw
-
+                    {{$task->description}}
                 </p>
             </div>
 

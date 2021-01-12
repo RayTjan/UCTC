@@ -10,7 +10,7 @@
 
     <div class="container clearfix" style="margin-top: 20px;">
         <div class="row">
-            <h1 class="col font-weight-bold">Action Plan NameEvent</h1>
+            <h1 class="col font-weight-bold">Action Plan {{ $program->name }}</h1>
         </div>
 
         @auth()
@@ -56,7 +56,7 @@
                         </ul>
 
                         <?php $yes = 0; ?>
-                        @foreach($action as $actionPlan)
+                        @foreach($actions as $actionPlan)
                             <ul class="
                             @if($yes%2 == 0)
                                 guiz-awards-row guiz-awards-row-even

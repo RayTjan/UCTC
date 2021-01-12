@@ -389,6 +389,7 @@ button, select, input {
 
 .quizz:hover {
     background-color: #e6e6e6;
+    cursor: pointer;
 }
 
 .guiz-awards-row:after {

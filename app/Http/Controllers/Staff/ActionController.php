@@ -51,10 +51,10 @@ class ActionController extends Controller
     public function show($id)
     {
         $program = Program::findOrFail($id);
-        $action = ActionPlan::where('program',$id);
-        dd($action);
 
-        return view('2ndRoleBlades.listActionPlan', compact('program','action'));
+        $actions = ActionPlan::where('program',$id)->get();
+
+        return view('2ndRoleBlades.listActionPlan', compact('program','actions'));
     }
 
     /**
