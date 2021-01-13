@@ -39,7 +39,8 @@ class ActionController extends Controller
     public function store(Request $request)
     {
         ActionPlan::create($request->all());
-        return redirect()->route('action.index');
+        $program = Program::findOrFail($request->program);
+        return redirect()->route('staff.action.show', $program);
     }
 
     /**

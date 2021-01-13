@@ -60,9 +60,23 @@
                         <label>Budgeting:</label>
                         <div id="dynamic_field">
                             <div>
-                                <input type="number" name="name[]" placeholder="Enter your Detail" class="sizeForm form-control name_list d-inline-block budgetForm mr-3" />
-                                <input type="number" name="budget[]" placeholder="Enter your Budget" class="sizeForm form-control name_list d-inline-block budgetForm mr-3" />
-                                <button type="button" name="add" id="add" class="btn btn-success d-inline-block">Add More</button>
+                                @foreach($program->hasFinances as $finance)
+                                    <select name="typeFinance[]" class="custom-select typeBudgetForm d-inline-block mr-3">
+                                        <option hidden>Select Type</option>
+                                        <option value="0">Income</option>
+                                        <option value="1">Expenditure</option>
+                                    </select>
+                                    <input type="text" name="nameBudget[]" placeholder="Enter your Detail" class="sizeForm form-control name_list d-inline-block mr-3" value="{{$finance->name}}" />
+                                    <input type="number" name="value[]" placeholder="Enter your Budget" class="sizeForm form-control name_list d-inline-block mr-3" value="{{$finance->value}}" />
+                                @endforeach
+                                    <select name="typeFinance[]" class="custom-select typeBudgetForm d-inline-block mr-3">
+                                        <option hidden>Select Type</option>
+                                        <option value="0">Income</option>
+                                        <option value="1">Expenditure</option>
+                                    </select>
+                                    <input type="text" name="nameBudget[]" placeholder="Enter your Detail" class="sizeForm form-control name_list d-inline-block mr-3" />
+                                    <input type="number" name="value[]" placeholder="Enter your Budget" class="sizeForm form-control name_list d-inline-block mr-3" />
+                                    <button type="button" name="add" id="add" class="btn btn-success d-inline-block">Add More</button>
                             </div>
                         </div>
                     </div>
@@ -81,7 +95,13 @@
             var i=1;
             $('#add').click(function(){
                 i++;
-                $('#dynamic_field').append('<div id="row'+i+'"> <input type="number" name="name[]" placeholder="Enter your Detail" class="sizeForm form-control name_list d-inline-block budgetForm mr-3" /> <input type="number" name="budget[]" placeholder="Enter your Budget" class="sizeForm form-control name_list d-inline-block budgetForm mr-3" /> <button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></div>');
+                $('#dynamic_field').append('<div id="row'+i+'"> ' +
+                    '<select name="typeFinance[]" class="custom-select typeBudgetForm d-inline-block mr-3">\n' +
+                    '                                    <option hidden>Select Type</option>\n' +
+                    '                                    <option value="0">Income</option>\n' +
+                    '                                    <option value="1">Expenditure</option>\n' +
+                    '                                </select>' +
+                    '<input type="text" name="nameBudget[]" placeholder="Enter your Detail" class="sizeForm form-control name_list d-inline-block mr-3" /> <input type="number" name="value[]" placeholder="Enter your Budget" class="sizeForm form-control name_list d-inline-block mr-3" /> <button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></div>');
             });
 
             $(document).on('click', '.btn_remove', function(){

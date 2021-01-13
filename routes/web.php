@@ -72,8 +72,9 @@ Route::group([
     Route::resource('user', \App\Http\Controllers\Staff\UserController::class);
     Route::resource('action', \App\Http\Controllers\Staff\ActionController::class);
     Route::resource('actionTask', \App\Http\Controllers\Staff\ActionTaskController::class);
-    Route::resource('file', \App\Http\Controllers\Staff\FileAttachmentController::class)->except('create');
-    Route::get('/file/{id}', [\App\Http\Controllers\Staff\FileAttachmentController::class, 'create'])->name('file.create');
+    Route::resource('file', \App\Http\Controllers\Staff\FileAttachmentController::class);
+//    Route::get('/file/{id}', [\App\Http\Controllers\Staff\FileAttachmentController::class, 'create'])->name('file.create');
+    Route::resource('finance', \App\Http\Controllers\Staff\FinanceController::class);
 });
 
 Route::group([

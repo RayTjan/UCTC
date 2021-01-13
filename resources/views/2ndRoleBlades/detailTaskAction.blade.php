@@ -10,9 +10,7 @@
 
 <div class="card-task-popup detailMod" id="detailTask-{{ $con }}">
     <div class="quiz-window">
-        <div class="scrollWebkit height1concon position-relative pt-con pb-con">
-
-
+        <div class="scrollWebkit height100 position-relative pt-0 pb-0">
 
             <div class="row">
                 <h1 class="col font-weight-bold">{{ $tasks[$con]->name }}</h1>
@@ -51,7 +49,9 @@
                     <input type="checkbox" class="custom-checkbox" id="checkBtn" onclick="EnableBtn (this, 'BTN-{{$con}}')">
                     already done?
                     <br>
-                    <button disabled="disabled" class="btn btn-success" id="BTN-{{$con}}">
+                    <button type="button" disabled="disabled"
+                            data-toggle="modal" data-target="#submitTask-{{$con}}"
+                            class="btn btn-success" id="BTN-{{$con}}">
                         Submit
                     </button>
                 </form>
@@ -61,4 +61,29 @@
         </div>
     </div>
 
+</div>
+
+{{--    modal submit task--}}
+<div class="modal fade" id="submitTask-{{$con}}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Submit {{$tasks[$con]->name}}</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body text-center" style="text-align: left;">
+                <form action="{{route('staff.file.show', $tasks[$con]->id)}}" method="get" class="mt-2">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btnA circular greenstar font-weight-bold p-3 green-hover widthSubmitButton">Submit with File Attachment</button>
+                </form>
+                <form action="" method="post" class="mt-2">
+                    @csrf
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btnA circular graystar font-weight-bold p-3 gray-hover widthSubmitButton">Submit without File Attachment</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

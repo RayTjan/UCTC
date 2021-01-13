@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Staff;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Finance;
 use App\Models\Program;
 use App\Models\Type;
 use App\Models\User;
 use Illuminate\Http\Request;
+use function PHPUnit\Framework\isEmpty;
 
 class ProgramController extends Controller
 {
@@ -96,7 +98,25 @@ class ProgramController extends Controller
      */
     public function update(Request $request, Program $program)
     {
+        $data = $request->all();
         $program->update($request->all());
+
+
+        //untuk Finances
+        foreach ($data['value'] as $item => $value) {
+            $dataFinance = array(
+                'name' => $data['nameBudget'][$item],
+                'value' => $data['value'][$item],
+                'type' => $data['typeFinance'][$item],
+                'program' => $program->id,
+            );
+
+            if (!isEmpty($dataFinance['name'])&&!isEmpty($dataFinance['value'])){
+                dd($dataFinance['type']);
+                Finance::create($dataFinance);
+            }
+        }
+
         return redirect()->route('staff.program.index');
     }
 

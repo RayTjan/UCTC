@@ -5,15 +5,21 @@
         <div class="row">
             <h1 class="col font-weight-bold">{{$program->name}}</h1>
         </div>
-        <h3>{{$program->program_date}}</h3>
-{{--        <form action="{{ route('program.destroy' , $program)}}" method="POST">--}}
-{{--            {{ csrf_field() }}--}}
-{{--            <input name="_method" type="hidden" value="DELETE">--}}
-{{--            <button type="submit" class="btn btn-danger">Delete Program</button>--}}
-{{--        </form>--}}
+        <h3>{{ str_replace("-","/",date("m-d-Y", strtotime($program->program_date))) }}</h3>
+
 
         <h6>{{$program->status}}</h6>
         <div class="ml-4">
+
+            <div class="row align-items-center">
+                <h6 class="col-md-1 font-weight-bold float-left">Client&nbsp;&nbsp;&nbsp;: </h6>
+                {{--            @foreach(clients as client)--}}
+                <p class="col-md-1 font-weight-bold circular graystar mr-1">
+                    TestClient
+                </p>
+                {{--                @endforeach--}}
+            </div>
+
             <h6 class="font-weight-bold">Goal</h6>
             <p class="ml-3">{{$program->goal}}</p>
 
@@ -21,7 +27,6 @@
                 <h6 class="col-md-1 font-weight-bold float-left">Creator&nbsp;&nbsp;&nbsp;: </h6>
                 <p class="col-md-1 font-weight-bold circular bluestar">
                     {{$program->creator->identity->name}}
-{{--                    unchch--}}
                 </p>
             </div>
 
@@ -103,12 +108,26 @@
 
 
         {{--        Option Menu--}}
+        <?php
+            $total = 0;
+
+
+
+            foreach ($program->hasFinances as $finance){
+                //0 income 1 expenditure
+                if ($finance->type == '0') {
+                    $total = $total + $finance->value;
+                }else if ($finance->type == '1') {
+                    $total = $total - $finance->value;
+                }
+            }
+        ?>
 
         <div class="clearfix">
             <h5 class="float-right font-weight-bold">Budgeting</h5>
         </div>
         <div class="clearfix">
-            <h3 class="float-right">Rp. 500.000</h3>
+            <h3 class="float-right">Rp. {{$total}}</h3>
         </div>
 
         <div class="d-flex justify-content-between mb-5">
@@ -130,7 +149,6 @@
         </div>
 
 {{--        Modal Detail Budget--}}
-
         <div class="modal fade zindex1050" id="detailBudget">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -141,31 +159,20 @@
                     <!-- Modal body -->
                     <div class="card-bg-change scrollWebkit height100 modalCustomBody">
 
-                        {{--                    @foreach($budgets as $budget)--}}
+                        @foreach($program->hasFinances as $finance)
                         <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget pr-4 pl-4 clearfix">
-                            <li class="guiz-awards-time text-left">Antidote</li>
-                            <li class="guiz-awards-time float-right text-right">Rp. 500.000</li>
+                            <li class="guiz-awards-time text-left">{{ $finance->name }}</li>
+                            @if($finance->type == '0')
+                                <li class="guiz-awards-time float-right text-right btnSuccess">
+                                    + Rp. {{ $finance->value }}
+                                </li>
+                            @elseif($finance->type == '1')
+                                <li class="guiz-awards-time float-right text-right btnDelete">
+                                    - Rp. {{ $finance->value }}
+                                </li>
+                            @endif
                         </ul>
-
-                        <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget pr-4 pl-4 clearfix">
-                            <li class="guiz-awards-time text-left">Antidote</li>
-                            <li class="guiz-awards-time float-right text-right">Rp. 500.000</li>
-                        </ul>
-
-                        <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget pr-4 pl-4 clearfix">
-                            <li class="guiz-awards-time text-left">Antidote</li>
-                            <li class="guiz-awards-time float-right text-right">Rp. 500.000</li>
-                        </ul>
-
-                        <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget pr-4 pl-4 clearfix">
-                            <li class="guiz-awards-time text-left">Antidote</li>
-                            <li class="guiz-awards-time float-right text-right">Rp. 500.000</li>
-                        </ul>
-
-                        <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget pr-4 pl-4 clearfix">
-                            <li class="guiz-awards-time text-left">Antidote</li>
-                            <li class="guiz-awards-time float-right text-right">Rp. 500.000</li>
-                        </ul>
+                        @endforeach
 
                     </div>
 
@@ -173,7 +180,7 @@
                         <div class="absoluteFooter">
                         <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget bg-change-dark pr-4 pl-4 clearfix">
                             <li class="guiz-awards-time text-left">Total</li>
-                            <li class="guiz-awards-time float-right text-right">Rp. 500.000</li>
+                            <li class="guiz-awards-time float-right text-right">Rp. {{ $total }}</li>
                         </ul>
                         </div>
                     </div>
