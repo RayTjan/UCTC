@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Api\UserResource;
 use App\Models\Program;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\Api\ProgramResource;
 use Laravel\Passport\Client;
@@ -31,7 +33,7 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        $sProgram =  Program::create([
+        $program =  Program::create([
                 'name' => $request->name,
                 'description' => $request->description,
                 'goal' => $request->goal,
@@ -40,7 +42,7 @@ class ProgramController extends Controller
             ]
         );
 
-        return $sProgram;
+        return $program;
 
     }
 
@@ -52,18 +54,15 @@ class ProgramController extends Controller
      */
     public function show($id)
     {
-        //
+        $users = User::all();
+        $programs = Program::all();
+        $myPrograms = $programs->where('creator', $id);
+        $myPrograms += Program::whereIn('id',function ($query) use ($users){
+            $query->select('uctc_program_id')->from('uctc_program_user')->whereNotIn('uctc_user_id',$users);
+        });
+        return ProgramResource::collection($myPrograms);
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function committees($id)
-    {
 
-    }
     /**
      * Update the specified resource in storage.
      *
@@ -99,5 +98,20 @@ class ProgramController extends Controller
         $program->delete();
         return response([
             'message' =>  'ProgramDeleted'
-        ]);    }
+        ]);
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function committees($id){
+        $programs = Program::all()->except($id)->pluck('id');
+        $committees = User::whereIn('id',function ($query) use ($programs){
+            $query->select('uctc_user_id')->from('uctc_program_user')->whereNotIn('uctc_program_id',$programs);
+        })->get();
+
+        return UserResource::collection($committees);
+    }
 }
