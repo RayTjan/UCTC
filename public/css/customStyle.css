@@ -1111,6 +1111,10 @@ p.titlelogin{
     color: #0E9E52;
 }
 
+.detailMod {
+    display: none;
+}
+
 /*bg-change*/
 .bg-change-dark {
     background-color: #23232E; !important;
@@ -1144,7 +1148,7 @@ p.titlelogin{
     border-radius: 2vh;
     margin: 0;
     width: 43%;
-    height: 75vh;
+    height: 50vh;
     padding: 2% 2% 2% 2% ;
 }
 

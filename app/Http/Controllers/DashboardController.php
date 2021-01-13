@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActionPlan;
 use App\Models\Program;
+use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,9 +22,11 @@ class DashboardController extends Controller
             if (Auth::user()->isAdmin()) {
                 return view('1stRoleBlades.dashboard', compact('programs'));
             }else if (Auth::user()->isCreator()) {
-                return view('2ndRoleBlades.dashboard', compact('programs'));
+                $actions = ActionPlan::all();
+                return view('2ndRoleBlades.dashboard', compact('programs', 'actions'));
             }else if ((Auth::user()->isUser())) {
-                return view('3rdRoleBlades.dashboard', compact('programs'));
+                $tasks = Task::all();
+                return view('3rdRoleBlades.dashboard', compact('programs', 'tasks'));
             }
         }
 

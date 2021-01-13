@@ -72,6 +72,8 @@ Route::group([
     Route::resource('user', \App\Http\Controllers\Staff\UserController::class);
     Route::resource('action', \App\Http\Controllers\Staff\ActionController::class);
     Route::resource('actionTask', \App\Http\Controllers\Staff\ActionTaskController::class);
+    Route::resource('file', \App\Http\Controllers\Staff\FileAttachmentController::class)->except('create');
+    Route::get('/file/{id}', [\App\Http\Controllers\Staff\FileAttachmentController::class, 'create'])->name('file.create');
 });
 
 Route::group([
@@ -84,4 +86,6 @@ Route::group([
     Route::resource('task', \App\Http\Controllers\User\TaskController::class);
     Route::resource('user', \App\Http\Controllers\User\UserController::class);
     Route::resource('committee',\App\Http\Controllers\User\CommitteeController::class);
+    Route::resource('file', \App\Http\Controllers\User\FileAttachmentController::class)->except('create');
+    Route::patch('/file/{id}', '\App\Http\Controllers\User\FileAttachmentController@create')->name('file.create');
 });

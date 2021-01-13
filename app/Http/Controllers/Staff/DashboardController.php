@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Staff;
 
 use App\Http\Controllers\Controller;
+use App\Models\ActionPlan;
 use App\Models\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,8 @@ class DashboardController extends Controller
     {
         if (Auth::user()) {
             $programs = Program::all();
-            return view('2ndRoleBlades.dashboard', compact('programs'));
+            $actions = ActionPlan::all();
+            return view('2ndRoleBlades.dashboard', compact('programs', 'actions'));
         }
 
         return redirect()->route('login');
