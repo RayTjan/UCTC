@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Documentation extends Model
 {
     use HasFactory;
+    public $table = 'uctc_documentations';
+
+    protected $fillable= [
+        'documentation',
+        'program',
+    ];
+
 }

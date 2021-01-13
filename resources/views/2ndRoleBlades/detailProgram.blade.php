@@ -61,50 +61,47 @@
         </div>
 
 {{--        image--}}
+        @if(isset($program->hasDoc[0]->id))
         <div class="">
             <h2 class="col font-weight-bold text-center">Documentations</h2>
 
             <div class="container-fluid py-3">
-                <div class="row">
+                <div class="d-flex colorScroll heightPic">
 
-{{--                    foreach here--}}
-                    <div class="col-md-3 mb-lg-0" style="padding: 10px;">
+                    @foreach($program->hasDoc as $doc)
+                    <div class="col-lg-3 col-6" style="padding: 10px;">
                         <div class="hover hover-5 text-white rounded">
-                            <img src="https://res.cloudinary.com/mhmd/image/upload/v1570786269/hoverSet-10_ccl30n.jpg" alt="image">
+                            <img src="/img/documentation/{{$doc->documentation}}" alt="image">
                             <button type="button"
                                data-toggle="modal"
-                               data-target="#imgview">
+                               data-target="#imgview-{{$doc->id}}">
                             <div class="hover-overlay">
 
                             </div>
                             </button>
                         </div>
                     </div>
-{{--                    endforeach--}}
 
-                    <div class="col-md-3 mb-lg-0" style="padding: 10px;">
-                        <div class="hover hover-5 text-white rounded"><img src="https://res.cloudinary.com/mhmd/image/upload/v1570786269/hoverSet-10_ccl30n.jpg" alt="image">
-                            <div class="hover-overlay"></div>
+{{--                    modal image--}}
+                        <div class="modal fade" id="imgview-{{$doc->id}}">
+                            <div class="modal-dialog">
+                                <div class="modalpic-content">
+                                    <!-- Modal body -->
+                                    <div class="modalpic-body text-center">
+                                        <button type="button" class="close btn-modal" data-dismiss="modal">&times;</button>
+                                        <img src="/img/documentation/{{$doc->documentation}}" alt="image" class="card-img">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+
+                    @endforeach
+
                 </div>
             </div>
 
         </div>
-
-{{--        modal image--}}
-
-        <div class="modal fade" id="imgview">
-            <div class="modal-dialog">
-                <div class="modalpic-content">
-                    <!-- Modal body -->
-                    <div class="modalpic-body text-center">
-                        <button type="button" class="close btn-modal" data-dismiss="modal">&times;</button>
-                        <img src="https://res.cloudinary.com/mhmd/image/upload/v1570786269/hoverSet-10_ccl30n.jpg" alt="image" class="card-img">
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endif
 
 
         {{--        Option Menu--}}

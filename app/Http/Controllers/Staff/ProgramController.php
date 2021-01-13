@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Staff;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Documentation;
 use App\Models\Finance;
 use App\Models\Program;
 use App\Models\Type;
@@ -117,7 +118,23 @@ class ProgramController extends Controller
             }
         }
 
-        return redirect()->route('staff.program.index');
+        //untuk Documentation
+        if (isset($data['documentation'])) {
+            foreach ($data['documentation'] as $item => $value) {
+
+                $imgName = $data['documentation'][$item]->getClientOriginalName() . '-' . time() . '.' . $data['documentation'][$item]->extension();
+                $data['documentation'][$item]->move(public_path('/img/documentation'), $imgName);
+
+                $dataDoc = array(
+                    'documentation' => $imgName,
+                    'program' => $program->id,
+                );
+
+                Documentation::create($dataDoc);
+            }
+        }
+
+        return redirect()->route('staff.program.show', $program);
     }
 
     /**

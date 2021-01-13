@@ -8,7 +8,7 @@
         <div class="row">
 
             <div class="col">
-                <form action="{{route('staff.program.update', $program)}}" method="post">
+                <form action="{{route('staff.program.update', $program)}}" method="post" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <input type="hidden" name="_method" value="PATCH">
                     <div class="form-group">
@@ -83,10 +83,10 @@
 
                     <div class="form-group">
                         <label>Documentations:</label>
-                        <div id="dynamic_field">
+                        <div id="picture_field">
                             <div>
-                                <input type="file" class="form-control-file d-inline-block">
-                                <button type="button" name="pic" id="pic" class="btn btn-success d-inline-block">Add More</button>
+                                <input type="file" name="documentation[]" class="form-control-file d-inline-block docForm">
+                                <button type="button" name="addPic" id="addPic" class="btn btn-success d-inline-block">Add More</button>
                             </div>
                         </div>
                     </div>
@@ -103,6 +103,7 @@
     <script>
         $(document).ready(function(){
             var i=1;
+            var u=1;
             $('#add').click(function(){
                 i++;
                 $('#dynamic_field').append('<div id="row'+i+'"> ' +
@@ -112,6 +113,11 @@
                     '                                    <option value="1">Expenditure</option>\n' +
                     '                                </select>' +
                     '<input type="text" name="nameBudget[]" placeholder="Enter your Detail" class="sizeForm form-control name_list d-inline-block mr-3" /> <input type="number" name="value[]" placeholder="Enter your Budget" class="sizeForm form-control name_list d-inline-block mr-3" /> <button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></div>');
+            });
+
+            $('#addPic').click(function(){
+                u++;
+                $('#picture_field').append('<div id="row'+u+'"> <input type="file" name="documentation[]" class="form-control-file d-inline-block docForm"> <button type="button" name="remove" id="'+u+'" class="btn btn-danger btn_remove">X</button></div>');
             });
 
             $(document).on('click', '.btn_remove', function(){
