@@ -1,24 +1,33 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Program;
+use App\Http\Resources\api\ActionPlanResource;
+use App\Models\ActionPlan;
 use Illuminate\Http\Request;
-use App\Http\Resources\Api\ProgramResource;
 
-
-class ProgramController extends Controller
+class ActionPlanController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $programs = Program::all();
-        return ProgramResource::collection($programs);
+        $actions = ActionPlan::all();
+        return ActionPlanResource::collection($actions);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -29,10 +38,7 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        Program::create($request->all());
-        return response([
-            'message' => 'Adding Program Finished'
-        ]);
+        //
     }
 
     /**
@@ -47,6 +53,17 @@ class ProgramController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -55,18 +72,7 @@ class ProgramController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (Program::find($id)->name !=null){
-            Program::find($id)->update($request->all());
-            return response([
-                'message' =>  $request->name
-            ]);
-        }
-        else{
-            return response([
-                'message' => 'Updating Program Failed'
-            ]);
-        }
-
+        //
     }
 
     /**
@@ -77,9 +83,6 @@ class ProgramController extends Controller
      */
     public function destroy($id)
     {
-        $program = Program::findOrFail($id);
-        $program->delete();
-        return response([
-            'message' =>  'ProgramDeleted'
-        ]);    }
+        //
+    }
 }
