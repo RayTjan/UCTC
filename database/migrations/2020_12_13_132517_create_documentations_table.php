@@ -15,6 +15,7 @@ class CreateDocumentationsTable extends Migration
     {
         Schema::create('uctc_documentations', function (Blueprint $table) {
             $table->id();
+            $table->text('documentation')->nullable();
             $table->unsignedBigInteger('program')->nullable();
             $table->timestamps();
             $table->foreign('program')->references('id')->on('uctc_programs');

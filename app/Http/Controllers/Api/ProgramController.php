@@ -56,11 +56,12 @@ class ProgramController extends Controller
     {
         $users = User::all();
         $programs = Program::all();
-        $myPrograms = $programs->where('creator', $id);
-        $myPrograms += Program::whereIn('id',function ($query) use ($users){
+        $createdPrograms = $programs->where('creator', $id);
+        $participatedPrograms = Program::whereIn('id',function ($query) use ($users){
             $query->select('uctc_program_id')->from('uctc_program_user')->whereNotIn('uctc_user_id',$users);
         });
-        return ProgramResource::collection($myPrograms);
+        $mergePrograms = $participatedPrograms->$createdPrograms;
+        return ProgramResource::collection($mergePrograms);
     }
 
     /**

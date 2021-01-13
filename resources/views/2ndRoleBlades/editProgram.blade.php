@@ -81,6 +81,16 @@
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <label>Documentations:</label>
+                        <div id="dynamic_field">
+                            <div>
+                                <input type="file" class="form-control-file d-inline-block">
+                                <button type="button" name="pic" id="pic" class="btn btn-success d-inline-block">Add More</button>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="text-center">
                         <button type="submit" class="btnA circular greenstar font-weight-bold p-2 green-hover">Edit Program</button>
                     </div>
