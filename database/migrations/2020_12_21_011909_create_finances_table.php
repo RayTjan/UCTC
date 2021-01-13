@@ -17,7 +17,7 @@ class CreateFinancesTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('value');
-            $table->string('type');
+            $table->enum('type',['0','1']);
             $table->unsignedBigInteger('program')->nullable();
             $table->timestamps();
             $table->foreign('program')->references('id')->on('uctc_programs');

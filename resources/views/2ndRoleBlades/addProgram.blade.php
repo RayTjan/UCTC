@@ -15,6 +15,17 @@
                         <input type="text" class="form-control" name="name" required>
                     </div>
                     <div class="form-group">
+                        <div>
+                            <label class="d-inline-block">Client: </label>
+                            <button type="button" name="new" id="new" class="btn btn-success d-inline-block">Add New Client</button>
+                            <button type="button" name="load" id="load" class="btn btn-primary d-inline-block">Add Existing Clients</button>
+                        </div>
+                        <div id="dynamic_field">
+
+
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label >Description:</label>
                         <textarea class="form-control" name="description" required></textarea>
                     </div>
@@ -51,6 +62,48 @@
             </div>
         </div>
     </div>
+
+{{--    Untuk add delete client--}}
+    <script>
+        $(document).ready(function(){
+            var i=1;
+            $('#new').click(function(){
+                i++;
+                $('#dynamic_field').append('<div id="row'+i+'"> <input type="text" class="form-control mt-3 d-inline-block clientForm mr-3" name="client" placeholder="Add new client" required> <button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove mb-1">X</button></div>');
+            });
+
+            $('#load').click(function(){
+                i++;
+                $('#dynamic_field').append('<div id="row'+i+'"> ' +
+                    '<select name="type" class="custom-select mt-3 mr-3 d-inline-block clientForm">\n' +
+                    '                                    <option hidden>Load Existing Client</option>\n' +
+                    '{{--                                @foreach($clients as $client)--}}\n' +
+                    '                                    <option value="{{$type->id}}">{{$type->name}}</option>\n' +
+                    '{{--                                @endforeach--}}\n' +
+                    '                            </select>' +
+                    ' <button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove mt-3">X</button></div>');
+            });
+
+            $(document).on('click', '.btn_remove', function(){
+                var button_id = $(this).attr("id");
+                $('#row'+button_id+'').remove();
+            });
+
+            // $('#submit').click(function(){
+            //     $.ajax({
+            //         url:"name.php",
+            //         method:"POST",
+            //         data:$('#add_name').serialize(),
+            //         success:function(data)
+            //         {
+            //             alert(data);
+            //             $('#add_name')[0].reset();
+            //         }
+            //     });
+            // });
+
+        });
+    </script>
 
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Staff;
 
 use App\Http\Controllers\Controller;
 use App\Models\Finance;
+use App\Models\Program;
 use Illuminate\Http\Request;
 
 class FinanceController extends Controller
@@ -81,6 +82,8 @@ class FinanceController extends Controller
      */
     public function destroy(Finance $finance)
     {
-        //
+        $program = Program::findOrFail($finance->program);
+        $finance->delete();
+        return redirect()->route('staff.program.edit', $program);
     }
 }

@@ -1115,6 +1115,10 @@ p.titlelogin{
     display: none;
 }
 
+.widthSubmitButton{
+    width: 45vh;
+}
+
 /*bg-change*/
 .bg-change-dark {
     background-color: #23232E; !important;
@@ -1124,13 +1128,21 @@ p.titlelogin{
     color: white;
 }
 
-/*edit form*/
+/*form*/
 .budgetForm {
     width: 90%;
 }
 
 .sizeForm {
-    width: 44%;
+    width: 37%;
+}
+
+.clientForm {
+    width: 95%;
+}
+
+.typeBudgetForm {
+    width: 12%;
 }
 
 /*admin attribute*/

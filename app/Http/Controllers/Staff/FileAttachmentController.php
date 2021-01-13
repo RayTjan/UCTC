@@ -26,9 +26,7 @@ class FileAttachmentController extends Controller
      */
     public function create($id)
     {
-        $task = Task::findOrFail($id);
-        dd($task->id);
-        return view('2ndRoleBlades.addAttachment');
+
     }
 
     /**
