@@ -15,9 +15,9 @@ class ActionPlanResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'=>$request->id,
-            'name'=>$request->name,
-            'description'=>$request->description,
+            'actionPlan_id'=>$request->id,
+            'actionPlan_name'=>$request->name,
+            'actionPlan_description'=>$request->description,
             'program'=>$request->plansOf->id
         ];
     }
