@@ -11,13 +11,12 @@ class ActionPlanController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $actions = ActionPlan::all();
-        return ActionPlanResource::collection($actions);
+
     }
 
     /**
@@ -44,12 +43,13 @@ class ActionPlanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $actions = ActionPlan::all();
+        $specificAction = $actions->where('program', $id);
+        return ActionPlanResource::collection($specificAction);
     }
 
     /**

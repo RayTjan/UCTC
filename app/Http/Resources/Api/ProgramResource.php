@@ -15,6 +15,7 @@ class ProgramResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'program_id' => $this->id,
             'program_title'=> $this->name,
             'description'=>$this->description,
             'goal'=>$this->goal,

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Program;
 use Illuminate\Http\Request;
 use App\Http\Resources\Api\ProgramResource;
+use Laravel\Passport\Client;
 
 
 class ProgramController extends Controller
@@ -20,6 +21,7 @@ class ProgramController extends Controller
         $programs = Program::all();
         return ProgramResource::collection($programs);
     }
+    private $client;
 
     /**
      * Store a newly created resource in storage.
@@ -29,10 +31,17 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        Program::create($request->all());
-        return response([
-            'message' => 'Adding Program Finished'
-        ]);
+        $sProgram =  Program::create([
+                'name' => $request->name,
+                'description' => $request->description,
+                'goal' => $request->goal,
+                'program_date' => $request->program_date,
+                'created_by' => $request->created_by,
+            ]
+        );
+
+        return $sProgram;
+
     }
 
     /**
@@ -45,7 +54,16 @@ class ProgramController extends Controller
     {
         //
     }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function committees($id)
+    {
 
+    }
     /**
      * Update the specified resource in storage.
      *

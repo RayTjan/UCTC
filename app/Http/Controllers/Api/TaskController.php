@@ -11,13 +11,11 @@ class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
      * @return \Illuminate\Http\Response
      */
-    public function index(int $id)
+    public function index()
     {
-        $tasks = Task::all();
-        return TaskResource::collection($tasks);
+
     }
 
     /**
@@ -49,7 +47,9 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        //
+        $tasks = Task::all();
+        $specificTasks = $tasks->where('action_plan', $id);
+        return ActionPlanResource::collection($specificTasks);
     }
 
     /**

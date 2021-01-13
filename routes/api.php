@@ -21,6 +21,9 @@ Route::post('api-register',[RegisterController::class,'register']);
 Route::post('api-login',[LoginController::class,'login']);
 Route::group(['middleware' => 'auth:api'], function (){
     Route::apiResource('programs', ProgramController::class);
+    Route::apiResource('actions', \App\Http\Controllers\api\ActionPlanController::class);
+    Route::apiResource('tasks', \App\Http\Controllers\api\TaskController::class);
+
     Route::apiResource('profile', UserController::class);
     Route::post('logout', [LoginController::class,'logout']);
 });
