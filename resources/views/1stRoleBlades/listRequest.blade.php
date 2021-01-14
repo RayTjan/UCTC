@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Edit Action Plan')
+@section('title', 'Proposal')
 @section('content')
 
     <script>
@@ -19,90 +19,79 @@
             <div class="quiz-window quiz-padding">
                 <div class="quiz-window-body">
                     <div class="gui-window-awards">
-                        <ul class="guiz-awards-row guiz-awards-header">
-                            <li class="guiz-awards-header-star">&nbsp;</li>
-                            <li class="guiz-awards-header-title">Name</li>
-                            <li class="guiz-awards-header-time">Action</li>
+
+
+                        <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget card-bg-change">
+                            <li class="guiz-awards-time customComittee">Name</li>
+                            <li class="guiz-awards-time customComittee">Status</li>
+                            <li class="guiz-awards-time customComittee">Download</li>
+                            <li class="guiz-awards-time customComittee">Action</li>
+                            <li class="guiz-awards-time customComittee">Delete</li>
                         </ul>
 
-                        <?php $yes = 0; ?>
-{{--                        @foreach($proposals as $proposal)--}}
-{{--                            <ul class="--}}
-{{--                            @if($yes%2 == 0)--}}
-{{--                                guiz-awards-row guiz-awards-row-even--}}
-{{--                            @else--}}
-{{--                                guiz-awards-row guiz-awards-row--}}
-{{--                            @endif--}}
-{{--                                quizz">--}}
-{{--                                <a href="{{route('admin.proposal.show',$proposal)}}" class="a-none">--}}
-{{--                                    <li class="guiz-awards-star">--}}
-{{--                                        <span class="star"></span>--}}
-{{--                                    </li>--}}
-{{--                                    <li class="guiz-awards-title">{{$proposal->name}}--}}
-{{--                                        <div class="guiz-awards-subtitle">{{$proposal->description}}</div>--}}
-{{--                                    </li>--}}
-{{--                                    <li class="guiz-awards-time">--}}
-{{--                                        <div class="dropdown">--}}
-{{--                                            <div class="dropdown show">--}}
-{{--                                                <a class="dropdown-button iconCommitteeAct" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-{{--                                                    <svg xmlns="http://www.w3.org/2000/svg" width="26.414" height="13.207" viewBox="0 0 26.414 13.207">--}}
-{{--                                                        <path id="Path_1462" data-name="Path 1462" d="M1215,2144l12,12,12-12Z" transform="translate(-1213.793 -2143.5)" fill="none" stroke="#000" stroke-linejoin="round" stroke-width="1"/>--}}
-{{--                                                    </svg>--}}
-{{--                                                </a>--}}
+                        @foreach($proposals as $proposal)
+                            <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget">
+                                <li class="guiz-awards-time customComittee">
+                                    @if(strlen($proposal->proposal) > 35)
+                                        {{ substr($proposal->proposal,0,20)."..." }}
+                                    @else
+                                        {{ $proposal->proposal }}
+                                    @endif
+                                </li>
+                                <li class="guiz-awards-time customComittee">
+                                    @if($proposal->status == '0')
+                                        <div class="text-warning">Pending</div>
+                                    @elseif($proposal->status == '1')
+                                        <div class="text-success">Approved</div>
+                                    @elseif($proposal->status == '2')
+                                        <div class="text-danger">Rejected</div>
+                                    @endif
+                                </li>
+                                <li class="guiz-awards-time customComittee">
+                                    <form action="{{ 'admin.proposal.download', $proposal->id }}" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="PATCH">
+                                        <button type="submit" class="btn btn-success">Download</button>
+                                    </form>
+                                </li>
+                                <li class="guiz-awards-time customComittee">
+                                    <div class="dropdown">
+                                        <div class="dropdown show">
+                                            <a class="dropdown-button iconCommitteeAct" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="26.414" height="13.207" viewBox="0 0 26.414 13.207">
+                                                    <path id="Path_1462" data-name="Path 1462" d="M1215,2144l12,12,12-12Z" transform="translate(-1213.793 -2143.5)" fill="none" stroke="#000" stroke-linejoin="round" stroke-width="1"/>
+                                                </svg>
+                                            </a>
 
-{{--                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">--}}
-{{--                                                    <a class="dropdown-item btnSuccess" href="{{route('admin.proposal.approve',$proposal)}}">Accept</a>--}}
-{{--                                                    <a class="dropdown-item btnDelete" href="{{route('admin.proposal.reject',$proposal)}}">Reject</a>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </li>--}}
-{{--                                </a>--}}
-{{--                            </ul>--}}
-
-{{--                        temporary for test--}}
-
-                            <ul class="
-                            @if($yes%2 == 0)
-                                guiz-awards-row guiz-awards-row-even
-                            @else
-                                guiz-awards-row guiz-awards-row
-                            @endif
-                                quizz">
-                                <a href="" class="a-none">
-                                    <li class="guiz-awards-star">
-                                        <span class="star"></span>
-                                    </li>
-                                    <li class="guiz-awards-title">Proposal Coding School
-                                        <div class="guiz-awards-subtitle">Mohon diaccept gan</div>
-                                    </li>
-                                    <li class="guiz-awards-time">
-                                        <div class="dropdown">
-                                            <div class="dropdown show">
-                                                <a class="dropdown-button iconCommitteeAct" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="26.414" height="13.207" viewBox="0 0 26.414 13.207">
-                                                        <path id="Path_1462" data-name="Path 1462" d="M1215,2144l12,12,12-12Z" transform="translate(-1213.793 -2143.5)" fill="none" stroke="#000" stroke-linejoin="round" stroke-width="1"/>
-                                                    </svg>
-                                                </a>
-
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item btnSuccess" href="#">Accept</a>
-                                                    <a class="dropdown-item btnDelete" href="#">Reject</a>
-                                                </div>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <form action="{{route('admin.proposal.approve', $proposal->id)}}"
+                                                      method="POST">
+                                                    {{ csrf_field() }}
+                                                    <button class="ml-2 dropdown-item btnA btnSuccess" title="Approve" type="submit">Accept</button>
+                                                </form>
+                                                <form action="{{route('admin.proposal.reject', $proposal->id)}}"
+                                                      method="POST">
+                                                    {{ csrf_field() }}
+                                                    <button class="ml-2 dropdown-item btnA btnDelete" title="Reject" type="submit">Reject</button>
+                                                </form>
                                             </div>
                                         </div>
-                                    </li>
-                                </a>
+                                    </div>
+                                </li>
+                                <li class="guiz-awards-time customComittee">
+                                    <form action="{{ route('admin.proposal.destroy', $proposal ) }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </li>
                             </ul>
-
-{{--                        temporary end, delete stelah slesai--}}
-
-                            <?php $yes += 1; ?>
-{{--                        @endforeach--}}
+                        @endforeach
 
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 @endsection

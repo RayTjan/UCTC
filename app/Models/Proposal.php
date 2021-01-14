@@ -15,4 +15,5 @@ class Proposal extends Model
         'status',
         'program',
     ];
+
 }

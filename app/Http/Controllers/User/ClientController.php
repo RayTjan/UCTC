@@ -3,14 +3,11 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\Client;
 use App\Models\Program;
-use App\Models\Type;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class ProgramController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +16,7 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        $programs = Program::all();
-        return view('3rdRoleBlades.listProgram', compact('programs'));
+        //
     }
 
     /**
@@ -41,61 +37,53 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Client::create($request->all());
+        return redirect()->route('client.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $program = Program::findOrFail($id);
-        $programs = Program::all()->except($id)->pluck('id');
-
-        //get clients
-
-        $clients = Client::whereIn('id',function ($query) use ($programs){
-            $query->select('uctc_client_id')->from('uctc_client_program')->whereNotIn('uctc_program_id',$programs);
-        })->get();
-
-        return view('3rdRoleBlades.detailProgram',compact('program','clients'));
+        return view('3rdRoleBlades.listClientProgram', compact('program'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Program  $program
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function edit(Program $program)
+    public function edit(Client $client)
     {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Program  $program
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Program $program)
+    public function update(Request $request, Client $client)
     {
-//
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy(int $id)
+    public function destroy(Client $client)
     {
-        //
+        $client->delete();
+        return redirect()->back();
     }
-
 }

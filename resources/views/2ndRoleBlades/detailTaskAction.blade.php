@@ -72,7 +72,7 @@
             </div>
             <!-- Modal body -->
             <div class="modal-body text-center" style="text-align: left;">
-                <form action="{{route('staff.file.show', $tasks[$con]->id)}}" method="get" class="mt-2">
+                <form action="{{route('staff.file.show', $tasks[$con]->id)}}" method="post" class="mt-2">
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="btnA circular greenstar font-weight-bold p-3 green-hover widthSubmitButton">Submit with File Attachment</button>
                 </form>

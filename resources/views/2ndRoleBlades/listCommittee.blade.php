@@ -67,7 +67,6 @@
                                                 <option value="{{$committee->id}}" title="{{$committee->identity->name}}">{{$committee->identity->name}}</option>
                                             @endforeach
                                         </select>
-                                        <input name="selected_program" type="hidden" value="{{$program->id}}">
 
                                     </div>
                                     <div class="form-group">
@@ -77,10 +76,6 @@
                             @else
                                 <h1 class="h4 mb-0 font-weight-bold">No free user left</h1>
                             @endif
-                        </div>
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <button type="button" class="btnA circular redstar font-weight-bold p-2 red-hover" data-dismiss="modal">Cancel</button>
                         </div>
                     </div>
                 </div>

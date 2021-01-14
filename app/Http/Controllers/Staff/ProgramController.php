@@ -181,7 +181,7 @@ class ProgramController extends Controller
                 'proposal' => 'required|mimes:pdf|max:10000',
             ]);
 
-            $pdfName = $pdf['proposal']->getClientOriginalName().'-'.time().'.'.$data['proposal']->extension();
+            $pdfName = $pdf['proposal']->getClientOriginalName().'-'.time().'.'.$pdf['proposal']->extension();
             $pdf['proposal']->move(public_path('/files/proposal'), $pdfName);
 
             $dataProposal = array(

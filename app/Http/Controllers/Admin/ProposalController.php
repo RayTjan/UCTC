@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Program;
 use App\Models\Proposal;
 use Illuminate\Http\Request;
 
@@ -82,7 +83,8 @@ class ProposalController extends Controller
      */
     public function destroy(Proposal $proposal)
     {
-        //
+        $proposal->delete();
+        return redirect()->route('staff.proposal.show',$proposal->program);
     }
 
     public function approve($id){
@@ -102,5 +104,17 @@ class ProposalController extends Controller
 
         return empty($program) ? redirect()->back()->with('Fail', "Failed to reject")
             : redirect()->back()->with('Success', 'Success program proposal: #('.$proposal->program->name.') Rejected');
+    }
+
+    public function download($id){
+        $proposal = Proposal::findOrFail($id);
+        dd($id);
+        $file = public_path(('/files/proposal'), $proposal->proposal);
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+
+        return response()->download($file, $proposal->proposal, $headers);
+        return redirect(route('admin.proposal.show',$proposal->program));
     }
 }

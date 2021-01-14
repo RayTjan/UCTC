@@ -52,6 +52,9 @@ Route::group([
     Route::resource('committee',\App\Http\Controllers\Admin\CommitteeController::class);
     Route::resource('user', \App\Http\Controllers\Admin\UserController::class);
     Route::resource('proposal', \App\Http\Controllers\Admin\ProposalController::class);
+    Route::post('proposal/{id}/approve', [\App\Http\Controllers\Admin\ProposalController::class, 'approve'])->name('proposal.approve');
+    Route::post('proposal/{id}/reject', [\App\Http\Controllers\Admin\ProposalController::class, 'reject'])->name('proposal.reject');
+    Route::patch('proposal/{id}', [\App\Http\Controllers\Staff\ProposalController::class, 'download'])->name('proposal.download');
     Route::resource('report', \App\Http\Controllers\Admin\ReportController::class);
     Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
 });
@@ -69,6 +72,7 @@ Route::group([
     Route::resource('task', \App\Http\Controllers\Staff\TaskController::class);
     Route::resource('client', \App\Http\Controllers\Staff\ClientController::class);
     Route::resource('proposal', \App\Http\Controllers\Staff\ProposalController::class);
+    Route::patch('proposal/{id}', [\App\Http\Controllers\Staff\ProposalController::class, 'download'])->name('proposal.download');
     Route::resource('user', \App\Http\Controllers\Staff\UserController::class);
     Route::resource('action', \App\Http\Controllers\Staff\ActionController::class);
     Route::resource('actionTask', \App\Http\Controllers\Staff\ActionTaskController::class);
@@ -89,4 +93,5 @@ Route::group([
     Route::resource('committee',\App\Http\Controllers\User\CommitteeController::class);
     Route::resource('file', \App\Http\Controllers\User\FileAttachmentController::class)->except('create');
     Route::patch('/file/{id}', '\App\Http\Controllers\User\FileAttachmentController@create')->name('file.create');
+    Route::resource('client', \App\Http\Controllers\User\ClientController::class);
 });
