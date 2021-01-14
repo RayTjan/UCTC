@@ -15,7 +15,7 @@ class ProposalController extends Controller
      */
     public function index()
     {
-        $proposals = Proposal::all();
+        $proposals = Proposal::all()->where();
         return view('1stRoleBlades.listRequest', compact('proposals'));
     }
 
@@ -83,5 +83,16 @@ class ProposalController extends Controller
     public function destroy(Proposal $proposal)
     {
         //
+    }
+
+    public function approve($id, Request $request){
+        $user = Proposal::findOrFail($id);
+        $program = $user->attends->where('id','=',$request->selected_program)->first();
+        $program->pivot->update([
+            'is_approved' => '1',
+        ]);
+
+        return empty($program) ? redirect()->back()->with('Fail', "Failed to update status")
+            : redirect()->back()->with('Success', 'Success guest: #('.$user->identity->name.') approved');
     }
 }
