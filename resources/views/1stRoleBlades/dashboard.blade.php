@@ -69,125 +69,30 @@
                     <div class="scrollWebkit p-0">
                     <ul class="todo-list">
 
+                        @foreach($programs as $program)
+                            @foreach($program->hasProposals as $proposal)
                         <li>
                             <!-- drag handle -->
                             <span class="handle">
-                      <i class="fa fa-ellipsis-v"></i>
-                      <i class="fa fa-ellipsis-v"></i>
-                    </span>
+                                <i class="fa fa-ellipsis-v"></i>
+                                <i class="fa fa-ellipsis-v"></i>
+                            </span>
                             <!-- checkbox -->
                             <input type="checkbox" value="" name="">
                             <!-- todo text -->
-                            <span class="text">Proposal gan</span>
+                            <span class="text">
+                                @if(strlen($proposal->proposal) > 15)
+                                    {{ substr($proposal->proposal,0,15)."..." }}
+                                @else
+                                    {{ $proposal->proposal }}
+                                @endif
+                            </span>
                             <div class="float-right">
-                                <p class="">05/11/2020</p>
+                                <p class="">{{$program->name}}</p>
                             </div>
                         </li>
-
-                        <li>
-                            <!-- drag handle -->
-                            <span class="handle">
-                      <i class="fa fa-ellipsis-v"></i>
-                      <i class="fa fa-ellipsis-v"></i>
-                    </span>
-                            <!-- checkbox -->
-                            <input type="checkbox" value="" name="">
-                            <!-- todo text -->
-                            <span class="text">Unch</span>
-                            <div class="float-right">
-                                <p class="">05/11/2020</p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <!-- drag handle -->
-                            <span class="handle">
-                      <i class="fa fa-ellipsis-v"></i>
-                      <i class="fa fa-ellipsis-v"></i>
-                    </span>
-                            <!-- checkbox -->
-                            <input type="checkbox" value="" name="">
-                            <!-- todo text -->
-                            <span class="text">Proposal gan</span>
-                            <div class="float-right">
-                                <p class="">05/11/2020</p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <!-- drag handle -->
-                            <span class="handle">
-                      <i class="fa fa-ellipsis-v"></i>
-                      <i class="fa fa-ellipsis-v"></i>
-                    </span>
-                            <!-- checkbox -->
-                            <input type="checkbox" value="" name="">
-                            <!-- todo text -->
-                            <span class="text">Proposal gan</span>
-                            <div class="float-right">
-                                <p class="">05/11/2020</p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <!-- drag handle -->
-                            <span class="handle">
-                      <i class="fa fa-ellipsis-v"></i>
-                      <i class="fa fa-ellipsis-v"></i>
-                    </span>
-                            <!-- checkbox -->
-                            <input type="checkbox" value="" name="">
-                            <!-- todo text -->
-                            <span class="text">Proposal gan</span>
-                            <div class="float-right">
-                                <p class="">05/11/2020</p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <!-- drag handle -->
-                            <span class="handle">
-                      <i class="fa fa-ellipsis-v"></i>
-                      <i class="fa fa-ellipsis-v"></i>
-                    </span>
-                            <!-- checkbox -->
-                            <input type="checkbox" value="" name="">
-                            <!-- todo text -->
-                            <span class="text">Proposal gan</span>
-                            <div class="float-right">
-                                <p class="">05/11/2020</p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <!-- drag handle -->
-                            <span class="handle">
-                      <i class="fa fa-ellipsis-v"></i>
-                      <i class="fa fa-ellipsis-v"></i>
-                    </span>
-                            <!-- checkbox -->
-                            <input type="checkbox" value="" name="">
-                            <!-- todo text -->
-                            <span class="text">Proposal gan</span>
-                            <div class="float-right">
-                                <p class="">05/11/2020</p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <!-- drag handle -->
-                            <span class="handle">
-                      <i class="fa fa-ellipsis-v"></i>
-                      <i class="fa fa-ellipsis-v"></i>
-                    </span>
-                            <!-- checkbox -->
-                            <input type="checkbox" value="" name="">
-                            <!-- todo text -->
-                            <span class="text">Proposal gan</span>
-                            <div class="float-right">
-                                <p class="">05/11/2020</p>
-                            </div>
-                        </li>
+                            @endforeach
+                        @endforeach
 
                     </ul>
                     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ActionPlan;
 use App\Models\Program;
+use App\Models\Proposal;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,8 @@ class DashboardController extends Controller
         if (Auth::id()) {
             $programs = Program::all();
             if (Auth::user()->isAdmin()) {
-                return view('1stRoleBlades.dashboard', compact('programs'));
+                $proposals = Proposal::all()->where('status','0');
+                return view('1stRoleBlades.dashboard', compact('programs', 'proposals'));
             }else if (Auth::user()->isCreator()) {
                 $actions = ActionPlan::all();
                 return view('2ndRoleBlades.dashboard', compact('programs', 'actions'));
