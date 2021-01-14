@@ -45,7 +45,6 @@
             </div>
 
             <div class="position-static centerBottom">
-                <form action="{{ route('staff.file.create', $tasks[$con]->id) }}">
                     <input type="checkbox" class="custom-checkbox" id="checkBtn" onclick="EnableBtn (this, 'BTN-{{$con}}')">
                     already done?
                     <br>
@@ -54,7 +53,6 @@
                             class="btn btn-success" id="BTN-{{$con}}">
                         Submit
                     </button>
-                </form>
             </div>
 
 
