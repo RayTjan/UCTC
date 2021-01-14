@@ -24,7 +24,7 @@ Route::group(['middleware' => 'auth:api'], function (){
     Route::apiResource('actions', \App\Http\Controllers\api\ActionPlanController::class);
     Route::apiResource('tasks', \App\Http\Controllers\api\TaskController::class);
     Route::get('/programs/{id}/committees', [ProgramController::class,'committees']);
-
+    Route::get('/user/{id}/tasks', [UserController::class,'userTasks']);
     Route::apiResource('profile', UserController::class);
     Route::post('logout', [LoginController::class,'logout']);
 });
