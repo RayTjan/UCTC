@@ -1165,7 +1165,11 @@ p.titlelogin{
 }
 
 .clientForm {
-    width: 95%;
+    width: 92%;
+}
+
+.newClientForm {
+    width: 22%;
 }
 
 .typeBudgetForm {

@@ -40,7 +40,7 @@ class CommitteeController extends Controller
         if ($request->selected_program != null){
 //            dd($request->selected_program);
             $attend = $user->attends()->syncWithoutDetaching($request->selected_program, ['is_approved'=>'0']);
-            return empty($attend)?redirect()->back()->with('Fail',"Failed to add new committee") : redirect()->back()->with('Success',"committee Added Successfully");
+            return empty($attend)?redirect()->back()->with('Fail',"Failed to add new committee") : redirect()->back()->with('Success',"Committee added successfully");
         }
         else{
             return redirect()->back()->with('WHAT',"Failed to add new committee");

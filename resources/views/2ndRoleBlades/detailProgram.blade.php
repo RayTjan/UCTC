@@ -11,14 +11,16 @@
         <h6>{{$program->status}}</h6>
         <div class="ml-4">
 
+            @if(isset($clients[0]))
             <div class="row align-items-center">
                 <h6 class="col-md-1 font-weight-bold float-left">Client&nbsp;&nbsp;&nbsp;: </h6>
-                {{--            @foreach(clients as client)--}}
+                @foreach($clients as $client)
                 <p class="col-md-1 font-weight-bold circular graystar mr-1">
-                    TestClient
+                    {{ $client->name }}
                 </p>
-                {{--                @endforeach--}}
+                @endforeach
             </div>
+            @endif
 
             <h6 class="font-weight-bold">Goal</h6>
             <p class="ml-3">{{$program->goal}}</p>
@@ -129,6 +131,7 @@
 
         <div class="d-flex justify-content-between mb-5">
             <div class="">
+                <a href="{{ route('staff.client.show', $program) }}" class="circular yellowstar font-weight-bold p-2 yellow-hover">Client</a>
                 <a href="{{ route('staff.committee.show', $program) }}" class="circular yellowstar font-weight-bold p-2 yellow-hover">Committee</a>
                 <a href="{{ route('staff.action.show', $program) }}" class="circular bluestar font-weight-bold p-2 blue-hover">Action Plan</a>
                 <a href="{{ route('staff.program.edit', $program) }}" class="circular purplestar font-weight-bold p-2 purple-hover">Edit</a>

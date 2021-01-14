@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Staff;
 
 use App\Http\Controllers\Controller;
 use App\Models\Client;
+use App\Models\Program;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -49,9 +50,10 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function show(Client $client)
+    public function show($id)
     {
-        //
+        $program = Program::findOrFail($id);
+        return view('2ndRoleBlades.listClientProgram', compact('program'));
     }
 
     /**

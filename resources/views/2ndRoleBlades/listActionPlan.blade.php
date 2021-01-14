@@ -81,7 +81,7 @@
                                                 </a>
 
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" href="{{route('staff.action.destroy',$actionPlan)}}">Edit</a>
+                                                    <a class="dropdown-item" href="{{route('staff.action.edit',$actionPlan)}}">Edit</a>
                                                     <a class="dropdown-item btnDelete" href="#">Delete</a>
                                                 </div>
                                             </div>

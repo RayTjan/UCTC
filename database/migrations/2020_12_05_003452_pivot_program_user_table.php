@@ -17,6 +17,9 @@ class PivotProgramUserTable extends Migration
             $table->id();
             $table->foreignId('uctc_program_id')->constrained();
             $table->foreignId('uctc_user_id')->constrained();
+            $table->unsignedBigInteger('action_plan');
+            $table->foreign('action_plan')->references('id')->on('uctc_action_plans');
+            $table->enum('role', ['0','1'])->default('0')->comment('0 = Member, 1 = Coordinator');
             $table->enum('is_approved', ['0','1','2'])->default('0')->comment('0 = Pending, 1 = Approved, 2 = Rejected');
             $table->timestamps();
         });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Staff;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Client;
 use App\Models\Documentation;
 use App\Models\Finance;
 use App\Models\Program;
@@ -35,7 +36,8 @@ class ProgramController extends Controller
         $users = User::all();
         $categories = Category::all();
         $types = Type::all();
-        return view( '2ndRoleBlades.addProgram',compact('users','categories','types'));
+        $clients = Client::all();
+        return view( '2ndRoleBlades.addProgram',compact('users','categories','types', 'clients'));
     }
 
     /**
@@ -47,6 +49,38 @@ class ProgramController extends Controller
     public function store(Request $request)
     {
         Program::create($request->all());
+        $data = $request->all();
+        $lastProgram = Program::all()->last();
+
+        //insert new client to database client and client_program
+        if (isset($data['newClient'])) {
+            foreach ($data['newClient'] as $item => $value) {
+                $dataClient = array(
+                    'name' => $data['newClient'][$item],
+                    'phone' => $data['phone'][$item],
+                    'address' => $data['address'][$item],
+                    'email' => $data['email'][$item],
+                );
+                Client::create($dataClient);
+
+                $lastClient = Client::all()->last();
+                $client = Client::findOrFail($lastClient->id);
+                $client->attends()->syncWithoutDetaching($lastProgram->id);
+            }
+        }
+
+        //add existing client to client_program
+        if (isset($data['client'])){
+            foreach ($data['client'] as $item => $value) {
+                $dataClientProgram = array(
+                    'client_id' => $data['client'][$item],
+                );
+                $client = Client::findOrFail($dataClientProgram['client_id']);
+                $client->attends()->syncWithoutDetaching($lastProgram->id);
+            }
+        }
+
+
         return redirect()->route('staff.program.index');
     }
 
@@ -61,6 +95,14 @@ class ProgramController extends Controller
         $program = Program::findOrFail($id);
         $programs = Program::all()->except($id)->pluck('id');
 
+        //get clients
+
+        $clients = Client::whereIn('id',function ($query) use ($programs){
+            $query->select('uctc_client_id')->from('uctc_client_program')->whereNotIn('uctc_program_id',$programs);
+        })->get();
+
+        //akan segera dihapus
+
         $committees = User::whereIn('id',function ($query) use ($programs){
             $query->select('uctc_user_id')->from('uctc_program_user')->where('is_approved','1')->whereNotIn('uctc_program_id',$programs);
         })->get();
@@ -69,11 +111,9 @@ class ProgramController extends Controller
             $query->select('uctc_user_id')->from('uctc_program_user')->whereNotIn('uctc_program_id',$programs);
         })->where('role_id',3)->get();
 
-//        dd(User::whereIn('id',function ($query) use ($programs){
-//            $query->select('uctc_user_id')->from('uctc_program_user')->where('is_approved','1')->whereNotIn('uctc_program_id',$programs);
-//        })->get());
+        //batas hapus
 
-        return view('2ndRoleBlades.detailProgram',compact('program','committeeList','committees'));
+        return view('2ndRoleBlades.detailProgram',compact('program','clients','committeeList','committees'));
     }
 
     /**

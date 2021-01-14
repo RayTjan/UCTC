@@ -69,17 +69,21 @@
             var i=1;
             $('#new').click(function(){
                 i++;
-                $('#dynamic_field').append('<div id="row'+i+'"> <input type="text" class="form-control mt-3 d-inline-block clientForm mr-3" name="client" placeholder="Add new client" required> <button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove mb-1">X</button></div>');
+                $('#dynamic_field').append('<div id="row'+i+'"> <input type="text" class="form-control mt-3 d-inline-block newClientForm mr-3" name="newClient[]" placeholder="New client name" required>' +
+                    '<input type="text" class="form-control mt-3 d-inline-block newClientForm mr-3" name="phone[]" placeholder="Phone Number" required>' +
+                    '<input type="text" class="form-control mt-3 d-inline-block newClientForm mr-3" name="address[]" placeholder="Client Address" required>' +
+                    '<input type="text" class="form-control mt-3 d-inline-block newClientForm mr-3" name="email[]" placeholder="Email Client" required>' +
+                    '<button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove mb-1">X</button></div>');
             });
 
             $('#load').click(function(){
                 i++;
                 $('#dynamic_field').append('<div id="row'+i+'"> ' +
-                    '<select name="type" class="custom-select mt-3 mr-3 d-inline-block clientForm">\n' +
+                    '<select name="client[]" class="custom-select mt-3 mr-3 d-inline-block clientForm">\n' +
                     '                                    <option hidden>Load Existing Client</option>\n' +
-                    '{{--                                @foreach($clients as $client)--}}\n' +
-                    '                                    <option value="{{$type->id}}">{{$type->name}}</option>\n' +
-                    '{{--                                @endforeach--}}\n' +
+                    '                                @foreach($clients as $client)\n' +
+                    '                                    <option value="{{$client->id}}">{{$client->name}}</option>\n' +
+                    '                                @endforeach\n' +
                     '                            </select>' +
                     ' <button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove mt-3">X</button></div>');
             });
