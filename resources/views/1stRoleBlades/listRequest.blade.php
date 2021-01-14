@@ -51,8 +51,8 @@
 {{--                                                </a>--}}
 
 {{--                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">--}}
-{{--                                                    <a class="dropdown-item btnSuccess" href="{{route('admin.proposal.edit',$proposal)}}">Accept</a>--}}
-{{--                                                    <a class="dropdown-item btnDelete" href="#">Reject</a>--}}
+{{--                                                    <a class="dropdown-item btnSuccess" href="{{route('admin.proposal.approve',$proposal)}}">Accept</a>--}}
+{{--                                                    <a class="dropdown-item btnDelete" href="{{route('admin.proposal.reject',$proposal)}}">Reject</a>--}}
 {{--                                                </div>--}}
 {{--                                            </div>--}}
 {{--                                        </div>--}}

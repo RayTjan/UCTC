@@ -36,7 +36,9 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Type::create($request->all());
+        return redirect()->route(NOTICEMEFREDO);
+
     }
 
     /**
@@ -76,11 +78,13 @@ class TypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Type  $type
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Type $type)
+    public function destroy($id)
     {
-        //
+        $type = Type::findOrFail($id);
+        $type->delete();
+        return redirect()->route(NOTICEMEFREDO);
     }
 }

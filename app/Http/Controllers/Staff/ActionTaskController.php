@@ -39,7 +39,7 @@ class ActionTaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -76,7 +76,9 @@ class ActionTaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $task = Task::findOrFail($id);
+        $task->status = 1;
+        return redirect()->route(NOTICEMEFREDO);
     }
 
     /**
@@ -87,6 +89,8 @@ class ActionTaskController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $task = Task::findOrFail($id);
+        $task->delete();
+        return redirect()->route(NOTICEMEFREDO);
     }
 }
