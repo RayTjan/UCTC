@@ -15,7 +15,7 @@ class ProposalController extends Controller
      */
     public function index()
     {
-        $proposals = Proposal::all()->where();
+        $proposals = Proposal::all()->where('status','0');
         return view('1stRoleBlades.listRequest', compact('proposals'));
     }
 
@@ -85,14 +85,22 @@ class ProposalController extends Controller
         //
     }
 
-    public function approve($id, Request $request){
-        $user = Proposal::findOrFail($id);
-        $program = $user->attends->where('id','=',$request->selected_program)->first();
-        $program->pivot->update([
-            'is_approved' => '1',
+    public function approve($id){
+        $proposal = Proposal::findOrFail($id);
+        $proposal->update([
+            'status' => '1',
         ]);
 
-        return empty($program) ? redirect()->back()->with('Fail', "Failed to update status")
-            : redirect()->back()->with('Success', 'Success guest: #('.$user->identity->name.') approved');
+        return empty($program) ? redirect()->back()->with('Fail', "Failed to approve")
+            : redirect()->back()->with('Success', 'Success program proposal: #('.$proposal->program->name.') approved');
+    }
+    public function reject($id){
+        $proposal = Proposal::findOrFail($id);
+        $proposal->update([
+            'status' => '2',
+        ]);
+
+        return empty($program) ? redirect()->back()->with('Fail', "Failed to reject")
+            : redirect()->back()->with('Success', 'Success program proposal: #('.$proposal->program->name.') Rejected');
     }
 }

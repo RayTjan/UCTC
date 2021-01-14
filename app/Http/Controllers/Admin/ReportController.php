@@ -17,8 +17,8 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $programs = Program::all();
-        return view('1stRoleBlades.listReport',compact('programs'));
+        $reports = Report::all()->where('status',0);
+        return view('1stRoleBlades.listReport',compact('reports'));
     }
 
     /**
@@ -85,5 +85,23 @@ class ReportController extends Controller
     public function destroy(Report $report)
     {
         //
+    }
+    public function approve($id){
+        $report = Report::findOrFail($id);
+        $report->update([
+            'status' => '1',
+        ]);
+
+        return empty($program) ? redirect()->back()->with('Fail', "Failed to approve")
+            : redirect()->back()->with('Success', 'Success program proposal: #('.$report->program->name.') approved');
+    }
+    public function reject($id){
+        $report = Report::findOrFail($id);
+        $report->update([
+            'status' => '2',
+        ]);
+
+        return empty($program) ? redirect()->back()->with('Fail', "Failed to reject")
+            : redirect()->back()->with('Success', 'Success program proposal: #('.$report->program->name.') Rejected');
     }
 }
