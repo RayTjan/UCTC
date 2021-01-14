@@ -612,6 +612,29 @@ button, select, input {
     bottom: 0;
 }
 
+/*pic*/
+.heightPic {
+    max-height: 40vh;
+}
+
+.colorScroll {
+    overflow-x: auto;
+}
+
+.colorScroll::-webkit-scrollbar {
+    height: 0.3rem;
+}
+
+.colorScroll::-webkit-scrollbar-track {
+    background: #1e1e24;
+    border-radius: 1vh;
+}
+
+.colorScroll::-webkit-scrollbar-thumb {
+    background: #F9C03D;
+    border-radius: 1vh;
+}
+
 /*modalpic*/
 .modalpic-content {
     position: relative;
@@ -1137,6 +1160,10 @@ p.titlelogin{
     width: 37%;
 }
 
+.docForm {
+    width: 91%;
+}
+
 .clientForm {
     width: 95%;
 }
@@ -1172,3 +1199,5 @@ p.titlelogin{
 .deleteAtt:hover {
     color: #F20505;
 }
+
+

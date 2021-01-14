@@ -28,6 +28,9 @@ class Program extends Model
     public function hasFinances(){
         return $this->hasMany(Finance::class, 'program','id');
     }
+    public function hasDoc(){
+        return $this->hasMany(Documentation::class, 'program','id');
+    }
     public function categorized(){
         return $this->belongsTo(Category::class,'category','id');
     }
