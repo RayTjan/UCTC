@@ -53,7 +53,7 @@
                     </div>
                     <div class="form-group">
                         <label>Proposal:</label>
-                        <input type="file" class="form-control-file">
+                        <input type="file" name="proposal" class="form-control-file">
                     </div>
 
                     <div class="form-group">

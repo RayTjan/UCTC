@@ -17,7 +17,7 @@ class ClientController extends Controller
     public function index()
     {
         $clients = Client::all();
-        return view('listClient', compact('clients'));
+        return view('2ndRoleBlades.listClient', compact('clients'));
     }
 
     /**
@@ -27,8 +27,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        $clients = Client::all();
-        return view('addClient', compact('clients'));
+        //
     }
 
     /**

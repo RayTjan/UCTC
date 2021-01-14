@@ -8,6 +8,7 @@ use App\Models\Client;
 use App\Models\Documentation;
 use App\Models\Finance;
 use App\Models\Program;
+use App\Models\Proposal;
 use App\Models\Type;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -173,6 +174,25 @@ class ProgramController extends Controller
                 Documentation::create($dataDoc);
             }
         }
+
+        //untuk Proposal
+        if ($request->proposal != null) {
+            $pdf = $request->validate([
+                'proposal' => 'required|mimes:pdf|max:10000',
+            ]);
+
+            $pdfName = $pdf['proposal']->getClientOriginalName().'-'.time().'.'.$data['proposal']->extension();
+            $pdf['proposal']->move(public_path('/files/proposal'), $pdfName);
+
+            $dataProposal = array(
+                'proposal' => $pdfName,
+                'status' => '0',
+                'program' => $program->id,
+            );
+
+            Proposal::create($dataProposal);
+        }
+
 
         return redirect()->route('staff.program.show', $program);
     }

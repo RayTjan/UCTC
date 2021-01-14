@@ -63,14 +63,14 @@
         </div>
 
 {{--        image--}}
-        @if(isset($program->hasDoc[0]->id))
+        @if(isset($program->hasDocs[0]->id))
         <div class="">
             <h2 class="col font-weight-bold text-center">Documentations</h2>
 
             <div class="container-fluid py-3">
                 <div class="d-flex colorScroll heightPic">
 
-                    @foreach($program->hasDoc as $doc)
+                    @foreach($program->hasDocs as $doc)
                     <div class="col-lg-3 col-6" style="padding: 10px;">
                         <div class="hover hover-5 text-white rounded">
                             <img src="/img/documentation/{{$doc->documentation}}" alt="image">
@@ -135,6 +135,9 @@
                 <a href="{{ route('staff.committee.show', $program) }}" class="circular yellowstar font-weight-bold p-2 yellow-hover">Committee</a>
                 <a href="{{ route('staff.action.show', $program) }}" class="circular bluestar font-weight-bold p-2 blue-hover">Action Plan</a>
                 <a href="{{ route('staff.program.edit', $program) }}" class="circular purplestar font-weight-bold p-2 purple-hover">Edit</a>
+                @if(isset($program->hasProposals[0]->id))
+                    <a href="{{ route('staff.proposal.show', $program) }}" class="circular graystar font-weight-bold p-2 gray-hover">Proposal</a>
+                @endif
                 <button type="button"
                         data-toggle="modal"
                         data-target="#deleteProgram"

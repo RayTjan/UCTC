@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Staff;
 
 use App\Http\Controllers\Controller;
+use App\Models\Program;
 use App\Models\Proposal;
 use Illuminate\Http\Request;
 
@@ -45,9 +46,10 @@ class ProposalController extends Controller
      * @param  \App\Models\Proposal  $proposal
      * @return \Illuminate\Http\Response
      */
-    public function show(Proposal $proposal)
+    public function show($id)
     {
-        //
+        $program = Program::findOrFail($id);
+        return view('2ndRoleBlades.listProposal', compact('program'));
     }
 
     /**
