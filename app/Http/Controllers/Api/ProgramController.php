@@ -50,18 +50,18 @@ class ProgramController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function show($id)
     {
-        $users = User::all();
+        $user = User::findOrFail($id);
         $programs = Program::all();
-        $createdPrograms = $programs->where('creator', $id);
-        $participatedPrograms = Program::whereIn('id',function ($query) use ($users){
-            $query->select('uctc_program_id')->from('uctc_program_user')->whereNotIn('uctc_user_id',$users);
-        });
-        $mergePrograms = $participatedPrograms->$createdPrograms;
+        $createdPrograms = $programs->where('created_by', $id);
+        $participatedPrograms = $user->attends;
+        $mergePrograms = $createdPrograms->merge($participatedPrograms);
         return ProgramResource::collection($mergePrograms);
+//        return ProgramResource::collection($participatedPrograms);
+
     }
 
     /**
