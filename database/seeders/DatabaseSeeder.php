@@ -166,7 +166,6 @@ class DatabaseSeeder extends Seeder
         $user->email = 'staff@gmail.com';
         $user->password = Hash::make('something');
         $user->role_id = 2;
-        $user->role_id = 1;
         $user->identity_id = 1;
         $user->identity_type="App\Models\Staff";
         $user->save();

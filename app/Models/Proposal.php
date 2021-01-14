@@ -13,5 +13,6 @@ class Proposal extends Model
     protected $fillable = [
         'proposal',
         'status',
+        'program',
     ];
 }
