@@ -36,7 +36,17 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $task =  Task::create([
+                'name' => $request->name,
+                'status' => $request->status,
+                'description' => $request->description,
+                'due_date'=>$request->due_date,
+                'action_plan' => $request->action_plan,
+                'PIC' => $request->PIC,
+            ]
+        );
+
+        return $task;
     }
 
     /**
@@ -72,7 +82,17 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (Task::find($id)->name !=null){
+            Task::find($id)->update($request->all());
+            return response([
+                'message' =>  'Task Updated'
+            ]);
+        }
+        else{
+            return response([
+                'message' => 'Updating Task Failed'
+            ]);
+        }
     }
 
     /**
@@ -83,6 +103,10 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $task = Task::findOrFail($id);
+        $task->delete();
+        return response([
+            'message' =>  'Task Deleted'
+        ]);
     }
 }
