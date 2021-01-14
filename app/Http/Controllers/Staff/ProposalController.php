@@ -49,7 +49,8 @@ class ProposalController extends Controller
     public function show($id)
     {
         $program = Program::findOrFail($id);
-        return view('2ndRoleBlades.listProposal', compact('program'));
+        $proposals = Proposal::where('program', $id)->get();
+        return view('2ndRoleBlades.listProposal', compact('proposals', 'program'));
     }
 
     /**

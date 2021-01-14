@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Client')
+@section('title', 'Proposal')
 @section('content')
 
     <script>
@@ -10,7 +10,7 @@
 
     <div class="container clearfix" style="margin-top: 20px;">
         <div class="row">
-            <h1 class="col font-weight-bold">{{ $program->name }} Client List</h1>
+            <h1 class="col font-weight-bold">{{ $program->name }} Proposal List</h1>
         </div>
 
         <div class="row" style="margin-top: 30px;">
@@ -29,22 +29,27 @@
                             <li class="guiz-awards-time customComittee">Delete</li>
                         </ul>
 
-                        @foreach($program->hasProposals as $proposal)
+                        @foreach($proposals as $proposal)
                             <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget">
-                                <li class="guiz-awards-time customComittee">{{ $proposal->proposal }}</li>
+                                <li class="guiz-awards-time customComittee">
+                                    @if(strlen($proposal->proposal) > 35)
+                                        {{ substr($proposal->proposal,0,20)."..." }}
+                                    @else
+                                        {{ $proposal->proposal }}
+                                    @endif
+                                </li>
                                 <li class="guiz-awards-time customComittee">{{ $proposal->status }}</li>
                                 <li class="guiz-awards-time customComittee">
-                                    <a href="" class="circular graystar font-weight-bold p-1 gray-hover">Replace</a>
+                                    <a href="" class="circular bluestar p-1 blue-hover">Replace</a>
                                 </li>
                                 <li class="guiz-awards-time customComittee">
-                                    <a href="" class="circular greenstar font-weight-bold p-1 green-hover">Download</a>
+                                    <a href="" class="circular greenstar p-1 green-hover">Download</a>
                                 </li>
                                 <li class="guiz-awards-time customComittee">
-                                    <a href="" class="circular redstar font-weight-bold p-1 red-hover">Delete</a>
+                                    <a href="" class="circular redstar p-1 red-hover">Delete</a>
                                 </li>
                             </ul>
                         @endforeach
-
 
                     </div>
                 </div>
