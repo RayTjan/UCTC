@@ -48,11 +48,7 @@
                                     @endif
                                 </li>
                                 <li class="guiz-awards-time customComittee">
-                                    <form action="{{ 'admin.proposal.download', $proposal->id }}" method="post" enctype="multipart/form-data">
-                                        @csrf
-                                        <input type="hidden" name="_method" value="PATCH">
-                                        <button type="submit" class="btn btn-success">Download</button>
-                                    </form>
+                                    <a href="/files/proposal/{{ $proposal->proposal }}" class="btn btn-success">Download</a>
                                 </li>
                                 <li class="guiz-awards-time customComittee">
                                     <div class="dropdown">

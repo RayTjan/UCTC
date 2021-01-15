@@ -282,7 +282,8 @@ main {
 
 .yellow-hover:hover, .blue-hover:hover,
 .purple-hover:hover, .gray-hover:hover,
-.green-hover:hover, .red-hover:hover{
+.green-hover:hover, .red-hover:hover,
+.cyan-hover:hover, .tosca-hover:hover{
     text-decoration: none;
     color: #D9D9D9;
 }
@@ -311,6 +312,16 @@ main {
 .red-hover:hover {
     background-color: #C50000;
     border-color: #C50000;
+}
+
+.cyan-hover:hover {
+    background-color: #00B49C;
+    border-color: #00B49C;
+}
+
+.tosca-hover:hover {
+    background-color: #126A81;
+    border-color: #126A81;
 }
 
 .gray-hover:hover {
@@ -379,7 +390,7 @@ button, select, input {
     cursor:pointer;
 }
 .quiz-window-body {
-    background-color: #f9f9f9;
+    background-color: #f0f0f0;
 }
 .guiz-awards-row {
     margin:0;
@@ -1174,6 +1185,11 @@ p.titlelogin{
 
 .typeBudgetForm {
     width: 12%;
+}
+
+/*File attachment*/
+.attachmentWidth {
+    width: 78%;
 }
 
 /*admin attribute*/

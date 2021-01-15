@@ -34,6 +34,9 @@ class Program extends Model
     public function hasProposals(){
         return $this->hasMany(Proposal::class, 'program','id');
     }
+    public function hasAttachments(){
+        return $this->hasMany(FileAttachment::class, 'program','id');
+    }
     public function categorized(){
         return $this->belongsTo(Category::class,'category','id');
     }

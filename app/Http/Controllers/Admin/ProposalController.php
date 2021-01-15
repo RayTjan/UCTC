@@ -105,16 +105,4 @@ class ProposalController extends Controller
         return empty($program) ? redirect()->back()->with('Fail', "Failed to reject")
             : redirect()->back()->with('Success', 'Success program proposal: #('.$proposal->program->name.') Rejected');
     }
-
-    public function download($id){
-        $proposal = Proposal::findOrFail($id);
-        dd($id);
-        $file = public_path(('/files/proposal'), $proposal->proposal);
-        $headers = array(
-            'Content-Type: application/pdf',
-        );
-
-        return response()->download($file, $proposal->proposal, $headers);
-        return redirect(route('admin.proposal.show',$proposal->program));
-    }
 }

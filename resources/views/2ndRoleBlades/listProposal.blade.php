@@ -151,19 +151,42 @@
                                 </li>
                                 @endif
                                 <li class="guiz-awards-time customComittee">
-                                    <form action="{{ 'staff.proposal.download', $proposal->id }}" method="post" enctype="multipart/form-data">
-                                        @csrf
-                                        <button type="submit" class="btn btn-success">Download</button>
-                                    </form>
+                                    <a href="/files/proposal/{{ $proposal->proposal }}" class="btn btn-success">Download</a>
                                 </li>
                                 <li class="guiz-awards-time customComittee">
-                                    <form action="{{ route('staff.proposal.destroy', $proposal ) }}" method="post">
-                                        @csrf
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form>
+                                    <button
+                                        type="button"
+                                        data-toggle="modal"
+                                        data-target="#deleteProposal-{{ $proposal->id }}"
+                                        class="btn btn-danger">
+                                        Delete
+                                    </button>
                                 </li>
                             </ul>
+
+                            {{--        Delete Task--}}
+
+                            <div class="modal fade" id="deleteProposal-{{ $proposal->id }}">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Are you sure want to delete this {{ $proposal->proposal }} proposal ?</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body d-inline-block text-center" style="text-align: left;">
+                                            <form action="{{ route('staff.proposal.destroy', $proposal) }}" method="post" class="d-inline-block">
+                                                @csrf
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover">Yes</button>
+                                            </form>
+                                            <button type="button" class="btnA circular bluestar font-weight-bold p-2 blue-hover" data-dismiss="modal">No</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         @endforeach
 
                     </div>

@@ -54,7 +54,6 @@ Route::group([
     Route::resource('proposal', \App\Http\Controllers\Admin\ProposalController::class);
     Route::post('proposal/{id}/approve', [\App\Http\Controllers\Admin\ProposalController::class, 'approve'])->name('proposal.approve');
     Route::post('proposal/{id}/reject', [\App\Http\Controllers\Admin\ProposalController::class, 'reject'])->name('proposal.reject');
-    Route::patch('proposal/{id}', [\App\Http\Controllers\Staff\ProposalController::class, 'download'])->name('proposal.download');
     Route::resource('report', \App\Http\Controllers\Admin\ReportController::class);
     Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
 });
@@ -71,16 +70,16 @@ Route::group([
     Route::post('committee/{id}/reject', [\App\Http\Controllers\Staff\CommitteeController::class, 'reject'])->name('committee.reject');
     Route::resource('task', \App\Http\Controllers\Staff\TaskController::class);
     Route::resource('client', \App\Http\Controllers\Staff\ClientController::class);
-    Route::post('proposal/download/{id}', ['as' => 'proposal.download', 'uses' => '\App\Http\Controllers\Staff\ProposalController@download']);
     Route::resource('proposal', \App\Http\Controllers\Staff\ProposalController::class);
-//    Route::post('proposal/{id}/download', [\App\Http\Controllers\Staff\ProposalController::class, 'download'])->name('proposal.download');
+    Route::get('report/create/{id}', ['as' => 'report.create', 'uses' => '\App\Http\Controllers\Staff\ReportController@create']);
+    Route::resource('report', \App\Http\Controllers\Staff\ReportController::class)->except('create');
     Route::resource('user', \App\Http\Controllers\Staff\UserController::class);
     Route::get('action/create/{id}', ['as' => 'action.create', 'uses' => '\App\Http\Controllers\Staff\ActionController@create']);
     Route::resource('action', \App\Http\Controllers\Staff\ActionController::class);
     Route::get('actionTask/create/{id}', ['as' => 'actionTask.create', 'uses' => '\App\Http\Controllers\Staff\ActionTaskController@create']);
     Route::resource('actionTask', \App\Http\Controllers\Staff\ActionTaskController::class)->except('create');
-    Route::resource('file', \App\Http\Controllers\Staff\FileAttachmentController::class);
-//    Route::get('/file/{id}', [\App\Http\Controllers\Staff\FileAttachmentController::class, 'create'])->name('file.create');
+    Route::get('file/create/{id}', ['as' => 'file.create', 'uses' => '\App\Http\Controllers\Staff\FileAttachmentController@create']);
+    Route::resource('file', \App\Http\Controllers\Staff\FileAttachmentController::class)->except('create');
     Route::resource('finance', \App\Http\Controllers\Staff\FinanceController::class);
 });
 

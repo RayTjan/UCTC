@@ -37,6 +37,7 @@ class ProposalController extends Controller
      */
     public function store(Request $request)
     {
+
         $pdf = $request->validate([
             'proposal' => 'required|mimes:pdf|max:10000',
         ]);
@@ -52,18 +53,6 @@ class ProposalController extends Controller
 
         Proposal::create($dataProposal);
         return redirect(route('staff.proposal.show', $request->selected_program));
-    }
-
-    public function download($id){
-        $proposal = Proposal::findOrFail($id);
-        dd($id);
-        $file = public_path(('/files/proposal'), $proposal->proposal);
-        $headers = array(
-            'Content-Type: application/pdf',
-        );
-
-        return response()->download($file, $proposal->proposal, $headers);
-        return redirect(route('staff.proposal.show',$proposal->program));
     }
 
     /**
