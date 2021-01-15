@@ -71,11 +71,14 @@ Route::group([
     Route::post('committee/{id}/reject', [\App\Http\Controllers\Staff\CommitteeController::class, 'reject'])->name('committee.reject');
     Route::resource('task', \App\Http\Controllers\Staff\TaskController::class);
     Route::resource('client', \App\Http\Controllers\Staff\ClientController::class);
+    Route::post('proposal/download/{id}', ['as' => 'proposal.download', 'uses' => '\App\Http\Controllers\Staff\ProposalController@download']);
     Route::resource('proposal', \App\Http\Controllers\Staff\ProposalController::class);
-    Route::patch('proposal/{id}', [\App\Http\Controllers\Staff\ProposalController::class, 'download'])->name('proposal.download');
+//    Route::post('proposal/{id}/download', [\App\Http\Controllers\Staff\ProposalController::class, 'download'])->name('proposal.download');
     Route::resource('user', \App\Http\Controllers\Staff\UserController::class);
+    Route::get('action/create/{id}', ['as' => 'action.create', 'uses' => '\App\Http\Controllers\Staff\ActionController@create']);
     Route::resource('action', \App\Http\Controllers\Staff\ActionController::class);
-    Route::resource('actionTask', \App\Http\Controllers\Staff\ActionTaskController::class);
+    Route::get('actionTask/create/{id}', ['as' => 'actionTask.create', 'uses' => '\App\Http\Controllers\Staff\ActionTaskController@create']);
+    Route::resource('actionTask', \App\Http\Controllers\Staff\ActionTaskController::class)->except('create');
     Route::resource('file', \App\Http\Controllers\Staff\FileAttachmentController::class);
 //    Route::get('/file/{id}', [\App\Http\Controllers\Staff\FileAttachmentController::class, 'create'])->name('file.create');
     Route::resource('finance', \App\Http\Controllers\Staff\FinanceController::class);

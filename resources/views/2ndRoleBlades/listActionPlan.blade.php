@@ -18,7 +18,7 @@
                 {{-- auth to limit content, it cannot be accessed until login --}}
                 <div class="float-right">
                     {{--                <a href="{{route('action.create')}}" class="btn btn-primary btn-block" role="button" aria-pressed="true">New action</a>--}}
-                    <a href="{{route('staff.action.create')}}" role="button" aria-pressed="true">
+                    <a href="{{route('staff.action.create', $program->id)}}" role="button" aria-pressed="true">
                         <svg
                             aria-hidden="true"
                             focusable="false"
@@ -81,14 +81,48 @@
                                                 </a>
 
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" href="{{route('staff.action.edit',$actionPlan)}}">Edit</a>
-                                                    <a class="dropdown-item btnDelete" href="#">Delete</a>
+                                                    <form action="{{ route('staff.action.edit', $actionPlan) }}" method="get">
+                                                        @csrf
+                                                        <button type="submit" class="pl-2 btnA dropdown-item">Edit</button>
+                                                    </form>
+                                                    <form action="{{ route('staff.action.destroy', $actionPlan) }}" method="post">
+                                                        @csrf
+                                                        <input type="hidden" name="_method" value="DELETE">
+                                                        <button
+                                                            type="button"
+                                                            data-toggle="modal"
+                                                            data-target="#deleteAction-{{ $actionPlan->id }}"
+                                                            class="pl-2 btnA dropdown-item btnDelete">Delete</button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </li>
                                 </a>
                             </ul>
+
+                            {{--        Delete Program--}}
+
+                            <div class="modal fade" id="deleteAction-{{$actionPlan->id}}">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Are you sure want to delete this {{ $actionPlan->name }} Action Plan?</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body d-inline-block text-center" style="text-align: left;">
+                                            <form action="{{ route('staff.action.destroy', $actionPlan) }}" method="post" class="d-inline-block">
+                                                @csrf
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover">Yes</button>
+                                            </form>
+                                            <button type="button" class="btnA circular bluestar font-weight-bold p-2 blue-hover" data-dismiss="modal">No</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <?php $yes += 1; ?>
                         @endforeach
 

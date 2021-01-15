@@ -5,7 +5,7 @@
         <div class="row">
             <h1 class="col font-weight-bold">{{$program->name}}</h1>
         </div>
-        <h3>{{ str_replace("-","/",date("m-d-Y", strtotime($program->program_date))) }}</h3>
+        <h3>{{ str_replace("-","/",date("d-m-Y", strtotime($program->program_date))) }}</h3>
 
 
         <h6>{{$program->status}}</h6>

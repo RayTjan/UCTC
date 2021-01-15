@@ -18,7 +18,7 @@
                         <div class="small-box inner-bg-change">
                             <div class="inner inner-bg-change">
                                 <h2 class="font-weight-bold">{{$program->name}}</h2>
-                                <p>{{ str_replace("-","/",date("m-d-Y", strtotime($program->program_date))) }}</p>
+                                <p>{{ str_replace("-","/",date("d-m-Y", strtotime($program->program_date))) }}</p>
                             </div>
                             <a href="{{route('staff.program.show',$program)}}" class="small-box-footer blackhex">More info <i class="fa fa-arrow-circle-right"></i></a>
                         </div>

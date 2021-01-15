@@ -153,7 +153,6 @@
                                 <li class="guiz-awards-time customComittee">
                                     <form action="{{ 'staff.proposal.download', $proposal->id }}" method="post" enctype="multipart/form-data">
                                         @csrf
-                                        <input type="hidden" name="_method" value="PATCH">
                                         <button type="submit" class="btn btn-success">Download</button>
                                     </form>
                                 </li>

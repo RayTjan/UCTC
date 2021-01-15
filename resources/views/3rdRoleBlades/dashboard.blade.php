@@ -18,7 +18,7 @@
                         <div class="small-box inner-bg-change">
                             <div class="inner inner-bg-change">
                                 <h2 class="font-weight-bold">{{$program->name}}</h2>
-                                <p>{{ str_replace("-","/",date("m-d-Y", strtotime($program->program_date))) }}</p>
+                                <p>{{ str_replace("-","/",date("d-m-Y", strtotime($program->program_date))) }}</p>
                             </div>
                             <a href="{{route('user.program.show',$program)}}" class="small-box-footer blackhex">More info <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
@@ -80,7 +80,7 @@
                             <!-- todo text -->
                             <span class="text">{{ $task->name }}</span>
                             <div class="float-right">
-                                <p class="">{{ substr(str_replace("-","/",date("m-d-Y", strtotime($task->due_date))),0,5) }}</p>
+                                <p class="">{{ substr(str_replace("-","/",date("d-m-Y", strtotime($task->due_date))),0,5) }}</p>
                             </div>
                         </li>
                         @endforeach

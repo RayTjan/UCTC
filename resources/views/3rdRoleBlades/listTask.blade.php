@@ -25,7 +25,7 @@
                                         ?>
                                         <div class="guiz-awards-subtitle">{{ $desc }}</div>
                                     </li>
-                                    <li class="guiz-awards-time text-right blackhex">{{ substr(str_replace("-","/",date("m-d-Y", strtotime($tasks[$con]->due_date))),0,5) }}</li>
+                                    <li class="guiz-awards-time text-right blackhex">{{ substr(str_replace("-","/",date("d-m-Y", strtotime($tasks[$con]->due_date))),0,5) }}</li>
 
                                 </ul>
                             </a>

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Staff;
 
 use App\Http\Controllers\Controller;
+use App\Models\ActionPlan;
 use App\Models\FileAttachment;
+use App\Models\Program;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
@@ -37,10 +39,21 @@ class FileAttachmentController extends Controller
      */
     public function store(Request $request)
     {
-        //tambahin code untuk complete task
+        $task = Task::findOrFail($request->idTask);
+        $task->update([
+            'status' => $request->status,
+        ]);
 
-        FileAttachment::create($request->all());
-        return redirect()->route('staff.program.index');
+        //call program
+        $action = ActionPlan::findOrFail($task->action_plan);
+        $program = Program::findOrFail($action->program);
+
+        FileAttachment::create([
+            'name' => $request->name,
+            'file_attachment' => $request->file_attachment,
+            'program' => $program->id,
+        ]);
+        return redirect()->route('staff.actionTask.show', $task->action_plan);
     }
 
     /**

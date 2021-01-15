@@ -24,10 +24,10 @@ class ActionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        $programs = Program::all();
-        return view( '2ndRoleBlades.addActionPlan',compact('programs'));
+        $program = Program::findOrFail($id);
+        return view( '2ndRoleBlades.addActionPlan',compact('program'));
     }
 
     /**
@@ -39,8 +39,7 @@ class ActionController extends Controller
     public function store(Request $request)
     {
         ActionPlan::create($request->all());
-        $program = Program::findOrFail($request->program);
-        return redirect()->route('staff.action.show', $program);
+        return redirect()->route('staff.action.show', $request->program);
     }
 
     /**
@@ -66,9 +65,8 @@ class ActionController extends Controller
      */
     public function edit($id)
     {
-        $program = Program::findOrFail($id);
-        $programs = Program::all();
-        return view( '2ndRoleBlades.editActionPlan',compact('actionPlan','programs','program'));
+        $action = ActionPlan::findOrFail($id);
+        return view( '2ndRoleBlades.editActionPlan',compact('action'));
     }
 
     /**
@@ -80,7 +78,9 @@ class ActionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $action = ActionPlan::findOrFail($id);
+        $action->update($request->all());
+        return redirect(route('staff.action.show', $action->program));
     }
 
     /**
@@ -91,6 +91,8 @@ class ActionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $action = ActionPlan::findOrFail($id);
+        $action->delete();
+        return redirect()->route('staff.action.show', $action->program);
     }
 }
