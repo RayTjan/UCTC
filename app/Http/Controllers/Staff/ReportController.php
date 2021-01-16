@@ -28,6 +28,10 @@ class ReportController extends Controller
     public function create($id)
     {
         $program = Program::findOrFail($id);
+
+        if (isset($program->hasReports[0])) {
+            return redirect(route('staff.report.show',$program));
+        }
         return view('2ndRoleBlades.addReport',compact('program'));
     }
 
@@ -51,7 +55,6 @@ class ReportController extends Controller
 
         $dataReport = array(
             'report' => $pdfName,
-            'status' => $request->statusReport,
             'program' => $request->program,
         );
 
@@ -65,9 +68,11 @@ class ReportController extends Controller
      * @param  \App\Models\Report  $report
      * @return \Illuminate\Http\Response
      */
-    public function show(Report $report)
+    public function show($id)
     {
-        //
+        $program = Program::findOrFail($id);
+        $reports = Report::where('program',$id)->get();
+        return view('2ndRoleBlades.listReport',compact('program','reports'));
     }
 
     /**
@@ -108,7 +113,7 @@ class ReportController extends Controller
             'report' => $dataReport['report']
         ]);
 
-        return redirect(route('staff.program.show', $request->program));
+        return redirect(route('staff.report.show', $report->program));
     }
 
     /**

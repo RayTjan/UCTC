@@ -15,4 +15,9 @@ class Report extends Model
         'status',
         'program',
     ];
+
+    public function belongProgram(){
+        return $this->belongsTo(Program::class,'program','id');
+    }
+
 }

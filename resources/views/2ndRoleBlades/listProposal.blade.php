@@ -98,7 +98,7 @@
                                 </li>
                                 <li class="guiz-awards-time customComittee">
                                     @if($proposal->status == '0')
-                                        <div class="text-warning">Pending</div>
+                                        <div class="text-primary">Pending</div>
                                     @elseif($proposal->status == '1')
                                         <div class="text-success">Approved</div>
                                     @elseif($proposal->status == '2')
@@ -110,13 +110,13 @@
                                     <button type="submit" class="btn btn-primary"
                                             title="Add Proposal"
                                             data-toggle="modal"
-                                            data-target="#replaceProposal">
+                                            data-target="#replaceProposal-{{$proposal->id}}">
                                         Replace
                                     </button>
                                 </li>
 
 {{--                                    modal edit proposal--}}
-                                    <div class="modal fade" id="replaceProposal">
+                                    <div class="modal fade" id="replaceProposal-{{$proposal->id}}">
                                         <div class="modal-dialog">
                                             <div class="modal-content card-bg-change">
                                                 <!-- Modal Header -->
