@@ -49,6 +49,8 @@ Route::group([
 ], function () {
     Route::get('/', 'App\Http\Controllers\Admin\DashboardController@index');
     Route::resource('program', \App\Http\Controllers\Admin\ProgramController::class);
+    Route::post('program/{id}/approve', [\App\Http\Controllers\Admin\ProgramController::class, 'approve'])->name('program.approve');
+    Route::post('program/{id}/suspend', [\App\Http\Controllers\Admin\ProgramController::class, 'suspend'])->name('program.suspend');
     Route::resource('committee',\App\Http\Controllers\Admin\CommitteeController::class);
     Route::resource('user', \App\Http\Controllers\Admin\UserController::class);
     Route::resource('proposal', \App\Http\Controllers\Admin\ProposalController::class);

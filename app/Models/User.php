@@ -71,20 +71,20 @@ class User extends Authenticatable
     }
 
     public function isAdmin(){
-        if($this->role->name == 'Admin' && $this->is_login == '1' && $this->is_active =='1'&& $this->is_verified =='1'){
+        if($this->role->id == 1 && $this->is_login == '1' && $this->is_active =='1'&& $this->is_verified =='1'){
             return true;
         }
         return false;
     }
 
     public function isCreator(){
-        if($this->role->name == 'Staff' && $this->is_login == '1' && $this->is_active =='1'&& $this->is_verified =='1'){
+        if($this->role->id == 2 && $this->is_login == '1' && $this->is_active =='1'&& $this->is_verified =='1'){
             return true;
         }
         return false;
     }
     public function isUser(){
-        if($this->role->name == 'User' && $this->is_login == '1'&& $this->is_active =='1'&& $this->is_verified =='1'){
+        if($this->role->id == 3 && $this->is_login == '1'&& $this->is_active =='1'&& $this->is_verified =='1'){
             return true;
         }
         return false;

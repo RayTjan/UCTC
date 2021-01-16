@@ -554,6 +554,11 @@ button, select, input {
     border-color: #EFB93D;
 }
 
+.iconAct {
+    width: 30px;
+    height: 30px;
+}
+
 /*image*/
 .hover {
     overflow: hidden;
