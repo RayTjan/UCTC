@@ -109,4 +109,16 @@ class TaskController extends Controller
             'message' =>  'Task Deleted'
         ]);
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function thisTask($id)
+    {
+        $task = Task::find($id);
+        return new TaskResource($task);
+    }
 }
