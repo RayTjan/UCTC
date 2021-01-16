@@ -74,7 +74,7 @@ Route::group([
     Route::get('report/create/{id}', ['as' => 'report.create', 'uses' => '\App\Http\Controllers\Staff\ReportController@create']);
     Route::resource('report', \App\Http\Controllers\Staff\ReportController::class)->except('create');
     Route::resource('user', \App\Http\Controllers\Staff\UserController::class);
-    Route::get('action/create/{id}', ['as' => 'action.create', 'uses' => '\App\Http\Controllers\Staff\ActionController@create']);
+//    Route::get('action/create/{id}', ['as' => 'action.create', 'uses' => '\App\Http\Controllers\Staff\ActionController@create']);
     Route::resource('action', \App\Http\Controllers\Staff\ActionController::class);
     Route::get('actionTask/create/{id}', ['as' => 'actionTask.create', 'uses' => '\App\Http\Controllers\Staff\ActionTaskController@create']);
     Route::resource('actionTask', \App\Http\Controllers\Staff\ActionTaskController::class)->except('create');
