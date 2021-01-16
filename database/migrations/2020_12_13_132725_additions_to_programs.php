@@ -17,8 +17,8 @@ class AdditionsToPrograms extends Migration
             $table->unsignedBigInteger('role')->nullable();
             $table->unsignedBigInteger('type')->nullable();
             $table->unsignedBigInteger('category')->nullable();
-            $table->foreign('category')->references('id')->on('uctc_categories');
-            $table->foreign('type')->references('id')->on('uctc_types');
+            $table->foreign('category')->references('id')->on('uctc_categories')->onDelete('set null');
+            $table->foreign('type')->references('id')->on('uctc_types')->onDelete('set null');
 
         });
     }

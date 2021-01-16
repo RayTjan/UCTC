@@ -33,7 +33,7 @@
                         <label >Goal: </label>
                         <input type="text" class="form-control" name="goal" required>
                     </div>
-                    <input type="hidden" name="status" value="Started">
+                    <input type="hidden" name="status" value="0">
                     <input type="hidden" name="created_by" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
                     <div class="form-group">
                         <label>Program Date / Deadline:</label>
