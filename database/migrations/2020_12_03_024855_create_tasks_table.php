@@ -22,8 +22,8 @@ class CreateTasksTable extends Migration
             $table->unsignedBigInteger('action_plan')->nullable();
             $table->unsignedBigInteger('PIC')->nullable();
             $table->timestamps();
-            $table->foreign('action_plan')->references('id')->on('uctc_action_plans');
-            $table->foreign('PIC')->references('id')->on('uctc_users');
+            $table->foreign('action_plan')->references('id')->on('uctc_action_plans')->onDelete('cascade');
+            $table->foreign('PIC')->references('id')->on('uctc_users')->onDelete('cascade');
         });
     }
 

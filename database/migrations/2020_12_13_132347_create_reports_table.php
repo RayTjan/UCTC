@@ -19,7 +19,7 @@ class CreateReportsTable extends Migration
             $table->string('status')->default("0");;
             $table->unsignedBigInteger('program')->nullable();
             $table->timestamps();
-            $table->foreign('program')->references('id')->on('uctc_programs');
+            $table->foreign('program')->references('id')->on('uctc_programs')->onDelete('cascade');
         });
     }
 

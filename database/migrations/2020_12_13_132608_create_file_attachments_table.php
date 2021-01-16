@@ -19,7 +19,7 @@ class CreateFileAttachmentsTable extends Migration
             $table->string('file_attachment');
             $table->unsignedBigInteger('program')->nullable();
             $table->timestamps();
-            $table->foreign('program')->references('id')->on('uctc_programs');
+            $table->foreign('program')->references('id')->on('uctc_programs')->onDelete('cascade');
         });
     }
 

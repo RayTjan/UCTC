@@ -16,8 +16,8 @@ class PivotClientProgram extends Migration
 
         Schema::create('uctc_client_program', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('uctc_client_id')->constrained();
-            $table->foreignId('uctc_program_id')->constrained();
+            $table->foreignId('uctc_client_id')->constrained()->onDelete('cascade');
+            $table->foreignId('uctc_program_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

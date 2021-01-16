@@ -20,7 +20,7 @@ class CreateFinancesTable extends Migration
             $table->enum('type',['0','1']);
             $table->unsignedBigInteger('program')->nullable();
             $table->timestamps();
-            $table->foreign('program')->references('id')->on('uctc_programs');
+            $table->foreign('program')->references('id')->on('uctc_programs')->onDelete('cascade');
         });
     }
 

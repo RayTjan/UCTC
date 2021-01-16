@@ -26,11 +26,23 @@ class DatabaseSeeder extends Seeder
     {
 
         $jaka = new Jaka();
-        $jaka->name = 'jaka1';
+        $jaka->name = 'Pengajar';
         $jaka->save();
 
         $jaka = new Jaka();
-        $jaka->name = 'jaka2';
+        $jaka->name = 'Asisten Ahli';
+        $jaka->save();
+
+        $jaka = new Jaka();
+        $jaka->name = 'Asisten Ahli';
+        $jaka->save();
+
+        $jaka = new Jaka();
+        $jaka->name = 'Lektor Kepala';
+        $jaka->save();
+
+        $jaka = new Jaka();
+        $jaka->name = 'Profesor';
         $jaka->save();
 
         $title = new Title();
@@ -123,17 +135,17 @@ class DatabaseSeeder extends Seeder
         $staff->save();
 
         $role = new Role();
-        $role->name = 'Admin';
+        $role->name = 'Coordinator';
         $role->description = 'Something';
         $role->save();
 
         $role = new Role();
-        $role->name = "Staff";
+        $role->name = "Dosen";
         $role->description = "Something";
         $role->save();
 
         $role = new Role();
-        $role->name = "User";
+        $role->name = "Student";
         $role->description = "Something";
         $role->save();
 
