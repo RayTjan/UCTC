@@ -30,7 +30,28 @@
                         </path>
                     </g>
                 </svg>
-                </a>
+                    <form action="{{route('staff.program.index')}}"
+                          method="GET">
+                        {{ csrf_field() }}
+                        <button class="btn btn-primary btn-block" role="button"  type="submit">All</button>
+                    </form>
+                    @foreach($types as $type)
+                        <form action="{{route('staff.program.filterProgramType')}}"
+                              method="GET">
+                            {{ csrf_field() }}
+                            <input name="value" type="hidden" value="{{$type->id}}">
+                            <button class="btn btn-primary btn-block" role="button"  type="submit">{{$type->name}}</button>
+                        </form>
+{{--                        <a href="{{route('staff.program.filterProgram')}}" class="btn btn-primary btn-block" role="button" aria-pressed="true">$type->name</a>--}}
+                    @endforeach
+                    @foreach($categories as $category)
+                        <form action="{{route('staff.program.filterProgramCategory')}}"
+                              method="GET">
+                            {{ csrf_field() }}
+                            <input name="value" type="hidden" value="{{$category->id}}">
+                            <button class="btn btn-primary btn-block" role="button"  type="submit">{{$category->name}}</button>
+                        </form>
+                    @endforeach
 
             </div>
         </div>

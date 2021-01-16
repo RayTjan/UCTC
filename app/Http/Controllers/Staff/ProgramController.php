@@ -12,6 +12,7 @@ use App\Models\Proposal;
 use App\Models\Type;
 use App\Models\User;
 use Illuminate\Http\Request;
+use PhpParser\Node\Scalar\String_;
 use function PHPUnit\Framework\isEmpty;
 
 class ProgramController extends Controller
@@ -24,7 +25,9 @@ class ProgramController extends Controller
     public function index()
     {
         $programs = Program::all();
-        return view('2ndRoleBlades.listProgram', compact('programs'));
+        $types = Type::all();
+        $categories = Category::all();
+        return view('2ndRoleBlades.listProgram', compact('programs','types','categories'));
     }
 
     /**
@@ -209,5 +212,29 @@ class ProgramController extends Controller
         $program->delete();
         return redirect()->route('staff.program.index');
     }
-
+    /**
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function filterProgramType(Request $request){
+        $programs = Program::all()->where('type', $request->value);
+//        dd($programs);
+        $types = Type::all();
+        $categories = Category::all();
+        return view('2ndRoleBlades.listProgram', compact('programs','types','categories'));
+    }
+    public function filterProgramCategory(Request $request){
+        $programs = Program::all()->where('category', $request->value);
+//        dd($programs);
+        $types = Type::all();
+        $categories = Category::all();
+        return view('2ndRoleBlades.listProgram', compact('programs','types','categories'));
+    }
+    public function filterProgramDate(Request $request){
+//        $programs = Program::all()->where('category', $request->value);
+////        dd($programs);
+//        $types = Type::all();
+//        $categories = Category::all();
+//        return view('2ndRoleBlades.listProgram', compact('programs','types','categories'));
+    }
 }
