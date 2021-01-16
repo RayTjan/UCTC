@@ -25,7 +25,7 @@ Route::group(['middleware' => 'auth:api'], function (){
     Route::apiResource('tasks', \App\Http\Controllers\api\TaskController::class);
     Route::get('/programs/{id}/committees', [ProgramController::class,'committees']);
     Route::get('/user/{id}/tasks', [UserController::class,'userTasks']);
-    Route::get('/user/task/{id}', [\App\Http\Controllers\api\TaskController::class,'thisTask']);
+    Route::get('/task/{id}', [\App\Http\Controllers\api\TaskController::class,'thisTask']);
     Route::apiResource('profile', UserController::class);
     Route::post('logout', [LoginController::class,'logout']);
 });
