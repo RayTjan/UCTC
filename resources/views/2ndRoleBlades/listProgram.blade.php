@@ -52,6 +52,18 @@
                             <button class="btn btn-primary btn-block" role="button"  type="submit">{{$category->name}}</button>
                         </form>
                     @endforeach
+                    <form action="{{route('staff.program.filterProgramStatus')}}"
+                          method="GET">
+                        {{ csrf_field() }}
+                        <input name="value" type="hidden" value="1">
+                        <button class="btn btn-primary btn-block" role="button"  type="submit">Ongoing</button>
+                    </form>
+                    <form action="{{route('staff.program.filterProgramStatus')}}"
+                          method="GET">
+                        {{ csrf_field() }}
+                        <input name="value" type="hidden" value="2">
+                        <button class="btn btn-primary btn-block" role="button"  type="submit">Finished</button>
+                    </form>
 
             </div>
         </div>

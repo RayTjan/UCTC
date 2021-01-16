@@ -230,11 +230,18 @@ class ProgramController extends Controller
         $categories = Category::all();
         return view('2ndRoleBlades.listProgram', compact('programs','types','categories'));
     }
-    public function filterProgramDate(Request $request){
+    public function filterProgramStatus(Request $request){
+        $programs = Program::all()->where('status', $request->value);
+//        dd($programs);
+        $types = Type::all();
+        $categories = Category::all();
+        return view('2ndRoleBlades.listProgram', compact('programs','types','categories'));
+    }
+//    public function filterProgramDate(Request $request){
 //        $programs = Program::all()->where('category', $request->value);
 ////        dd($programs);
 //        $types = Type::all();
 //        $categories = Category::all();
 //        return view('2ndRoleBlades.listProgram', compact('programs','types','categories'));
-    }
+//    }
 }

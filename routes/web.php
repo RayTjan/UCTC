@@ -67,6 +67,7 @@ Route::group([
     Route::resource('program', \App\Http\Controllers\Staff\ProgramController::class);
     Route::get('filterProgramType', [\App\Http\Controllers\Staff\ProgramController::class,'filterProgramType'])->name('program.filterProgramType');
     Route::get('filterProgramCategory', [\App\Http\Controllers\Staff\ProgramController::class,'filterProgramCategory'])->name('program.filterProgramCategory');
+    Route::get('filterProgramStatus', [\App\Http\Controllers\Staff\ProgramController::class,'filterProgramStatus'])->name('program.filterProgramStatus');
     Route::get('filterProgramDate', [\App\Http\Controllers\Staff\ProgramController::class,'filterProgramDate'])->name('program.filterProgramDate');
     Route::resource('committee',\App\Http\Controllers\Staff\CommitteeController::class);
     Route::post('committee/{id}/approve', [\App\Http\Controllers\Staff\CommitteeController::class, 'approve'])->name('committee.approve');
