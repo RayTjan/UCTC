@@ -112,6 +112,14 @@ class ProgramController extends Controller
         $committees = User::whereIn('id',function ($query) use ($programs){
             $query->select('uctc_user_id')->from('uctc_program_user')->whereNotIn('uctc_program_id',$programs);
         })->get();
-        return UserResource::collection($committees);
+        $program = Program::findOrFail($id);
+        $pic = User::findOrFail($program->created_by);
+        if ($committees!=null){
+            $committees->push($pic);
+            return UserResource::collection($committees);
+        }
+        else{
+            return UserResource::collection($pic);
+        }
     }
 }
