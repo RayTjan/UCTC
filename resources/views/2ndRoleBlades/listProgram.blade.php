@@ -103,7 +103,7 @@
                             <li class="guiz-awards-title">{{$program->name}}
                                 <div class="guiz-awards-subtitle">{{$program->goal}}</div>
                             </li>
-                            <li class="guiz-awards-time">{{$program->program_date}}</li>
+                            <li class="guiz-awards-time">{{ str_replace("-","/",date("d-m-Y", strtotime($program->program_date))) }}</li>
                             </a>
                         </ul>
                             <?php $yes += 1; ?>

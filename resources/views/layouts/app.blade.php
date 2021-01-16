@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-{{--    alfredoo--}}
-<!-- Font Awesome -->
+{{--    plugin--}}
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -18,9 +18,14 @@
     <link rel="stylesheet" href="{{ asset('plugins/datepicker/datepicker3.css') }}">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker-bs3.css') }}">
+    <!-- Animate -->
+    <link rel="stylesheet" href="{{ asset('plugins/animate/animate.css') }}">
+    <!-- Perfect scrollbar -->
+    <link rel="stylesheet" href="{{ asset('plugins/perfect-scrollbar/perfect-scrollbar.css') }}">
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-{{--    stop alfred--}}
+{{--    stop plugin--}}
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,6 +46,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ '/css/table.css' }}" rel="stylesheet" type="text/css" >
     <link href="{{ '/css/customStyle.css' }}" rel="stylesheet" type="text/css" >
 
 

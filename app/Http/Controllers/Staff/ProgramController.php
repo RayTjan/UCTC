@@ -41,7 +41,8 @@ class ProgramController extends Controller
         $categories = Category::all();
         $types = Type::all();
         $clients = Client::all();
-        return view( '2ndRoleBlades.addProgram',compact('users','categories','types', 'clients'));
+        $committees = $users->except(\Illuminate\Support\Facades\Auth::user()->id)->whereNotIn('role_id', '1');
+        return view( '2ndRoleBlades.addProgram',compact('users','categories','types', 'clients','committees'));
     }
 
     /**
@@ -82,6 +83,20 @@ class ProgramController extends Controller
                 $client = Client::findOrFail($dataClientProgram['client_id']);
                 $client->attends()->syncWithoutDetaching($lastProgram->id);
             }
+        }
+
+
+        //insert committee
+
+        if (isset($data['committee'])) {
+            foreach ($data['committee'] as $item => $value) {
+                $dataCommittee = array(
+                    'uctc_user_id' => $data['committee'][$item],
+                );
+                $committee = User::findOrFail($dataCommittee['uctc_user_id']);
+                $committee->attends()->syncWithoutDetaching($lastProgram->id);
+            }
+
         }
 
 

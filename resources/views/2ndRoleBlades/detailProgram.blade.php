@@ -13,8 +13,6 @@
             </a>
         </div>
 
-
-        <h6>{{$program->status}}</h6>
         <div class="ml-4">
 
             @if(isset($clients[0]))
@@ -40,20 +38,37 @@
 
             <div class="row align-items-center">
                 <h6 class="col-md-1 font-weight-bold float-left tab1">Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </h6>
+                <p class="col-md-2 font-weight-bold circular cyanstar">
+                    {{$program->classified->name}}
+                </p>
+            </div>
+
+            <div class="row align-items-center">
+                <h6 class="col-md-1 font-weight-bold float-left tab1">Category: </h6>
                 <p class="col-md-2 font-weight-bold circular toscastar">
-                    @if($program->category == 1)
-                        Long-Term
-                    @else
-                        Short-Term
-                    @endif
+                    {{$program->categorized->name}}
                 </p>
             </div>
 
             <div class="row align-items-center">
                 <h6 class="col-md-1 font-weight-bold float-left">Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </h6>
-                <p class="col-md-1 font-weight-bold circular purplestar">
-                    {{$program->status}}
-                </p>
+                @if($program->status == '0')
+                    <p class="col-md-1 font-weight-bold circular purplestar">
+                        Pending
+                    </p>
+                @elseif($program->status == '1')
+                    <p class="col-md-1 font-weight-bold circular yellowstar">
+                        Ongoing
+                    </p>
+                @elseif($program->status == '2')
+                    <p class="col-md-1 font-weight-bold circular greenstar">
+                        Finished
+                    </p>
+                @elseif($program->status == '3')
+                    <p class="col-md-1 font-weight-bold circular redstar">
+                        Suspended
+                    </p>
+                @endif
             </div>
 
             <div class="row align-items-center">
