@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Client;
 use App\Models\Program;
 use App\Models\Type;
 use App\Models\User;
@@ -54,19 +55,13 @@ class ProgramController extends Controller
         $program = Program::findOrFail($id);
         $programs = Program::all()->except($id)->pluck('id');
 
-        $committees = User::whereIn('id',function ($query) use ($programs){
-            $query->select('uctc_user_id')->from('uctc_program_user')->where('is_approved','1')->whereNotIn('uctc_program_id',$programs);
+        //get clients
+
+        $clients = Client::whereIn('id',function ($query) use ($programs){
+            $query->select('uctc_client_id')->from('uctc_client_program')->whereNotIn('uctc_program_id',$programs);
         })->get();
 
-        $committeeList = User::whereNotIn('id',function ($query) use ($programs){
-            $query->select('uctc_user_id')->from('uctc_program_user')->whereNotIn('uctc_program_id',$programs);
-        })->where('role_id',3)->get();
-
-//        dd(User::whereIn('id',function ($query) use ($programs){
-//            $query->select('uctc_user_id')->from('uctc_program_user')->where('is_approved','1')->whereNotIn('uctc_program_id',$programs);
-//        })->get());
-
-        return view('3rdRoleBlades.detailProgram',compact('program','committeeList','committees'));
+        return view('3rdRoleBlades.detailProgram',compact('program','clients'));
     }
 
     /**

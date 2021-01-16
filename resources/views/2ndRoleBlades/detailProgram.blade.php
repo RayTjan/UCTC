@@ -5,7 +5,13 @@
         <div class="row">
             <h1 class="col font-weight-bold">{{$program->name}}</h1>
         </div>
-        <h3>{{ str_replace("-","/",date("m-d-Y", strtotime($program->program_date))) }}</h3>
+        <div class="d-flex justify-content-between">
+            <h3>{{ str_replace("-","/",date("d-m-Y", strtotime($program->program_date))) }}</h3>
+            <a href="{{route('staff.file.show',$program)}}" class="circular graystar font-weight-bold p-2 gray-hover">
+                <i class="fa fa-paperclip"></i>
+                Data link
+            </a>
+        </div>
 
 
         <h6>{{$program->status}}</h6>
@@ -131,23 +137,52 @@
 
         <div class="d-flex justify-content-between mb-5">
             <div class="">
-                <a href="{{ route('staff.client.show', $program) }}" class="circular yellowstar font-weight-bold p-2 yellow-hover">Client</a>
-                <a href="{{ route('staff.committee.show', $program) }}" class="circular yellowstar font-weight-bold p-2 yellow-hover">Committee</a>
-                <a href="{{ route('staff.action.show', $program) }}" class="circular bluestar font-weight-bold p-2 blue-hover">Action Plan</a>
-                <a href="{{ route('staff.program.edit', $program) }}" class="circular purplestar font-weight-bold p-2 purple-hover">Edit</a>
+                <a href="{{ route('staff.client.show', $program) }}" class="circular yellowstar font-weight-bold p-2 yellow-hover mr-2">
+                    <i class="fa fa-user"></i>
+                    Client
+                </a>
+                <a href="{{ route('staff.committee.show', $program) }}" class="circular cyanstar font-weight-bold p-2 cyan-hover mr-2">
+                    <i class="fa fa-user"></i>
+                    Committee
+                </a>
+                <a href="{{ route('staff.action.show', $program) }}" class="circular bluestar font-weight-bold p-2 blue-hover mr-2">
+                    <i class="fa fa-database"></i>
+                    Action Plan
+                </a>
+                <a href="{{ route('staff.program.edit', $program) }}" class="circular purplestar font-weight-bold p-2 purple-hover mr-2">
+                    <i class="fa fa-dashboard"></i>
+                    Edit
+                </a>
                 @if(isset($program->hasProposals[0]->id))
-                    <a href="{{ route('staff.proposal.show', $program) }}" class="circular graystar font-weight-bold p-2 gray-hover">Proposal</a>
+                    <a href="{{ route('staff.proposal.show', $program) }}" class="circular toscastar font-weight-bold p-2 tosca-hover mr-2">
+                        <i class="fa fa-address-book"></i>
+                        Proposal
+                    </a>
+                @endif
+
+{{--                buat report, masih belum tau ifnya apa--}}
+                @if(isset($program->hasProposals[0]->id))
+                    <a href="{{ route('staff.report.create', $program) }}" class="circular greenstar font-weight-bold p-2 green-hover mr-2">
+                        <i class="fa fa-book"></i>
+                        Report
+                    </a>
                 @endif
                 <button type="button"
                         data-toggle="modal"
                         data-target="#deleteProgram"
-                        class="btnA circular redstar font-weight-bold p-2 red-hover">Delete</button>
+                        class="btnA circular redstar font-weight-bold p-2 red-hover">
+                    <i class="fa fa-close"></i>
+                    Delete
+                </button>
             </div>
             <div>
                 <button type="button"
                         data-toggle="modal"
                         data-target="#detailBudget"
-                        class="btnA circular graystar font-weight-bold p-2 gray-hover">Detail</button>
+                        class="btnA circular graystar font-weight-bold p-2 gray-hover">
+                    <i class="fa fa-address-book"></i>
+                    Detail
+                </button>
             </div>
         </div>
 
@@ -157,6 +192,10 @@
                 <div class="modal-content">
                     <!-- Modal Header -->
                     <div class="modal-header card-bg-change">
+                        <a href="{{ route('staff.program.edit', $program) }}" class="circular yellowstar font-weight-bold p-2 yellow-hover">
+                            <i class="fa fa-money"></i>
+                            Finance
+                        </a>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <!-- Modal body -->

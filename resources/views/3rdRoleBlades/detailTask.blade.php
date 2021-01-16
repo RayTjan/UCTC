@@ -17,7 +17,7 @@
             <div class="row">
                 <h1 class="col font-weight-bold">{{ $tasks[$con]->name }}</h1>
             </div>
-            <h3>{{ str_replace("-","/",date("m-d-Y", strtotime($tasks[$con]->due_date))) }}</h3>
+            <h3>{{ str_replace("-","/",date("d-m-Y", strtotime($tasks[$con]->due_date))) }}</h3>
 
             <div class="">
                 <div class="row align-items-center">

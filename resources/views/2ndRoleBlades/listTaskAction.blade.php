@@ -5,7 +5,7 @@
     <div class="container clearfix" style="margin-top: 20px;">
         <div class="d-flex justify-content-between">
             <h1 class="font-weight-bold">Tasks In {{$action->name}} Action Plan</h1>
-            <a href="{{route('staff.actionTask.create')}}" role="button" aria-pressed="true">
+            <a href="{{route('staff.actionTask.create', $action->id)}}" role="button" aria-pressed="true">
                 <svg
                     aria-hidden="true"
                     focusable="false"
@@ -45,7 +45,7 @@
                                         ?>
                                         <div class="guiz-awards-subtitle">{{ $desc }}</div>
                                     </li>
-                                    <li class="guiz-awards-time text-right blackhex">{{ substr(str_replace("-","/",date("m-d-Y", strtotime($tasks[$con]->due_date))),0,5) }}</li>
+                                    <li class="guiz-awards-time text-right blackhex">{{ substr(str_replace("-","/",date("d-m-Y", strtotime($tasks[$con]->due_date))),0,5) }}</li>
 
                             </ul>
                         </a>

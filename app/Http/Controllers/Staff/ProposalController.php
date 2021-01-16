@@ -37,7 +37,22 @@ class ProposalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $pdf = $request->validate([
+            'proposal' => 'required|mimes:pdf|max:10000',
+        ]);
+
+        $pdfName = $pdf['proposal']->getClientOriginalName().'-'.time().'.'.$pdf['proposal']->extension();
+        $pdf['proposal']->move(public_path('/files/proposal'), $pdfName);
+
+        $dataProposal = array(
+            'proposal' => $pdfName,
+            'status' => '0',
+            'program' => $request->selected_program,
+        );
+
+        Proposal::create($dataProposal);
+        return redirect(route('staff.proposal.show', $request->selected_program));
     }
 
     /**
@@ -61,7 +76,7 @@ class ProposalController extends Controller
      */
     public function edit(Proposal $proposal)
     {
-        //
+        return view('2ndRoleBlades.editProposal', compact('proposal'));
     }
 
     /**
@@ -73,7 +88,23 @@ class ProposalController extends Controller
      */
     public function update(Request $request, Proposal $proposal)
     {
-        //
+        $pdf = $request->validate([
+            'proposal' => 'required|mimes:pdf|max:10000',
+        ]);
+
+        $pdfName = $pdf['proposal']->getClientOriginalName().'-'.time().'.'.$pdf['proposal']->extension();
+        $pdf['proposal']->move(public_path('/files/proposal'), $pdfName);
+
+        $dataProposal = array(
+            'proposal' => $pdfName,
+            'status' => '0',
+            'program' => $request->selected_program,
+        );
+
+        $proposal->update([
+            'proposal' => $dataProposal['proposal']
+        ]);
+        return redirect(route('staff.proposal.show', $request->selected_program));
     }
 
     /**
@@ -84,6 +115,8 @@ class ProposalController extends Controller
      */
     public function destroy(Proposal $proposal)
     {
-        //
+        $proposal->delete();
+        return redirect()->route('staff.proposal.show',$proposal->program);
     }
+
 }

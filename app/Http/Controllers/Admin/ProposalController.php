@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Program;
 use App\Models\Proposal;
 use Illuminate\Http\Request;
 
@@ -82,7 +83,8 @@ class ProposalController extends Controller
      */
     public function destroy(Proposal $proposal)
     {
-        //
+        $proposal->delete();
+        return redirect()->route('staff.proposal.show',$proposal->program);
     }
 
     public function approve($id){

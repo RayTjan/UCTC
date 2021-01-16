@@ -26,9 +26,9 @@ class ActionTaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        return view('2ndRoleBlades.addTaskAction', compact('id'));
     }
 
     /**
@@ -39,7 +39,8 @@ class ActionTaskController extends Controller
      */
     public function store(Request $request)
     {
-
+        Task::create($request->all());
+        return redirect(route('staff.actionTask.show', $request->action_plan));
     }
 
     /**
@@ -51,7 +52,7 @@ class ActionTaskController extends Controller
     public function show($id)
     {
         $action = ActionPlan::findOrFail($id);
-        $tasks = Task::where('action_plan', $id)->get();
+        $tasks = Task::where('action_plan', $id)->where('status', '0')->get();
 
         return view('2ndRoleBlades.listTaskAction', compact('action','tasks'));
     }
@@ -64,7 +65,8 @@ class ActionTaskController extends Controller
      */
     public function edit($id)
     {
-        //
+        $task = Task::findOrFail($id);
+        return view('2ndRoleBlades.editTaskACtion', compact('task'));
     }
 
     /**
@@ -77,8 +79,8 @@ class ActionTaskController extends Controller
     public function update(Request $request, $id)
     {
         $task = Task::findOrFail($id);
-        $task->status = 1;
-        return redirect()->route(NOTICEMEFREDO);
+        $task->update($request->all());
+        return redirect()->route('staff.actionTask.show', $task->action_plan);
     }
 
     /**
@@ -91,6 +93,6 @@ class ActionTaskController extends Controller
     {
         $task = Task::findOrFail($id);
         $task->delete();
-        return redirect()->route(NOTICEMEFREDO);
+        return redirect()->route('staff.actionTask.show', $task->action_plan);
     }
 }
