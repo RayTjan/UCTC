@@ -19,7 +19,7 @@ class CreateActionPlansTable extends Migration
             $table->string('description');
             $table->unsignedBigInteger('program')->nullable();
             $table->timestamps();
-            $table->foreign('program')->references('id')->on('uctc_programs');
+            $table->foreign('program')->references('id')->on('uctc_programs')->onDelete('cascade');
         });
     }
 

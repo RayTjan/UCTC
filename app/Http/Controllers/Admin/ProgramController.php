@@ -19,7 +19,11 @@ class ProgramController extends Controller
     public function index()
     {
         $programs = Program::all();
-        return view('1stRoleBlades.listProgram', compact('programs'));
+        $requestedPrograms = $programs->where('status', '0');
+        $ongoingPrograms = $programs->where('status', '1');
+        $finishedPrograms = $programs->where('status', '2');
+        $suspendedPrograms = $programs->where('status', '3');
+        return view('1stRoleBlades.listProgram', compact('programs','requestedPrograms','ongoingPrograms','finishedPrograms','suspendedPrograms'));
     }
 
     /**
@@ -111,6 +115,25 @@ class ProgramController extends Controller
         $program = Program::findOrFail($id);
         $program->delete();
         return redirect()->route('program.index');
+    }
+
+    public function approve($id){
+        $Program = Program::findOrFail($id);
+        $Program->update([
+            'status' => '1',
+        ]);
+
+        return empty($program) ? redirect()->back()->with('Fail', "Failed to approve")
+            : redirect()->back()->with('Success', 'Success program program: #('.$program->name.') approved');
+    }
+    public function suspend($id){
+        $Program = Program::findOrFail($id);
+        $Program->update([
+            'status' => '3',
+        ]);
+
+        return empty($program) ? redirect()->back()->with('Fail', "Failed to suspend")
+            : redirect()->back()->with('Success', 'Success program program: #('.$program->program->name.') suspended');
     }
 
 }

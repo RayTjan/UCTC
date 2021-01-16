@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\user;
+namespace App\Http\Controllers\Staff;
 
 use App\Http\Controllers\Controller;
 use App\Models\Program;
@@ -45,6 +45,28 @@ class CommitteeController extends Controller
         else{
             return redirect()->back()->with('WHAT',"Failed to add new committee");
         }
+    }
+    public function approve($id, Request $request){
+        $user = User::findOrFail($id);
+        $program = $user->attends->where('id','=',$request->selected_program)->first();
+        $program->pivot->update([
+            'is_approved' => '1',
+        ]);
+
+        return empty($program) ? redirect()->back()->with('Fail', "Failed to update status")
+            : redirect()->back()->with('Success', 'Success guest: #('.$user->identity->name.') approved');
+
+    }
+    public  function reject($id, Request $request)
+    {
+        $user = User::findOrFail($id);
+        $program = $user->attends->where('id', '=', $request->selected_program)->first();
+        $program->pivot->update([
+            'is_approved' => '2',
+        ]);
+
+        return empty($program) ? redirect()->back()->with('Fail', "Failed to update status")
+            : redirect()->back()->with('Success', 'Success guest: #('.$user->identity->name.') approved');
     }
 
     /**

@@ -31,10 +31,44 @@
                     </g>
                 </svg>
                 </a>
-
             </div>
         </div>
-        @endauth
+
+            @endauth
+                    <form action="{{route('staff.program.index')}}"
+                          method="GET">
+                        {{ csrf_field() }}
+                        <button class="btn btn-primary btn-block" role="button"  type="submit">All</button>
+                    </form>
+                    @foreach($types as $type)
+                        <form action="{{route('staff.program.filterProgramType')}}"
+                              method="GET">
+                            {{ csrf_field() }}
+                            <input name="value" type="hidden" value="{{$type->id}}">
+                            <button class="btn btn-primary btn-block" role="button"  type="submit">{{$type->name}}</button>
+                        </form>
+{{--                        <a href="{{route('staff.program.filterProgram')}}" class="btn btn-primary btn-block" role="button" aria-pressed="true">$type->name</a>--}}
+                    @endforeach
+                    @foreach($categories as $category)
+                        <form action="{{route('staff.program.filterProgramCategory')}}"
+                              method="GET">
+                            {{ csrf_field() }}
+                            <input name="value" type="hidden" value="{{$category->id}}">
+                            <button class="btn btn-primary btn-block" role="button"  type="submit">{{$category->name}}</button>
+                        </form>
+                    @endforeach
+                    <form action="{{route('staff.program.filterProgramStatus')}}"
+                          method="GET">
+                        {{ csrf_field() }}
+                        <input name="value" type="hidden" value="1">
+                        <button class="btn btn-primary btn-block" role="button"  type="submit">Ongoing</button>
+                    </form>
+                    <form action="{{route('staff.program.filterProgramStatus')}}"
+                          method="GET">
+                        {{ csrf_field() }}
+                        <input name="value" type="hidden" value="2">
+                        <button class="btn btn-primary btn-block" role="button"  type="submit">Finished</button>
+                    </form>
 
         <div class="row" style="margin-top: 30px;">
             <link href='//fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'>
@@ -70,7 +104,7 @@
                             <li class="guiz-awards-title">{{$program->name}}
                                 <div class="guiz-awards-subtitle">{{$program->goal}}</div>
                             </li>
-                            <li class="guiz-awards-time">{{$program->program_date}}</li>
+                            <li class="guiz-awards-time">{{ str_replace("-","/",date("d-m-Y", strtotime($program->program_date))) }}</li>
                             </a>
                         </ul>
                             <?php $yes += 1; ?>

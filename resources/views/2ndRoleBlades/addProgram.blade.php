@@ -33,7 +33,7 @@
                         <label >Goal: </label>
                         <input type="text" class="form-control" name="goal" required>
                     </div>
-                    <input type="hidden" name="status" value="Started">
+                    <input type="hidden" name="status" value="0">
                     <input type="hidden" name="created_by" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
                     <div class="form-group">
                         <label>Program Date / Deadline:</label>
@@ -55,6 +55,14 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="form-group">
+                        <div>
+                            <label class="d-inline-block">Committee: </label>
+                            <button type="button" name="new" id="addCommittee" class="btn btn-success d-inline-block">Add Committee</button>
+                        </div>
+                        <div id="committee_field">
+                        </div>
+                    </div>
                     <div class="text-center">
                         <button type="submit" class="btnA circular greenstar font-weight-bold p-2 green-hover">Add Program</button>
                     </div>
@@ -67,6 +75,7 @@
     <script>
         $(document).ready(function(){
             var i=1;
+            var u=1;
             $('#new').click(function(){
                 i++;
                 $('#dynamic_field').append('<div id="row'+i+'"> <input type="text" class="form-control mt-3 d-inline-block newClientForm mr-3" name="newClient[]" placeholder="New client name" required>' +
@@ -86,7 +95,34 @@
                     '                                @endforeach\n' +
                     '                            </select>' +
                     ' <button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove mt-3">X</button></div>');
+
+                $('select').on('change', function(event ) {
+                    var prevValue = $(this).data('previous');
+                    $('select').not(this).find('option[value="'+prevValue+'"]').show();
+                    var value = $(this).val();
+                    $(this).data('previous',value); $('select').not(this).find('option[value="'+value+'"]').hide();
+                });
             });
+
+            $('#addCommittee').click(function(){
+                u++;
+                $('#committee_field').append('<div id="row'+u+'"> ' +
+                    '<select name="committee[]" class="custom-select mt-3 mr-3 d-inline-block clientForm">\n' +
+                    '                                    <option hidden>Add Committee</option>\n' +
+                    '                                @foreach($committees as $committee)\n' +
+                    '                                    <option value="{{$committee->id}}">{{$committee->identity->name}}</option>\n' +
+                    '                                @endforeach\n' +
+                    '                            </select>' +
+                    ' <button type="button" name="remove" id="'+u+'" class="btn btn-danger btn_remove mt-3">X</button></div>');
+
+                $('select').on('change', function(event ) {
+                    var prevValue = $(this).data('previous');
+                    $('select').not(this).find('option[value="'+prevValue+'"]').show();
+                    var value = $(this).val();
+                    $(this).data('previous',value); $('select').not(this).find('option[value="'+value+'"]').hide();
+                });
+            });
+
 
             $(document).on('click', '.btn_remove', function(){
                 var button_id = $(this).attr("id");
@@ -107,6 +143,7 @@
             // });
 
         });
+
     </script>
 
 

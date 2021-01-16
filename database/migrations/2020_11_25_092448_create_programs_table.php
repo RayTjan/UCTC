@@ -17,7 +17,7 @@ class CreateProgramsTable extends Migration
             $table->id();
             $table->string("name");
             $table->text("description")->nullable();
-            $table->text('status')->default('0');
+            $table->enum('status',['0','1','2','3'])->default('0');
             $table->text('goal');
             $table->date('program_date');
             $table->unsignedBigInteger('created_by')->nullable();
