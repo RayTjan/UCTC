@@ -30,6 +30,11 @@
                         </path>
                     </g>
                 </svg>
+                </a>
+            </div>
+        </div>
+
+            @endauth
                     <form action="{{route('staff.program.index')}}"
                           method="GET">
                         {{ csrf_field() }}
@@ -64,10 +69,6 @@
                         <input name="value" type="hidden" value="2">
                         <button class="btn btn-primary btn-block" role="button"  type="submit">Finished</button>
                     </form>
-
-            </div>
-        </div>
-        @endauth
 
         <div class="row" style="margin-top: 30px;">
             <link href='//fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'>
