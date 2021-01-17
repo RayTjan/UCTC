@@ -75,11 +75,19 @@ class ProposalController extends Controller
                 $edit = true;
             }
         }
+
         if ($program->created_by == $user->id){
             $edit = true;
         }
+        $lastProposal = $proposals->get()->last();
+        $addAvailability = true;
+        if ($lastProposal != null){
+            if ($lastProposal->status == '0' || $lastProposal->status = '1'){
+                $addAvailability = false;
+            }
+        }
 
-        return view('2ndRoleBlades.listProposal', compact('proposals','program','edit'));
+        return view('2ndRoleBlades.listProposal', compact('proposals', 'program','edit','addAvailability'));
     }
 
     /**
@@ -132,5 +140,7 @@ class ProposalController extends Controller
         $proposal->delete();
         return redirect()->route('staff.proposal.show',$proposal->program);
     }
+
+
 
 }

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Dashboard')
 @section('content')
+
     <div class="container" style="margin-top: 20px;">
         <h1 class="font-weight-bold">DASHBOARD</h1>
 

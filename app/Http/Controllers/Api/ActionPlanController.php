@@ -26,7 +26,7 @@ class ActionPlanController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -37,7 +37,14 @@ class ActionPlanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $actionPlan =  ActionPlan::create([
+                'name' => $request->name,
+                'description' => $request->description,
+                'program' => $request->program,
+            ]
+        );
+
+        return $actionPlan;
     }
 
     /**
@@ -72,8 +79,19 @@ class ActionPlanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (ActionPlan::find($id)->name !=null){
+            ActionPlan::find($id)->update($request->all());
+            return response([
+                'message' =>  'Task Updated'
+            ]);
+        }
+        else{
+            return response([
+                'message' => 'Updating Task Failed'
+            ]);
+        }
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -83,6 +101,11 @@ class ActionPlanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $actionPlan = ActionPlan::findOrFail($id);
+        $actionPlan->delete();
+        return response([
+            'message' =>  'Task Deleted'
+        ]);
+
     }
 }

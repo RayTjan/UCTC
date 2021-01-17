@@ -101,7 +101,14 @@ class ReportController extends Controller
             $edit = true;
         }
 
-        return view('2ndRoleBlades.listReport',compact('program','reports','edit'));
+        $lastReport = $reports->get()->last();
+        $addAvailability = true;
+        if ($lastReport != null){
+            if ($lastReport->status == '0' || $lastReport->status = '1'){
+                $addAvailability = false;
+            }
+        }
+        return view('2ndRoleBlades.listReport',compact('program','reports','addAvailability','edit'));
     }
 
     /**
