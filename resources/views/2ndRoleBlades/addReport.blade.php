@@ -19,7 +19,6 @@
                         </div>
 
                         <input type="hidden" name="program" value="{{ $program->id }}">
-                        <input type="hidden" name="statusProgram" value="1">
                         <input type="hidden" name="statusReport" value="0">
 
                         <div class="text-center">

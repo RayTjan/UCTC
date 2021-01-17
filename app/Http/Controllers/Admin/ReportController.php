@@ -17,7 +17,7 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $reports = Report::all()->where('status',0);
+        $reports = Report::all();
         return view('1stRoleBlades.listReport',compact('reports'));
     }
 
@@ -26,9 +26,14 @@ class ReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $program = Program::findOrFail($id);
+
+        if (isset($program->hasReports[0])) {
+            return redirect(route('admin.report.show',$program));
+        }
+        return view('2ndRoleBlades.addReport',compact('program'));
     }
 
     /**
@@ -39,7 +44,23 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //perubahan status pada program
+
+        $pdf = $request->validate([
+//            'report' => 'required|max:50000|mimes:xlsx,doc,docx,ppt,pptx,ods,odt,odp',
+            'report' => 'required|mimes:pdf|max:10000',
+        ]);
+
+        $pdfName = $pdf['report']->getClientOriginalName().'-'.time().'.'.$pdf['report']->extension();
+        $pdf['report']->move(public_path('/files/report'), $pdfName);
+
+        $dataReport = array(
+            'report' => $pdfName,
+            'program' => $request->program,
+        );
+
+        Report::create($dataReport);
+        return redirect(route('admin.program.show', $request->program));
     }
 
     /**
@@ -48,9 +69,11 @@ class ReportController extends Controller
      * @param  \App\Models\Report  $report
      * @return \Illuminate\Http\Response
      */
-    public function show(Report $report)
+    public function show($id)
     {
-        //
+        $program = Program::findOrFail($id);
+        $reports = Report::where('program',$id)->get();
+        return view('2ndRoleBlades.listReport',compact('program','reports'));
     }
 
     /**
@@ -73,7 +96,25 @@ class ReportController extends Controller
      */
     public function update(Request $request, Report $report)
     {
-        //
+        $pdf = $request->validate([
+//            'report' => 'required|max:50000|mimes:xlsx,doc,docx,ppt,pptx,ods,odt,odp',
+            'report' => 'required|mimes:pdf|max:10000',
+        ]);
+
+        $pdfName = $pdf['report']->getClientOriginalName().'-'.time().'.'.$pdf['report']->extension();
+        $pdf['report']->move(public_path('/files/report'), $pdfName);
+
+        $dataReport = array(
+            'report' => $pdfName,
+            'status' => $request->statusReport,
+            'program' => $request->program,
+        );
+
+        $report->update([
+            'report' => $dataReport['report']
+        ]);
+
+        return redirect(route('admin.report.show', $report->program));
     }
 
     /**
@@ -84,7 +125,8 @@ class ReportController extends Controller
      */
     public function destroy(Report $report)
     {
-        //
+        $report->delete();
+        return redirect()->route('admin.report.index');
     }
     public function approve($id){
         $report = Report::findOrFail($id);

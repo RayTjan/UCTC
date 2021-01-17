@@ -16,7 +16,7 @@ class ProposalController extends Controller
      */
     public function index()
     {
-        $proposals = Proposal::all()->where('status','0');
+        $proposals = Proposal::all();
         return view('1stRoleBlades.listRequest', compact('proposals'));
     }
 
@@ -38,7 +38,21 @@ class ProposalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pdf = $request->validate([
+            'proposal' => 'required|mimes:pdf|max:10000',
+        ]);
+
+        $pdfName = $pdf['proposal']->getClientOriginalName().'-'.time().'.'.$pdf['proposal']->extension();
+        $pdf['proposal']->move(public_path('/files/proposal'), $pdfName);
+
+        $dataProposal = array(
+            'proposal' => $pdfName,
+            'status' => '0',
+            'program' => $request->selected_program,
+        );
+
+        Proposal::create($dataProposal);
+        return redirect(route('admin.proposal.show', $request->selected_program));
     }
 
     /**
@@ -47,9 +61,11 @@ class ProposalController extends Controller
      * @param  \App\Models\Proposal  $proposal
      * @return \Illuminate\Http\Response
      */
-    public function show(Proposal $proposal)
+    public function show($id)
     {
-        //
+        $program = Program::findOrFail($id);
+        $proposals = Proposal::where('program', $id)->get();
+        return view('2ndRoleBlades.listProposal', compact('proposals', 'program'));
     }
 
     /**
@@ -72,7 +88,23 @@ class ProposalController extends Controller
      */
     public function update(Request $request, Proposal $proposal)
     {
-        //
+        $pdf = $request->validate([
+            'proposal' => 'required|mimes:pdf|max:10000',
+        ]);
+
+        $pdfName = $pdf['proposal']->getClientOriginalName().'-'.time().'.'.$pdf['proposal']->extension();
+        $pdf['proposal']->move(public_path('/files/proposal'), $pdfName);
+
+        $dataProposal = array(
+            'proposal' => $pdfName,
+            'status' => '0',
+            'program' => $request->selected_program,
+        );
+
+        $proposal->update([
+            'proposal' => $dataProposal['proposal']
+        ]);
+        return redirect(route('admin.proposal.show', $request->selected_program));
     }
 
     /**
@@ -84,7 +116,7 @@ class ProposalController extends Controller
     public function destroy(Proposal $proposal)
     {
         $proposal->delete();
-        return redirect()->route('staff.proposal.show',$proposal->program);
+        return redirect()->route('admin.proposal.index');
     }
 
     public function approve($id){
