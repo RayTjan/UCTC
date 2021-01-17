@@ -76,7 +76,7 @@
 </li>
 
 <li class="nav-item">
-    <a href="{{'staff.program.myprogram'}}" class="nav-link">
+    <a href="{{route('staff.program.myprogram')}}" class="nav-link">
         <svg
             aria-hidden="true"
             focusable="false"

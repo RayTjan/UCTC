@@ -95,7 +95,7 @@
                                     </form>
                                     @endif
 
-                                    @if($program->status != '2')
+                                    @if($program->status != '2' && $program->status != '3')
 {{--                                    suspend--}}
                                     <form action="{{route('admin.program.suspend', $program->id)}}" class="p-0 m-0"
                                           method="POST">

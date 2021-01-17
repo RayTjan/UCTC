@@ -14,6 +14,7 @@ class Report extends Model
         'report',
         'status',
         'program',
+        'note',
     ];
 
     public function belongProgram(){

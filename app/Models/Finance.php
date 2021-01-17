@@ -15,6 +15,9 @@ class Finance extends Model
         'value',
         'type',
         'program',
+        'note',
+        'status',
+        'proof_of_payment',
     ];
 
     public function program(){

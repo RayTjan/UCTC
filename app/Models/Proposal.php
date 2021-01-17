@@ -14,6 +14,7 @@ class Proposal extends Model
         'proposal',
         'status',
         'program',
+        'note',
     ];
 
     public function belongProgram(){

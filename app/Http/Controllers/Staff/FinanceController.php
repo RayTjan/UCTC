@@ -53,6 +53,7 @@ class FinanceController extends Controller
             'type' => $data['type'],
             'value' => $data['value'],
             'status' => $data['status'],
+            'program' => $request->program,
             'proof_of_payment' => $payName,
         ]);
         return redirect(route('staff.finance.show',$request->program));
