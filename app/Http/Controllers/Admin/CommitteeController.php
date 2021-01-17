@@ -88,7 +88,7 @@ class CommitteeController extends Controller
             $query->select('uctc_user_id')->from('uctc_program_user')->whereNotIn('uctc_program_id',$programs);
         })->where('role_id',3)->get();
 
-        return view('2ndRoleBlades.listCommittee', compact('program','committeeList','committees'));
+        return view('1stRoleBlades.listCommittee', compact('program','committeeList','committees'));
     }
 
     /**

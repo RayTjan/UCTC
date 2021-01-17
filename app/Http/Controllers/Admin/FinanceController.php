@@ -51,7 +51,7 @@ class FinanceController extends Controller
     {
         $program = Program::findOrFail($id);
         $finances = Finance::where('program',$id)->get();
-        return view('2ndRoleBlades.listFinance',compact('program','finances'));
+        return view('1stRoleBlades.listFinance',compact('program','finances'));
     }
 
     /**

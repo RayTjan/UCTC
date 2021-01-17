@@ -10,11 +10,65 @@
         <div class="clearfix">
             {{-- auth to limit content, it cannot be accessed until login --}}
             <div class="float-right">
-                <a href="" class="btn btn-primary btn-block" role="button" aria-pressed="true">Join Program</a>
-
+{{--                <a href="{{route('program.create')}}" class="btn btn-primary btn-block" role="button" aria-pressed="true">New Program</a>--}}
+                <a href="{{route('student.program.create')}}" role="button" aria-pressed="true">
+                <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    data-prefix="fad"
+                    data-icon="angle-double-right"
+                    role="img"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 448 512"
+                    class="svg-inline--fa fa-angle-double-right fa-w-14 fa-5x iconplus float-right"
+                >
+                    <g>
+                        <path
+                            fill="#000000"
+                            d="m408,184h-136c-4.418,0 -8,-3.582 -8,-8v-136c0,-22.09 -17.91,-40 -40,-40s-40,17.91 -40,40v136c0,4.418 -3.582,8 -8,8h-136c-22.09,0 -40,17.91 -40,40s17.91,40 40,40h136c4.418,0 8,3.582 8,8v136c0,22.09 17.91,40 40,40s40,-17.91 40,-40v-136c0,-4.418 3.582,-8 8,-8h136c22.09,0 40,-17.91 40,-40s-17.91,-40 -40,-40zM408,184"
+                            class="fa-secondary">
+                        </path>
+                    </g>
+                </svg>
+                </a>
             </div>
         </div>
-        @endauth
+
+            @endauth
+                    <form action="{{route('student.program.index')}}"
+                          method="GET">
+                        {{ csrf_field() }}
+                        <button class="btn btn-primary btn-block" role="button"  type="submit">All</button>
+                    </form>
+                    @foreach($types as $type)
+                        <form action="{{route('student.program.filterProgramType')}}"
+                              method="GET">
+                            {{ csrf_field() }}
+                            <input name="value" type="hidden" value="{{$type->id}}">
+                            <button class="btn btn-primary btn-block" role="button"  type="submit">{{$type->name}}</button>
+                        </form>
+{{--                        <a href="{{route('student.program.filterProgram')}}" class="btn btn-primary btn-block" role="button" aria-pressed="true">$type->name</a>--}}
+                    @endforeach
+                    @foreach($categories as $category)
+                        <form action="{{route('student.program.filterProgramCategory')}}"
+                              method="GET">
+                            {{ csrf_field() }}
+                            <input name="value" type="hidden" value="{{$category->id}}">
+                            <button class="btn btn-primary btn-block" role="button"  type="submit">{{$category->name}}</button>
+                        </form>
+                    @endforeach
+                    <form action="{{route('student.program.filterProgramStatus')}}"
+                          method="GET">
+                        {{ csrf_field() }}
+                        <input name="value" type="hidden" value="1">
+                        <button class="btn btn-primary btn-block" role="button"  type="submit">Ongoing</button>
+                    </form>
+                    <form action="{{route('student.program.filterProgramStatus')}}"
+                          method="GET">
+                        {{ csrf_field() }}
+                        <input name="value" type="hidden" value="2">
+                        <button class="btn btn-primary btn-block" role="button"  type="submit">Finished</button>
+                    </form>
 
         <div class="row" style="margin-top: 30px;">
             <link href='//fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'>
@@ -37,7 +91,7 @@
                                 guiz-awards-row guiz-awards-row
                             @endif
                                 quizz">
-                            <a href="{{route('user.program.show',$program)}}" class="a-none">
+                            <a href="{{route('student.program.show',$program)}}" class="a-none">
                             <li class="guiz-awards-star">
                                 <span class="
                                     @if($program->category == 1)
@@ -50,7 +104,7 @@
                             <li class="guiz-awards-title">{{$program->name}}
                                 <div class="guiz-awards-subtitle">{{$program->goal}}</div>
                             </li>
-                            <li class="guiz-awards-time">{{$program->program_date}}</li>
+                            <li class="guiz-awards-time">{{ str_replace("-","/",date("d-m-Y", strtotime($program->program_date))) }}</li>
                             </a>
                         </ul>
                             <?php $yes += 1; ?>

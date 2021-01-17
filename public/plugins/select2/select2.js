@@ -1459,11 +1459,11 @@ S2.define('select2/selection/single',[
     });
 
     this.$selection.on('focus', function (evt) {
-      // User focuses on the container
+      // Student focuses on the container
     });
 
     this.$selection.on('blur', function (evt) {
-      // User exits the container
+      // Student exits the container
     });
 
     container.on('selection:update', function (params) {
@@ -4869,7 +4869,7 @@ S2.define('select2/core',[
     // Hide the original select
     $element.addClass('select2-hidden-accessible');
 	$element.attr('aria-hidden', 'true');
-	
+
     // Synchronize any monitored attributes
     this._syncAttributes();
 

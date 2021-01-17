@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\ActionPlan;
 use App\Models\Program;
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ActionTaskController extends Controller
@@ -28,7 +30,15 @@ class ActionTaskController extends Controller
      */
     public function create($id)
     {
-        return view('2ndRoleBlades.addTaskAction', compact('id'));
+        $action = ActionPlan::findORFail($id);
+
+        $programs = Program::all()->except($action->id)->pluck('id');
+
+        $committees = User::whereIn('id',function ($query) use ($programs){
+            $query->select('uctc_user_id')->from('uctc_program_user')->whereNotIn('uctc_program_id',$programs);
+        })->get();
+
+        return view('2ndRoleBlades.addTaskAction', compact('id','committees'));
     }
 
     /**
@@ -54,7 +64,22 @@ class ActionTaskController extends Controller
         $action = ActionPlan::findOrFail($id);
         $tasks = Task::where('action_plan', $id)->where('status', '0')->get();
 
-        return view('2ndRoleBlades.listTaskAction', compact('action','tasks'));
+        //check edit
+        $program = Program::findOrFail($action->program);
+        $edit = false;
+        $user = Auth::user();
+        $participatedPrograms = $user->attends;
+        foreach ($participatedPrograms as $pprogram){
+            if ($pprogram->id == $program->id){
+                $edit = true;
+            }
+        }
+        if ($program->created_by == $user->id){
+            $edit = true;
+        }
+
+
+        return view('2ndRoleBlades.listTaskAction', compact('action','tasks','edit'));
     }
 
     /**

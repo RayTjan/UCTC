@@ -77,7 +77,6 @@
                         <div id="picture_field">
                             <div>
                                 <input type="file" name="documentation[]" class="form-control-file d-inline-block docForm" multiple>
-                                <button type="button" name="addPic" id="addPic" class="btn btn-success d-inline-block">Add More</button>
                             </div>
                         </div>
                     </div>

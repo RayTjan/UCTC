@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Program;
 use App\Models\Report;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReportController extends Controller
 {
@@ -32,7 +33,21 @@ class ReportController extends Controller
         if (isset($program->hasReports[0])) {
             return redirect(route('staff.report.show',$program));
         }
-        return view('2ndRoleBlades.addReport',compact('program'));
+
+        //check edit
+        $edit = false;
+        $user = Auth::user();
+        $participatedPrograms = $user->attends;
+        foreach ($participatedPrograms as $pprogram){
+            if ($pprogram->id == $program->id){
+                $edit = true;
+            }
+        }
+        if ($program->created_by == $user->id){
+            $edit = true;
+        }
+
+        return view('2ndRoleBlades.addReport',compact('program','edit'));
     }
 
     /**
@@ -72,7 +87,21 @@ class ReportController extends Controller
     {
         $program = Program::findOrFail($id);
         $reports = Report::where('program',$id)->get();
-        return view('2ndRoleBlades.listReport',compact('program','reports'));
+
+        //check edit
+        $edit = false;
+        $user = Auth::user();
+        $participatedPrograms = $user->attends;
+        foreach ($participatedPrograms as $pprogram){
+            if ($pprogram->id == $program->id){
+                $edit = true;
+            }
+        }
+        if ($program->created_by == $user->id){
+            $edit = true;
+        }
+
+        return view('2ndRoleBlades.listReport',compact('program','reports','edit'));
     }
 
     /**

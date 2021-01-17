@@ -23,7 +23,14 @@
                         <label>Date:</label>
                         <input type="date" class="form-control" name="due_date" required>
                     </div>
-                    <input type="hidden" name="PIC" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
+                    <div class="form-group">
+                        <label>PIC:</label>
+                        <select name="PIC" class="custom-select">
+                            @foreach($committees as $committee)
+                                <option value="{{$committee->id}}">{{$committee->identity->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <input type="hidden" name="action_plan" value="{{$id}}">
                     <div class="text-center">
                         <button type="submit" class="btnA circular greenstar font-weight-bold p-2 green-hover">Submit</button>

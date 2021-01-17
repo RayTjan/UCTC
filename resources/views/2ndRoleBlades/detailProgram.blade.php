@@ -172,11 +172,14 @@
                     Action Plan
                 </a>
                 @endif
+
+                @if($edit == true)
                 @if($program->status != '3'||$program->status != '2')
                 <a href="{{ route('staff.program.edit', $program) }}" class="circular purplestar font-weight-bold p-2 purple-hover mr-2">
                     <i class="fa fa-dashboard"></i>
                     Edit
                 </a>
+                @endif
                 @endif
 
                 @if($program->status == '1'||$program->status == '2')
@@ -193,6 +196,7 @@
                     </a>
                 @endif
                 @endif
+                @if($edit == true)
                 <button type="button"
                         data-toggle="modal"
                         data-target="#deleteProgram"
@@ -200,6 +204,7 @@
                     <i class="fa fa-close"></i>
                     Delete
                 </button>
+                @endif
             </div>
             @if($program->status == '1' || $program->status == '2')
             <div>
@@ -220,10 +225,12 @@
                 <div class="modal-content">
                     <!-- Modal Header -->
                     <div class="modal-header card-bg-change">
+                        @if($edit == true)
                         <a href="{{ route('staff.finance.show', $program) }}" class="circular yellowstar font-weight-bold p-2 yellow-hover">
                             <i class="fa fa-money"></i>
                             Finance
                         </a>
+                        @endif
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <!-- Modal body -->

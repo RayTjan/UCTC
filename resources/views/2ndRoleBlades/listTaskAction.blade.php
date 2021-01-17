@@ -5,6 +5,8 @@
     <div class="container clearfix" style="margin-top: 20px;">
         <div class="d-flex justify-content-between">
             <h1 class="font-weight-bold">Tasks In {{$action->name}} Action Plan</h1>
+
+            @if($edit == true)
             <a href="{{route('staff.actionTask.create', $action->id)}}" role="button" aria-pressed="true">
                 <svg
                     aria-hidden="true"
@@ -25,12 +27,13 @@
                     </g>
                 </svg>
             </a>
+            @endif
         </div>
 
         <div class="row">
-            <div class="card-task bg-change-dark">
+            <div class="card-task card-bg-change">
                 <div class="quiz-window">
-                    <div class="bg-change-dark scrollWebkit height100">
+                    <div class="card-bg-change scrollWebkit height100">
 
                         @for($con = 0;$con < sizeof($tasks);$con++)
                         <a onclick="detailShow('detailTask-{{ $con }}')" class="a-none">

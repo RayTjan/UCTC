@@ -27,7 +27,7 @@ class ActionController extends Controller
     public function create($id)
     {
         $program = Program::findOrFail($id);
-        return view( '2ndRoleBlades.addActionPlan',compact('program'));
+        return view( '1stRoleBlades.addActionPlan',compact('program'));
     }
 
     /**
@@ -54,7 +54,7 @@ class ActionController extends Controller
 
         $actions = ActionPlan::where('program',$id)->get();
 
-        return view('2ndRoleBlades.listActionPlan', compact('program','actions'));
+        return view('1stRoleBlades.listActionPlan', compact('program','actions'));
     }
 
     /**
@@ -66,7 +66,7 @@ class ActionController extends Controller
     public function edit($id)
     {
         $action = ActionPlan::findOrFail($id);
-        return view( '2ndRoleBlades.editActionPlan',compact('action'));
+        return view( '1stRoleBlades.editActionPlan',compact('action'));
     }
 
     /**

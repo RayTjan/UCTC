@@ -7,7 +7,7 @@
         <div class="big">
             <div class="smol1">
                 <div class="position-relative">
-                    <h3 class="font-weight-bold">Recents</h3>
+                    <h3 class="font-weight-bold">My Programs</h3>
                     <a href="{{ route('staff.program.index') }}" class="seeall">see all</a>
                 </div>
                 <div class="d-flex boxScroll">

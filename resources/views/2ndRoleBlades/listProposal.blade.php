@@ -13,7 +13,7 @@
             <h1 class="col font-weight-bold">{{ $program->name }} Proposal List</h1>
         </div>
 
-        @auth()
+        @if($edit == true)
             <div class="clearfix">
                 <div class="float-right">
                     <a href="#"
@@ -69,7 +69,7 @@
                     </div>
                 </div>
             </div>
-        @endauth
+        @endif
 
         <div class="row" style="margin-top: 30px;">
             <link href='//fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'>
@@ -82,9 +82,13 @@
                         <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget card-bg-change">
                             <li class="guiz-awards-time customComittee">Name</li>
                             <li class="guiz-awards-time customComittee">Status</li>
+                            @if($edit == true)
                             <li class="guiz-awards-time customComittee">Replace</li>
+                            @endif
                             <li class="guiz-awards-time customComittee">Download</li>
+                            @if($edit == true)
                             <li class="guiz-awards-time customComittee">Delete</li>
+                            @endif
                         </ul>
 
                         @foreach($proposals as $proposal)
@@ -105,6 +109,7 @@
                                         <div class="text-danger">Rejected</div>
                                     @endif
                                 </li>
+                                @if($edit == true)
                                 @if($proposal->status == 0)
                                 <li class="guiz-awards-time customComittee">
                                     <button type="submit" class="btn btn-primary"
@@ -150,9 +155,11 @@
                                     </form>
                                 </li>
                                 @endif
+                                @endif
                                 <li class="guiz-awards-time customComittee">
                                     <a href="/files/proposal/{{ $proposal->proposal }}" class="btn btn-success">Download</a>
                                 </li>
+                                @if($edit == true)
                                 <li class="guiz-awards-time customComittee">
                                     <button
                                         type="button"
@@ -162,6 +169,7 @@
                                         Delete
                                     </button>
                                 </li>
+                                @endif
                             </ul>
 
                             {{--        Delete Task--}}
