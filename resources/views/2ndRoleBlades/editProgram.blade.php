@@ -60,14 +60,16 @@
                         <label>Add Finance:</label>
                         <div id="dynamic_field">
                             <div>
-                                    <select name="typeFinance[]" class="custom-select typeBudgetForm d-inline-block mr-3">
-                                        <option hidden>Select Type</option>
-                                        <option value="0">Income</option>
-                                        <option value="1">Expenditure</option>
-                                    </select>
-                                    <input type="text" name="nameBudget[]" placeholder="Enter your Detail" class="sizeForm form-control name_list d-inline-block mr-3" />
-                                    <input type="number" name="value[]" placeholder="Enter your Budget" class="sizeForm form-control name_list d-inline-block mr-3" />
-                                    <button type="button" name="add" id="add" class="btn btn-success d-inline-block">Add More</button>
+                                <select name="typeFinance[]" class="custom-select typeBudgetForm d-inline-block mr-3">
+                                    <option hidden>Select Type</option>
+                                    <option value="0">Income</option>
+                                    <option value="1">Expenditure</option>
+                                </select>
+                                <input type="text" name="nameBudget[]" placeholder="Enter your Detail" class="sizeForm form-control name_list d-inline-block mr-3" />
+                                <input type="number" name="value[]" placeholder="Enter your Budget" class="sizeForm form-control name_list d-inline-block mr-3" />
+                                <input type="file" name="proof_of_payment[]" id="fileProof-[0]" title="Proof" class="d-none" />
+                                <label for="fileProof-[0]" class="typeBudgetForm form-control name_list d-inline-block mr-3">Proof image</label>
+                                <button type="button" name="add" id="add" class="btn btn-success d-inline-block">Add More</button>
                             </div>
                         </div>
                     </div>
@@ -101,7 +103,10 @@
                     '                                    <option value="0">Income</option>\n' +
                     '                                    <option value="1">Expenditure</option>\n' +
                     '                                </select>' +
-                    '<input type="text" name="nameBudget[]" placeholder="Enter your Detail" class="sizeForm form-control name_list d-inline-block mr-3" /> <input type="number" name="value[]" placeholder="Enter your Budget" class="sizeForm form-control name_list d-inline-block mr-3" /> <button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></div>');
+                    '<input type="text" name="nameBudget[]" placeholder="Enter your Detail" class="sizeForm form-control name_list d-inline-block mr-3" /> <input type="number" name="value[]" placeholder="Enter your Budget" class="sizeForm form-control name_list d-inline-block mr-3" /> ' +
+                    '<input type="file" name="proof_of_payment[]" id="fileProof-['+i+']" title="Proof" class="d-none" />' +
+                    '<label for="fileProof-['+i+']" class="typeBudgetForm form-control name_list d-inline-block mr-3">Proof image</label>\n' +
+                    '                                <button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></div>');
             });
 
             $(document).on('click', '.btn_remove', function(){

@@ -168,15 +168,19 @@ class ProgramController extends Controller
 
         //untuk Finances
         foreach ($data['value'] as $item => $value) {
+
+            $payName = $data['proof_of_payment'][$item]->getClientOriginalName() . '-' . time() . '.' . $data['proof_of_payment'][$item]->extension();
+            $data['proof_of_payment'][$item]->move(public_path('/files/finance'), $payName);
+
             $dataFinance = array(
                 'name' => $data['nameBudget'][$item],
                 'value' => $data['value'][$item],
                 'type' => $data['typeFinance'][$item],
+                'proof_of_payment' => $payName,
                 'program' => $program->id,
             );
 
-            if (!isEmpty($dataFinance['name'])&&!isEmpty($dataFinance['value'])){
-                dd($dataFinance['type']);
+            if ($dataFinance['name'] != null && $dataFinance['value'] != null && $dataFinance['type'] != null && $dataFinance['proof_of_payment'] != null){
                 Finance::create($dataFinance);
             }
         }

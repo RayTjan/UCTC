@@ -49,10 +49,11 @@
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body" style="text-align: left;">
-                    <form action="{{route ('staff.finance.store')}}" method="POST">
+                    <form action="{{route ('staff.finance.store')}}" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             {{ csrf_field() }}
                             <input type="hidden" name="program" value="{{$program->id}}">
+                            <input type="hidden" name="status" value="0">
                             <div class="form-group">
                                 <label>Name: </label>
                                 <input type="text" class="form-control" name="name" required>
@@ -68,6 +69,11 @@
                             <div class="form-group">
                                 <label>Value: </label>
                                 <input type="text" class="form-control" name="value" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Proof of Payment: </label>
+                                <i class="fa fa-clipboard"></i>
+                                <input type="file" class="form-control" name="proof_of_payment" required>
                             </div>
 
                         </div>
@@ -92,6 +98,7 @@
                                 <th class="cell100 column2">Name</th>
                                 <th class="cell100 column3">Type</th>
                                 <th class="cell100 column6">Value</th>
+                                <th class="cell100 column6">Attachment</th>
                                 <th class="cell100 column6">Action</th>
                             </tr>
                             </thead>
@@ -109,6 +116,9 @@
                                         @endif
                                     </td>
                                     <td class="cell100 column3">Rp. {{$finance->value}}</td>
+                                    <td class="cell100 column4">
+                                        <a href="/files/finance/{{$finance->proof_of_payment}}" class="btn btn-success">Download</a>
+                                    </td>
                                     <td class="cell100 column9 d-flex">
 
                                         {{--                                    edit--}}
@@ -143,7 +153,7 @@
                                             </div>
                                             <!-- Modal body -->
                                             <div class="modal-body" style="text-align: left;">
-                                                    <form action="{{route ('staff.finance.update',$finance)}}" method="POST">
+                                                    <form action="{{route ('staff.finance.update',$finance)}}" method="POST" enctype="multipart/form-data">
                                                         <div class="form-group">
                                                             {{ csrf_field() }}
                                                             <input type="hidden" name="_method" value="PATCH">
@@ -169,7 +179,10 @@
                                                                 <label>Value: </label>
                                                                 <input type="text" class="form-control" name="value" value="{{$finance->value}}" required>
                                                             </div>
-
+                                                            <div class="form-group">
+                                                                <label>Proof of Payment: </label>
+                                                                <input type="file" class="form-control" name="proof_of_payment" required>
+                                                            </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <button class="btnA circular bluestar font-weight-bold p-2 blue-hover" type="submit">Edit Finance</button>

@@ -1173,7 +1173,7 @@ p.titlelogin{
 }
 
 .sizeForm {
-    width: 37%;
+    width: 30%;
 }
 
 .docForm {
@@ -1190,6 +1190,10 @@ p.titlelogin{
 
 .typeBudgetForm {
     width: 12%;
+}
+
+.typeBudgetForm:hover{
+    cursor: pointer;
 }
 
 /*File attachment*/
