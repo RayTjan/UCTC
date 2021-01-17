@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Client;
 use App\Models\Program;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
@@ -52,7 +53,21 @@ class ClientController extends Controller
     public function show($id)
     {
         $program = Program::findOrFail($id);
-        return view('2ndRoleBlades.listClientProgram', compact('program'));
+
+        //check edit
+        $edit = false;
+        $user = Auth::user();
+        $participatedPrograms = $user->attends;
+        foreach ($participatedPrograms as $pprogram){
+            if ($pprogram->id == $program->id){
+                $edit = true;
+            }
+        }
+        if ($program->created_by == $user->id){
+            $edit = true;
+        }
+
+        return view('2ndRoleBlades.listClientProgram', compact('program','edit'));
     }
 
     /**

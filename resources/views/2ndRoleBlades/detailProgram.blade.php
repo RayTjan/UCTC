@@ -7,10 +7,14 @@
         </div>
         <div class="d-flex justify-content-between">
             <h3>{{ str_replace("-","/",date("d-m-Y", strtotime($program->program_date))) }}</h3>
+
+            @if($program->status == '1' || $program->status == '2')
             <a href="{{route('staff.file.show',$program)}}" class="circular graystar font-weight-bold p-2 gray-hover">
                 <i class="fa fa-paperclip"></i>
                 Data link
             </a>
+            @endif
+
         </div>
 
         <div class="ml-4">
@@ -143,15 +147,18 @@
             }
         ?>
 
+        @if($program->status == '1' || $program->status == '2')
         <div class="clearfix">
             <h5 class="float-right font-weight-bold">Budgeting</h5>
         </div>
         <div class="clearfix">
             <h3 class="float-right">Rp. {{$total}}</h3>
         </div>
+        @endif
 
         <div class="d-flex justify-content-between mb-5">
             <div class="">
+                @if($program->status == '1'||$program->status == '2')
                 <a href="{{ route('staff.client.show', $program) }}" class="circular yellowstar font-weight-bold p-2 yellow-hover mr-2">
                     <i class="fa fa-user"></i>
                     Client
@@ -164,16 +171,22 @@
                     <i class="fa fa-database"></i>
                     Action Plan
                 </a>
+                @endif
+
+                @if($edit == true)
+                @if($program->status != '3'||$program->status != '2')
                 <a href="{{ route('staff.program.edit', $program) }}" class="circular purplestar font-weight-bold p-2 purple-hover mr-2">
                     <i class="fa fa-dashboard"></i>
                     Edit
                 </a>
-                @if(isset($program->hasProposals[0]->id))
-                    <a href="{{ route('staff.proposal.show', $program) }}" class="circular toscastar font-weight-bold p-2 tosca-hover mr-2">
-                        <i class="fa fa-address-book"></i>
-                        Proposal
-                    </a>
                 @endif
+                @endif
+
+                @if($program->status == '1'||$program->status == '2')
+                <a href="{{ route('staff.proposal.show', $program) }}" class="circular toscastar font-weight-bold p-2 tosca-hover mr-2">
+                    <i class="fa fa-address-book"></i>
+                    Proposal
+                </a>
 
 {{--                buat report, masih belum tau ifnya apa--}}
                 @if(isset($program->hasProposals[0]->id))
@@ -182,6 +195,8 @@
                         Report
                     </a>
                 @endif
+                @endif
+                @if($edit == true)
                 <button type="button"
                         data-toggle="modal"
                         data-target="#deleteProgram"
@@ -189,7 +204,9 @@
                     <i class="fa fa-close"></i>
                     Delete
                 </button>
+                @endif
             </div>
+            @if($program->status == '1' || $program->status == '2')
             <div>
                 <button type="button"
                         data-toggle="modal"
@@ -199,6 +216,7 @@
                     Detail
                 </button>
             </div>
+            @endif
         </div>
 
 {{--        Modal Detail Budget--}}
@@ -207,10 +225,12 @@
                 <div class="modal-content">
                     <!-- Modal Header -->
                     <div class="modal-header card-bg-change">
-                        <a href="{{ route('staff.program.edit', $program) }}" class="circular yellowstar font-weight-bold p-2 yellow-hover">
+                        @if($edit == true)
+                        <a href="{{ route('staff.finance.show', $program) }}" class="circular yellowstar font-weight-bold p-2 yellow-hover">
                             <i class="fa fa-money"></i>
                             Finance
                         </a>
+                        @endif
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <!-- Modal body -->

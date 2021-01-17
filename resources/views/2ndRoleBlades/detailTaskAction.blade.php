@@ -44,6 +44,7 @@
                 </p>
             </div>
 
+            @if($edit == true)
             <div class="position-static centerBottom">
                 <input type="checkbox" class="custom-checkbox" id="checkBtn" onclick="EnableBtn (this, 'BTN-{{$con}}')">
                 already done?
@@ -62,7 +63,7 @@
                     Delete
                 </button>
             </div>
-
+            @endif
 
         </div>
     </div>

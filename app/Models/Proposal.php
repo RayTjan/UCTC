@@ -16,4 +16,8 @@ class Proposal extends Model
         'program',
     ];
 
+    public function belongProgram(){
+        return $this->belongsTo(Program::class,'program','id');
+    }
+
 }

@@ -16,4 +16,8 @@ class Finance extends Model
         'type',
         'program',
     ];
+
+    public function program(){
+        return $this->belongsTo(Program::class,'program','id');
+    }
 }

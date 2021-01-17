@@ -26,6 +26,7 @@
                             <li class="guiz-awards-time customComittee">Phone</li>
                             <li class="guiz-awards-time customComittee">Address</li>
                             <li class="guiz-awards-time customComittee">Email</li>
+                            <li class="guiz-awards-time customComittee">Action</li>
                         </ul>
 
                         @foreach($program->clients as $client)
@@ -34,6 +35,34 @@
                                 <li class="guiz-awards-time customComittee">{{ $client->phone }}</li>
                                 <li class="guiz-awards-time customComittee">{{ $client->address }}</li>
                                 <li class="guiz-awards-time customComittee">{{ $client->email }}</li>
+                                @if($client->pivot->is_approved == 0)
+                                    <li class="guiz-awards-time customComittee">
+                                        <div class="dropdown">
+                                            <div class="dropdown show">
+                                                <a class="dropdown-button iconCommitteeAct" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="26.414" height="13.207" viewBox="0 0 26.414 13.207">
+                                                        <path id="Path_1462" data-name="Path 1462" d="M1215,2144l12,12,12-12Z" transform="translate(-1213.793 -2143.5)" fill="none" stroke="#000" stroke-linejoin="round" stroke-width="1"/>
+                                                    </svg>
+                                                </a>
+
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                    <form action="{{route('student.client.edit', $client->id)}}"
+                                                          method="POST">
+                                                        {{ csrf_field() }}
+                                                        <input name="selected_program" type="hidden" value="{{$program->id}}">
+                                                        <button class="ml-2 dropdown-item btnA" title="Approve" type="submit">Edit</button>
+                                                    </form>
+                                                    <form action="{{route('student.client.destroy', $client->id)}}"
+                                                          method="POST">
+                                                        {{ csrf_field() }}
+                                                        <input name="selected_program" type="hidden" value="{{$program->id}}">
+                                                        <button class="ml-2 dropdown-item btnA btnDelete" title="Reject" type="submit">Delete</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                @endif
                             </ul>
                         @endforeach
 

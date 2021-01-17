@@ -37,7 +37,25 @@ class FinanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string',
+            'type' => 'required|string',
+            'value' => 'required|int',
+            'status' => 'required|string',
+            'proof_of_payment' => 'image|mimes:png,jpg,jpeg,svg'
+        ]);
+
+        $payName = $data['proof_of_payment']->getClientOriginalName() . '-' . time() . '.' . $data['proof_of_payment']->extension();
+        $data['proof_of_payment']->move(public_path('/files/finance'), $payName);
+
+        Finance::create([
+            'name' => $data['name'],
+            'type' => $data['type'],
+            'value' => $data['value'],
+            'status' => $data['status'],
+            'proof_of_payment' => $payName,
+        ]);
+        return redirect(route('staff.finance.show',$request->program));
     }
 
     /**
@@ -46,9 +64,11 @@ class FinanceController extends Controller
      * @param  \App\Models\Finance  $finance
      * @return \Illuminate\Http\Response
      */
-    public function show(Finance $finance)
+    public function show($id)
     {
-        //
+        $program = Program::findOrFail($id);
+        $finances = Finance::where('program',$id)->get();
+        return view('2ndRoleBlades.listFinance',compact('program','finances'));
     }
 
     /**
@@ -71,7 +91,23 @@ class FinanceController extends Controller
      */
     public function update(Request $request, Finance $finance)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string',
+            'type' => 'required|string',
+            'value' => 'required|int',
+            'proof_of_payment' => 'image|mimes:png,jpg,jpeg,svg'
+        ]);
+
+        $payName = $data['proof_of_payment']->getClientOriginalName() . '-' . time() . '.' . $data['proof_of_payment']->extension();
+        $data['proof_of_payment']->move(public_path('/files/finance'), $payName);
+
+        $finance->update([
+            'name' => $data['name'],
+            'type' => $data['type'],
+            'value' => $data['value'],
+            'proof_of_payment' => $payName,
+        ]);
+        return redirect(route('staff.finance.show',$finance->program));
     }
 
     /**
@@ -82,8 +118,7 @@ class FinanceController extends Controller
      */
     public function destroy(Finance $finance)
     {
-        $program = Program::findOrFail($finance->program);
         $finance->delete();
-        return redirect()->route('staff.program.edit', $program);
+        return redirect()->route('staff.finance.show', $finance->program);
     }
 }

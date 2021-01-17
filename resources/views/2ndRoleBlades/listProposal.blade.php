@@ -13,7 +13,9 @@
             <h1 class="col font-weight-bold">{{ $program->name }} Proposal List</h1>
         </div>
 
+        @if($edit == true)
         @auth()
+            @if($addAvailability == true)
             <div class="clearfix">
                 <div class="float-right">
                     <a href="#"
@@ -42,7 +44,7 @@
 
                 </div>
             </div>
-
+            @endif
             {{--            modal add proposal--}}
             <div class="modal fade" id="addProposal">
                 <div class="modal-dialog">
@@ -69,7 +71,7 @@
                     </div>
                 </div>
             </div>
-        @endauth
+        @endif
 
         <div class="row" style="margin-top: 30px;">
             <link href='//fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'>
@@ -82,9 +84,13 @@
                         <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget card-bg-change">
                             <li class="guiz-awards-time customComittee">Name</li>
                             <li class="guiz-awards-time customComittee">Status</li>
+                            @if($edit == true)
                             <li class="guiz-awards-time customComittee">Replace</li>
+                            @endif
                             <li class="guiz-awards-time customComittee">Download</li>
+                            @if($edit == true)
                             <li class="guiz-awards-time customComittee">Delete</li>
+                            @endif
                         </ul>
 
                         @foreach($proposals as $proposal)
@@ -98,25 +104,26 @@
                                 </li>
                                 <li class="guiz-awards-time customComittee">
                                     @if($proposal->status == '0')
-                                        <div class="text-warning">Pending</div>
+                                        <div class="text-primary">Pending</div>
                                     @elseif($proposal->status == '1')
                                         <div class="text-success">Approved</div>
                                     @elseif($proposal->status == '2')
                                         <div class="text-danger">Rejected</div>
                                     @endif
                                 </li>
+                                @if($edit == true)
                                 @if($proposal->status == 0)
                                 <li class="guiz-awards-time customComittee">
                                     <button type="submit" class="btn btn-primary"
                                             title="Add Proposal"
                                             data-toggle="modal"
-                                            data-target="#replaceProposal">
+                                            data-target="#replaceProposal-{{$proposal->id}}">
                                         Replace
                                     </button>
                                 </li>
 
 {{--                                    modal edit proposal--}}
-                                    <div class="modal fade" id="replaceProposal">
+                                    <div class="modal fade" id="replaceProposal-{{$proposal->id}}">
                                         <div class="modal-dialog">
                                             <div class="modal-content card-bg-change">
                                                 <!-- Modal Header -->
@@ -150,9 +157,11 @@
                                     </form>
                                 </li>
                                 @endif
+                                @endif
                                 <li class="guiz-awards-time customComittee">
                                     <a href="/files/proposal/{{ $proposal->proposal }}" class="btn btn-success">Download</a>
                                 </li>
+                                @if($edit == true)
                                 <li class="guiz-awards-time customComittee">
                                     <button
                                         type="button"
@@ -162,6 +171,7 @@
                                         Delete
                                     </button>
                                 </li>
+                                @endif
                             </ul>
 
                             {{--        Delete Task--}}

@@ -12,6 +12,7 @@ use App\Models\Proposal;
 use App\Models\Type;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Scalar\String_;
 use function PHPUnit\Framework\isEmpty;
 
@@ -24,9 +25,11 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        $programs = Program::all();
         $types = Type::all();
         $categories = Category::all();
+
+        $programs = Program::all();
+
         return view('2ndRoleBlades.listProgram', compact('programs','types','categories'));
     }
 
@@ -120,19 +123,20 @@ class ProgramController extends Controller
             $query->select('uctc_client_id')->from('uctc_client_program')->whereNotIn('uctc_program_id',$programs);
         })->get();
 
-        //akan segera dihapus
+        //check edit
+        $edit = false;
+        $user = Auth::user();
+        $participatedPrograms = $user->attends;
+        foreach ($participatedPrograms as $pprogram){
+            if ($pprogram->id == $program->id){
+                $edit = true;
+            }
+        }
+        if ($program->created_by == $user->id){
+            $edit = true;
+        }
 
-        $committees = User::whereIn('id',function ($query) use ($programs){
-            $query->select('uctc_user_id')->from('uctc_program_user')->where('is_approved','1')->whereNotIn('uctc_program_id',$programs);
-        })->get();
-
-        $committeeList = User::whereNotIn('id',function ($query) use ($programs){
-            $query->select('uctc_user_id')->from('uctc_program_user')->whereNotIn('uctc_program_id',$programs);
-        })->where('role_id',3)->get();
-
-        //batas hapus
-
-        return view('2ndRoleBlades.detailProgram',compact('program','clients','committeeList','committees'));
+        return view('2ndRoleBlades.detailProgram',compact('program','clients','edit'));
     }
 
     /**
@@ -164,15 +168,19 @@ class ProgramController extends Controller
 
         //untuk Finances
         foreach ($data['value'] as $item => $value) {
+
+            $payName = $data['proof_of_payment'][$item]->getClientOriginalName() . '-' . time() . '.' . $data['proof_of_payment'][$item]->extension();
+            $data['proof_of_payment'][$item]->move(public_path('/files/finance'), $payName);
+
             $dataFinance = array(
                 'name' => $data['nameBudget'][$item],
                 'value' => $data['value'][$item],
                 'type' => $data['typeFinance'][$item],
+                'proof_of_payment' => $payName,
                 'program' => $program->id,
             );
 
-            if (!isEmpty($dataFinance['name'])&&!isEmpty($dataFinance['value'])){
-                dd($dataFinance['type']);
+            if ($dataFinance['name'] != null && $dataFinance['value'] != null && $dataFinance['type'] != null && $dataFinance['proof_of_payment'] != null){
                 Finance::create($dataFinance);
             }
         }
@@ -259,4 +267,19 @@ class ProgramController extends Controller
 //        $categories = Category::all();
 //        return view('2ndRoleBlades.listProgram', compact('programs','types','categories'));
 //    }
+
+    public function myprogram()
+    {
+        $types = Type::all();
+        $categories = Category::all();
+
+        $user = Auth::user();
+        $programs = Program::all();
+        $createdPrograms = $programs->where('created_by', $user->id);
+        $participatedPrograms = $user->attends;
+        $myPrograms = $createdPrograms->merge($participatedPrograms);
+
+        return view('2ndRoleBlades.listMyProgram', compact('myPrograms','types','categories'));
+    }
+
 }

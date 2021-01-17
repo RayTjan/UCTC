@@ -24,9 +24,9 @@
                         <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget card-bg-change">
                             <li class="guiz-awards-time customComittee">Name</li>
                             <li class="guiz-awards-time customComittee">Status</li>
+                            <li class="guiz-awards-time customComittee">Program</li>
                             <li class="guiz-awards-time customComittee">Download</li>
                             <li class="guiz-awards-time customComittee">Action</li>
-                            <li class="guiz-awards-time customComittee">Delete</li>
                         </ul>
 
                         @foreach($proposals as $proposal)
@@ -40,12 +40,15 @@
                                 </li>
                                 <li class="guiz-awards-time customComittee">
                                     @if($proposal->status == '0')
-                                        <div class="text-warning">Pending</div>
+                                        <div class="text-primary">Pending</div>
                                     @elseif($proposal->status == '1')
                                         <div class="text-success">Approved</div>
                                     @elseif($proposal->status == '2')
                                         <div class="text-danger">Rejected</div>
                                     @endif
+                                </li>
+                                <li class="guiz-awards-time customComittee">
+                                    {{$proposal->belongProgram->name}}
                                 </li>
                                 <li class="guiz-awards-time customComittee">
                                     <a href="/files/proposal/{{ $proposal->proposal }}" class="btn btn-success">Download</a>
@@ -70,16 +73,14 @@
                                                     {{ csrf_field() }}
                                                     <button class="ml-2 dropdown-item btnA btnDelete" title="Reject" type="submit">Reject</button>
                                                 </form>
+                                                <form action="{{ route('admin.proposal.destroy', $proposal ) }}" method="post">
+                                                    @csrf
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <button type="submit" class="ml-2 dropdown-item btnA btnDelete">Delete</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
-                                </li>
-                                <li class="guiz-awards-time customComittee">
-                                    <form action="{{ route('admin.proposal.destroy', $proposal ) }}" method="post">
-                                        @csrf
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form>
                                 </li>
                             </ul>
                         @endforeach

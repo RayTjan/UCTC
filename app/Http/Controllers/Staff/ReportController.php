@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Program;
 use App\Models\Report;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReportController extends Controller
 {
@@ -28,7 +29,25 @@ class ReportController extends Controller
     public function create($id)
     {
         $program = Program::findOrFail($id);
-        return view('2ndRoleBlades.addReport',compact('program'));
+
+        if (isset($program->hasReports[0])) {
+            return redirect(route('staff.report.show',$program));
+        }
+
+        //check edit
+        $edit = false;
+        $user = Auth::user();
+        $participatedPrograms = $user->attends;
+        foreach ($participatedPrograms as $pprogram){
+            if ($pprogram->id == $program->id){
+                $edit = true;
+            }
+        }
+        if ($program->created_by == $user->id){
+            $edit = true;
+        }
+
+        return view('2ndRoleBlades.addReport',compact('program','edit'));
     }
 
     /**
@@ -51,7 +70,6 @@ class ReportController extends Controller
 
         $dataReport = array(
             'report' => $pdfName,
-            'status' => $request->statusReport,
             'program' => $request->program,
         );
 
@@ -65,9 +83,32 @@ class ReportController extends Controller
      * @param  \App\Models\Report  $report
      * @return \Illuminate\Http\Response
      */
-    public function show(Report $report)
+    public function show($id)
     {
-        //
+        $program = Program::findOrFail($id);
+        $reports = Report::where('program',$id)->get();
+
+        //check edit
+        $edit = false;
+        $user = Auth::user();
+        $participatedPrograms = $user->attends;
+        foreach ($participatedPrograms as $pprogram){
+            if ($pprogram->id == $program->id){
+                $edit = true;
+            }
+        }
+        if ($program->created_by == $user->id){
+            $edit = true;
+        }
+
+        $lastReport = $reports->get()->last();
+        $addAvailability = true;
+        if ($lastReport != null){
+            if ($lastReport->status == '0' || $lastReport->status = '1'){
+                $addAvailability = false;
+            }
+        }
+        return view('2ndRoleBlades.listReport',compact('program','reports','addAvailability','edit'));
     }
 
     /**
@@ -108,7 +149,7 @@ class ReportController extends Controller
             'report' => $dataReport['report']
         ]);
 
-        return redirect(route('staff.program.show', $request->program));
+        return redirect(route('staff.report.show', $report->program));
     }
 
     /**

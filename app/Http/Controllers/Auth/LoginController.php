@@ -74,7 +74,7 @@ class LoginController extends Controller
             return redirect()->route('staff.program.index');
         } elseif (Auth::attempt($user)) {
             $this->isLogin(Auth::id());
-            return redirect()->route('user.program.index');
+            return redirect()->route('student.program.index');
         }
 
         return redirect()->route('login');

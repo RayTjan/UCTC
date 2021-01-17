@@ -94,10 +94,14 @@
                             <a href="{{route('staff.program.show',$program)}}" class="a-none">
                             <li class="guiz-awards-star">
                                 <span class="
-                                    @if($program->category == 1)
-                                    star cyanstar
-                                    @elseif($program->category == 2)
-                                    star purplestar
+                                    @if($program->status == '0')
+                                    star yellowstar
+                                    @elseif($program->status == '1')
+                                    star toscastar
+                                    @elseif($program->status == '2')
+                                    star greenstar
+                                    @elseif($program->status == '3')
+                                    star redstar
                                     @endif
                                 "></span>
                             </li>

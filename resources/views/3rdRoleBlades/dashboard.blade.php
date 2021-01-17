@@ -2,13 +2,13 @@
 @section('title', 'Dashboard')
 @section('content')
     <div class="container" style="margin-top: 20px;">
-        <h1>DASHBOARD</h1>
+        <h1 class="font-weight-bold">DASHBOARD</h1>
 
         <div class="big">
             <div class="smol1">
                 <div class="position-relative">
-                    <h3 class="font-weight-bold">Recents</h3>
-                    <a href="{{ route('user.program.index') }}" class="seeall">see all</a>
+                    <h3 class="font-weight-bold">My Programs</h3>
+                    <a href="{{ route('student.program.index') }}" class="seeall">see all</a>
                 </div>
                 <div class="d-flex boxScroll">
                     @foreach($programs as $program)
@@ -20,7 +20,7 @@
                                 <h2 class="font-weight-bold">{{$program->name}}</h2>
                                 <p>{{ str_replace("-","/",date("d-m-Y", strtotime($program->program_date))) }}</p>
                             </div>
-                            <a href="{{route('user.program.show',$program)}}" class="small-box-footer blackhex">More info <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{route('student.program.show',$program)}}" class="small-box-footer blackhex">More info <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     @endforeach
@@ -28,17 +28,9 @@
             </div>
 
 
-        <p  class="smol3">
-            Sartorial kogi taxidermy, kickstarter synth yr irony ennui everyday carry
-            retro helvetica stumptown cloud bread squid echo park. Etsy cloud bread
-            sartorial quinoa tacos beard mumblecore shaman tumblr pop-up. Twee retro
-            fingerstache af helvetica pabst 8-bit leggings taiyaki portland ramps tbh
-            tumblr vinyl. Neutra humblebrag bushwick portland subway tile plaid, offal
-            scenester flexitarian cliche squid small batch palo santo. Palo santo meh
-            adaptogen +1 3 wolf moon, listicle brunch ethical fanny pack everyday
-            carry fam. Offal fingerstache taxidermy, man bun venmo PBR&amp;B helvetica
-            thundercats everyday carry tote bag artisan cray wolf jianbing.
-        </p>
+            <div  class="smol3">
+                <h3 class="font-weight-bold">Should be calendar</h3>
+            </div>
 
 
             <div class="smol2">
@@ -50,7 +42,7 @@
 
                     <div class="position-relative">
                         <h3 class="font-weight-bold">Tasks List</h3>
-                        <a href="{{ route('user.task.index') }}" class="seeall">see all</a>
+                        <a href="{{ route('student.action.index') }}" class="seeall">see all</a>
                     </div>
 
 {{--                    <div class="card-tools">--}}
@@ -80,10 +72,11 @@
                             <!-- todo text -->
                             <span class="text">{{ $task->name }}</span>
                             <div class="float-right">
-                                <p class="">{{ substr(str_replace("-","/",date("d-m-Y", strtotime($task->due_date))),0,5) }}</p>
+                                <p class="">{{ str_replace("-","/",date("d-m-Y", strtotime($task->due_date))) }}</p>
                             </div>
                         </li>
                         @endforeach
+
 
                     </ul>
                     </div>

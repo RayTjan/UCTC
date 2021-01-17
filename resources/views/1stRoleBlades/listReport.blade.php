@@ -10,7 +10,7 @@
 
     <div class="container clearfix" style="margin-top: 20px;">
         <div class="row">
-            <h1 class="col font-weight-bold">Faculty Report</h1>
+            <h1 class="col font-weight-bold">Request Report List</h1>
         </div>
 
         <div class="row" style="margin-top: 30px;">
@@ -22,45 +22,68 @@
 
 
                         <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget card-bg-change">
-                            <li class="guiz-awards-time customComittee">Program</li>
-                            <li class="guiz-awards-time customComittee">Creator</li>
+                            <li class="guiz-awards-time customComittee">Name</li>
                             <li class="guiz-awards-time customComittee">Status</li>
-                            <li class="guiz-awards-time customComittee">Date</li>
-                            <li class="guiz-awards-time customComittee">Budget</li>
+                            <li class="guiz-awards-time customComittee">Program</li>
+                            <li class="guiz-awards-time customComittee">Finance</li>
+                            <li class="guiz-awards-time customComittee">Action</li>
                         </ul>
 
-                        @foreach($programs as $program)
-                        <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget">
-                            <li class="guiz-awards-time customComittee">{{ $program->name }}</li>
-                            <li class="guiz-awards-time customComittee">{{ $program->creator->identity->name }}</li>
-                            <li class="guiz-awards-time customComittee">
-                                @if($program->category == 1)
-                                    Long-Term
-                                @else
-                                    Short-Term
-                                @endif
-                            </li>
-                            <li class="guiz-awards-time customComittee">{{$program->program_date}}</li>
-                            <li class="guiz-awards-time customComittee">Rp. 145.000</li>
-                        </ul>
+                        @foreach($reports as $report)
+                            <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget">
+                                <li class="guiz-awards-time customComittee">
+                                    @if(strlen($report->report) > 35)
+                                        {{ substr($report->report,0,20)."..." }}
+                                    @else
+                                        {{ $report->report }}
+                                    @endif
+                                </li>
+                                <li class="guiz-awards-time customComittee">
+                                    @if($report->status == '0')
+                                        <div class="text-primary">Pending</div>
+                                    @elseif($report->status == '1')
+                                        <div class="text-success">Approved</div>
+                                    @elseif($report->status == '2')
+                                        <div class="text-danger">Rejected</div>
+                                    @endif
+                                </li>
+                                <li class="guiz-awards-time customComittee">
+                                    {{$report->belongProgram->name}}
+                                </li>
+                                <li class="guiz-awards-time customComittee">
+                                    <a href="/files/report/{{ $report->report }}" class="btn btn-success">Download</a>
+                                </li>
+                                <li class="guiz-awards-time customComittee">
+                                    <div class="dropdown">
+                                        <div class="dropdown show">
+                                            <a class="dropdown-button iconCommitteeAct" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="26.414" height="13.207" viewBox="0 0 26.414 13.207">
+                                                    <path id="Path_1462" data-name="Path 1462" d="M1215,2144l12,12,12-12Z" transform="translate(-1213.793 -2143.5)" fill="none" stroke="#000" stroke-linejoin="round" stroke-width="1"/>
+                                                </svg>
+                                            </a>
+
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <form action="{{route('admin.report.approve', $report->id)}}"
+                                                      method="POST">
+                                                    {{ csrf_field() }}
+                                                    <button class="ml-2 dropdown-item btnA btnSuccess" title="Approve" type="submit">Accept</button>
+                                                </form>
+                                                <form action="{{route('admin.report.reject', $report->id)}}"
+                                                      method="POST">
+                                                    {{ csrf_field() }}
+                                                    <button class="ml-2 dropdown-item btnA btnDelete" title="Reject" type="submit">Reject</button>
+                                                </form>
+                                                <form action="{{ route('admin.report.destroy', $report ) }}" method="post">
+                                                    @csrf
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <button type="submit" class="ml-2 dropdown-item btnA btnDelete">Delete</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                         @endforeach
-
-                        <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget bg-change-dark">
-                            <li class="guiz-awards-time customComittee">Total</li>
-                            <li class="guiz-awards-time customComittee">&nbsp;</li>
-                            <li class="guiz-awards-time customComittee">&nbsp;</li>
-                            <li class="guiz-awards-time customComittee">&nbsp;</li>
-                            <li class="guiz-awards-time customComittee">Rp. 500.000</li>
-                        </ul>
-
-{{--                        <div class="card-bg-change height100 modalCustomFooter">--}}
-{{--                            <div class="absoluteFooter">--}}
-{{--                                <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget bg-change-dark pr-4 pl-4 clearfix">--}}
-{{--                                    <li class="guiz-awards-time text-left">Total</li>--}}
-{{--                                    <li class="guiz-awards-time float-right text-right">Rp. 500.000</li>--}}
-{{--                                </ul>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
 
                     </div>
                 </div>

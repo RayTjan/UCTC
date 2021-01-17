@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Finance;
@@ -37,7 +37,8 @@ class FinanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Finance::create($request->all());
+        return redirect(route('student.finance.show',$request->program));
     }
 
     /**
@@ -46,9 +47,11 @@ class FinanceController extends Controller
      * @param  \App\Models\Finance  $finance
      * @return \Illuminate\Http\Response
      */
-    public function show(Finance $finance)
+    public function show($id)
     {
-        //
+        $program = Program::findOrFail($id);
+        $finances = Finance::where('program',$id)->get();
+        return view('3rdRoleBlades.listFinance',compact('program','finances'));
     }
 
     /**
@@ -71,7 +74,8 @@ class FinanceController extends Controller
      */
     public function update(Request $request, Finance $finance)
     {
-        //
+        $finance->update($request->all());
+        return redirect(route('student.finance.show',$finance->program));
     }
 
     /**
@@ -82,8 +86,7 @@ class FinanceController extends Controller
      */
     public function destroy(Finance $finance)
     {
-        $program = Program::findOrFail($finance->program);
         $finance->delete();
-        return redirect()->route('user.program.edit', $program);
+        return redirect()->route('student.finance.show', $finance->program);
     }
 }

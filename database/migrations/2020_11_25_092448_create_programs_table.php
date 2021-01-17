@@ -20,6 +20,7 @@ class CreateProgramsTable extends Migration
             $table->enum('status',['0','1','2','3'])->default('0');
             $table->text('goal');
             $table->date('program_date');
+            $table->text('note')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->timestamps();
             $table->foreign('created_by')->references('id')->on('uctc_users');

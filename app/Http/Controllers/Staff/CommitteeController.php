@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Program;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommitteeController extends Controller
 {
@@ -81,14 +82,28 @@ class CommitteeController extends Controller
         $programs = Program::all()->except($id)->pluck('id');
 
         $committees = User::whereIn('id',function ($query) use ($programs){
-            $query->select('uctc_user_id')->from('uctc_program_user')->where('is_approved','1')->whereNotIn('uctc_program_id',$programs);
+            $query->select('uctc_user_id')->from('uctc_program_user')->whereNotIn('uctc_program_id',$programs);
         })->get();
 
         $committeeList = User::whereNotIn('id',function ($query) use ($programs){
             $query->select('uctc_user_id')->from('uctc_program_user')->whereNotIn('uctc_program_id',$programs);
         })->where('role_id',3)->get();
 
-        return view('2ndRoleBlades.listCommittee', compact('program','committeeList','committees'));
+
+        //check edit
+        $edit = false;
+        $user = Auth::user();
+        $participatedPrograms = $user->attends;
+        foreach ($participatedPrograms as $pprogram){
+            if ($pprogram->id == $program->id){
+                $edit = true;
+            }
+        }
+        if ($program->created_by == $user->id){
+            $edit = true;
+        }
+
+        return view('2ndRoleBlades.listCommittee', compact('program','committeeList','committees','edit'));
     }
 
     /**

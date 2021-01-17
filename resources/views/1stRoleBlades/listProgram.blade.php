@@ -47,13 +47,13 @@
                             <tr class="row100 body">
                                 <td class="cell100 column2">
                                     @if($program->status == '0')
-                                        Pending
+                                        <div class="text-primary">Pending</div>
                                     @elseif($program->status == '1')
-                                        Ongoing
+                                        <div class="text-info">Ongoing</div>
                                     @elseif($program->status == '2')
-                                        Finished
+                                        <div class="text-success">Finished</div>
                                     @elseif($program->status == '3')
-                                        Suspended
+                                        <div class="text-danger">Suspended</div>
                                     @endif
                                 </td>
                                 <td class="cell100 column3">{{$program->creator->identity->name}}</td>
@@ -76,7 +76,7 @@
                                 <td class="cell100 column8">{{$program->categorized->name}}</td>
                                 <td class="cell100 column9 d-flex">
 {{--                                    detail--}}
-                                    <form action="{{route('admin.program.show', $program)}}"
+                                    <form action="{{route('admin.program.show', $program)}}" class="p-0 m-0"
                                           method="GET">
                                         {{ csrf_field() }}
                                         <button class="btnA circular bluestar blue-hover iconAct mr-1 p-1" title="Detail">
@@ -86,7 +86,7 @@
 
                                     @if($program->status == '0' || $program->status == '3')
 {{--                                    approve--}}
-                                    <form action="{{route('admin.program.approve', $program->id)}}"
+                                    <form action="{{route('admin.program.approve', $program->id)}}" class="p-0 m-0"
                                           method="POST">
                                         {{ csrf_field() }}
                                         <button class="btnA circular greenstar green-hover iconAct mr-1 p-1 " title="Approve">
@@ -97,7 +97,7 @@
 
                                     @if($program->status != '2')
 {{--                                    suspend--}}
-                                    <form action="{{route('admin.program.suspend', $program->id)}}"
+                                    <form action="{{route('admin.program.suspend', $program->id)}}" class="p-0 m-0"
                                           method="POST">
                                         {{ csrf_field() }}
                                         <button class="btnA circular redstar red-hover iconAct mr-1 p-1" title="Suspend">
@@ -107,7 +107,7 @@
                                     @endif
 
 {{--                                    delete--}}
-                                    <form action="{{route('admin.program.suspend', $program->id)}}"
+                                    <form action="{{route('admin.program.suspend', $program->id)}}" class="p-0 m-0"
                                           method="POST">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="_method" value="DELETE">
