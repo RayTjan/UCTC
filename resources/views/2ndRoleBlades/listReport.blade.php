@@ -14,6 +14,7 @@
         </div>
 
         @auth()
+            @if($addAvailability == true)
             <div class="clearfix">
                 <div class="float-right">
                     <a href="#"
@@ -42,7 +43,7 @@
 
                 </div>
             </div>
-
+            @endif
             {{--            modal add report--}}
             <div class="modal fade" id="addReport">
                 <div class="modal-dialog">

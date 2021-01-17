@@ -17,7 +17,10 @@ class ProposalController extends Controller
     public function index()
     {
         $proposals = Proposal::all();
-        return view('1stRoleBlades.listRequest', compact('proposals'));
+        $requestedProposals = $proposals->where('status', '0');
+        $approvedProposals = $proposals->where('status', '1');
+        $rejectedProposals = $proposals->where('status', '2');
+        return view('1stRoleBlades.listRequest', compact('proposals','requestedProposals','approvedProposals','rejectedProposals'));
     }
 
     /**

@@ -65,7 +65,15 @@ class ProposalController extends Controller
     {
         $program = Program::findOrFail($id);
         $proposals = Proposal::where('program', $id)->get();
-        return view('2ndRoleBlades.listProposal', compact('proposals', 'program'));
+        $lastProposal = $proposals->get()->last();
+        $addAvailability = true;
+        if ($lastProposal != null){
+            if ($lastProposal->status == '0' || $lastProposal->status = '1'){
+                $addAvailability = false;
+            }
+        }
+
+        return view('2ndRoleBlades.listProposal', compact('proposals', 'program', 'addAvailability'));
     }
 
     /**
@@ -118,5 +126,7 @@ class ProposalController extends Controller
         $proposal->delete();
         return redirect()->route('staff.proposal.show',$proposal->program);
     }
+
+
 
 }

@@ -18,7 +18,10 @@ class ReportController extends Controller
     public function index()
     {
         $reports = Report::all();
-        return view('1stRoleBlades.listReport',compact('reports'));
+        $requestedReports = $reports->where('status', '0');
+        $approvedReports = $reports->where('status', '1');
+        $rejectedReports = $reports->where('status', '2');
+        return view('1stRoleBlades.listReport',compact('reports','requestedReports','approvedReports','rejectedReports'));
     }
 
     /**

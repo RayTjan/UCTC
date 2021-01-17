@@ -72,7 +72,14 @@ class ReportController extends Controller
     {
         $program = Program::findOrFail($id);
         $reports = Report::where('program',$id)->get();
-        return view('2ndRoleBlades.listReport',compact('program','reports'));
+        $lastReport = $reports->get()->last();
+        $addAvailability = true;
+        if ($lastReport != null){
+            if ($lastReport->status == '0' || $lastReport->status = '1'){
+                $addAvailability = false;
+            }
+        }
+        return view('2ndRoleBlades.listReport',compact('program','reports','addAvailability'));
     }
 
     /**
