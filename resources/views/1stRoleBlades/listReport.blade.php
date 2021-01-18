@@ -68,21 +68,98 @@
                                                     {{ csrf_field() }}
                                                     <button class="ml-2 dropdown-item btnA btnSuccess" title="Approve" type="submit">Accept</button>
                                                 </form>
-                                                <form action="{{route('admin.report.reject', $report->id)}}"
-                                                      method="POST">
-                                                    {{ csrf_field() }}
-                                                    <button class="ml-2 dropdown-item btnA btnDelete" title="Reject" type="submit">Reject</button>
-                                                </form>
-                                                <form action="{{ route('admin.report.destroy', $report ) }}" method="post">
-                                                    @csrf
-                                                    <input type="hidden" name="_method" value="DELETE">
-                                                    <button type="submit" class="ml-2 dropdown-item btnA btnDelete">Delete</button>
-                                                </form>
+                                                @if($report->status == '0')
+                                                    <button class="ml-2 dropdown-item btnA btnDelete" title="Reject"
+                                                            data-toggle="modal"
+                                                            data-target="#rejectNote-{{$report->id}}">
+                                                        Reject
+                                                    </button>
+                                                @elseif($report->status == '2')
+                                                    <button class="ml-2 dropdown-item btnA" title="Reject"
+                                                            data-toggle="modal"
+                                                            data-target="#note-{{$report->id}}">
+                                                        Reject Note
+                                                    </button>
+                                                @endif
+                                                    <button type="submit" class="ml-2 dropdown-item btnA btnDelete"
+                                                    data-toggle="modal"
+                                                    data-target="#deleteReport-{{ $report->id }}">Delete</button>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
                             </ul>
+
+                            {{--            $report note--}}
+                            <div class="modal fade" id="note-{{$report->id}}">
+                                <div class="modal-dialog">
+                                    <div class="modal-content card-bg-change">
+                                        <!-- $report Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title font-weight-bold">Note From Coor</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- $report body -->
+                                        <div class="modal-body" style="text-align: left;">
+                                            <p>{{$report->note}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{--                                $report reject--}}
+                            <div class="modal fade" id="rejectNote-{{$report->id}}">
+                                <div class="modal-dialog">
+                                    <div class="modal-content card-bg-change">
+                                        <!-- $report Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title font-weight-bold">Reject {{$report->name}} </h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- $report body -->
+                                        <div class="modal-body" style="text-align: left;">
+                                            <form action="{{route('admin.report.reject', $report->id)}}" class="p-0 m-0"
+                                                  method="POST">
+                                                <div class="form-group">
+                                                    {{ csrf_field() }}
+                                                    <input type="hidden" name="_method" value="PATCH">
+                                                    <div class="form-group">
+                                                        <label>Note: </label>
+                                                        <textarea type="text" class="form-control" name="note" required></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group text-center">
+                                                    <button class="btnA circular redstar font-weight-bold p-2 red-hover" type="submit">Reject Report</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{--        Delete report--}}
+
+                            <div class="modal fade" id="deleteReport-{{ $report->id }}">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Are you sure want to delete this {{ $report->report }} report ?</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body d-inline-block text-center" style="text-align: left;">
+                                            <form action="{{ route('admin.report.destroy', $report) }}" method="post" class="d-inline-block">
+                                                @csrf
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover">Yes</button>
+                                            </form>
+                                            <button type="button" class="btnA circular bluestar font-weight-bold p-2 blue-hover" data-dismiss="modal">No</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         @endforeach
 
                     </div>

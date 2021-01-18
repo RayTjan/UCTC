@@ -41,7 +41,6 @@ class FinanceController extends Controller
             'name' => 'required|string',
             'type' => 'required|string',
             'value' => 'required|int',
-            'status' => 'required|string',
             'proof_of_payment' => 'image|mimes:png,jpg,jpeg,svg'
         ]);
 
@@ -52,7 +51,6 @@ class FinanceController extends Controller
             'name' => $data['name'],
             'type' => $data['type'],
             'value' => $data['value'],
-            'status' => $data['status'],
             'program' => $request->program,
             'proof_of_payment' => $payName,
         ]);
@@ -92,22 +90,32 @@ class FinanceController extends Controller
      */
     public function update(Request $request, Finance $finance)
     {
-        $data = $request->validate([
-            'name' => 'required|string',
-            'type' => 'required|string',
-            'value' => 'required|int',
-            'proof_of_payment' => 'image|mimes:png,jpg,jpeg,svg'
-        ]);
+        if (isset($request->proof_of_payment)){
+            $data = $request->validate([
+                'name' => 'required|string',
+                'type' => 'required|string',
+                'value' => 'required|int',
+                'proof_of_payment' => 'image|mimes:png,jpg,jpeg,svg'
+            ]);
 
-        $payName = $data['proof_of_payment']->getClientOriginalName() . '-' . time() . '.' . $data['proof_of_payment']->extension();
-        $data['proof_of_payment']->move(public_path('/files/finance'), $payName);
+            $payName = $data['proof_of_payment']->getClientOriginalName() . '-' . time() . '.' . $data['proof_of_payment']->extension();
+            $data['proof_of_payment']->move(public_path('/files/finance'), $payName);
 
-        $finance->update([
-            'name' => $data['name'],
-            'type' => $data['type'],
-            'value' => $data['value'],
-            'proof_of_payment' => $payName,
-        ]);
+            $finance->update([
+                'name' => $data['name'],
+                'type' => $data['type'],
+                'value' => $data['value'],
+                'proof_of_payment' => $payName,
+            ]);
+        }else{
+            $data = $request->validate([
+                'name' => 'required|string',
+                'type' => 'required|string',
+                'value' => 'required|int',
+            ]);
+
+            $finance->update($data);
+        }
         return redirect(route('staff.finance.show',$finance->program));
     }
 

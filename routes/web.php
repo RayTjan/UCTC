@@ -50,17 +50,17 @@ Route::group([
     Route::get('/', 'App\Http\Controllers\Admin\DashboardController@index');
     Route::resource('program', \App\Http\Controllers\Admin\ProgramController::class);
     Route::post('program/{id}/approve', [\App\Http\Controllers\Admin\ProgramController::class, 'approve'])->name('program.approve');
-    Route::post('program/{id}/suspend', [\App\Http\Controllers\Admin\ProgramController::class, 'suspend'])->name('program.suspend');
+    Route::patch('program/{id}/suspend', [\App\Http\Controllers\Admin\ProgramController::class, 'suspend'])->name('program.suspend');
     Route::resource('committee',\App\Http\Controllers\Admin\CommitteeController::class);
     Route::post('committee/{id}/approve', [\App\Http\Controllers\Admin\CommitteeController::class, 'approve'])->name('committee.approve');
     Route::post('committee/{id}/reject', [\App\Http\Controllers\Admin\CommitteeController::class, 'reject'])->name('committee.reject');
     Route::resource('user', \App\Http\Controllers\Admin\UserController::class);
     Route::resource('proposal', \App\Http\Controllers\Admin\ProposalController::class);
     Route::post('proposal/{id}/approve', [\App\Http\Controllers\Admin\ProposalController::class, 'approve'])->name('proposal.approve');
-    Route::post('proposal/{id}/reject', [\App\Http\Controllers\Admin\ProposalController::class, 'reject'])->name('proposal.reject');
+    Route::patch('proposal/{id}/reject', [\App\Http\Controllers\Admin\ProposalController::class, 'reject'])->name('proposal.reject');
     Route::resource('report', \App\Http\Controllers\Admin\ReportController::class);
     Route::post('report/{id}/approve', [\App\Http\Controllers\Admin\ReportController::class, 'approve'])->name('report.approve');
-    Route::post('report/{id}/reject', [\App\Http\Controllers\Admin\ReportController::class, 'reject'])->name('report.reject');
+    Route::patch('report/{id}/reject', [\App\Http\Controllers\Admin\ReportController::class, 'reject'])->name('report.reject');
     Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
 
     Route::get('file/create/{id}', ['as' => 'file.create', 'uses' => '\App\Http\Controllers\Admin\FileAttachmentController@create']);
@@ -69,8 +69,9 @@ Route::group([
     Route::get('action/create/{id}', ['as' => 'action.create', 'uses' => '\App\Http\Controllers\Admin\ActionController@create']);
     Route::resource('action', \App\Http\Controllers\Admin\ActionController::class)->except('create');
     Route::resource('finance', \App\Http\Controllers\Admin\FinanceController::class);
-    Route::post('finance/{id}/approve', [\App\Http\Controllers\Admin\FinanceController::class, 'approve'])->name('finance.approve');
-    Route::patch('finance/{id}/reject', [\App\Http\Controllers\Admin\FinanceController::class, 'reject'])->name('finance.reject');
+    Route::resource('dana', \App\Http\Controllers\Admin\PencairanDanaController::class);
+    Route::post('dana/{id}/approve', [\App\Http\Controllers\Admin\PencairanDanaController::class, 'approve'])->name('dana.approve');
+    Route::patch('dana/{id}/reject', [\App\Http\Controllers\Admin\PencairanDanaController::class, 'reject'])->name('dana.reject');
 });
 
 Route::group([
@@ -102,6 +103,7 @@ Route::group([
     Route::get('file/create/{id}', ['as' => 'file.create', 'uses' => '\App\Http\Controllers\Staff\FileAttachmentController@create']);
     Route::resource('file', \App\Http\Controllers\Staff\FileAttachmentController::class)->except('create');
     Route::resource('finance', \App\Http\Controllers\Staff\FinanceController::class);
+    Route::resource('dana', \App\Http\Controllers\Staff\PencairanDanaController::class);
 });
 
 Route::group([
@@ -134,4 +136,5 @@ Route::group([
     Route::get('file/create/{id}', ['as' => 'file.create', 'uses' => '\App\Http\Controllers\User\FileAttachmentController@create']);
     Route::resource('file', \App\Http\Controllers\User\FileAttachmentController::class)->except('create');
     Route::resource('finance', \App\Http\Controllers\User\FinanceController::class);
+    Route::resource('dana', \App\Http\Controllers\User\PencairanDanaController::class);
 });

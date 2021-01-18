@@ -54,18 +54,23 @@
 
             <div class="row align-items-center">
                 <h6 class="col-md-1 font-weight-bold float-left">Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </h6>
-                    <p class="col-md-1 font-weight-bold circular purplestar">
+                @if($program->status == '0')
+                    <p class="col-md-1 font-weight-bold circular yellowstar">
                         Pending
                     </p>
-                    <p class="col-md-1 font-weight-bold circular yellowstar">
+                @elseif($program->status == '1')
+                    <p class="col-md-1 font-weight-bold circular toscastar">
                         Ongoing
                     </p>
+                @elseif($program->status == '2')
                     <p class="col-md-1 font-weight-bold circular greenstar">
                         Finished
                     </p>
+                @elseif($program->status == '3')
                     <p class="col-md-1 font-weight-bold circular redstar">
                         Suspended
                     </p>
+                @endif
             </div>
 
             <div class="row align-items-center">

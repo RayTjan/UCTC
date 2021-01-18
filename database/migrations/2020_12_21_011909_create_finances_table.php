@@ -18,9 +18,7 @@ class CreateFinancesTable extends Migration
             $table->string('name');
             $table->integer('value');
             $table->enum('type',['0','1']);
-            $table->enum('status',['0','1','2'])->default('0');
             $table->string('proof_of_payment');
-            $table->text('note')->nullable();
             $table->unsignedBigInteger('program')->nullable();
             $table->timestamps();
             $table->foreign('program')->references('id')->on('uctc_programs')->onDelete('cascade');

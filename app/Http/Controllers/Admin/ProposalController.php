@@ -131,10 +131,11 @@ class ProposalController extends Controller
         return empty($program) ? redirect()->back()->with('Fail', "Failed to approve")
             : redirect()->back()->with('Success', 'Success program proposal: #('.$proposal->program->name.') approved');
     }
-    public function reject($id){
+    public function reject($id, Request $request){
         $proposal = Proposal::findOrFail($id);
         $proposal->update([
             'status' => '2',
+            'note' => $request->note,
         ]);
 
         return empty($program) ? redirect()->back()->with('Fail', "Failed to reject")

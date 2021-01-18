@@ -159,24 +159,29 @@
         <div class="d-flex justify-content-between mb-5">
             <div class="">
                 @if($program->status == '1'||$program->status == '2')
-                <a href="{{ route('staff.client.show', $program) }}" class="circular yellowstar font-weight-bold p-2 yellow-hover mr-2">
+                <a href="{{ route('staff.client.show', $program) }}" title="Client" class="circular yellowstar font-weight-bold p-2 yellow-hover mr-2">
                     <i class="fa fa-user"></i>
                     Client
                 </a>
-                <a href="{{ route('staff.committee.show', $program) }}" class="circular cyanstar font-weight-bold p-2 cyan-hover mr-2">
+                <a href="{{ route('staff.committee.show', $program) }}" title="Committee" class="circular cyanstar font-weight-bold p-2 cyan-hover mr-2">
                     <i class="fa fa-user"></i>
                     Committee
                 </a>
-                <a href="{{ route('staff.action.show', $program) }}" class="circular bluestar font-weight-bold p-2 blue-hover mr-2">
+                <a href="{{ route('staff.action.show', $program) }}" title="Action Plan" class="circular bluestar font-weight-bold p-2 blue-hover mr-2">
                     <i class="fa fa-database"></i>
                     Action Plan
+                </a>
+                <a href="{{ route('staff.dana.show', $program) }}" title="Dana" class="circular toscastar font-weight-bold p-2 tosca-hover mr-2">
+                    <i class="fa fa-money"></i>
+                   Pengajuan Dana
                 </a>
                 @endif
 
                 @if($program->status == '3')
                 <a class="circular redstar font-weight-bold p-2 red-hover mr-2"
-                   data-toggle="modal"
-                   data-target="#note">
+                    title="Suspend note"
+                    data-toggle="modal"
+                    data-target="#note-{{$program->id}}">
                     <i class="fa fa-sticky-note"></i>
                     Coor's Note
                 </a>
@@ -184,7 +189,7 @@
 
                 @if($edit == true)
                 @if($program->status != '3'||$program->status != '2')
-                <a href="{{ route('staff.program.edit', $program) }}" class="circular purplestar font-weight-bold p-2 purple-hover mr-2">
+                <a href="{{ route('staff.program.edit', $program) }}" title="Edit" class="circular purplestar font-weight-bold p-2 purple-hover mr-2">
                     <i class="fa fa-dashboard"></i>
                     Edit
                 </a>
@@ -192,14 +197,14 @@
                 @endif
 
                 @if($program->status == '1'||$program->status == '2')
-                <a href="{{ route('staff.proposal.show', $program) }}" class="circular toscastar font-weight-bold p-2 tosca-hover mr-2">
+                <a href="{{ route('staff.proposal.show', $program) }}" title="Proposal" class="circular toscastar font-weight-bold p-2 tosca-hover mr-2">
                     <i class="fa fa-address-book"></i>
                     Proposal
                 </a>
 
 {{--                buat report, masih belum tau ifnya apa--}}
                 @if(isset($program->hasProposals[0]->id))
-                    <a href="{{ route('staff.report.create', $program) }}" class="circular greenstar font-weight-bold p-2 green-hover mr-2">
+                    <a href="{{ route('staff.report.create', $program) }}" title="Report" class="circular greenstar font-weight-bold p-2 green-hover mr-2">
                         <i class="fa fa-book"></i>
                         Report
                     </a>
@@ -207,6 +212,7 @@
                 @endif
                 @if($edit == true)
                 <button type="button"
+                        title="Delete"
                         data-toggle="modal"
                         data-target="#deleteProgram"
                         class="btnA circular redstar font-weight-bold p-2 red-hover">
@@ -231,15 +237,15 @@
         {{--            modal note--}}
         <div class="modal fade" id="note-{{$program->id}}">
             <div class="modal-dialog">
-                <div class="modal-content card-bg-change">
+                <div class="modal-content bg-change-red">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                        <h4 class="modal-title font-weight-bold">Note From Coor</h4>
+                        <h4 class="modal-title font-weight-bold titlelogin">Note From Coor</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body" style="text-align: left;">
-                        <p>{{$program->note}}</p>
+                        <p class="titlelogin">{{$program->note}}</p>
                     </div>
                 </div>
             </div>
