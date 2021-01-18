@@ -22,6 +22,7 @@ class UserResource extends JsonResource
             'phone_number'=>$this->identity->phone,
             'email'=>$this->email,
             'password'=>$this->password,
+            'picture'=>$this->picture,
             'status'=>$this->status=='1' ? 'Open' : 'Close',
         ];
     }
