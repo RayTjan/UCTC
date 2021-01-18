@@ -13,6 +13,7 @@
             <h1 class="col font-weight-bold">{{ $program->name }} Report</h1>
         </div>
 
+        @if($edit == true)
         @auth()
             @if($addAvailability == true)
             <div class="clearfix">
@@ -72,7 +73,7 @@
                     </div>
                 </div>
             </div>
-        @endauth
+        @endif
 
         <div class="row" style="margin-top: 30px;">
             <link href='//fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'>
@@ -85,9 +86,13 @@
                         <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget card-bg-change">
                             <li class="guiz-awards-time customComittee">Name</li>
                             <li class="guiz-awards-time customComittee">Status</li>
-                            <li class="guiz-awards-time customComittee">Replace</li>
+                            @if($edit == true)
+                                <li class="guiz-awards-time customComittee">Replace</li>
+                            @endif
                             <li class="guiz-awards-time customComittee">Download</li>
-                            <li class="guiz-awards-time customComittee">Delete</li>
+                            @if($edit == true)
+                                <li class="guiz-awards-time customComittee">Delete</li>
+                            @endif
                         </ul>
 
                         @foreach($reports as $report)
@@ -108,63 +113,67 @@
                                         <div class="text-danger">Rejected</div>
                                     @endif
                                 </li>
-                                @if($report->status == 0)
-                                    <li class="guiz-awards-time customComittee">
-                                        <button type="submit" class="btn btn-primary"
-                                                title="Edit Report"
-                                                data-toggle="modal"
-                                                data-target="#replaceReport-{{$report->id}}">
-                                            Replace
-                                        </button>
-                                    </li>
+                                @if($edit == true)
+                                    @if($report->status == 0)
+                                        <li class="guiz-awards-time customComittee">
+                                            <button type="submit" class="btn btn-primary"
+                                                    title="Edit Report"
+                                                    data-toggle="modal"
+                                                    data-target="#replaceReport-{{$report->id}}">
+                                                Replace
+                                            </button>
+                                        </li>
 
-                                    {{--                                    modal edit report--}}
-                                    <div class="modal fade" id="replaceReport-{{$report->id}}">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content card-bg-change">
-                                                <!-- Modal Header -->
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title font-weight-bold">Replace Report</h4>
-                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                </div>
-                                                <!-- Modal body -->
-                                                <div class="modal-body" style="text-align: left;">
-                                                    <form action="{{route ('staff.report.update', $report)}}" method="POST" enctype="multipart/form-data">
-                                                        <div class="form-group">
-                                                            {{ csrf_field() }}
-                                                            <input type="hidden" name="_method" value="PATCH">
-                                                            <input name="selected_program" type="hidden" value="{{$program->id}}">
-                                                            <label>Replace report {{ $report->report }} with ...</label>
-                                                            <input type="file" name="report" class="form-control-file" required>
-                                                        </div>
-                                                        <div class="form-group text-center">
-                                                            <button class="btnA circular bluestar p-2 blue-hover" type="submit">Replace Report</button>
-                                                        </div>
-                                                    </form>
+                                        {{--                                    modal edit report--}}
+                                        <div class="modal fade" id="replaceReport-{{$report->id}}">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content card-bg-change">
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title font-weight-bold">Replace Report</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    </div>
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body" style="text-align: left;">
+                                                        <form action="{{route ('staff.report.update', $report)}}" method="POST" enctype="multipart/form-data">
+                                                            <div class="form-group">
+                                                                {{ csrf_field() }}
+                                                                <input type="hidden" name="_method" value="PATCH">
+                                                                <input name="selected_program" type="hidden" value="{{$program->id}}">
+                                                                <label>Replace report {{ $report->report }} with ...</label>
+                                                                <input type="file" name="report" class="form-control-file" required>
+                                                            </div>
+                                                            <div class="form-group text-center">
+                                                                <button class="btnA circular bluestar p-2 blue-hover" type="submit">Replace Report</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                @else
-                                    <li class="guiz-awards-time customComittee">
-                                        <form action="" method="get">
-                                            <button type="submit" class="btn btn-primary disabled">Replace</button>
-                                        </form>
-                                    </li>
+                                    @else
+                                        <li class="guiz-awards-time customComittee">
+                                            <form action="" method="get">
+                                                <button type="submit" class="btn btn-primary disabled">Replace</button>
+                                            </form>
+                                        </li>
+                                    @endif
                                 @endif
                                 <li class="guiz-awards-time customComittee">
                                     <a href="/files/report/{{ $report->report }}" class="btn btn-success">Download</a>
                                 </li>
-                                <li class="guiz-awards-time customComittee">
-                                    <button
-                                        type="button"
-                                        data-toggle="modal"
-                                        data-target="#deleteReport-{{ $report->id }}"
-                                        class="btn btn-danger">
-                                        Delete
-                                    </button>
-                                </li>
+                                @if($edit == true)
+                                    <li class="guiz-awards-time customComittee">
+                                        <button
+                                            type="button"
+                                            data-toggle="modal"
+                                            data-target="#deleteReport-{{ $report->id }}"
+                                            class="btn btn-danger">
+                                            Delete
+                                        </button>
+                                    </li>
+                                @endif
                             </ul>
 
                             {{--        Delete Task--}}

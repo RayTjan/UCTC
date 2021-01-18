@@ -16,7 +16,8 @@ class FinanceController extends Controller
      */
     public function index()
     {
-        //
+        $requestedFinances = Finance::all()->where('status', '0');
+        return view('1stRoleBlades.listFinance',compact('requestedFinances'));
     }
 
     /**
@@ -51,7 +52,7 @@ class FinanceController extends Controller
     {
         $program = Program::findOrFail($id);
         $finances = Finance::where('program',$id)->get();
-        return view('2ndRoleBlades.listFinance',compact('program','finances'));
+        return view('1stRoleBlades.listFinance',compact('program','finances'));
     }
 
     /**
@@ -89,4 +90,24 @@ class FinanceController extends Controller
         $finance->delete();
         return redirect()->route('admin.finance.show', $finance->program);
     }
+
+    public function approve($id){
+        $finance = Finance::findOrFail($id);
+        $finance->update([
+            'status' => '1',
+        ]);
+
+        return empty($program) ? redirect()->back()->with('Fail', "Failed to approve")
+            : redirect()->back()->with('Success', 'Success program finance: #('.$finance->program->name.') approved');
+    }
+    public function reject($id){
+        $finance = Finance::findOrFail($id);
+        $finance->update([
+            'status' => '2',
+        ]);
+
+        return empty($program) ? redirect()->back()->with('Fail', "Failed to reject")
+            : redirect()->back()->with('Success', 'Success program finance: #('.$finance->program->name.') Rejected');
+    }
+
 }

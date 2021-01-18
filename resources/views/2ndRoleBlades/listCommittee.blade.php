@@ -13,7 +13,7 @@
             <h1 class="col font-weight-bold">{{ $program->name }} Comittees List</h1>
         </div>
 
-        @auth()
+        @if($edit == true)
             <div class="clearfix">
                 {{-- auth to limit content, it cannot be accessed until login --}}
                 <div class="float-right">
@@ -80,7 +80,7 @@
                     </div>
                 </div>
             </div>
-        @endauth
+        @endif
 
         <div class="row" style="margin-top: 30px;">
             <link href='//fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'>
@@ -104,10 +104,11 @@
                             <li class="guiz-awards-time customComittee">{{ $committee->role->name }}</li>
                             <li class="guiz-awards-time customComittee">{{ $committee->identity->email }}</li>
                             <li class="guiz-awards-time customComittee">
-                                @if($committee->pivot->is_approved == 0) <div class="text-warning">Pending</div>
+                                @if($committee->pivot->is_approved == 0) <div class="text-primary">Pending</div>
                                 @elseif($committee->pivot->is_approved == 1) <div class="text-success">Approved</div>
                                 @else <div class="text-danger">Rejected</div> @endif
                             </li>
+                            @if($edit == true)
                             @if($committee->pivot->is_approved == 0)
                             <li class="guiz-awards-time customComittee">
                                 <div class="dropdown">
@@ -135,6 +136,7 @@
                                     </div>
                                 </div>
                             </li>
+                            @endif
                             @endif
                         </ul>
                         @endforeach

@@ -17,7 +17,7 @@ class ClientController extends Controller
     public function index()
     {
         $clients = Client::all();
-        return view('2ndRoleBlades.listClient', compact('clients'));
+        return view('1stRoleBlades.listClient', compact('clients'));
     }
 
     /**
@@ -52,7 +52,7 @@ class ClientController extends Controller
     public function show($id)
     {
         $program = Program::findOrFail($id);
-        return view('2ndRoleBlades.listClientProgram', compact('program'));
+        return view('1stRoleBlades.listClientProgram', compact('program'));
     }
 
     /**

@@ -28,9 +28,9 @@
         </div>
 
         <div class="row">
-            <div class="card-task bg-change-dark">
+            <div class="card-task card-bg-change">
                 <div class="quiz-window">
-                    <div class="bg-change-dark scrollWebkit height100">
+                    <div class="card-bg-change scrollWebkit height100">
 
                         @for($con = 0;$con < sizeof($tasks);$con++)
                         <a onclick="detailShow('detailTask-{{ $con }}')" class="a-none">

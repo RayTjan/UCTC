@@ -7,6 +7,7 @@
             <div class="quiz-window">
                 <div class="height100">
 
+                    @if($edit == true)
                     <form action="{{route('staff.report.store')}}" method="post" enctype="multipart/form-data">
                         {{csrf_field()}}
 
@@ -25,6 +26,10 @@
                             <button type="submit" class="btnA circular greenstar font-weight-bold p-2 green-hover">Submit</button>
                         </div>
                     </form>
+
+                    @else
+                        <h2>You don't have permission to edit this program Report!</h2>
+                    @endif
 
                 </div>
             </div>

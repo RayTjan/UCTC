@@ -18,8 +18,14 @@ class DashboardController extends Controller
     public function index()
     {
         if (Auth::user()) {
-            $programs = Program::all();
             $tasks = Task::all();
+
+            $user = Auth::user();
+            $allprograms = Program::all();
+            $createdPrograms = $allprograms->where('created_by', $user->id);
+            $participatedPrograms = $user->attends;
+            $programs = $createdPrograms->merge($participatedPrograms);
+
             return view('3rdRoleBlades.dashboard', compact('programs', 'tasks'));
         }
 

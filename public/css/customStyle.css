@@ -742,12 +742,12 @@ button, select, input {
 }
 
 .boxScroll::-webkit-scrollbar-track {
-    background: #aaa;
+    background: #f0f0f0;
     border-radius: 1vh;
 }
 
 .boxScroll::-webkit-scrollbar-thumb {
-    background: #666666;
+    background: #aaa;
     border-radius: 1vh;
 }
 
@@ -900,7 +900,7 @@ button, select, input {
 }
 
 .titlelogin {
-    color: white;
+    color: white !important;
 }
 
 p.titlelogin{
@@ -1173,7 +1173,7 @@ p.titlelogin{
 }
 
 .sizeForm {
-    width: 37%;
+    width: 30%;
 }
 
 .docForm {
@@ -1190,6 +1190,10 @@ p.titlelogin{
 
 .typeBudgetForm {
     width: 12%;
+}
+
+.typeBudgetForm:hover{
+    cursor: pointer;
 }
 
 /*File attachment*/

@@ -12,7 +12,7 @@
                     <a href="{{ route('admin.program.index') }}" class="seeall">see all</a>
                 </div>
                 <div class="d-flex boxScroll">
-                @foreach($programs as $program)
+                @foreach($allprograms as $program)
                     <!-- ./col -->
                         <div class="col-lg-3 col-6">
                             <!-- small box -->

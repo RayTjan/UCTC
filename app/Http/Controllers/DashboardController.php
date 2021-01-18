@@ -19,10 +19,15 @@ class DashboardController extends Controller
     public function index()
     {
         if (Auth::id()) {
-            $programs = Program::all();
+            $user = Auth::user();
+            $allprograms = Program::all();
+            $createdPrograms = $allprograms->where('created_by', $user->id);
+            $participatedPrograms = $user->attends;
+            $programs = $createdPrograms->merge($participatedPrograms);
+
             if (Auth::user()->isAdmin()) {
                 $proposals = Proposal::all()->where('status','0');
-                return view('1stRoleBlades.dashboard', compact('programs', 'proposals'));
+                return view('1stRoleBlades.dashboard', compact('allprograms', 'proposals'));
             }else if (Auth::user()->isCreator()) {
                 $actions = ActionPlan::all();
                 return view('2ndRoleBlades.dashboard', compact('programs', 'actions'));

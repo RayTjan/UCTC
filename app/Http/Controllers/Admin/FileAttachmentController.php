@@ -29,7 +29,7 @@ class FileAttachmentController extends Controller
     public function create($id)
     {
         $task = Task::findOrFail($id);
-        return view('2ndRoleBlades.addAttachment', compact('task'));
+        return view('1stRoleBlades.addAttachment', compact('task'));
     }
 
     /**
@@ -66,7 +66,7 @@ class FileAttachmentController extends Controller
     public function show($id)
     {
         $program = Program::findOrFail($id);
-        return view('2ndRoleBlades.listFileAttachment', compact('program'));
+        return view('1stRoleBlades.listFileAttachment', compact('program'));
     }
 
     /**
@@ -78,7 +78,7 @@ class FileAttachmentController extends Controller
     public function edit($id)
     {
         $file = FileAttachment::findOrFail($id);
-        return view('2ndRoleBlades.editAttachment', compact('file'));
+        return view('1stRoleBlades.editAttachment', compact('file'));
     }
 
     /**

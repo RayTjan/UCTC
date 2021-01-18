@@ -36,7 +36,7 @@ class ReportController extends Controller
         if (isset($program->hasReports[0])) {
             return redirect(route('admin.report.show',$program));
         }
-        return view('2ndRoleBlades.addReport',compact('program'));
+        return view('1stRoleBlades.addReport',compact('program'));
     }
 
     /**
@@ -76,7 +76,7 @@ class ReportController extends Controller
     {
         $program = Program::findOrFail($id);
         $reports = Report::where('program',$id)->get();
-        return view('2ndRoleBlades.listReport',compact('program','reports'));
+        return view('1stRoleBlades.listReport',compact('program','reports'));
     }
 
     /**

@@ -8,12 +8,10 @@
         <div class="d-flex justify-content-between">
             <h3>{{ str_replace("-","/",date("d-m-Y", strtotime($program->program_date))) }}</h3>
 
-            @if($program->status == '1' || $program->status == '2')
                 <a href="{{route('admin.file.show',$program)}}" class="circular graystar font-weight-bold p-2 gray-hover">
                     <i class="fa fa-paperclip"></i>
                     Data link
                 </a>
-            @endif
 
         </div>
 
@@ -56,23 +54,18 @@
 
             <div class="row align-items-center">
                 <h6 class="col-md-1 font-weight-bold float-left">Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </h6>
-                @if($program->status == '0')
                     <p class="col-md-1 font-weight-bold circular purplestar">
                         Pending
                     </p>
-                @elseif($program->status == '1')
                     <p class="col-md-1 font-weight-bold circular yellowstar">
                         Ongoing
                     </p>
-                @elseif($program->status == '2')
                     <p class="col-md-1 font-weight-bold circular greenstar">
                         Finished
                     </p>
-                @elseif($program->status == '3')
                     <p class="col-md-1 font-weight-bold circular redstar">
                         Suspended
                     </p>
-                @endif
             </div>
 
             <div class="row align-items-center">
@@ -147,18 +140,15 @@
         }
         ?>
 
-        @if($program->status == '1' || $program->status == '2')
             <div class="clearfix">
                 <h5 class="float-right font-weight-bold">Budgeting</h5>
             </div>
             <div class="clearfix">
                 <h3 class="float-right">Rp. {{$total}}</h3>
             </div>
-        @endif
 
         <div class="d-flex justify-content-between mb-5">
             <div class="">
-                @if($program->status == '1'||$program->status == '2')
                     <a href="{{ route('admin.client.show', $program) }}" class="circular yellowstar font-weight-bold p-2 yellow-hover mr-2">
                         <i class="fa fa-user"></i>
                         Client
@@ -171,28 +161,22 @@
                         <i class="fa fa-database"></i>
                         Action Plan
                     </a>
-                @endif
-                @if($program->status != '3'||$program->status != '2')
                     <a href="{{ route('admin.program.edit', $program) }}" class="circular purplestar font-weight-bold p-2 purple-hover mr-2">
                         <i class="fa fa-dashboard"></i>
                         Edit
                     </a>
-                @endif
 
-                @if($program->status == '1'||$program->status == '2')
                     <a href="{{ route('admin.proposal.show', $program) }}" class="circular toscastar font-weight-bold p-2 tosca-hover mr-2">
                         <i class="fa fa-address-book"></i>
                         Proposal
                     </a>
 
                     {{--                buat report, masih belum tau ifnya apa--}}
-                    @if(isset($program->hasProposals[0]->id))
                         <a href="{{ route('admin.report.create', $program) }}" class="circular greenstar font-weight-bold p-2 green-hover mr-2">
                             <i class="fa fa-book"></i>
                             Report
                         </a>
-                    @endif
-                @endif
+
                 <button type="button"
                         data-toggle="modal"
                         data-target="#deleteProgram"
@@ -201,7 +185,6 @@
                     Delete
                 </button>
             </div>
-            @if($program->status == '1' || $program->status == '2')
                 <div>
                     <button type="button"
                             data-toggle="modal"
@@ -211,7 +194,6 @@
                         Detail
                     </button>
                 </div>
-            @endif
         </div>
 
         {{--        Modal Detail Budget--}}

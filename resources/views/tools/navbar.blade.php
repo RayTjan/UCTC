@@ -11,7 +11,7 @@
                 @elseif(\Illuminate\Support\Facades\Auth::user()->isCreator())
                     {{ route('staff.user.show',\Illuminate\Support\Facades\Auth::id()) }}
                 @elseif(\Illuminate\Support\Facades\Auth::user()->isUser())
-                    {{ route('user.user.show',\Illuminate\Support\Facades\Auth::id()) }}
+                    {{ route('student.user.show',\Illuminate\Support\Facades\Auth::id()) }}
                 @endif
                     " class="nav-link">
                     <span class="link-text logo-text">{{\Illuminate\Support\Facades\Auth::user()->identity->name}}</span>
@@ -73,7 +73,7 @@
 {{--                        </li>--}}
 {{--                        <li class="nav-item" role="presentation">--}}
 {{--                            <a class="nav-link active" href="{{ route('user.index') }}">--}}
-{{--                                User List--}}
+{{--                                Student List--}}
 {{--                            </a>--}}
 {{--                        </li>--}}
 {{--                        <li class="nav-item" role="presentation">--}}

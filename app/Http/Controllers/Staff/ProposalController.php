@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Program;
 use App\Models\Proposal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProposalController extends Controller
 {
@@ -37,7 +38,6 @@ class ProposalController extends Controller
      */
     public function store(Request $request)
     {
-
         $pdf = $request->validate([
             'proposal' => 'required|mimes:pdf|max:10000',
         ]);
@@ -65,6 +65,20 @@ class ProposalController extends Controller
     {
         $program = Program::findOrFail($id);
         $proposals = Proposal::where('program', $id)->get();
+
+        //check edit
+        $edit = false;
+        $user = Auth::user();
+        $participatedPrograms = $user->attends;
+        foreach ($participatedPrograms as $pprogram){
+            if ($pprogram->id == $program->id){
+                $edit = true;
+            }
+        }
+
+        if ($program->created_by == $user->id){
+            $edit = true;
+        }
         $lastProposal = $proposals->get()->last();
         $addAvailability = true;
         if ($lastProposal != null){
@@ -73,7 +87,7 @@ class ProposalController extends Controller
             }
         }
 
-        return view('2ndRoleBlades.listProposal', compact('proposals', 'program', 'addAvailability'));
+        return view('2ndRoleBlades.listProposal', compact('proposals', 'program','edit','addAvailability'));
     }
 
     /**

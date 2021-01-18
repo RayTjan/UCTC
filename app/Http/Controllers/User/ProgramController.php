@@ -12,6 +12,7 @@ use App\Models\Proposal;
 use App\Models\Type;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use function PHPUnit\Framework\isEmpty;
 
 class ProgramController extends Controller
@@ -23,9 +24,16 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        $programs = Program::all();
         $types = Type::all();
         $categories = Category::all();
+
+        //fetch myprogram
+        $user = Auth::user();
+        $allprograms = Program::all();
+        $createdPrograms = $allprograms->where('created_by', $user->id);
+        $participatedPrograms = $user->attends;
+        $programs = $createdPrograms->merge($participatedPrograms);
+
         return view('3rdRoleBlades.listProgram', compact('programs','types','categories'));
     }
 
@@ -99,7 +107,7 @@ class ProgramController extends Controller
         }
 
 
-        return redirect()->route('user.program.index');
+        return redirect()->route('student.program.index');
     }
 
     /**
@@ -211,7 +219,7 @@ class ProgramController extends Controller
         }
 
 
-        return redirect()->route('user.program.show', $program);
+        return redirect()->route('student.program.show', $program);
     }
 
     /**
@@ -224,7 +232,7 @@ class ProgramController extends Controller
     {
         $program = Program::findOrFail($id);
         $program->delete();
-        return redirect()->route('user.program.index');
+        return redirect()->route('student.program.index');
     }
     /**
      * @param  \Illuminate\Http\Request  $request

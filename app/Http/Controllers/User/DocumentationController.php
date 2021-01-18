@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Task;
+use App\Models\Documentation;
 use Illuminate\Http\Request;
 
-class TaskController extends Controller
+class DocumentationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
-        $detail = 0;
-        return view('3rdRoleBlades.listTask', compact('tasks', 'detail'));
+        //
     }
 
     /**
@@ -38,28 +36,27 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        Task::create($request->all());
-        return redirect()->back();
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Task  $task
+     * @param  \App\Models\Documentation  $documentation
      * @return \Illuminate\Http\Response
      */
-    public function show(Task $task)
+    public function show(Documentation $documentation)
     {
-        return view('3rdRoleBlades.listTask', compact('tasks'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Task  $task
+     * @param  \App\Models\Documentation  $documentation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Task $task)
+    public function edit(Documentation $documentation)
     {
         //
     }
@@ -68,10 +65,10 @@ class TaskController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Task  $task
+     * @param  \App\Models\Documentation  $documentation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Task $task)
+    public function update(Request $request, Documentation $documentation)
     {
         //
     }
@@ -79,10 +76,10 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Task  $task
+     * @param  \App\Models\Documentation  $documentation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Task $task)
+    public function destroy(Documentation $documentation)
     {
         //
     }

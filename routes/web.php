@@ -69,6 +69,8 @@ Route::group([
     Route::get('action/create/{id}', ['as' => 'action.create', 'uses' => '\App\Http\Controllers\Admin\ActionController@create']);
     Route::resource('action', \App\Http\Controllers\Admin\ActionController::class)->except('create');
     Route::resource('finance', \App\Http\Controllers\Admin\FinanceController::class);
+    Route::post('finance/{id}/approve', [\App\Http\Controllers\Admin\FinanceController::class, 'approve'])->name('finance.approve');
+    Route::post('finance/{id}/reject', [\App\Http\Controllers\Admin\FinanceController::class, 'reject'])->name('finance.reject');
 });
 
 Route::group([
@@ -77,6 +79,9 @@ Route::group([
     'as' => 'staff.'
 ], function () {
     Route::get('/', 'App\Http\Controllers\Staff\DashboardController@index');
+//    Route::get('program/myprogram', [\App\Http\Controllers\Staff\ProgramController::class, 'myprogram'])->name('myprogram');
+//    Route::get('/program/myprogram', ['as' => 'program.myprogram', 'uses' => '\App\Http\Controllers\Staff\ProgramController@myprogram']);
+    Route::get('program/myprogram', [\App\Http\Controllers\Staff\ProgramController::class, 'myprogram'])->name('program.myprogram');
     Route::resource('program', \App\Http\Controllers\Staff\ProgramController::class);
     Route::get('filterProgramType', [\App\Http\Controllers\Staff\ProgramController::class,'filterProgramType'])->name('program.filterProgramType');
     Route::get('filterProgramCategory', [\App\Http\Controllers\Staff\ProgramController::class,'filterProgramCategory'])->name('program.filterProgramCategory');
@@ -100,15 +105,33 @@ Route::group([
 });
 
 Route::group([
-    'middleware' => 'user',
-    'prefix' => 'user',
-    'as' => 'user.'
+    'middleware' => 'student',
+    'prefix' => 'student',
+    'as' => 'student.'
 ], function () {
     Route::get('/', 'App\Http\Controllers\User\DashboardController@index');
     Route::resource('program', \App\Http\Controllers\User\ProgramController::class);
     Route::resource('user', \App\Http\Controllers\User\UserController::class);
     Route::resource('committee',\App\Http\Controllers\User\CommitteeController::class);
+    Route::post('committee/{id}/approve', [\App\Http\Controllers\User\CommitteeController::class, 'approve'])->name('committee.approve');
+    Route::post('committee/{id}/reject', [\App\Http\Controllers\User\CommitteeController::class, 'reject'])->name('committee.reject');
+    Route::get('/file/{id}', '\App\Http\Controllers\User\FileAttachmentController@create')->name('file.create');
     Route::resource('file', \App\Http\Controllers\User\FileAttachmentController::class)->except('create');
-    Route::patch('/file/{id}', '\App\Http\Controllers\User\FileAttachmentController@create')->name('file.create');
     Route::resource('client', \App\Http\Controllers\User\ClientController::class);
+
+    Route::get('filterProgramType', [\App\Http\Controllers\User\ProgramController::class,'filterProgramType'])->name('program.filterProgramType');
+    Route::get('filterProgramCategory', [\App\Http\Controllers\User\ProgramController::class,'filterProgramCategory'])->name('program.filterProgramCategory');
+    Route::get('filterProgramStatus', [\App\Http\Controllers\User\ProgramController::class,'filterProgramStatus'])->name('program.filterProgramStatus');
+    Route::get('filterProgramDate', [\App\Http\Controllers\User\ProgramController::class,'filterProgramDate'])->name('program.filterProgramDate');
+    Route::resource('proposal', \App\Http\Controllers\User\ProposalController::class);
+    Route::get('report/create/{id}', ['as' => 'report.create', 'uses' => '\App\Http\Controllers\User\ReportController@create']);
+    Route::resource('report', \App\Http\Controllers\User\ReportController::class)->except('create');
+    Route::resource('user', \App\Http\Controllers\User\UserController::class);
+    Route::get('action/create/{id}', ['as' => 'action.create', 'uses' => '\App\Http\Controllers\User\ActionController@create']);
+    Route::resource('action', \App\Http\Controllers\User\ActionController::class)->except('create');
+    Route::get('actionTask/create/{id}', ['as' => 'actionTask.create', 'uses' => '\App\Http\Controllers\User\ActionTaskController@create']);
+    Route::resource('actionTask', \App\Http\Controllers\User\ActionTaskController::class)->except('create');
+    Route::get('file/create/{id}', ['as' => 'file.create', 'uses' => '\App\Http\Controllers\User\FileAttachmentController@create']);
+    Route::resource('file', \App\Http\Controllers\User\FileAttachmentController::class)->except('create');
+    Route::resource('finance', \App\Http\Controllers\User\FinanceController::class);
 });

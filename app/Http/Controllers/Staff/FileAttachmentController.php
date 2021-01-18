@@ -47,12 +47,11 @@ class FileAttachmentController extends Controller
 
         //call program
         $action = ActionPlan::findOrFail($task->action_plan);
-        $program = Program::findOrFail($action->program);
 
         FileAttachment::create([
             'name' => $request->name,
             'file_attachment' => $request->file_attachment,
-            'program' => $program->id,
+            'program' => $action->program,
         ]);
         return redirect()->route('staff.actionTask.show', $task->action_plan);
     }

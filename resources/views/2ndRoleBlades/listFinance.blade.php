@@ -49,10 +49,11 @@
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body" style="text-align: left;">
-                    <form action="{{route ('staff.finance.store')}}" method="POST">
+                    <form action="{{route ('staff.finance.store')}}" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             {{ csrf_field() }}
                             <input type="hidden" name="program" value="{{$program->id}}">
+                            <input type="hidden" name="status" value="0">
                             <div class="form-group">
                                 <label>Name: </label>
                                 <input type="text" class="form-control" name="name" required>
@@ -68,6 +69,11 @@
                             <div class="form-group">
                                 <label>Value: </label>
                                 <input type="text" class="form-control" name="value" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Proof of Payment: </label>
+                                <i class="fa fa-clipboard"></i>
+                                <input type="file" class="form-control" name="proof_of_payment" required>
                             </div>
 
                         </div>
@@ -85,14 +91,16 @@
             <div class="table100 ver1">
 
                 <div class="">
-                    <div class="table100-nextcols">
+                    <div class="table100-nextcols boxScroll">
                         <table>
                             <thead>
                             <tr class="row100 head">
                                 <th class="cell100 column2">Name</th>
-                                <th class="cell100 column3">Type</th>
+                                <th class="cell100 column6">Type</th>
                                 <th class="cell100 column6">Value</th>
-                                <th class="cell100 column6">Action</th>
+                                <th class="cell100 column6">Attachment</th>
+                                <th class="cell100 column6">Status</th>
+                                <th class="cell100 column3">Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -108,7 +116,27 @@
                                             <div class="text-danger">Expenditure</div>
                                         @endif
                                     </td>
-                                    <td class="cell100 column3">Rp. {{$finance->value}}</td>
+                                    <td class="cell100 column6">
+                                        @if($finance->type == '0')
+                                            <div class="text-success">+ Rp. {{$finance->value}}</div>
+                                        @elseif($finance->type == '1')
+                                            <div class="text-danger">- Rp. {{$finance->value}}</div>
+                                        @endif
+                                    </td>
+                                    <td class="cell100 column4">
+                                        <a data-toggle="modal"
+                                           data-target="#imgview-{{$finance->id}}"
+                                           class="btn btn-primary titlelogin">See Detail</a>
+                                    </td>
+                                    <td class="cell100 column3">
+                                        @if($finance->status == '0')
+                                            <div class="text-primary">Pending</div>
+                                        @elseif($finance->type == '1')
+                                            <div class="text-danger">Approved</div>
+                                        @elseif($finance->type == '2')
+                                            <div class="text-danger">Rejected</div>
+                                        @endif
+                                    </td>
                                     <td class="cell100 column9 d-flex">
 
                                         {{--                                    edit--}}
@@ -143,7 +171,7 @@
                                             </div>
                                             <!-- Modal body -->
                                             <div class="modal-body" style="text-align: left;">
-                                                    <form action="{{route ('staff.finance.update',$finance)}}" method="POST">
+                                                    <form action="{{route ('staff.finance.update',$finance)}}" method="POST" enctype="multipart/form-data">
                                                         <div class="form-group">
                                                             {{ csrf_field() }}
                                                             <input type="hidden" name="_method" value="PATCH">
@@ -154,13 +182,12 @@
                                                             <div class="form-group">
                                                                 <label>Type: </label>
                                                                 <select name="type" class="custom-select">
-                                                                    <option hidden>
+
                                                                         @if($finance->type == '0')
-                                                                            Income
+                                                                        <option hidden value="0">Income</option>
                                                                         @elseif($finance->type == '1')
-                                                                            Expenditure
+                                                                        <option hidden value="1">Expenditure</option>
                                                                         @endif
-                                                                    </option>
                                                                     <option value="0">Income</option>
                                                                     <option value="1">Expenditure</option>
                                                                 </select>
@@ -169,12 +196,28 @@
                                                                 <label>Value: </label>
                                                                 <input type="text" class="form-control" name="value" value="{{$finance->value}}" required>
                                                             </div>
-
+                                                            <div class="form-group">
+                                                                <label>Proof of Payment: </label>
+                                                                <input type="file" class="form-control" name="proof_of_payment" required>
+                                                            </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <button class="btnA circular bluestar font-weight-bold p-2 blue-hover" type="submit">Edit Finance</button>
                                                         </div>
                                                     </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{--                    modal image--}}
+                                <div class="modal fade" id="imgview-{{$finance->id}}">
+                                    <div class="modal-dialog">
+                                        <div class="modalpic-content">
+                                            <!-- Modal body -->
+                                            <div class="modalpic-body text-center">
+                                                <button type="button" class="close btn-modal" data-dismiss="modal">&times;</button>
+                                                <img src="/files/finance/{{$finance->proof_of_payment}}" alt="image" class="card-img">
                                             </div>
                                         </div>
                                     </div>

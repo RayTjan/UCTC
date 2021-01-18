@@ -21,6 +21,7 @@ class Program extends Model
         'created_by',
         'type',
         'category',
+        'note',
     ];
     public function hasPlans(){
         return $this->hasMany(ActionPlan::class, 'program','id');

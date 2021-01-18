@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\ActionPlan;
 use App\Models\FileAttachment;
+use App\Models\Program;
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class FileAttachmentController extends Controller
@@ -23,9 +26,10 @@ class FileAttachmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('3rdRoleBlades.addAttachment');
+        $task = Task::findOrFail($id);
+        return view('3rdRoleBlades.addAttachment', compact('task'));
     }
 
     /**
@@ -36,8 +40,20 @@ class FileAttachmentController extends Controller
      */
     public function store(Request $request)
     {
-        FileAttachment::create($request->all());
-        return redirect()->route('staff.program.index');
+        $task = Task::findOrFail($request->idTask);
+        $task->update([
+            'status' => $request->status,
+        ]);
+
+        //call program
+        $action = ActionPlan::findOrFail($task->action_plan);
+
+        FileAttachment::create([
+            'name' => $request->name,
+            'file_attachment' => $request->file_attachment,
+            'program' => $action->program,
+        ]);
+        return redirect()->route('student.actionTask.show', $task->action_plan);
     }
 
     /**
@@ -46,9 +62,10 @@ class FileAttachmentController extends Controller
      * @param  \App\Models\FileAttachment  $fileAttachment
      * @return \Illuminate\Http\Response
      */
-    public function show(FileAttachment $fileAttachment)
+    public function show($id)
     {
-        //
+        $program = Program::findOrFail($id);
+        return view('3rdRoleBlades.listFileAttachment', compact('program'));
     }
 
     /**
@@ -57,9 +74,10 @@ class FileAttachmentController extends Controller
      * @param  \App\Models\FileAttachment  $fileAttachment
      * @return \Illuminate\Http\Response
      */
-    public function edit(FileAttachment $fileAttachment)
+    public function edit($id)
     {
-        //
+        $file = FileAttachment::findOrFail($id);
+        return view('3rdRoleBlades.editAttachment', compact('file'));
     }
 
     /**
@@ -69,9 +87,11 @@ class FileAttachmentController extends Controller
      * @param  \App\Models\FileAttachment  $fileAttachment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FileAttachment $fileAttachment)
+    public function update(Request $request, $id)
     {
-        //
+        $file = FileAttachment::findOrFail($id);
+        $file->update($request->all());
+        return redirect(route('student.file.show', $request->program));
     }
 
     /**
@@ -80,8 +100,10 @@ class FileAttachmentController extends Controller
      * @param  \App\Models\FileAttachment  $fileAttachment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FileAttachment $fileAttachment)
+    public function destroy($id)
     {
-        //
+        $file = FileAttachment::findOrFail($id);
+        $file->delete();
+        return redirect(route('student.file.show', $file->program));
     }
 }
