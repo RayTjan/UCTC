@@ -22,6 +22,7 @@ class CreateProgramsTable extends Migration
             $table->date('program_date');
             $table->text('note')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
+            $table->text('thunmbnail')->nullable();
             $table->timestamps();
             $table->foreign('created_by')->references('id')->on('uctc_users');
         });

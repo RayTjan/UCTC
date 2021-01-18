@@ -72,10 +72,9 @@
 
                                         @if($finance->status != '2' && $finance->status != '3')
                                             {{--                                    reject--}}
-                                            <form action="{{route('admin.finance.reject', $finance->id)}}" class="p-0 m-0"
-                                                  method="POST">
-                                                {{ csrf_field() }}
-                                                <button class="btnA circular redstar red-hover iconAct mr-1 p-1" title="Suspend">
+                                                <button class="btnA circular redstar red-hover iconAct mr-1 p-1" title="Reject"
+                                                        data-toggle="modal"
+                                                        data-target="#rejectNote-{{$finance->id}}">
                                                     <i class="fa fa-stop"></i>
                                                 </button>
                                             </form>
@@ -101,6 +100,37 @@
 
                                     </td>
                                 </tr>
+
+{{--                                modal reject--}}
+                                <div class="modal fade" id="rejectNote-{{$finance->id}}">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content card-bg-change">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title font-weight-bold">Edit {{$finance->name}} </h4>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <!-- Modal body -->
+                                            <div class="modal-body" style="text-align: left;">
+                                                <form action="{{route('admin.finance.reject', $finance->id)}}" class="p-0 m-0"
+                                                      method="POST">
+                                                    <div class="form-group">
+                                                        {{ csrf_field() }}
+                                                        <input type="hidden" name="_method" value="PATCH">
+                                                        <div class="form-group">
+                                                            <label>Note: </label>
+                                                            <textarea type="text" class="form-control" name="note" required></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group text-center">
+                                                        <button class="btnA circular redstar font-weight-bold p-2 red-hover" type="submit">Reject Finance</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
 
                                 {{--            modal edit finance--}}
                                 <div class="modal fade" id="editFinance-{{$finance->id}}">
@@ -143,7 +173,7 @@
                                                             <input type="file" class="form-control" name="proof_of_payment" required>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <div class="form-group text-center">
                                                         <button class="btnA circular bluestar font-weight-bold p-2 blue-hover" type="submit">Edit Finance</button>
                                                     </div>
                                                 </form>

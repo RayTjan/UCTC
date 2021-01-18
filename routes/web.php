@@ -70,7 +70,7 @@ Route::group([
     Route::resource('action', \App\Http\Controllers\Admin\ActionController::class)->except('create');
     Route::resource('finance', \App\Http\Controllers\Admin\FinanceController::class);
     Route::post('finance/{id}/approve', [\App\Http\Controllers\Admin\FinanceController::class, 'approve'])->name('finance.approve');
-    Route::post('finance/{id}/reject', [\App\Http\Controllers\Admin\FinanceController::class, 'reject'])->name('finance.reject');
+    Route::patch('finance/{id}/reject', [\App\Http\Controllers\Admin\FinanceController::class, 'reject'])->name('finance.reject');
 });
 
 Route::group([
