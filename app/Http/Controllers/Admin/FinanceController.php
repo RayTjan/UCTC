@@ -100,10 +100,11 @@ class FinanceController extends Controller
         return empty($program) ? redirect()->back()->with('Fail', "Failed to approve")
             : redirect()->back()->with('Success', 'Success program finance: #('.$finance->program->name.') approved');
     }
-    public function reject($id){
+    public function reject($id, Request $request){
         $finance = Finance::findOrFail($id);
         $finance->update([
             'status' => '2',
+            'note' => $request->note,
         ]);
 
         return empty($program) ? redirect()->back()->with('Fail', "Failed to reject")

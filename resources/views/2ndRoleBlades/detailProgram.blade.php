@@ -57,11 +57,11 @@
             <div class="row align-items-center">
                 <h6 class="col-md-1 font-weight-bold float-left">Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </h6>
                 @if($program->status == '0')
-                    <p class="col-md-1 font-weight-bold circular purplestar">
+                    <p class="col-md-1 font-weight-bold circular yellowstar">
                         Pending
                     </p>
                 @elseif($program->status == '1')
-                    <p class="col-md-1 font-weight-bold circular yellowstar">
+                    <p class="col-md-1 font-weight-bold circular toscastar">
                         Ongoing
                     </p>
                 @elseif($program->status == '2')
@@ -173,6 +173,14 @@
                 </a>
                 @endif
 
+                @if($program->status == '3')
+                <a class="circular redstar font-weight-bold p-2 red-hover mr-2"
+                   data-toggle="modal"
+                   data-target="#note">
+                    <i class="fa fa-sticky-note"></i>
+                    Coor's Note
+                </a>
+
                 @if($edit == true)
                 @if($program->status != '3'||$program->status != '2')
                 <a href="{{ route('staff.program.edit', $program) }}" class="circular purplestar font-weight-bold p-2 purple-hover mr-2">
@@ -217,6 +225,23 @@
                 </button>
             </div>
             @endif
+        </div>
+
+        {{--            modal note--}}
+        <div class="modal fade" id="note-{{$program->id}}">
+            <div class="modal-dialog">
+                <div class="modal-content card-bg-change">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title font-weight-bold">Note From Coor </h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body" style="text-align: left;">
+                        <p>{{$finance->note}}</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
 {{--        Modal Detail Budget--}}

@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="d-flex justify-content-between">
-        <h1 class="col font-weight-bold">Finance List</h1>
+        <h1 class="col font-weight-bold">Finance List {{$program->name}}</h1>
         @auth()
             <div class="clearfix">
                 {{-- auth to limit content, it cannot be accessed until login --}}
@@ -100,6 +100,7 @@
                                 <th class="cell100 column6">Value</th>
                                 <th class="cell100 column6">Attachment</th>
                                 <th class="cell100 column6">Status</th>
+                                <th class="cell100 column6">Note</th>
                                 <th class="cell100 column3">Action</th>
                             </tr>
                             </thead>
@@ -131,12 +132,24 @@
                                     <td class="cell100 column3">
                                         @if($finance->status == '0')
                                             <div class="text-primary">Pending</div>
-                                        @elseif($finance->type == '1')
-                                            <div class="text-danger">Approved</div>
-                                        @elseif($finance->type == '2')
+                                        @elseif($finance->status == '1')
+                                            <div class="text-success">Approved</div>
+                                        @elseif($finance->status == '2')
                                             <div class="text-danger">Rejected</div>
                                         @endif
                                     </td>
+                                    <td class="cell100 column3">
+                                    @if($finance->status == '2')
+                                        <a data-toggle="modal"
+                                           data-target="#note-{{$finance->id}}"
+                                           class="btn btn-danger titlelogin">
+                                            Coor's Note
+                                        </a>
+                                    @else
+                                            &nbsp;
+                                    @endif
+                                    </td>
+                                    @if($finance->status == '0')
                                     <td class="cell100 column9 d-flex">
 
                                         {{--                                    edit--}}
@@ -158,7 +171,25 @@
                                         </form>
 
                                     </td>
+                                    @endif
                                 </tr>
+
+                                {{--            modal note--}}
+                                <div class="modal fade" id="note-{{$finance->id}}">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content card-bg-change">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title font-weight-bold">Note From Coor </h4>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <!-- Modal body -->
+                                            <div class="modal-body" style="text-align: left;">
+                                                <p>{{$finance->note}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 {{--            modal edit finance--}}
                                 <div class="modal fade" id="editFinance-{{$finance->id}}">
