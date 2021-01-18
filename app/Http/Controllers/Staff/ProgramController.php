@@ -56,7 +56,31 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        Program::create($request->all());
+
+        if (isset($request->thumbnail)){
+        $data = $request->validate([
+            'thumbnail' => 'image|mimes:png,jpg,jpeg,svg'
+        ]);
+
+        $programThumbnail = $data['thumbnail']->getClientOriginalName() . '-' . time() . '.' . $data['thumbnail']->extension();
+        $data['thumbnail']->move(public_path('/img/program'), $programThumbnail);
+
+            Program::create([
+                'name' => $request->name,
+                'description' => $request->description,
+                'status' => $request->status,
+                'goal' => $request->goal,
+                'program_date' => $request->program_date,
+                'created_by' => $request->created_by,
+                'thumbnail' => $programThumbnail,
+                'category' => $request->category,
+                'type' => $request->type,
+            ]);
+
+        }else{
+            Program::create($request->all());
+        }
+
         $data = $request->all();
         $lastProgram = Program::all()->last();
 
@@ -162,13 +186,30 @@ class ProgramController extends Controller
      */
     public function update(Request $request, Program $program)
     {
-        $data = $request->all();
-        $program->update($request->all());
+        if ($request->thumbnail != null){
+        $data = $request->validate([
+            'thumbnail' => 'image|mimes:png,jpg,jpeg,svg'
+        ]);
 
+        $programThumbnail = $data['thumbnail']->getClientOriginalName() . '-' . time() . '.' . $data['thumbnail']->extension();
+        $data['thumbnail']->move(public_path('/img/program'), $programThumbnail);
+
+        $program->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'goal' => $request->goal,
+            'program_date' => $request->program_date,
+            'thumbnail' => $programThumbnail,
+        ]);
+        } else{
+            $program->update($request->all);
+        }
+
+        $data = $request->all();
 
         //untuk Finances
         foreach ($data['value'] as $item => $value) {
-
+            if (isset($data['proof_of_payment'][$item])){
             $payName = $data['proof_of_payment'][$item]->getClientOriginalName() . '-' . time() . '.' . $data['proof_of_payment'][$item]->extension();
             $data['proof_of_payment'][$item]->move(public_path('/files/finance'), $payName);
 
@@ -182,6 +223,7 @@ class ProgramController extends Controller
 
             if ($dataFinance['name'] != null && $dataFinance['value'] != null && $dataFinance['type'] != null && $dataFinance['proof_of_payment'] != null){
                 Finance::create($dataFinance);
+            }
             }
         }
 

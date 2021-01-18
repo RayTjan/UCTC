@@ -180,6 +180,7 @@
                     <i class="fa fa-sticky-note"></i>
                     Coor's Note
                 </a>
+                @endif
 
                 @if($edit == true)
                 @if($program->status != '3'||$program->status != '2')
@@ -233,12 +234,12 @@
                 <div class="modal-content card-bg-change">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                        <h4 class="modal-title font-weight-bold">Note From Coor </h4>
+                        <h4 class="modal-title font-weight-bold">Note From Coor</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body" style="text-align: left;">
-                        <p>{{$finance->note}}</p>
+                        <p>{{$program->note}}</p>
                     </div>
                 </div>
             </div>

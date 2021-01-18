@@ -23,7 +23,6 @@
                         <label >Goal: </label>
                         <input type="text" class="form-control" name="goal" value="{{ $program->goal }}" required>
                     </div>
-                    <input type="hidden" name="created_by" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
                     <div class="form-group">
                         <label>Program Date / Deadline:</label>
                         <input type="date" class="form-control" name="program_date" value="{{ $program->program_date }}" required>
@@ -81,6 +80,11 @@
                                 <input type="file" name="documentation[]" class="form-control-file d-inline-block docForm" multiple>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label >Thumbnail:</label>
+                        <input type="file" class="form-control-file" name="thumbnail" title="thumbnail program" required>
                     </div>
 
                     <div class="text-center">

@@ -59,6 +59,17 @@
                                     </td>
                                     <td class="cell100 column9 d-flex">
 
+                                        @if($finance->note != null)
+                                            {{--                                    approve--}}
+                                            {{ csrf_field() }}
+                                            <button class="btnA circular greenstar green-hover iconAct mr-1 p-1 "
+                                                    title="Approve"
+                                                    data-toggle="modal"
+                                                    data-target="#rejectNote-{{$finance->id}}">
+                                                <i class="fa fa-check"></i>
+                                            </button>
+                                        @endif
+
                                         @if($finance->status == '0' || $finance->status == '3')
                                             {{--                                    approve--}}
                                             <form action="{{route('admin.finance.approve', $finance->id)}}" class="p-0 m-0"
@@ -131,6 +142,22 @@
                                     </div>
                                 </div>
 
+                                {{--            modal note--}}
+                                <div class="modal fade" id="note-{{$finance->id}}">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content card-bg-change">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title font-weight-bold">Note From Coor </h4>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <!-- Modal body -->
+                                            <div class="modal-body" style="text-align: left;">
+                                                <p>{{$finance->note}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 {{--            modal edit finance--}}
                                 <div class="modal fade" id="editFinance-{{$finance->id}}">
