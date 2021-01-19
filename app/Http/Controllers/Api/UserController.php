@@ -78,4 +78,8 @@ class UserController extends Controller
         $tasks = Task::all()->where('PIC', $id);
         return TaskResource::collection($tasks);
     }
+    public function getAlluser(){
+        $users = User::all();
+        return UserResource::collection($users);
+    }
 }
