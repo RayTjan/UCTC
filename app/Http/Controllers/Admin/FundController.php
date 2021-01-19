@@ -90,7 +90,8 @@ class FundController extends Controller
     {
         $fund = Fund::findOrFail($id);
         $fund->delete();
-        return redirect()->route('admin.fund.index');
+        return empty($program) ? redirect()->back()->with('Fail', "Failed to approve")
+            : redirect()->back()->with('Success', 'Success program fund: #('.$fund->program->name.') approved');
     }
 
     public function approve($id){

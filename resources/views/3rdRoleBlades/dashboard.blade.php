@@ -15,8 +15,8 @@
                     <!-- ./col -->
                     <div class="col-lg-3 col-6">
                         <!-- small box -->
-                        <div class="small-box inner-bg-change">
-                            <div class="inner inner-bg-change">
+                        <div class="small-box inner-bg-yellow">
+                            <div class="inner inner-bg-yellow">
                                 <h2 class="font-weight-bold">{{$program->name}}</h2>
                                 <p>{{ str_replace("-","/",date("d-m-Y", strtotime($program->program_date))) }}</p>
                             </div>

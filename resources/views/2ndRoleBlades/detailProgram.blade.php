@@ -183,7 +183,7 @@
                     <i class="fa fa-database"></i>
                     Action Plan
                 </a>
-                <a href="{{ route('staff.fund.show', $program) }}" title="Dana" class="circular toscastar font-weight-bold p-2 tosca-hover mr-2">
+                <a href="{{ route('staff.fund.show', $program) }}" title="Funds" class="circular toscastar font-weight-bold p-2 tosca-hover mr-2">
                     <i class="fa fa-money"></i>
                     Disbursement of Funds
                 </a>
@@ -214,12 +214,13 @@
                     Proposal
                 </a>
 
-{{--                buat report, masih belum tau ifnya apa--}}
-                @if(isset($program->hasProposals[0]->id))
+                @if(isset($proposal->status))
+                @if($proposal->status == "1")
                     <a href="{{ route('staff.report.create', $program) }}" title="Report" class="circular greenstar font-weight-bold p-2 green-hover mr-2">
                         <i class="fa fa-book"></i>
                         Report
                     </a>
+                @endif
                 @endif
                 @endif
                 @if($edit == true)

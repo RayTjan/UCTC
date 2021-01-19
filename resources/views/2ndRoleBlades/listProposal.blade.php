@@ -2,12 +2,6 @@
 @section('title', 'Proposal')
 @section('content')
 
-    <script>
-        $(document).ready( function() {
-            $('.dropdown-button').dropdown();
-        });
-    </script>
-
     <div class="container clearfix" style="margin-top: 20px;">
         <div class="row">
             <h1 class="col font-weight-bold">{{ $program->name }} Proposal List</h1>

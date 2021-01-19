@@ -77,17 +77,21 @@
                             <button class="btnA circular graystar font-weight-bold p-1 gray-hover widthSubmitButton" role="button"  type="submit">Finished</button>
                         @endif
                     </form>
-{{--                    <form action="{{route('staff.program.filterProgramStatus')}}"--}}
-{{--                          method="GET" class="d-inline-block mr-1">--}}
-{{--                        {{ csrf_field() }}--}}
-{{--                        <input name="value" type="hidden" value="3">--}}
-{{--                        <button class="btnA circular graystar font-weight-bold p-1 gray-hover" role="button"  type="submit">Suspended</button>--}}
-{{--                    </form>--}}
+                    <form action="{{route('staff.program.filterProgramStatus')}}"
+                          method="GET" class="d-inline-block mr-1">
+                        {{ csrf_field() }}
+                        <input name="value" type="hidden" value="3">
+                        @if($page == "status-3")
+                            <button class="btnA circular gray-pages font-weight-bold p-1 gray-hover" role="button"  type="submit" disabled="disabled">Suspended</button>
+                        @else()
+                            <button class="btnA circular graystar font-weight-bold p-1 gray-hover" role="button"  type="submit">Suspended</button>
+                        @endif
+                    </form>
                 </div>
             </div>
 
             <div class="clearfix align-self-center">
-                <div class="float-right">
+                <div class="">
                     <a href="{{route('staff.program.create')}}" role="button" aria-pressed="true">
                     <svg
                         aria-hidden="true"

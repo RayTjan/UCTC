@@ -60,7 +60,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Value: </label>
-                                <input type="text" class="form-control" name="value" required>
+                                <input type="number" class="form-control" name="value" required>
                             </div>
                             <div class="form-group">
                                 <label>Date: </label>
@@ -234,7 +234,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Value: </label>
-                                                            <input type="text" class="form-control" name="value" value="{{$fund->value}}" required>
+                                                            <input type="number" class="form-control" name="value" value="{{$fund->value}}" required>
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Date: </label>
