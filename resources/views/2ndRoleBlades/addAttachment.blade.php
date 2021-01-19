@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Submit Task')
+@section('title', 'Add Link')
 @section('content')
 
     <div class="d-flex justify-content-center mt-5">
@@ -10,7 +10,7 @@
                 <form action="{{route('staff.file.store')}}" method="post">
                     {{csrf_field()}}
 
-                    <h4 class="font-weight-bold">New File Submission</h4>
+                    <h4 class="font-weight-bold">Add File Link Attachments</h4>
 
                     <div class="form-group">
                         <label >Name:</label>
@@ -23,7 +23,7 @@
                     </div>
 
                     <input type="hidden" name="status" value="1">
-                    <input type="hidden" name="idTask" value="{{ $task->id }}">
+                    <input type="hidden" name="idTask" value="{{ $program->id }}">
 
                     <div class="text-center">
                         <button type="submit" class="btnA circular greenstar font-weight-bold p-2 green-hover">Submit</button>

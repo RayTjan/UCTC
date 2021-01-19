@@ -182,7 +182,7 @@
                                 @endif
                             </ul>
 
-                            {{--        Delete Task--}}
+                            {{--        Delete Proposal--}}
 
                             <div class="modal fade" id="deleteProposal-{{ $proposal->id }}">
                                 <div class="modal-dialog">
@@ -197,9 +197,9 @@
                                             <form action="{{ route('staff.proposal.destroy', $proposal) }}" method="post" class="d-inline-block">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover">Yes</button>
+                                                <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover widthSubmitButton">Yes</button>
                                             </form>
-                                            <button type="button" class="btnA circular bluestar font-weight-bold p-2 blue-hover" data-dismiss="modal">No</button>
+                                            <button type="button" class="btnA circular bluestar font-weight-bold p-2 blue-hover widthSubmitButton" data-dismiss="modal">No</button>
                                         </div>
                                     </div>
                                 </div>

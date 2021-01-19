@@ -330,6 +330,12 @@ main {
     background: #DADAD1;
 }
 
+.gray-pages {
+    color: #898989;
+    border-color: #DADAD1;
+    background: #DADAD1 !important;
+}
+
 /*cobaaa*/
 
 .btnA {
@@ -401,6 +407,10 @@ button, select, input {
 .quizz:hover {
     background-color: #e6e6e6;
     cursor: pointer;
+}
+
+.borderquiz {
+    border: 1px solid #666666;
 }
 
 .guiz-awards-row:after {
@@ -1159,7 +1169,7 @@ p.titlelogin{
 }
 
 .widthSubmitButton{
-    width: 45vh;
+    width: 12vh;
 }
 
 /*bg-change*/

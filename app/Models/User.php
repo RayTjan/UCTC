@@ -67,7 +67,7 @@ class User extends Authenticatable
     }
 
     public function attends(){
-        return $this->belongsToMany(Program::class, 'uctc_program_user','uctc_user_id', 'uctc_program_id')->withPivot('is_approved')->withTimestamps();
+        return $this->belongsToMany(Program::class, 'uctc_program_user','uctc_user_id', 'uctc_program_id')->withTimestamps();
     }
 
     public function isAdmin(){

@@ -32,7 +32,7 @@ class ActionTaskController extends Controller
     {
         $action = ActionPlan::findORFail($id);
 
-        $programs = Program::all()->except($action->id)->pluck('id');
+        $programs = Program::all()->except($action->program)->pluck('id');
 
         $committees = User::whereIn('id',function ($query) use ($programs){
             $query->select('uctc_user_id')->from('uctc_program_user')->whereNotIn('uctc_program_id',$programs);

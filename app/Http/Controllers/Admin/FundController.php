@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Dana;
+use App\Models\Fund;
 use App\Models\Program;
 use Illuminate\Http\Request;
 
-class PencairanDanaController extends Controller
+class FundController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class PencairanDanaController extends Controller
      */
     public function index()
     {
-        $requestedanas = Dana::all()->where('status', '0');
-        return view('2ndRoleBlades.listPencairanDana',compact('requestedanas'));
+        $requestedfunds = Fund::all()->where('status', '0');
+        return view('1stRoleBlades.listFund',compact('requestedfunds'));
     }
 
     /**
@@ -38,8 +38,8 @@ class PencairanDanaController extends Controller
      */
     public function store(Request $request)
     {
-        Dana::create($request->all());
-        return redirect(route('staff.dana.show',$request->program));
+        Fund::create($request->all());
+        return redirect(route('admin.dana.show',$request->program));
     }
 
     /**
@@ -51,8 +51,8 @@ class PencairanDanaController extends Controller
     public function show($id)
     {
         $program = Program::findOrFail($id);
-        $danas = Dana::where('program',$id)->get();
-        return view('2ndRoleBlades.listPencairanDana',compact('program','danas'));
+        $funds = Fund::where('program',$id)->get();
+        return view('1stRoleBlades.listFundProgram',compact('program','funds'));
     }
 
     /**
@@ -75,9 +75,9 @@ class PencairanDanaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $dana = Dana::findOrFail($id);
-        $dana->update($request->all());
-        return redirect(route('staff.dana.show',$dana->program));
+        $fund = Fund::findOrFail($id);
+        $fund->update($request->all());
+        return redirect(route('admin.fund.show',$fund->program));
     }
 
     /**
@@ -88,9 +88,29 @@ class PencairanDanaController extends Controller
      */
     public function destroy($id)
     {
-        $dana = Dana::findOrFail($id);
-        $dana->delete();
-        return redirect()->route('staff.dana.show', $dana->program);
+        $fund = Fund::findOrFail($id);
+        $fund->delete();
+        return redirect()->route('admin.fund.index');
+    }
+
+    public function approve($id){
+        $fund = Fund::findOrFail($id);
+        $fund->update([
+            'status' => '1',
+        ]);
+
+        return empty($program) ? redirect()->back()->with('Fail', "Failed to approve")
+            : redirect()->back()->with('Success', 'Success program fund: #('.$fund->program->name.') approved');
+    }
+    public function reject($id, Request $request){
+        $fund = Fund::findOrFail($id);
+        $fund->update([
+            'status' => '2',
+            'note' => $request->note,
+        ]);
+
+        return empty($program) ? redirect()->back()->with('Fail', "Failed to reject")
+            : redirect()->back()->with('Success', 'Success program fund: #('.$fund->program->name.') Rejected');
     }
 
 }

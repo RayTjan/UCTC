@@ -27,10 +27,11 @@ class ProgramController extends Controller
     {
         $types = Type::all();
         $categories = Category::all();
-
         $programs = Program::all();
 
-        return view('2ndRoleBlades.listProgram', compact('programs','types','categories'));
+        $page = 'all';
+
+        return view('2ndRoleBlades.listProgram', compact('programs','types','categories','page'));
     }
 
     /**
@@ -160,7 +161,11 @@ class ProgramController extends Controller
             $edit = true;
         }
 
-        return view('2ndRoleBlades.detailProgram',compact('program','clients','edit'));
+        //Proposal terakhir di program itu dengan id program yang sama
+        $proposals = Proposal::all()->where('program', $program->id);
+        $proposal = $proposals->last();
+
+        return view('2ndRoleBlades.detailProgram',compact('program','clients','edit', 'proposal'));
     }
 
     /**
@@ -286,21 +291,30 @@ class ProgramController extends Controller
 //        dd($programs);
         $types = Type::all();
         $categories = Category::all();
-        return view('2ndRoleBlades.listProgram', compact('programs','types','categories'));
+
+        $page = "type-".$request->value;
+
+        return view('2ndRoleBlades.listProgram', compact('programs','types','categories','page'));
     }
     public function filterProgramCategory(Request $request){
         $programs = Program::all()->where('category', $request->value);
 //        dd($programs);
         $types = Type::all();
         $categories = Category::all();
-        return view('2ndRoleBlades.listProgram', compact('programs','types','categories'));
+
+        $page = "category-".$request->value;
+
+        return view('2ndRoleBlades.listProgram', compact('programs','types','categories','page'));
     }
     public function filterProgramStatus(Request $request){
         $programs = Program::all()->where('status', $request->value);
 //        dd($programs);
         $types = Type::all();
         $categories = Category::all();
-        return view('2ndRoleBlades.listProgram', compact('programs','types','categories'));
+
+        $page = "status-".$request->value;
+
+        return view('2ndRoleBlades.listProgram', compact('programs','types','categories','page'));
     }
 //    public function filterProgramDate(Request $request){
 //        $programs = Program::all()->where('category', $request->value);

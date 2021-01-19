@@ -25,7 +25,7 @@
                             <li class="guiz-awards-time customComittee">Name</li>
                             <li class="guiz-awards-time customComittee">Status</li>
                             <li class="guiz-awards-time customComittee">Program</li>
-                            <li class="guiz-awards-time customComittee">Finance</li>
+                            <li class="guiz-awards-time customComittee">Download</li>
                             <li class="guiz-awards-time customComittee">Action</li>
                         </ul>
 

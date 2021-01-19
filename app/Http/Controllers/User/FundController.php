@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Dana;
+use App\Models\Fund;
 use App\Models\Program;
 use Illuminate\Http\Request;
 
-class PencairanDanaController extends Controller
+class FundController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class PencairanDanaController extends Controller
      */
     public function index()
     {
-        $requestedanas = Dana::all()->where('status', '0');
-        return view('3rdRoleBlades.listPencairanDana',compact('requestedanas'));
+        $requestefunds = Fund::all()->where('status', '0');
+        return view('3rdRoleBlades.listFund',compact('requestefunds'));
     }
 
     /**
@@ -38,8 +38,8 @@ class PencairanDanaController extends Controller
      */
     public function store(Request $request)
     {
-        Dana::create($request->all());
-        return redirect(route('user.dana.show',$request->program));
+        Fund::create($request->all());
+        return redirect(route('student.fund.show',$request->program));
     }
 
     /**
@@ -51,8 +51,8 @@ class PencairanDanaController extends Controller
     public function show($id)
     {
         $program = Program::findOrFail($id);
-        $danas = Dana::where('program',$id)->get();
-        return view('3rdRoleBlades.listDanaProgram',compact('program','danas'));
+        $funds = Fund::where('program',$id)->get();
+        return view('3rdRoleBlades.listFund',compact('program','funds'));
     }
 
     /**
@@ -75,9 +75,9 @@ class PencairanDanaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $dana = Dana::findOrFail($id);
-        $dana->update($request->all());
-        return redirect(route('user.dana.show',$dana->program));
+        $fund = Fund::findOrFail($id);
+        $fund->update($request->all());
+        return redirect(route('student.fund.show',$fund->program));
     }
 
     /**
@@ -88,9 +88,9 @@ class PencairanDanaController extends Controller
      */
     public function destroy($id)
     {
-        $dana = Dana::findOrFail($id);
-        $dana->delete();
-        return redirect()->route('user.dana.show', $dana->program);
+        $fund = Fund::findOrFail($id);
+        $fund->delete();
+        return redirect()->route('student.fund.show', $fund->program);
     }
 
 }
