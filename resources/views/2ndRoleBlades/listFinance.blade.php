@@ -53,7 +53,6 @@
                         <div class="form-group">
                             {{ csrf_field() }}
                             <input type="hidden" name="program" value="{{$program->id}}">
-                            <input type="hidden" name="status" value="0">
                             <div class="form-group">
                                 <label>Name: </label>
                                 <input type="text" class="form-control" name="name" required>
@@ -99,8 +98,6 @@
                                 <th class="cell100 column6">Type</th>
                                 <th class="cell100 column6">Value</th>
                                 <th class="cell100 column6">Attachment</th>
-                                <th class="cell100 column6">Status</th>
-                                <th class="cell100 column6">Note</th>
                                 <th class="cell100 column3">Action</th>
                             </tr>
                             </thead>
@@ -129,27 +126,6 @@
                                            data-target="#imgview-{{$finance->id}}"
                                            class="btn btn-primary titlelogin">See Detail</a>
                                     </td>
-                                    <td class="cell100 column3">
-                                        @if($finance->status == '0')
-                                            <div class="text-primary">Pending</div>
-                                        @elseif($finance->status == '1')
-                                            <div class="text-success">Approved</div>
-                                        @elseif($finance->status == '2')
-                                            <div class="text-danger">Rejected</div>
-                                        @endif
-                                    </td>
-                                    <td class="cell100 column3">
-                                    @if($finance->status == '2')
-                                        <a data-toggle="modal"
-                                           data-target="#note-{{$finance->id}}"
-                                           class="btn btn-danger titlelogin">
-                                            Coor's Note
-                                        </a>
-                                    @else
-                                            &nbsp;
-                                    @endif
-                                    </td>
-                                    @if($finance->status == '0')
                                     <td class="cell100 column9 d-flex">
 
                                         {{--                                    edit--}}
@@ -171,25 +147,7 @@
                                         </form>
 
                                     </td>
-                                    @endif
                                 </tr>
-
-                                {{--            modal note--}}
-                                <div class="modal fade" id="note-{{$finance->id}}">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content card-bg-change">
-                                            <!-- Modal Header -->
-                                            <div class="modal-header">
-                                                <h4 class="modal-title font-weight-bold">Note From Coor </h4>
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            </div>
-                                            <!-- Modal body -->
-                                            <div class="modal-body" style="text-align: left;">
-                                                <p>{{$finance->note}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 {{--            modal edit finance--}}
                                 <div class="modal fade" id="editFinance-{{$finance->id}}">
@@ -229,7 +187,7 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Proof of Payment: </label>
-                                                                <input type="file" class="form-control" name="proof_of_payment" required>
+                                                                <input type="file" class="form-control" name="proof_of_payment">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">

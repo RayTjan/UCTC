@@ -122,10 +122,11 @@ class ProgramController extends Controller
         return empty($program) ? redirect()->back()->with('Fail', "Failed to approve")
             : redirect()->back()->with('Success', 'Success program program: #('.$program->name.') approved');
     }
-    public function suspend($id){
+    public function suspend($id, Request $request){
         $Program = Program::findOrFail($id);
         $Program->update([
             'status' => '3',
+            'note' => $request->note,
         ]);
 
         return empty($program) ? redirect()->back()->with('Fail', "Failed to suspend")

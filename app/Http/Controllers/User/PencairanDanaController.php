@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Finance;
+use App\Models\Dana;
 use App\Models\Program;
 use Illuminate\Http\Request;
 
-class FinanceController extends Controller
+class PencairanDanaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class FinanceController extends Controller
      */
     public function index()
     {
-        $requestedFinances = Finance::all()->where('status', '0');
-        return view('1stRoleBlades.listFinance',compact('requestedFinances'));
+        $requestedanas = Dana::all()->where('status', '0');
+        return view('3rdRoleBlades.listPencairanDana',compact('requestedanas'));
     }
 
     /**
@@ -38,30 +38,30 @@ class FinanceController extends Controller
      */
     public function store(Request $request)
     {
-        Finance::create($request->all());
-        return redirect(route('admin.finance.show',$request->program));
+        Dana::create($request->all());
+        return redirect(route('user.dana.show',$request->program));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Finance  $finance
+     * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $program = Program::findOrFail($id);
-        $finances = Finance::where('program',$id)->get();
-        return view('1stRoleBlades.listFinance',compact('program','finances'));
+        $danas = Dana::where('program',$id)->get();
+        return view('3rdRoleBlades.listDanaProgram',compact('program','danas'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Finance  $finance
+     * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function edit(Finance $finance)
+    public function edit($id)
     {
         //
     }
@@ -70,25 +70,27 @@ class FinanceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Finance  $finance
+     * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Finance $finance)
+    public function update(Request $request, $id)
     {
-        $finance->update($request->all());
-        return redirect(route('admin.finance.show',$finance->program));
+        $dana = Dana::findOrFail($id);
+        $dana->update($request->all());
+        return redirect(route('user.dana.show',$dana->program));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Finance  $finance
+     * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Finance $finance)
+    public function destroy($id)
     {
-        $finance->delete();
-        return redirect()->route('admin.finance.show', $finance->program);
+        $dana = Dana::findOrFail($id);
+        $dana->delete();
+        return redirect()->route('user.dana.show', $dana->program);
     }
 
 }

@@ -95,15 +95,27 @@
                                     </form>
                                     @endif
 
+{{--                                    suspend note--}}
+                                    @if($program->status == '3')
+                                        <div>
+                                        <button class="btnA circular redstar red-hover iconAct mr-1 p-1 " title="Suspend Note"
+                                                data-toggle="modal"
+                                                data-target="#note-{{$program->id}}">
+                                            <i class="fa fa-sticky-note"></i>
+                                        </button>
+                                        </div>
+                                    @endif
+
                                     @if($program->status != '2' && $program->status != '3')
 {{--                                    suspend--}}
-                                    <form action="{{route('admin.program.suspend', $program->id)}}" class="p-0 m-0"
-                                          method="POST">
-                                        {{ csrf_field() }}
-                                        <button class="btnA circular redstar red-hover iconAct mr-1 p-1" title="Suspend">
+                                        <div>
+                                        <button class="btnA circular redstar red-hover iconAct mr-1 p-1" title="Suspend"
+                                                title="Suspend"
+                                                data-toggle="modal"
+                                                data-target="#suspendNote-{{$program->id}}">
                                             <i class="fa fa-stop"></i>
                                         </button>
-                                    </form>
+                                        </div>
                                     @endif
 
 {{--                                    delete--}}
@@ -118,6 +130,55 @@
 
                                 </td>
                             </tr>
+
+                            {{--            modal note--}}
+                            <div class="modal fade" id="note-{{$program->id}}">
+                                <div class="modal-dialog">
+                                    <div class="modal-content card-bg-change">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title font-weight-bold">Note From Coor </h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body" style="text-align: left;">
+                                            <p>{{$program->note}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{--                                modal suspend--}}
+                            <div class="modal fade" id="suspendNote-{{$program->id}}">
+                                <div class="modal-dialog">
+                                    <div class="modal-content card-bg-change">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title font-weight-bold">Suspend {{$program->name}} </h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body" style="text-align: left;">
+                                            <form action="{{route('admin.program.suspend', $program->id)}}" class="p-0 m-0"
+                                                  method="POST">
+                                                <div class="form-group">
+                                                    {{ csrf_field() }}
+                                                    <input type="hidden" name="_method" value="PATCH">
+                                                    <div class="form-group">
+                                                        <label>Note: </label>
+                                                        <textarea type="text" class="form-control" name="note" required></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group text-center">
+                                                    <button class="btnA circular redstar font-weight-bold p-2 red-hover" type="submit">Suspend Program</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                             @endforeach
                             </tbody>
                         </table>

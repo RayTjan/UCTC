@@ -144,7 +144,7 @@
 </li>
 
 <li class="nav-item">
-    <a href="{{ route('admin.finance.index') }}" class="nav-link">
+    <a href="{{ route('admin.dana.index') }}" class="nav-link">
         <svg
             aria-hidden="true"
             focusable="false"
@@ -203,7 +203,7 @@
                 ></path>
             </g>
         </svg>
-        <span class="link-text">Finance</span>
+        <span class="link-text">Pencairan Dana</span>
     </a>
 </li>
 

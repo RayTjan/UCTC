@@ -101,10 +101,10 @@ class ReportController extends Controller
             $edit = true;
         }
 
-        $lastReport = $reports->get()->last();
+        $lastReport = $reports->last();
         $addAvailability = true;
         if ($lastReport != null){
-            if ($lastReport->status == '0' || $lastReport->status = '1'){
+            if ($lastReport->status == '0' || $lastReport->status == '1'){
                 $addAvailability = false;
             }
         }

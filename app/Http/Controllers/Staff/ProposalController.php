@@ -79,10 +79,10 @@ class ProposalController extends Controller
         if ($program->created_by == $user->id){
             $edit = true;
         }
-        $lastProposal = $proposals->get()->last();
+        $lastProposal = $proposals->last();
         $addAvailability = true;
         if ($lastProposal != null){
-            if ($lastProposal->status == '0' || $lastProposal->status = '1'){
+            if ($lastProposal->status == '0' || $lastProposal->status == '1'){
                 $addAvailability = false;
             }
         }

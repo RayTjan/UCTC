@@ -13,10 +13,12 @@
                 <div class="d-flex boxScroll">
                     @foreach($programs as $program)
                     <!-- ./col -->
-                    <div class="col-lg-3 col-6">
+                    <div class="col-lg-3 col-6" >
                         <!-- small box -->
                         <div class="small-box inner-bg-change">
-                            <div class="inner inner-bg-change">
+                            <div class="inner inner-bg-change" @if($program->thumbnail != null)
+                            style="color: white; background-image:url('../img/program/{{$program->thumbnail}}');"
+                                @endif>
                                 <h2 class="font-weight-bold">{{$program->name}}</h2>
                                 <p>{{ str_replace("-","/",date("d-m-Y", strtotime($program->program_date))) }}</p>
                             </div>

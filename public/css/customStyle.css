@@ -718,6 +718,10 @@ button, select, input {
     background-color: #F1F1E6;
 }
 
+.bg-change-red {
+    background-color: #F86073;
+}
+
 .inner-bg-change {
     background-color: #F9C03D;
     color: black;
