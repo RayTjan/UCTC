@@ -17,12 +17,12 @@ class ProgramResource extends JsonResource
         return [
             'program_id' => $this->id,
             'program_title'=> $this->name,
+            'program_status'=> $this->status,
             'description'=>$this->description,
             'goal'=>$this->goal,
             'created_by'=>$this->creator->identity->name,
             'program_date'=>$this->program_date,
             'thumbnail'=>$this->thumbnail,
-            'status'=>$this->status=='1' ? 'Open' : 'Close',
         ];
     }
 }

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\api\DocumentationResource;
 use App\Http\Resources\Api\UserResource;
+use App\Models\Documentation;
 use App\Models\Program;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -121,5 +123,9 @@ class ProgramController extends Controller
         else{
             return UserResource::collection($pic);
         }
+    }
+    public function documentations($id){
+        $pictures = Documentation::all()->where('program', $id);
+        return DocumentationResource::collection($pictures);
     }
 }
