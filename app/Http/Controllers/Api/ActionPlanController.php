@@ -83,6 +83,7 @@ class ActionPlanController extends Controller
             ActionPlan::find($id)->update($request->all());
             return response([
                 'message' =>  'Task Updated'
+
             ]);
         }
         else{

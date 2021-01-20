@@ -90,7 +90,7 @@ class UserController extends Controller
             ]);
         }
 
-        return redirect(route('user.user.show',\Illuminate\Support\Facades\Auth::id()));
+        return redirect(route('student.user.show',\Illuminate\Support\Facades\Auth::id()));
     }
 
     /**
