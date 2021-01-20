@@ -2,7 +2,13 @@
 @section('title', 'Dashboard')
 @section('content')
     <div class="container" style="margin-top: 20px;">
-        <h1 class="font-weight-bold">DASHBOARD</h1>
+        <div class="d-flex justify-content-between">
+            <h1 class="font-weight-bold align-self-center">DASHBOARD</h1>
+            <div class="align-self-center">
+                <h5 class="d-inline-block">Login as&nbsp;</h5>
+                <h2 class="font-weight-bold d-inline-block">Student</h2>
+            </div>
+        </div>
 
         <div class="big">
             <div class="smol1">

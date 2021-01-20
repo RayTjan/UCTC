@@ -9,6 +9,7 @@ use App\Models\Documentation;
 use App\Models\Finance;
 use App\Models\Program;
 use App\Models\Proposal;
+use App\Models\Report;
 use App\Models\Type;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -27,7 +28,9 @@ class ProgramController extends Controller
     {
         $types = Type::all();
         $categories = Category::all();
-        $programs = Program::all();
+        $allprograms = Program::all();
+
+        $programs = $allprograms->sortByDesc('name');
 
         $page = 'all';
 
@@ -165,7 +168,11 @@ class ProgramController extends Controller
         $proposals = Proposal::all()->where('program', $program->id);
         $proposal = $proposals->last();
 
-        return view('2ndRoleBlades.detailProgram',compact('program','clients','edit', 'proposal'));
+        //Report terakhir di program itu dengan id program yang sama
+        $reports = Report::all()->where('program', $program->id);
+        $report = $reports->last();
+
+        return view('2ndRoleBlades.detailProgram',compact('program','clients','edit', 'proposal', 'report'));
     }
 
     /**
@@ -333,9 +340,22 @@ class ProgramController extends Controller
         $programs = Program::all();
         $createdPrograms = $programs->where('created_by', $user->id);
         $participatedPrograms = $user->attends;
-        $myPrograms = $createdPrograms->merge($participatedPrograms);
+        $amyPrograms = $createdPrograms->merge($participatedPrograms);
 
-        return view('2ndRoleBlades.listMyProgram', compact('myPrograms','types','categories'));
+        $myPrograms = $amyPrograms->sortByDesc('name');
+        $page = "all";
+
+        return view('2ndRoleBlades.listMyProgram', compact('myPrograms','types','categories','page'));
+    }
+
+    public function finish($id){
+        $Program = Program::findOrFail($id);
+        $Program->update([
+            'status' => '2',
+        ]);
+
+        return empty($program) ? redirect()->back()->with('Fail', "Failed to approve")
+            : redirect()->back()->with('Success', 'Success program program: #('.$program->name.') approved');
     }
 
 }

@@ -8,6 +8,7 @@ use App\Models\FileAttachment;
 use App\Models\Program;
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FileAttachmentController extends Controller
 {
@@ -28,8 +29,8 @@ class FileAttachmentController extends Controller
      */
     public function create($id)
     {
-        $task = Task::findOrFail($id);
-        return view('2ndRoleBlades.addAttachment', compact('task'));
+        $program = Program::findOrFail($id);
+        return view('2ndRoleBlades.addAttachment', compact('program'));
     }
 
     /**
@@ -45,7 +46,7 @@ class FileAttachmentController extends Controller
             'file_attachment' => $request->file_attachment,
             'program' => $request->program,
         ]);
-        return redirect()->route('staff.actionTask.show', $request->action_plan);
+        return redirect()->route('staff.file.show', $request->program);
     }
 
     /**
@@ -57,7 +58,21 @@ class FileAttachmentController extends Controller
     public function show($id)
     {
         $program = Program::findOrFail($id);
-        return view('2ndRoleBlades.listFileAttachment', compact('program'));
+
+        //check edit
+        $edit = false;
+        $user = Auth::user();
+        $participatedPrograms = $user->attends;
+        foreach ($participatedPrograms as $pprogram){
+            if ($pprogram->id == $program->id){
+                $edit = true;
+            }
+        }
+        if ($program->created_by == $user->id){
+            $edit = true;
+        }
+
+        return view('2ndRoleBlades.listFileAttachment', compact('program','edit'));
     }
 
     /**

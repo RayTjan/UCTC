@@ -6,11 +6,92 @@
             <h1 class="col font-weight-bold">Program View</h1>
         </div>
 
-        @auth()
-            <div class="clearfix">
-                {{-- auth to limit content, it cannot be accessed until login --}}
-                <div class="float-right">
-                    {{--                <a href="{{route('program.create')}}" class="btn btn-primary btn-block" role="button" aria-pressed="true">New Program</a>--}}
+        <div class="d-flex justify-content-between">
+
+            <div class="align-self-center">
+                <div class="font-weight-bold">Sort by:</div>
+                <div>
+                    <form action="{{route('staff.program.index')}}"
+                          method="GET" class="d-inline-block mr-1">
+                        {{ csrf_field() }}
+                        @if($page == "all")
+                            <button class="btnA circular gray-pages font-weight-bold p-1 gray-hover widthSubmitButton" role="button"  type="submit" disabled="disabled">All</button>
+                        @else
+                            <button class="btnA circular graystar font-weight-bold p-1 gray-hover widthSubmitButton" role="button"  type="submit">All</button>
+                        @endif
+                    </form>
+                    @foreach($types as $type)
+                        <form action="{{route('staff.program.filterProgramType')}}"
+                              method="GET" class="d-inline-block mr-1">
+                            {{ csrf_field() }}
+                            <input name="value" type="hidden" value="{{$type->id}}">
+                            @if($page == "type-".$type->id)
+                                <button class="btnA circular font-weight-bold p-1 gray-pages gray-hover" role="button"
+                                        type="submit" disabled="disabled">{{$type->name}}</button>
+                            @else
+                                <button class="btnA circular graystar font-weight-bold p-1 gray-hover" role="button"
+                                        type="submit">{{$type->name}}</button>
+                            @endif
+                        </form>
+                        {{--                        <a href="{{route('staff.program.filterProgram')}}" class="btn btn-primary btn-block" role="button" aria-pressed="true">$type->name</a>--}}
+                    @endforeach
+                    @foreach($categories as $category)
+                        <form action="{{route('staff.program.filterProgramCategory')}}"
+                              method="GET" class="d-inline-block mr-1">
+                            {{ csrf_field() }}
+                            <input name="value" type="hidden" value="{{$category->id}}">
+                            @if($page == "category-".$category->id)
+                                <button class="btnA circular gray-pages font-weight-bold p-1 gray-hover" role="button"  type="submit" disabled="disabled">{{$category->name}}</button>
+                            @else
+                                <button class="btnA circular graystar font-weight-bold p-1 gray-hover" role="button"  type="submit">{{$category->name}}</button>
+                            @endif
+                        </form>
+                    @endforeach
+                    <form action="{{route('staff.program.filterProgramStatus')}}"
+                          method="GET" class="d-inline-block mr-1">
+                        {{ csrf_field() }}
+                        <input name="value" type="hidden" value="0">
+                        @if($page == "status-0")
+                            <button class="btnA circular gray-pages font-weight-bold p-1 gray-hover widthSubmitButton" role="button"  type="submit" disabled="disabled">Pending</button>
+                        @else
+                            <button class="btnA circular graystar font-weight-bold p-1 gray-hover widthSubmitButton" role="button"  type="submit">Pending</button>
+                        @endif
+                    </form>
+                    <form action="{{route('staff.program.filterProgramStatus')}}"
+                          method="GET" class="d-inline-block mr-1">
+                        {{ csrf_field() }}
+                        <input name="value" type="hidden" value="1">
+                        @if($page == "status-1")
+                            <button class="btnA circular gray-pages font-weight-bold p-1 gray-hover widthSubmitButton" role="button"  type="submit" disabled="disabled">Ongoing</button>
+                        @else
+                            <button class="btnA circular graystar font-weight-bold p-1 gray-hover widthSubmitButton" role="button"  type="submit">Ongoing</button>
+                        @endif
+                    </form>
+                    <form action="{{route('staff.program.filterProgramStatus')}}"
+                          method="GET" class="d-inline-block mr-1">
+                        {{ csrf_field() }}
+                        <input name="value" type="hidden" value="2">
+                        @if($page == "status-2")
+                            <button class="btnA circular gray-pages font-weight-bold p-1 gray-hover widthSubmitButton" role="button"  type="submit" disabled="disabled">Finished</button>
+                        @else
+                            <button class="btnA circular graystar font-weight-bold p-1 gray-hover widthSubmitButton" role="button"  type="submit">Finished</button>
+                        @endif
+                    </form>
+                    <form action="{{route('staff.program.filterProgramStatus')}}"
+                          method="GET" class="d-inline-block mr-1">
+                        {{ csrf_field() }}
+                        <input name="value" type="hidden" value="3">
+                        @if($page == "status-3")
+                            <button class="btnA circular gray-pages font-weight-bold p-1 gray-hover" role="button"  type="submit" disabled="disabled">Suspended</button>
+                        @else()
+                            <button class="btnA circular graystar font-weight-bold p-1 gray-hover" role="button"  type="submit">Suspended</button>
+                        @endif
+                    </form>
+                </div>
+            </div>
+
+            <div class="clearfix align-self-center">
+                <div class="">
                     <a href="{{route('staff.program.create')}}" role="button" aria-pressed="true">
                         <svg
                             aria-hidden="true"
@@ -34,41 +115,7 @@
                 </div>
             </div>
 
-        @endauth
-        <form action="{{route('staff.program.index')}}"
-              method="GET">
-            {{ csrf_field() }}
-            <button class="btn btn-primary btn-block" role="button"  type="submit">All</button>
-        </form>
-        @foreach($types as $type)
-            <form action="{{route('staff.program.filterProgramType')}}"
-                  method="GET">
-                {{ csrf_field() }}
-                <input name="value" type="hidden" value="{{$type->id}}">
-                <button class="btn btn-primary btn-block" role="button"  type="submit">{{$type->name}}</button>
-            </form>
-            {{--                        <a href="{{route('staff.program.filterProgram')}}" class="btn btn-primary btn-block" role="button" aria-pressed="true">$type->name</a>--}}
-        @endforeach
-        @foreach($categories as $category)
-            <form action="{{route('staff.program.filterProgramCategory')}}"
-                  method="GET">
-                {{ csrf_field() }}
-                <input name="value" type="hidden" value="{{$category->id}}">
-                <button class="btn btn-primary btn-block" role="button"  type="submit">{{$category->name}}</button>
-            </form>
-        @endforeach
-        <form action="{{route('staff.program.filterProgramStatus')}}"
-              method="GET">
-            {{ csrf_field() }}
-            <input name="value" type="hidden" value="1">
-            <button class="btn btn-primary btn-block" role="button"  type="submit">Ongoing</button>
-        </form>
-        <form action="{{route('staff.program.filterProgramStatus')}}"
-              method="GET">
-            {{ csrf_field() }}
-            <input name="value" type="hidden" value="2">
-            <button class="btn btn-primary btn-block" role="button"  type="submit">Finished</button>
-        </form>
+        </div>
 
         <div class="row" style="margin-top: 30px;">
             <link href='//fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'>

@@ -8,6 +8,7 @@ use App\Models\Program;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ActionTaskController extends Controller
@@ -60,7 +61,8 @@ class ActionTaskController extends Controller
     public function show($id)
     {
         $action = ActionPlan::findOrFail($id);
-        $tasks = Task::where('action_plan', $id)->where('status', '0')->get();
+        $tasksall = Task::where('action_plan', $id)->where('status', '0')->get();
+        $tasks = $tasksall->where('PIC', Auth::id());
 
         return view('3rdRoleBlades.listTaskAction', compact('action','tasks'));
     }

@@ -7,6 +7,7 @@
             <h1 class="font-weight-bold">Tasks In {{$action->name}} Action Plan</h1>
 
             @if($edit == true)
+            @if($action->plansOf->status != '2')
             <a href="{{route('staff.actionTask.create', $action->id)}}" role="button" aria-pressed="true">
                 <svg
                     aria-hidden="true"
@@ -27,6 +28,7 @@
                     </g>
                 </svg>
             </a>
+            @endif
             @endif
         </div>
 

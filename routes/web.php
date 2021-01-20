@@ -80,10 +80,9 @@ Route::group([
     'as' => 'staff.'
 ], function () {
     Route::get('/', 'App\Http\Controllers\Staff\DashboardController@index');
-//    Route::get('program/myprogram', [\App\Http\Controllers\Staff\ProgramController::class, 'myprogram'])->name('myprogram');
-//    Route::get('/program/myprogram', ['as' => 'program.myprogram', 'uses' => '\App\Http\Controllers\Staff\ProgramController@myprogram']);
     Route::get('program/myprogram', [\App\Http\Controllers\Staff\ProgramController::class, 'myprogram'])->name('program.myprogram');
     Route::resource('program', \App\Http\Controllers\Staff\ProgramController::class);
+    Route::post('program/{id}/finish', [\App\Http\Controllers\Staff\ProgramController::class, 'finish'])->name('program.finish');
     Route::get('filterProgramType', [\App\Http\Controllers\Staff\ProgramController::class,'filterProgramType'])->name('program.filterProgramType');
     Route::get('filterProgramCategory', [\App\Http\Controllers\Staff\ProgramController::class,'filterProgramCategory'])->name('program.filterProgramCategory');
     Route::get('filterProgramStatus', [\App\Http\Controllers\Staff\ProgramController::class,'filterProgramStatus'])->name('program.filterProgramStatus');

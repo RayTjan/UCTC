@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Fund;
 use App\Models\Program;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FundController extends Controller
 {
@@ -52,7 +53,21 @@ class FundController extends Controller
     {
         $program = Program::findOrFail($id);
         $funds = Fund::where('program',$id)->get();
-        return view('2ndRoleBlades.listFundProgram',compact('program','funds'));
+
+        //check edit
+        $edit = false;
+        $user = Auth::user();
+        $participatedPrograms = $user->attends;
+        foreach ($participatedPrograms as $pprogram){
+            if ($pprogram->id == $program->id){
+                $edit = true;
+            }
+        }
+        if ($program->created_by == $user->id){
+            $edit = true;
+        }
+
+        return view('2ndRoleBlades.listFundProgram',compact('program','funds','edit'));
     }
 
     /**

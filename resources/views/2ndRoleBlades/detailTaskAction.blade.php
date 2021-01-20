@@ -36,12 +36,15 @@
 
             @if($edit == true)
             <div class="position-static centerBottom">
+                @if($action->plansOf->status != '2')
                 <a href="{{ route('staff.actionTask.edit', $tasks[$con]->id) }}" class="btn btn-info">Edit</a>
+                @endif
                 <button type="button"
                         data-toggle="modal" data-target="#submitTask-{{$con}}"
                         class="btn btn-success" id="BTN-{{$con}}">
                     Submit
                 </button>
+                @if($action->plansOf->status != '2')
                 <button
                     type="button"
                     data-toggle="modal"
@@ -49,6 +52,7 @@
                     class="btn btn-danger">
                     Delete
                 </button>
+                @endif
             </div>
             @endif
 

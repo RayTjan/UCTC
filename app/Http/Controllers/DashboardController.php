@@ -25,16 +25,19 @@ class DashboardController extends Controller
             $allprograms = Program::all();
             $createdPrograms = $allprograms->where('created_by', $user->id);
             $participatedPrograms = $user->attends;
-            $programs = $createdPrograms->merge($participatedPrograms);
+            $myprograms = $createdPrograms->merge($participatedPrograms);
+
+            $allprogramssort = $allprograms->sortByDesc('updated_at');
+            $programs = $myprograms->sortByDesc('name');
 
             if (Auth::user()->isAdmin()) {
                 $proposals = Proposal::all()->where('status','0');
                 $reports = Report::all()->where('status','0');
                 $funds = Fund::all()->where('status','0');
-                return view('1stRoleBlades.dashboard', compact('allprograms', 'proposals','reports','funds'));
+                return view('1stRoleBlades.dashboard', compact('allprogramssort', 'proposals','reports','funds'));
             }else if (Auth::user()->isCreator()) {
                 $actions = ActionPlan::all();
-                return view('2ndRoleBlades.dashboard', compact('programs', 'actions'));
+                return view('2ndRoleBlades.dashboard', compact('allprogramssort','programs', 'actions'));
             }else if ((Auth::user()->isUser())) {
                 $tasks = Task::all();
                 return view('3rdRoleBlades.dashboard', compact('programs', 'tasks'));

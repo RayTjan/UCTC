@@ -62,7 +62,9 @@ class ActionTaskController extends Controller
     public function show($id)
     {
         $action = ActionPlan::findOrFail($id);
-        $tasks = Task::where('action_plan', $id)->where('status', '0')->get();
+        $taskslist = Task::where('action_plan', $id)->where('status', '0')->get();
+
+        $tasks = $taskslist->sortByDesc('due_date');
 
         //check edit
         $program = Program::findOrFail($action->program);

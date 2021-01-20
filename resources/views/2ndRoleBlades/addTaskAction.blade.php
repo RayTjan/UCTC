@@ -26,6 +26,7 @@
                     <div class="form-group">
                         <label>PIC:</label>
                         <select name="PIC" class="custom-select">
+                            <option value="{{\Illuminate\Support\Facades\Auth::id()}}">{{\Illuminate\Support\Facades\Auth::user()->identity->name}}</option>
                             @foreach($committees as $committee)
                                 <option value="{{$committee->id}}">{{$committee->identity->name}}</option>
                             @endforeach

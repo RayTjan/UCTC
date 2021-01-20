@@ -3,8 +3,10 @@
 @section('content')
 
     <div class="d-flex justify-content-between">
-        <h1 class="col font-weight-bold">fund List {{$program->name}}</h1>
-        @auth()
+        <h1 class="col font-weight-bold">Fund List {{$program->name}}</h1>
+
+        @if($edit == true)
+            @if($program->status != '2')
             <div class="clearfix">
                 {{-- auth to limit content, it cannot be accessed until login --}}
                 <div class="float-right">
@@ -35,7 +37,8 @@
 
                 </div>
             </div>
-        @endauth
+            @endif
+        @endif
     </div>
 
     {{--            modal add fund--}}
@@ -135,6 +138,7 @@
                                         @endif
                                     </td>
 
+                                    @if($edit == true)
                                     @if($fund->status == '0')
                                         <td class="cell100 column9 d-flex">
 
@@ -153,6 +157,7 @@
                                                 <i class="fa fa-close"></i>
                                             </button>
                                         </td>
+                                    @endif
                                     @endif
                                 </tr>
 
