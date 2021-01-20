@@ -3,8 +3,8 @@
 @section('content')
 
     <div class="container clearfix" style="margin-top: 20px;">
-        <div class="row">
-            <h1 class="col font-weight-bold">Attributes</h1>
+        <div class="row mb-3">
+            <h1 class="col font-weight-bold">Settings</h1>
         </div>
 
         <div class="row">
@@ -13,12 +13,12 @@
                     <div class="card-bg-change scrollWebkit height100">
                         <h4 class="font-weight-bold">Category</h4>
 
-                        {{--                    @foreach($tasks as $task)--}}
+                        @foreach($categories as $category)
                         <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2">
                             <div class="d-flex justify-content-between">
-                                <li class="guiz-awards-title titleWidth">Long term</li>
+                                <li class="guiz-awards-title titleWidth">{{$category->name}}</li>
                                 <li class="align-self-center">
-                                    <form action="detroy" method="post">
+                                    <form action="{{route('coordinator.setting.destroy', $category->id)}}" method="post">
                                         @csrf
                                         <input type="hidden" name="_method" value="DELETE">
                                         <button type="submit" class="btnA deleteAtt">
@@ -28,7 +28,7 @@
                                 </li>
                             </div>
                         </ul>
-                        {{--                    @endforeach--}}
+                        @endforeach
 
                     </div>
                 </div>
@@ -39,12 +39,12 @@
                     <div class="card-bg-change scrollWebkit height100">
                         <h4 class="font-weight-bold">Type</h4>
 
-                        {{--                    @foreach($tasks as $task)--}}
+                        @foreach($types as $type)
                         <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2">
                             <div class="d-flex justify-content-between">
-                                <li class="guiz-awards-title titleWidth">Ongoing</li>
+                                <li class="guiz-awards-title titleWidth">{{$type->name}}</li>
                                 <li class="align-self-center">
-                                    <form action="detroy" method="post">
+                                    <form action="{{route('coordinator.setting.tdestroy', $type->id)}}" method="post">
                                         @csrf
                                         <input type="hidden" name="_method" value="DELETE">
                                         <button type="submit" class="btnA deleteAtt">
@@ -54,7 +54,7 @@
                                 </li>
                             </div>
                         </ul>
-                        {{--                    @endforeach--}}
+                        @endforeach
 
                     </div>
                 </div>
@@ -64,25 +64,29 @@
                 <div class="quiz-window">
                     <div class="height100">
 
-                        <form action="{{route('coordinator.category.store')}}" method="post">
-                        {{csrf_field()}}
+                            <h4 class="font-weight-bold mb-3">Add New Attributes</h4>
 
-                            <h4 class="font-weight-bold">Add New Attributes</h4>
-
-                            <div class="form-group">
-                                <label >Select Attribute:</label>
-                                <select class="form-control" placeholder="Select Attribute">
-                                    <option value="Category">Category</option>
-                                    <option value="Type">Type</option>
-                                </select>
+                            <div class="form-group text-center">
+                                <a onclick="inputShow('categoryInput')"
+                                        class="titlelogin btn btn-success mr-0 ml-0 d-inline-block">Category</a>
+                                <a onclick="inputShow('typeInput')"
+                                        class="titlelogin btn btn-primary mr-0 ml-0 d-inline-block">Type</a>
                             </div>
 
-                            <div class="form-group">
+                        <form action="{{route('coordinator.setting.store')}}" method="post">
+                            {{csrf_field()}}
+
+                            <div class="form-group detailMod" id="categoryInput">
                                 <label >Category:</label>
-                                <input type="text" class="form-control" name="Category" required>
+                                <input type="text" class="form-control" name="cname">
                             </div>
 
-                            <div class="text-left">
+                            <div class="form-group detailMod" id="typeInput">
+                                <label >Type:</label>
+                                <input type="text" class="form-control" name="tname">
+                            </div>
+
+                            <div class="text-center">
                                 <button type="submit" class="btnA circular greenstar font-weight-bold p-2 green-hover">Submit</button>
                             </div>
                         </form>
@@ -94,5 +98,16 @@
         </div>
 
     </div>
+
+    <script>
+        function inputShow(id) {
+            var x = document.getElementById(id);
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
 
 @endsection

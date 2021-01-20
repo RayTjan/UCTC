@@ -56,7 +56,8 @@ Route::group([
     Route::resource('report', \App\Http\Controllers\Coordinator\ReportController::class);
     Route::post('report/{id}/approve', [\App\Http\Controllers\Coordinator\ReportController::class, 'approve'])->name('report.approve');
     Route::patch('report/{id}/reject', [\App\Http\Controllers\Coordinator\ReportController::class, 'reject'])->name('report.reject');
-    Route::resource('category', \App\Http\Controllers\Coordinator\CategoryController::class);
+    Route::resource('setting', \App\Http\Controllers\Coordinator\SettingController::class);
+    Route::delete('report/{id}/tdestroy', [\App\Http\Controllers\Coordinator\SettingController::class, 'tdestroy'])->name('setting.tdestroy');
 
     Route::get('file/create/{id}', ['as' => 'file.create', 'uses' => '\App\Http\Controllers\Coordinator\FileAttachmentController@create']);
     Route::resource('file', \App\Http\Controllers\Coordinator\FileAttachmentController::class)->except('create');

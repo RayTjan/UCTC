@@ -424,6 +424,7 @@ button, select, input {
     display: table;
     clear:both;
 }
+
 .guiz-awards-row-even {
     background-color: #ffffff;
 }
@@ -1171,6 +1172,10 @@ p.titlelogin{
     width: 20%;
 }
 
+.customComittee25 {
+    width: 25%;
+}
+
 .iconCommitteeAct svg {
     transform: rotate(-90deg);
     transition: var(--transition-speed);
@@ -1259,7 +1264,7 @@ p.titlelogin{
     border-radius: 2vh;
     margin: 0;
     width: 43%;
-    height: 50vh;
+    height: 60vh;
     padding: 2% 2% 2% 2% ;
 }
 
@@ -1272,4 +1277,20 @@ p.titlelogin{
     color: #F20505;
 }
 
+/*navbar scroll*/
+.scrollNav {
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0);
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+/*.scrollNav {*/
+/*    transition: transform .5s ease-in-out;*/
+/*}*/
+
+.scrollNav::-webkit-scrollbar {
+    width: 0;
+}
 

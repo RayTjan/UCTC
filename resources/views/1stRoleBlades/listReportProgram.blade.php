@@ -76,7 +76,7 @@
             <link href='//fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
             <div class="quiz-window quiz-padding">
-                <div class="quiz-window-body">
+                <div class="">
                     <div class="gui-window-awards">
 
 

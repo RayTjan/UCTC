@@ -1,4 +1,4 @@
-<nav class="navbar">
+<nav class="navbar scrollNav">
     <ul class="navbar-nav">
         <li class="logo">
             @if(\Illuminate\Support\Facades\Auth::user()==null)

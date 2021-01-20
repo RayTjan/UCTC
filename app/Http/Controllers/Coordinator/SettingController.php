@@ -7,7 +7,7 @@ use App\Models\Category;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class SettingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -39,10 +39,20 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Category::create($request->all());
-        return redirect()->route(NOTICEMEFREDO);
+        if ($request->cname != null){
+            Category::create([
+                'name' => $request->cname,
+            ]);
+        }
 
+        if ($request->tname != null){
+            Type::create([
+                'name' => $request->tname,
+            ]);
+        }
 
+        return empty($category) ? redirect()->back()->with('Fail', "Failed to store")
+            : redirect()->back()->with('Success', 'Success type category: store');
     }
 
     /**
@@ -89,6 +99,17 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $category->delete();
-        return redirect()->route(NOTICEMEFREDO);
+
+        return empty($category) ? redirect()->back()->with('Fail', "Failed to destroy")
+            : redirect()->back()->with('Success', 'Success destroy category: #('.$category->name.') destroy');
+    }
+
+    public function tdestroy($id)
+    {
+        $type = Type::findOrFail($id);
+        $type->delete();
+
+        return empty($type) ? redirect()->back()->with('Fail', "Failed to destroy")
+            : redirect()->back()->with('Success', 'Success destroy type: #('.$type->name.') destroy');
     }
 }

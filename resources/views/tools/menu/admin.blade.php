@@ -208,7 +208,7 @@
 </li>
 
 <li class="nav-item">
-    <a href="{{ route('coordinator.category.index') }}" class="nav-link">
+    <a href="{{ route('coordinator.setting.index') }}" class="nav-link">
         <svg
             aria-hidden="true"
             focusable="false"
@@ -248,7 +248,7 @@
 
             </g>
         </svg>
-        <span class="link-text">Attributes</span>
+        <span class="link-text">Settings</span>
     </a>
 </li>
 
@@ -309,3 +309,4 @@
         <span class="link-text">Profile</span>
     </a>
 </li>
+

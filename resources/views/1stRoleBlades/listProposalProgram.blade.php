@@ -68,7 +68,7 @@
             <link href='//fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
             <div class="quiz-window quiz-padding">
-                <div class="quiz-window-body">
+                <div class="">
                     <div class="gui-window-awards">
 
 
@@ -82,7 +82,7 @@
                         </ul>
 
                         @foreach($proposals as $proposal)
-                            <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget">
+                            <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget quiz-window-body">
                                 <li class="guiz-awards-time customComittee">
                                     @if(strlen($proposal->proposal) > 35)
                                         {{ substr($proposal->proposal,0,20)."..." }}

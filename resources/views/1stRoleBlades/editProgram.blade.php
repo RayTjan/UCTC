@@ -23,7 +23,6 @@
                         <label >Goal: </label>
                         <input type="text" class="form-control" name="goal" value="{{ $program->goal }}" required>
                     </div>
-                    <input type="hidden" name="created_by" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
                     <div class="form-group">
                         <label>Program Date / Deadline:</label>
                         <input type="date" class="form-control" name="program_date" value="{{ $program->program_date }}" required>
@@ -45,29 +44,24 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Status:</label>
-                        <select name="status" class="custom-select">
-                                <option value="1">Started</option>
-                            <option value="2">Finished</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
                         <label>Proposal:</label>
-                        <input type="file" name="proposal" class="form-control-file" accept="application/pdf, application/vnd.ms-excel">
+                        <input type="file" name="proposal" class="form-control-file">
                     </div>
 
                     <div class="form-group">
                         <label>Add Finance:</label>
                         <div id="dynamic_field">
                             <div>
-                                    <select name="typeFinance[]" class="custom-select typeBudgetForm d-inline-block mr-3">
-                                        <option hidden>Select Type</option>
-                                        <option value="0">Income</option>
-                                        <option value="1">Expenditure</option>
-                                    </select>
-                                    <input type="text" name="nameBudget[]" placeholder="Enter your Detail" class="sizeForm form-control name_list d-inline-block mr-3" />
-                                    <input type="number" name="value[]" placeholder="Enter your Budget" class="sizeForm form-control name_list d-inline-block mr-3" />
-                                    <button type="button" name="add" id="add" class="btn btn-success d-inline-block">Add More</button>
+                                <select name="typeFinance[]" class="custom-select typeBudgetForm d-inline-block mr-3">
+                                    <option hidden>Select Type</option>
+                                    <option value="0">Income</option>
+                                    <option value="1">Expenditure</option>
+                                </select>
+                                <input type="text" name="nameBudget[]" placeholder="Enter your Detail" class="sizeForm form-control name_list d-inline-block mr-3" />
+                                <input type="number" name="value[]" placeholder="Enter your Budget" class="sizeForm form-control name_list d-inline-block mr-3" />
+                                <input type="file" name="proof_of_payment[]" id="fileProof-[0]" title="Proof" class="d-none" />
+                                <label for="fileProof-[0]" class="typeBudgetForm form-control name_list d-inline-block mr-3">Proof image</label>
+                                <button type="button" name="add" id="add" class="btn btn-success d-inline-block">Add More</button>
                             </div>
                         </div>
                     </div>
@@ -77,9 +71,13 @@
                         <div id="picture_field">
                             <div>
                                 <input type="file" name="documentation[]" class="form-control-file d-inline-block docForm" multiple>
-                                <button type="button" name="addPic" id="addPic" class="btn btn-success d-inline-block">Add More</button>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label >Thumbnail:</label>
+                        <input type="file" class="form-control-file" name="thumbnail" title="thumbnail program">
                     </div>
 
                     <div class="text-center">
@@ -117,7 +115,7 @@
                             </div>
                             <!-- Modal body -->
                             <div class="modal-body d-inline-block text-center" style="text-align: left;">
-                                <form action="{{ route('lecturer.program.finish', $program->id) }}" method="post" class="d-inline-block">
+                                <form action="{{ route('coordinator.program.finish', $program->id) }}" method="post" class="d-inline-block">
                                     @csrf
                                     <button type="submit" class="btnA circular greenstar font-weight-bold p-2 green-hover widthSubmitButton">Yes</button>
                                 </form>
@@ -142,7 +140,10 @@
                     '                                    <option value="0">Income</option>\n' +
                     '                                    <option value="1">Expenditure</option>\n' +
                     '                                </select>' +
-                    '<input type="text" name="nameBudget[]" placeholder="Enter your Detail" class="sizeForm form-control name_list d-inline-block mr-3" /> <input type="number" name="value[]" placeholder="Enter your Budget" class="sizeForm form-control name_list d-inline-block mr-3" /> <button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></div>');
+                    '<input type="text" name="nameBudget[]" placeholder="Enter your Detail" class="sizeForm form-control name_list d-inline-block mr-3" /> <input type="number" name="value[]" placeholder="Enter your Budget" class="sizeForm form-control name_list d-inline-block mr-3" /> ' +
+                    '<input type="file" name="proof_of_payment[]" id="fileProof-['+i+']" title="Proof" class="d-none" />' +
+                    '<label for="fileProof-['+i+']" class="typeBudgetForm form-control name_list d-inline-block mr-3">Proof image</label>\n' +
+                    '                                <button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></div>');
             });
 
             $(document).on('click', '.btn_remove', function(){
