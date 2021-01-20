@@ -8,7 +8,7 @@
         <div class="row">
 
             <div class="col">
-                <form action="{{ route('admin.action.update', $action) }}" method="post">
+                <form action="{{ route('coordinator.action.update', $action) }}" method="post">
                     {{csrf_field()}}
                     <input type="hidden" name="_method" value="PATCH">
                     <div class="form-group">

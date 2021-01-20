@@ -8,6 +8,7 @@ use App\Models\Program;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ActionTaskController extends Controller
@@ -30,7 +31,8 @@ class ActionTaskController extends Controller
     public function create($id)
     {
         $action = ActionPlan::findORFail($id);
-        $programs = Program::all()->except($action->id)->pluck('id');
+
+        $programs = Program::all()->except($action->program)->pluck('id');
 
         $committees = User::whereIn('id',function ($query) use ($programs){
             $query->select('uctc_user_id')->from('uctc_program_user')->whereNotIn('uctc_program_id',$programs);
@@ -48,7 +50,7 @@ class ActionTaskController extends Controller
     public function store(Request $request)
     {
         Task::create($request->all());
-        return redirect(route('staff.actionTask.show', $request->action_plan));
+        return redirect(route('student.actionTask.show', $request->action_plan));
     }
 
     /**
@@ -60,9 +62,28 @@ class ActionTaskController extends Controller
     public function show($id)
     {
         $action = ActionPlan::findOrFail($id);
-        $tasks = Task::where('action_plan', $id)->where('status', '0')->get();
+        $taskslist = Task::where('action_plan', $id)->where('status', '0')->get();
 
-        return view('3rdRoleBlades.listTaskAction', compact('action','tasks'));
+        $taskme = $taskslist->where('PIC', Auth::id());
+
+        $tasks = $taskme->sortByDesc('due_date');
+
+        //check edit
+        $program = Program::findOrFail($action->program);
+        $edit = false;
+        $user = Auth::user();
+        $participatedPrograms = $user->attends;
+        foreach ($participatedPrograms as $pprogram){
+            if ($pprogram->id == $program->id){
+                $edit = true;
+            }
+        }
+        if ($program->created_by == $user->id){
+            $edit = true;
+        }
+
+
+        return view('3rdRoleBlades.listTaskAction', compact('action','tasks','edit'));
     }
 
     /**
@@ -88,7 +109,7 @@ class ActionTaskController extends Controller
     {
         $task = Task::findOrFail($id);
         $task->update($request->all());
-        return redirect()->route('staff.actionTask.show', $task->action_plan);
+        return redirect()->route('student.actionTask.show', $task->action_plan);
     }
 
     /**
@@ -101,6 +122,6 @@ class ActionTaskController extends Controller
     {
         $task = Task::findOrFail($id);
         $task->delete();
-        return redirect()->route('staff.actionTask.show', $task->action_plan);
+        return redirect()->route('student.actionTask.show', $task->action_plan);
     }
 }

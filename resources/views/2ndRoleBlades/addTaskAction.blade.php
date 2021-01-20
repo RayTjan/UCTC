@@ -8,7 +8,7 @@
         <div class="row">
 
             <div class="col">
-                <form action="{{route('staff.actionTask.store')}}" method="post">
+                <form action="{{route('lecturer.actionTask.store')}}" method="post">
                     {{csrf_field()}}
                     <div class="form-group">
                         <label >Name: </label>
@@ -26,6 +26,7 @@
                     <div class="form-group">
                         <label>PIC:</label>
                         <select name="PIC" class="custom-select">
+                            <option value="{{\Illuminate\Support\Facades\Auth::id()}}">{{\Illuminate\Support\Facades\Auth::user()->identity->name}}</option>
                             @foreach($committees as $committee)
                                 <option value="{{$committee->id}}">{{$committee->identity->name}}</option>
                             @endforeach

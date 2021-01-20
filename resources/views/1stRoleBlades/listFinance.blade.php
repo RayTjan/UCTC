@@ -72,7 +72,7 @@
 
                                         @if($finance->status == '0' || $finance->status == '3')
                                             {{--                                    approve--}}
-                                            <form action="{{route('admin.finance.approve', $finance->id)}}" class="p-0 m-0"
+                                            <form action="{{route('coordinator.finance.approve', $finance->id)}}" class="p-0 m-0"
                                                   method="POST">
                                                 {{ csrf_field() }}
                                                 <button class="btnA circular greenstar green-hover iconAct mr-1 p-1 " title="Approve">
@@ -100,7 +100,7 @@
                                         </button>
 
                                         {{--                                    delete--}}
-                                        <form action="{{route('admin.finance.destroy', $finance)}}"
+                                        <form action="{{route('coordinator.finance.destroy', $finance)}}"
                                               method="POST">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="DELETE">
@@ -123,7 +123,7 @@
                                             </div>
                                             <!-- Modal body -->
                                             <div class="modal-body" style="text-align: left;">
-                                                <form action="{{route('admin.finance.reject', $finance->id)}}" class="p-0 m-0"
+                                                <form action="{{route('coordinator.finance.reject', $finance->id)}}" class="p-0 m-0"
                                                       method="POST">
                                                     <div class="form-group">
                                                         {{ csrf_field() }}
@@ -170,7 +170,7 @@
                                             </div>
                                             <!-- Modal body -->
                                             <div class="modal-body" style="text-align: left;">
-                                                <form action="{{route ('admin.finance.update',$finance)}}" method="POST" enctype="multipart/form-data">
+                                                <form action="{{route ('coordinator.finance.update',$finance)}}" method="POST" enctype="multipart/form-data">
                                                     <div class="form-group">
                                                         {{ csrf_field() }}
                                                         <input type="hidden" name="_method" value="PATCH">

@@ -18,7 +18,7 @@
                 {{-- auth to limit content, it cannot be accessed until login --}}
                 <div class="float-right">
                     {{--                <a href="{{route('action.create')}}" class="btn btn-primary btn-block" role="button" aria-pressed="true">New action</a>--}}
-                    <a href="{{route('admin.action.create', $program->id)}}" role="button" aria-pressed="true">
+                    <a href="{{route('coordinator.action.create', $program->id)}}" role="button" aria-pressed="true">
                         <svg
                             aria-hidden="true"
                             focusable="false"
@@ -64,7 +64,7 @@
                                 guiz-awards-row guiz-awards-row
                             @endif
                                 quizz">
-                                <a href="{{route('admin.actionTask.show', $actionPlan)}}" class="a-none">
+                                <a href="{{route('coordinator.actionTask.show', $actionPlan)}}" class="a-none">
                                     <li class="guiz-awards-star">
                                 <span class="star"></span>
                                     </li>
@@ -81,7 +81,7 @@
                                                 </a>
 
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <form action="{{ route('admin.action.edit', $actionPlan) }}" method="get">
+                                                    <form action="{{ route('coordinator.action.edit', $actionPlan) }}" method="get">
                                                         @csrf
                                                         <button type="submit" class="pl-2 btnA dropdown-item">Edit</button>
                                                     </form>
@@ -110,7 +110,7 @@
                                         </div>
                                         <!-- Modal body -->
                                         <div class="modal-body d-inline-block text-center" style="text-align: left;">
-                                            <form action="{{ route('admin.action.destroy', $actionPlan) }}" method="post" class="d-inline-block">
+                                            <form action="{{ route('coordinator.action.destroy', $actionPlan) }}" method="post" class="d-inline-block">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover">Yes</button>

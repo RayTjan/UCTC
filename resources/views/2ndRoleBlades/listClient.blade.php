@@ -45,13 +45,13 @@
                                             </a>
 
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                <form action="{{route('staff.client.edit', $client->id)}}"
+                                                <form action="{{route('lecturer.client.edit', $client->id)}}"
                                                       method="POST">
                                                     {{ csrf_field() }}
                                                     <input name="selected_program" type="hidden" value="{{$client->id}}">
                                                     <button class="ml-2 dropdown-item btnA" title="Approve" type="submit">Edit</button>
                                                 </form>
-                                                <form action="{{route('staff.client.destroy', $client->id)}}"
+                                                <form action="{{route('lecturer.client.destroy', $client->id)}}"
                                                       method="POST">
                                                     {{ csrf_field() }}
                                                     <input name="selected_program" type="hidden" value="{{$client->id}}">

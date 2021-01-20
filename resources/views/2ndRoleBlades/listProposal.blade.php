@@ -2,12 +2,6 @@
 @section('title', 'Proposal')
 @section('content')
 
-    <script>
-        $(document).ready( function() {
-            $('.dropdown-button').dropdown();
-        });
-    </script>
-
     <div class="container clearfix" style="margin-top: 20px;">
         <div class="row">
             <h1 class="col font-weight-bold">{{ $program->name }} Proposal List</h1>
@@ -55,7 +49,7 @@
                         </div>
                         <!-- Modal body -->
                         <div class="modal-body" style="text-align: left;">
-                            <form action="{{route ('staff.proposal.store')}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{route ('lecturer.proposal.store')}}" method="POST" enctype="multipart/form-data">
                                 <div class="form-group">
                                     {{ csrf_field() }}
                                     <input name="selected_program" type="hidden" value="{{$program->id}}">
@@ -141,7 +135,7 @@
                                                 </div>
                                                 <!-- Modal body -->
                                                 <div class="modal-body" style="text-align: left;">
-                                                    <form action="{{route ('staff.proposal.update', $proposal)}}" method="POST" enctype="multipart/form-data">
+                                                    <form action="{{route ('lecturer.proposal.update', $proposal)}}" method="POST" enctype="multipart/form-data">
                                                         <div class="form-group">
                                                             {{ csrf_field() }}
                                                             <input type="hidden" name="_method" value="PATCH">
@@ -182,7 +176,7 @@
                                 @endif
                             </ul>
 
-                            {{--        Delete Task--}}
+                            {{--        Delete Proposal--}}
 
                             <div class="modal fade" id="deleteProposal-{{ $proposal->id }}">
                                 <div class="modal-dialog">
@@ -194,12 +188,12 @@
                                         </div>
                                         <!-- Modal body -->
                                         <div class="modal-body d-inline-block text-center" style="text-align: left;">
-                                            <form action="{{ route('staff.proposal.destroy', $proposal) }}" method="post" class="d-inline-block">
+                                            <form action="{{ route('lecturer.proposal.destroy', $proposal) }}" method="post" class="d-inline-block">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover">Yes</button>
+                                                <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover widthSubmitButton">Yes</button>
                                             </form>
-                                            <button type="button" class="btnA circular bluestar font-weight-bold p-2 blue-hover" data-dismiss="modal">No</button>
+                                            <button type="button" class="btnA circular bluestar font-weight-bold p-2 blue-hover widthSubmitButton" data-dismiss="modal">No</button>
                                         </div>
                                     </div>
                                 </div>

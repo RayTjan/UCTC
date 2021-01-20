@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ActionPlan;
 use App\Models\Program;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ActionController extends Controller
 {
@@ -54,7 +55,20 @@ class ActionController extends Controller
 
         $actions = ActionPlan::where('program',$id)->get();
 
-        return view('3rdRoleBlades.listActionPlan', compact('program','actions'));
+        //check edit
+        $edit = false;
+        $user = Auth::user();
+        $participatedPrograms = $user->attends;
+        foreach ($participatedPrograms as $pprogram){
+            if ($pprogram->id == $program->id){
+                $edit = true;
+            }
+        }
+        if ($program->created_by == $user->id){
+            $edit = true;
+        }
+
+        return view('3rdRoleBlades.listActionPlan', compact('program','actions', 'edit'));
     }
 
     /**

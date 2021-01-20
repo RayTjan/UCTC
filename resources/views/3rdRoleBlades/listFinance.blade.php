@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="d-flex justify-content-between">
-        <h1 class="col font-weight-bold">Finance List</h1>
+        <h1 class="col font-weight-bold">Finance List {{$program->name}}</h1>
         @auth()
             <div class="clearfix">
                 {{-- auth to limit content, it cannot be accessed until login --}}
@@ -49,7 +49,7 @@
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body" style="text-align: left;">
-                    <form action="{{route ('student.finance.store')}}" method="POST">
+                    <form action="{{route ('student.finance.store')}}" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             {{ csrf_field() }}
                             <input type="hidden" name="program" value="{{$program->id}}">
@@ -69,6 +69,11 @@
                                 <label>Value: </label>
                                 <input type="text" class="form-control" name="value" required>
                             </div>
+                            <div class="form-group">
+                                <label>Proof of Payment: </label>
+                                <i class="fa fa-clipboard"></i>
+                                <input type="file" class="form-control" name="proof_of_payment" required>
+                            </div>
 
                         </div>
                         <div class="form-group">
@@ -85,14 +90,15 @@
             <div class="table100 ver1">
 
                 <div class="">
-                    <div class="table100-nextcols">
+                    <div class="table100-nextcols boxScroll">
                         <table>
                             <thead>
                             <tr class="row100 head">
                                 <th class="cell100 column2">Name</th>
-                                <th class="cell100 column3">Type</th>
+                                <th class="cell100 column6">Type</th>
                                 <th class="cell100 column6">Value</th>
-                                <th class="cell100 column6">Action</th>
+                                <th class="cell100 column6">Attachment</th>
+                                <th class="cell100 column3">Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -108,7 +114,18 @@
                                             <div class="text-danger">Expenditure</div>
                                         @endif
                                     </td>
-                                    <td class="cell100 column3">Rp. {{$finance->value}}</td>
+                                    <td class="cell100 column6">
+                                        @if($finance->type == '0')
+                                            <div class="text-success">+ Rp. {{$finance->value}}</div>
+                                        @elseif($finance->type == '1')
+                                            <div class="text-danger">- Rp. {{$finance->value}}</div>
+                                        @endif
+                                    </td>
+                                    <td class="cell100 column4">
+                                        <a data-toggle="modal"
+                                           data-target="#imgview-{{$finance->id}}"
+                                           class="btn btn-primary titlelogin">See Detail</a>
+                                    </td>
                                     <td class="cell100 column9 d-flex">
 
                                         {{--                                    edit--}}
@@ -120,17 +137,37 @@
                                         </button>
 
                                         {{--                                    delete--}}
-                                        <form action="{{route('student.finance.destroy', $finance)}}"
-                                              method="POST">
-                                            {{ csrf_field() }}
-                                            <input type="hidden" name="_method" value="DELETE">
-                                            <button class="btnA circular redstar red-hover iconAct mr-1 p-1" title="Delete">
-                                                <i class="fa fa-close"></i>
-                                            </button>
-                                        </form>
+                                        <button class="btnA circular redstar red-hover iconAct mr-1 p-1" title="Delete"
+                                                data-toggle="modal"
+                                                data-target="#deleteFinance-{{$finance->id}}">
+                                            <i class="fa fa-close"></i>
+                                        </button>
 
                                     </td>
                                 </tr>
+
+                                {{--        Delete Finance--}}
+
+                                <div class="modal fade" id="deleteFinance-{{ $finance->id }}">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Are you sure want to delete this {{ $finance->name }} ?</h4>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <!-- Modal body -->
+                                            <div class="modal-body d-inline-block text-center" style="text-align: left;">
+                                                <form action="{{ route('student.finance.destroy', $finance) }}" method="post" class="d-inline-block">
+                                                    @csrf
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover widthSubmitButton">Yes</button>
+                                                </form>
+                                                <button type="button" class="btnA circular bluestar font-weight-bold p-2 blue-hover widthSubmitButton" data-dismiss="modal">No</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 {{--            modal edit finance--}}
                                 <div class="modal fade" id="editFinance-{{$finance->id}}">
@@ -143,7 +180,7 @@
                                             </div>
                                             <!-- Modal body -->
                                             <div class="modal-body" style="text-align: left;">
-                                                    <form action="{{route ('student.finance.update',$finance)}}" method="POST">
+                                                    <form action="{{route ('student.finance.update',$finance)}}" method="POST" enctype="multipart/form-data">
                                                         <div class="form-group">
                                                             {{ csrf_field() }}
                                                             <input type="hidden" name="_method" value="PATCH">
@@ -154,13 +191,12 @@
                                                             <div class="form-group">
                                                                 <label>Type: </label>
                                                                 <select name="type" class="custom-select">
-                                                                    <option hidden>
+
                                                                         @if($finance->type == '0')
-                                                                            Income
+                                                                        <option hidden value="0">Income</option>
                                                                         @elseif($finance->type == '1')
-                                                                            Expenditure
+                                                                        <option hidden value="1">Expenditure</option>
                                                                         @endif
-                                                                    </option>
                                                                     <option value="0">Income</option>
                                                                     <option value="1">Expenditure</option>
                                                                 </select>
@@ -169,12 +205,28 @@
                                                                 <label>Value: </label>
                                                                 <input type="text" class="form-control" name="value" value="{{$finance->value}}" required>
                                                             </div>
-
+                                                            <div class="form-group">
+                                                                <label>Proof of Payment: </label>
+                                                                <input type="file" class="form-control" name="proof_of_payment">
+                                                            </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <button class="btnA circular bluestar font-weight-bold p-2 blue-hover" type="submit">Edit Finance</button>
                                                         </div>
                                                     </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{--                    modal image--}}
+                                <div class="modal fade" id="imgview-{{$finance->id}}">
+                                    <div class="modal-dialog">
+                                        <div class="modalpic-content">
+                                            <!-- Modal body -->
+                                            <div class="modalpic-body text-center">
+                                                <button type="button" class="close btn-modal" data-dismiss="modal">&times;</button>
+                                                <img src="/files/finance/{{$finance->proof_of_payment}}" alt="image" class="card-img">
                                             </div>
                                         </div>
                                     </div>

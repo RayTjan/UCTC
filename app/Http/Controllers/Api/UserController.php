@@ -76,6 +76,7 @@ class UserController extends Controller
      */
     public  function userTasks($id){
         $tasks = Task::all()->where('PIC', $id);
+        $tasks = $tasks->sortByDesc('due_date');
         return TaskResource::collection($tasks);
     }
     public function getAlluser(){

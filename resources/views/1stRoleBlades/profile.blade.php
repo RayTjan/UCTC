@@ -7,7 +7,7 @@
         <div class="text-center shadow-sm profile-box">
             <div class="miniOption position-relative">
                 <div class="iconOptionCenter position-absolute">
-                    <a href="{{ route('admin.user.edit', $user) }}" class="iconOption">
+                    <a href="{{ route('coordinator.user.edit', $user) }}" class="iconOption">
                         <i class="fa fa-pencil"></i>
                     </a>
 

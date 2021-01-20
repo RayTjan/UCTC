@@ -7,7 +7,7 @@
             <div class="quiz-window">
                 <div class="height100">
 
-                    <form action="{{route('admin.report.store')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('coordinator.report.store')}}" method="post" enctype="multipart/form-data">
                         {{csrf_field()}}
 
                         <h4 class="font-weight-bold">Report {{ $program->name }}</h4>

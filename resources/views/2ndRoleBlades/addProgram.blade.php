@@ -8,7 +8,7 @@
         <div class="row">
 
             <div class="col">
-                <form action="{{route('staff.program.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('lecturer.program.store')}}" method="post" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="form-group">
                         <label >Name: </label>

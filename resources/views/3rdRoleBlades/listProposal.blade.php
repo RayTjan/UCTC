@@ -2,18 +2,13 @@
 @section('title', 'Proposal')
 @section('content')
 
-    <script>
-        $(document).ready( function() {
-            $('.dropdown-button').dropdown();
-        });
-    </script>
-
     <div class="container clearfix" style="margin-top: 20px;">
         <div class="row">
             <h1 class="col font-weight-bold">{{ $program->name }} Proposal List</h1>
         </div>
 
-        @auth()
+        @if($edit == true)
+            @if($addAvailability == true)
             <div class="clearfix">
                 <div class="float-right">
                     <a href="#"
@@ -42,7 +37,7 @@
 
                 </div>
             </div>
-
+            @endif
             {{--            modal add proposal--}}
             <div class="modal fade" id="addProposal">
                 <div class="modal-dialog">
@@ -69,7 +64,7 @@
                     </div>
                 </div>
             </div>
-        @endauth
+        @endif
 
         <div class="row" style="margin-top: 30px;">
             <link href='//fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'>
@@ -82,9 +77,13 @@
                         <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget card-bg-change">
                             <li class="guiz-awards-time customComittee">Name</li>
                             <li class="guiz-awards-time customComittee">Status</li>
+                            @if($edit == true)
                             <li class="guiz-awards-time customComittee">Replace</li>
+                            @endif
                             <li class="guiz-awards-time customComittee">Download</li>
+                            @if($edit == true)
                             <li class="guiz-awards-time customComittee">Delete</li>
+                            @endif
                         </ul>
 
                         @foreach($proposals as $proposal)
@@ -102,9 +101,19 @@
                                     @elseif($proposal->status == '1')
                                         <div class="text-success">Approved</div>
                                     @elseif($proposal->status == '2')
-                                        <div class="text-danger">Rejected</div>
+                                        <div class="d-flex justify-content-center">
+                                        <button class="btnA circular redstar red-hover iconAct iconAct align-self-center mr-2" title="note"
+                                                data-toggle="modal"
+                                                data-target="#note-{{$proposal->id}}">
+                                            <div class="d-flex justify-content-center">
+                                                <i class="fa fa-sticky-note align-self-center"></i>
+                                            </div>
+                                        </button>
+                                        <div class="text-danger d-inline-block align-self-center">Rejected</div>
+                                        </div>
                                     @endif
                                 </li>
+                                @if($edit == true)
                                 @if($proposal->status == 0)
                                 <li class="guiz-awards-time customComittee">
                                     <button type="submit" class="btn btn-primary"
@@ -132,7 +141,7 @@
                                                             <input type="hidden" name="_method" value="PATCH">
                                                             <input name="selected_program" type="hidden" value="{{$program->id}}">
                                                             <label>Replace proposal {{ $proposal->proposal }} with ...</label>
-                                                            <input type="file" name="proposal" class="form-control-file" required>
+                                                            <input type="file" name="proposal" class="form-control-file" accept="application/pdf, application/vnd.ms-excel" required>
                                                         </div>
                                                         <div class="form-group text-center">
                                                             <button class="btnA circular bluestar p-2 blue-hover" type="submit">Replace Proposal</button>
@@ -150,9 +159,11 @@
                                     </form>
                                 </li>
                                 @endif
+                                @endif
                                 <li class="guiz-awards-time customComittee">
                                     <a href="/files/proposal/{{ $proposal->proposal }}" class="btn btn-success">Download</a>
                                 </li>
+                                @if($edit == true)
                                 <li class="guiz-awards-time customComittee">
                                     <button
                                         type="button"
@@ -162,9 +173,10 @@
                                         Delete
                                     </button>
                                 </li>
+                                @endif
                             </ul>
 
-                            {{--        Delete Task--}}
+                            {{--        Delete Proposal--}}
 
                             <div class="modal fade" id="deleteProposal-{{ $proposal->id }}">
                                 <div class="modal-dialog">
@@ -179,9 +191,26 @@
                                             <form action="{{ route('student.proposal.destroy', $proposal) }}" method="post" class="d-inline-block">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover">Yes</button>
+                                                <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover widthSubmitButton">Yes</button>
                                             </form>
-                                            <button type="button" class="btnA circular bluestar font-weight-bold p-2 blue-hover" data-dismiss="modal">No</button>
+                                            <button type="button" class="btnA circular bluestar font-weight-bold p-2 blue-hover widthSubmitButton" data-dismiss="modal">No</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{--            modal note--}}
+                            <div class="modal fade" id="note-{{$proposal->id}}">
+                                <div class="modal-dialog">
+                                    <div class="modal-content bg-change-red">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title font-weight-bold titlelogin">Note From Coor</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body" style="text-align: left;">
+                                            <p class="titlelogin">{{$proposal->note}}</p>
                                         </div>
                                     </div>
                                 </div>

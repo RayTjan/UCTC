@@ -76,7 +76,7 @@
                                 <td class="cell100 column8">{{$program->categorized->name}}</td>
                                 <td class="cell100 column9 d-flex">
 {{--                                    detail--}}
-                                    <form action="{{route('admin.program.show', $program)}}" class="p-0 m-0"
+                                    <form action="{{route('coordinator.program.show', $program)}}" class="p-0 m-0"
                                           method="GET">
                                         {{ csrf_field() }}
                                         <button class="btnA circular bluestar blue-hover iconAct mr-1 p-1" title="Detail">
@@ -86,7 +86,7 @@
 
                                     @if($program->status == '0' || $program->status == '3')
 {{--                                    approve--}}
-                                    <form action="{{route('admin.program.approve', $program->id)}}" class="p-0 m-0"
+                                    <form action="{{route('coordinator.program.approve', $program->id)}}" class="p-0 m-0"
                                           method="POST">
                                         {{ csrf_field() }}
                                         <button class="btnA circular greenstar green-hover iconAct mr-1 p-1 " title="Approve">
@@ -119,7 +119,7 @@
                                     @endif
 
 {{--                                    delete--}}
-                                    <form action="{{route('admin.program.suspend', $program->id)}}" class="p-0 m-0"
+                                    <form action="{{route('coordinator.program.suspend', $program->id)}}" class="p-0 m-0"
                                           method="POST">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="_method" value="DELETE">
@@ -159,7 +159,7 @@
                                         </div>
                                         <!-- Modal body -->
                                         <div class="modal-body" style="text-align: left;">
-                                            <form action="{{route('admin.program.suspend', $program->id)}}" class="p-0 m-0"
+                                            <form action="{{route('coordinator.program.suspend', $program->id)}}" class="p-0 m-0"
                                                   method="POST">
                                                 <div class="form-group">
                                                     {{ csrf_field() }}

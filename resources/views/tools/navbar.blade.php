@@ -7,9 +7,9 @@
             @else
                 <a href="
                 @if(\Illuminate\Support\Facades\Auth::user()->isAdmin())
-                    {{ route('admin.user.show',\Illuminate\Support\Facades\Auth::id()) }}
+                    {{ route('coordinator.user.show',\Illuminate\Support\Facades\Auth::id()) }}
                 @elseif(\Illuminate\Support\Facades\Auth::user()->isCreator())
-                    {{ route('staff.user.show',\Illuminate\Support\Facades\Auth::id()) }}
+                    {{ route('lecturer.user.show',\Illuminate\Support\Facades\Auth::id()) }}
                 @elseif(\Illuminate\Support\Facades\Auth::user()->isUser())
                     {{ route('student.user.show',\Illuminate\Support\Facades\Auth::id()) }}
                 @endif

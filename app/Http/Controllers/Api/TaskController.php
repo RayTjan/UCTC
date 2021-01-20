@@ -59,6 +59,7 @@ class TaskController extends Controller
     {
         $tasks = Task::all();
         $specificTasks = $tasks->where('action_plan', $id);
+        $tasks = $tasks->sortByDesc('name');
         return TaskResource::collection($specificTasks);
     }
 

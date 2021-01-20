@@ -49,7 +49,7 @@
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body" style="text-align: left;">
-                    <form action="{{route ('staff.finance.store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route ('lecturer.finance.store')}}" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             {{ csrf_field() }}
                             <input type="hidden" name="program" value="{{$program->id}}">
@@ -137,17 +137,37 @@
                                         </button>
 
                                         {{--                                    delete--}}
-                                        <form action="{{route('staff.finance.destroy', $finance)}}"
-                                              method="POST">
-                                            {{ csrf_field() }}
-                                            <input type="hidden" name="_method" value="DELETE">
-                                            <button class="btnA circular redstar red-hover iconAct mr-1 p-1" title="Delete">
-                                                <i class="fa fa-close"></i>
-                                            </button>
-                                        </form>
+                                        <button class="btnA circular redstar red-hover iconAct mr-1 p-1" title="Delete"
+                                                data-toggle="modal"
+                                                data-target="#deleteFinance-{{$finance->id}}">
+                                            <i class="fa fa-close"></i>
+                                        </button>
 
                                     </td>
                                 </tr>
+
+                                {{--        Delete Finance--}}
+
+                                <div class="modal fade" id="deleteFinance-{{ $finance->id }}">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Are you sure want to delete this {{ $finance->name }} ?</h4>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <!-- Modal body -->
+                                            <div class="modal-body d-inline-block text-center" style="text-align: left;">
+                                                <form action="{{ route('lecturer.finance.destroy', $finance) }}" method="post" class="d-inline-block">
+                                                    @csrf
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover widthSubmitButton">Yes</button>
+                                                </form>
+                                                <button type="button" class="btnA circular bluestar font-weight-bold p-2 blue-hover widthSubmitButton" data-dismiss="modal">No</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 {{--            modal edit finance--}}
                                 <div class="modal fade" id="editFinance-{{$finance->id}}">
@@ -160,7 +180,7 @@
                                             </div>
                                             <!-- Modal body -->
                                             <div class="modal-body" style="text-align: left;">
-                                                    <form action="{{route ('staff.finance.update',$finance)}}" method="POST" enctype="multipart/form-data">
+                                                    <form action="{{route ('lecturer.finance.update',$finance)}}" method="POST" enctype="multipart/form-data">
                                                         <div class="form-group">
                                                             {{ csrf_field() }}
                                                             <input type="hidden" name="_method" value="PATCH">

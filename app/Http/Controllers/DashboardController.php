@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\ActionPlan;
+use App\Models\Fund;
 use App\Models\Program;
 use App\Models\Proposal;
+use App\Models\Report;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,16 +25,23 @@ class DashboardController extends Controller
             $allprograms = Program::all();
             $createdPrograms = $allprograms->where('created_by', $user->id);
             $participatedPrograms = $user->attends;
-            $programs = $createdPrograms->merge($participatedPrograms);
+            $myprograms = $createdPrograms->merge($participatedPrograms);
+
+            $allprogramssort = $allprograms->sortByDesc('updated_at');
+            $programs = $myprograms->sortByDesc('name');
 
             if (Auth::user()->isAdmin()) {
                 $proposals = Proposal::all()->where('status','0');
-                return view('1stRoleBlades.dashboard', compact('allprograms', 'proposals'));
+                $reports = Report::all()->where('status','0');
+                $funds = Fund::all()->where('status','0');
+                return view('1stRoleBlades.dashboard', compact('allprogramssort', 'proposals','reports','funds'));
             }else if (Auth::user()->isCreator()) {
-                $actions = ActionPlan::all();
-                return view('2ndRoleBlades.dashboard', compact('programs', 'actions'));
+                $allactions = ActionPlan::all();
+                $actions = $allactions->sortByDesc('program');
+                return view('2ndRoleBlades.dashboard', compact('allprogramssort','programs', 'actions'));
             }else if ((Auth::user()->isUser())) {
-                $tasks = Task::all();
+                $alltasks = Task::all()->where('PIC', Auth::id());
+                $tasks = $alltasks->sortByDesc('due_date');
                 return view('3rdRoleBlades.dashboard', compact('programs', 'tasks'));
             }
         }

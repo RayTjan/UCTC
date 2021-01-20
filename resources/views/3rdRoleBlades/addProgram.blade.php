@@ -8,7 +8,7 @@
         <div class="row">
 
             <div class="col">
-                <form action="{{route('student.program.store')}}" method="post">
+                <form action="{{route('student.program.store')}}" method="post" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="form-group">
                         <label >Name: </label>
@@ -62,6 +62,10 @@
                         </div>
                         <div id="committee_field">
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label >Thumbnail:</label>
+                        <input type="file" class="form-control-file" name="thumbnail" title="thumbnail program" accept="image/x-png,image/gif,image/jpeg" />
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btnA circular greenstar font-weight-bold p-2 green-hover">Add Program</button>

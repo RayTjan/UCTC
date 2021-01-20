@@ -14,11 +14,12 @@
         </div>
 
         @if($edit == true)
+            @if($program->status != '2')
             <div class="clearfix">
                 {{-- auth to limit content, it cannot be accessed until login --}}
                 <div class="float-right">
                     {{--                <a href="{{route('action.create')}}" class="btn btn-primary btn-block" role="button" aria-pressed="true">New action</a>--}}
-                    <a href="{{route('staff.action.create', $program->id)}}" role="button" aria-pressed="true">
+                    <a href="{{route('lecturer.action.create', $program->id)}}" role="button" aria-pressed="true">
                         <svg
                             aria-hidden="true"
                             focusable="false"
@@ -41,6 +42,7 @@
 
                 </div>
             </div>
+            @endif
         @endif
 
         <div class="row" style="margin-top: 30px;">
@@ -66,7 +68,7 @@
                                 guiz-awards-row guiz-awards-row
                             @endif
                                 quizz">
-                                <a href="{{route('staff.actionTask.show', $actionPlan)}}" class="a-none">
+                                <a href="{{route('lecturer.actionTask.show', $actionPlan)}}" class="a-none">
                                     <li class="guiz-awards-star">
                                 <span class="star"></span>
                                     </li>
@@ -84,7 +86,7 @@
                                                 </a>
 
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <form action="{{ route('staff.action.edit', $actionPlan) }}" method="get">
+                                                    <form action="{{ route('lecturer.action.edit', $actionPlan) }}" method="get">
                                                         @csrf
                                                         <button type="submit" class="pl-2 btnA dropdown-item">Edit</button>
                                                     </form>
@@ -114,7 +116,7 @@
                                         </div>
                                         <!-- Modal body -->
                                         <div class="modal-body d-inline-block text-center" style="text-align: left;">
-                                            <form action="{{ route('staff.action.destroy', $actionPlan) }}" method="post" class="d-inline-block">
+                                            <form action="{{ route('lecturer.action.destroy', $actionPlan) }}" method="post" class="d-inline-block">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover">Yes</button>

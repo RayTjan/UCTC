@@ -37,7 +37,7 @@
     </a>
 </li>
 <li class="nav-item">
-    <a href="{{ route('staff.program.index') }}" class="nav-link">
+    <a href="{{ route('lecturer.program.index') }}" class="nav-link">
         <svg
             aria-hidden="true"
             focusable="false"
@@ -76,7 +76,7 @@
 </li>
 
 <li class="nav-item">
-    <a href="{{route('staff.program.myprogram')}}" class="nav-link">
+    <a href="{{route('lecturer.program.myprogram')}}" class="nav-link">
         <svg
             aria-hidden="true"
             focusable="false"
@@ -105,7 +105,7 @@
 </li>
 
 <li class="nav-item">
-    <a href="{{ route('staff.user.index') }}" class="nav-link">
+    <a href="{{ route('lecturer.user.index') }}" class="nav-link">
         <svg
             aria-hidden="true"
             focusable="false"
@@ -134,7 +134,7 @@
 </li>
 
 <li class="nav-item">
-    <a href="{{ route('staff.user.show',\Illuminate\Support\Facades\Auth::id()) }}" class="nav-link">
+    <a href="{{ route('lecturer.user.show',\Illuminate\Support\Facades\Auth::id()) }}" class="nav-link">
         <svg
             aria-hidden="true"
             focusable="false"

@@ -266,7 +266,13 @@ main {
 .smol3{
     grid-column: 1 / 3;
     grid-row: 2 / 3;
-    background-color: green;
+}
+.smol4{
+    grid-column: 1 / 5;
+    grid-row: 3 / 3;
+}
+.grid-custom{
+    width: 90%;
 }
 
 /*circular text*/
@@ -328,6 +334,12 @@ main {
     color: #898989;
     border-color: #DADAD1;
     background: #DADAD1;
+}
+
+.gray-pages {
+    color: #898989;
+    border-color: #DADAD1;
+    background: #DADAD1 !important;
 }
 
 /*cobaaa*/
@@ -401,6 +413,10 @@ button, select, input {
 .quizz:hover {
     background-color: #e6e6e6;
     cursor: pointer;
+}
+
+.borderquiz {
+    border: 1px solid #666666;
 }
 
 .guiz-awards-row:after {
@@ -548,6 +564,10 @@ button, select, input {
     background-color: #F9C03D;
     border-radius: 2vh;
     cursor: pointer;
+
+    width: 3rem;
+    height: 3rem;
+    stroke-width: 0;
 }
 .iconplus:hover {
     background-color: #EFB93D;
@@ -718,12 +738,31 @@ button, select, input {
     background-color: #F1F1E6;
 }
 
+.card-bg-bluess {
+    background-color: #085A9F;
+}
+
 .bg-change-red {
     background-color: #F86073;
 }
 
-.inner-bg-change {
+.inner-bg-yellow {
     background-color: #F9C03D;
+    color: black;
+}
+
+.inner-bg-cyan {
+    background-color: #40FBE9;
+    color: black;
+}
+
+.inner-bg-green {
+    background-color: #0E9E52;
+    color: black;
+}
+
+.inner-bg-red {
+    background-color: #F86073;
     color: black;
 }
 
@@ -1159,7 +1198,7 @@ p.titlelogin{
 }
 
 .widthSubmitButton{
-    width: 45vh;
+    width: 12vh;
 }
 
 /*bg-change*/

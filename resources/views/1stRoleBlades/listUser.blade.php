@@ -17,7 +17,7 @@
         <div class="clearfix">
             {{-- auth to limit content, it cannot be accessed until login --}}
             <div class="float-right">
-                 <a href="{{route('admin.user.create')}}" role="button" aria-pressed="true">
+                 <a href="{{route('coordinator.user.create')}}" role="button" aria-pressed="true">
                     <svg
                         aria-hidden="true"
                         focusable="false"

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Submit Task')
+@section('title', 'Add Link')
 @section('content')
 
     <div class="d-flex justify-content-center mt-5">
@@ -7,10 +7,10 @@
         <div class="quiz-window">
             <div class="height100">
 
-                <form action="{{route('admin.file.store')}}" method="post">
+                <form action="{{route('coordinator.file.store')}}" method="post">
                     {{csrf_field()}}
 
-                    <h4 class="font-weight-bold">New File Submission</h4>
+                    <h4 class="font-weight-bold">Add File Link Attachments</h4>
 
                     <div class="form-group">
                         <label >Name:</label>
@@ -21,9 +21,7 @@
                         <label >Drive Link:</label>
                         <input type="text" class="form-control" name="file_attachment" required>
                     </div>
-
-                    <input type="hidden" name="status" value="1">
-                    <input type="hidden" name="idTask" value="{{ $task->id }}">
+                    <input type="hidden" name="program" value="{{ $program->id }}">
 
                     <div class="text-center">
                         <button type="submit" class="btnA circular greenstar font-weight-bold p-2 green-hover">Submit</button>

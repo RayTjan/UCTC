@@ -57,7 +57,7 @@
                         <!-- Modal body -->
                         <div class="modal-body" style="text-align: left;">
                             @if(count($committeeList) > 0)
-                                <form action="{{route ('admin.committee.store')}}" method="POST">
+                                <form action="{{route ('coordinator.committee.store')}}" method="POST">
                                     <div class="form-group">
                                         {{ csrf_field() }}
                                         <input name="selected_program" type="hidden" value="{{$program->id}}">
@@ -119,13 +119,13 @@
                                         </a>
 
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <form action="{{route('admin.committee.approve', $committee->id)}}"
+                                            <form action="{{route('coordinator.committee.approve', $committee->id)}}"
                                                          method="POST">
                                                 {{ csrf_field() }}
                                                 <input name="selected_program" type="hidden" value="{{$program->id}}">
                                                 <button class="ml-2 dropdown-item btnA btnSuccess" title="Approve" type="submit">Accept</button>
                                             </form>
-                                            <form action="{{route('admin.committee.reject', $committee->id)}}"
+                                            <form action="{{route('coordinator.committee.reject', $committee->id)}}"
                                                   method="POST">
                                                 {{ csrf_field() }}
                                                 <input name="selected_program" type="hidden" value="{{$program->id}}">

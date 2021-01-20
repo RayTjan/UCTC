@@ -13,7 +13,8 @@
             <h1 class="col font-weight-bold">Action Plan {{ $program->name }}</h1>
         </div>
 
-        @auth()
+        @if($edit == true)
+            @if($program->status != '2')
             <div class="clearfix">
                 {{-- auth to limit content, it cannot be accessed until login --}}
                 <div class="float-right">
@@ -41,7 +42,8 @@
 
                 </div>
             </div>
-        @endauth
+            @endif
+        @endif
 
         <div class="row" style="margin-top: 30px;">
             <link href='//fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'>
@@ -52,7 +54,9 @@
                         <ul class="guiz-awards-row guiz-awards-header">
                             <li class="guiz-awards-header-star">&nbsp;</li>
                             <li class="guiz-awards-header-title">Name</li>
+                            @if($edit == true)
                             <li class="guiz-awards-header-time">Action</li>
+                            @endif
                         </ul>
 
                         <?php $yes = 0; ?>
@@ -71,6 +75,7 @@
                                     <li class="guiz-awards-title">{{$actionPlan->name}}
                                         <div class="guiz-awards-subtitle">{{$actionPlan->description}}</div>
                                     </li>
+                                    @if($edit == true)
                                     <li class="guiz-awards-time">
                                         <div class="dropdown">
                                             <div class="dropdown show">
@@ -95,6 +100,7 @@
                                             </div>
                                         </div>
                                     </li>
+                                    @endif
                                 </a>
                             </ul>
 
