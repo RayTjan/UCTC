@@ -1,14 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\Lecturer;
 
 use App\Http\Controllers\Controller;
+use App\Models\ActionPlan;
 use App\Models\Program;
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
-class CommitteeController extends Controller
+class ActionTaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,6 +20,7 @@ class CommitteeController extends Controller
      */
     public function index()
     {
+        //
     }
 
     /**
@@ -24,9 +28,17 @@ class CommitteeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $action = ActionPlan::findORFail($id);
+
+        $programs = Program::all()->except($action->program)->pluck('id');
+
+        $committees = User::whereIn('id',function ($query) use ($programs){
+            $query->select('uctc_user_id')->from('uctc_program_user')->whereNotIn('uctc_program_id',$programs);
+        })->get();
+
+        return view('2ndRoleBlades.addTaskAction', compact('id','committees'));
     }
 
     /**
@@ -37,15 +49,8 @@ class CommitteeController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::findOrFail($request->user_id);
-        if ($request->selected_program != null){
-//            dd($request->selected_program);
-            $attend = $user->attends()->syncWithoutDetaching($request->selected_program);
-            return empty($attend)?redirect()->back()->with('Fail',"Failed to add new committee") : redirect()->back()->with('Success',"Committee added successfully");
-        }
-        else{
-            return redirect()->back()->with('WHAT',"Failed to add new committee");
-        }
+        Task::create($request->all());
+        return redirect(route('lecturer.actionTask.show', $request->action_plan));
     }
 
     /**
@@ -56,19 +61,13 @@ class CommitteeController extends Controller
      */
     public function show($id)
     {
-        $program = Program::findOrFail($id);
-        $programs = Program::all()->except($id)->pluck('id');
+        $action = ActionPlan::findOrFail($id);
+        $taskslist = Task::where('action_plan', $id)->where('status', '0')->get();
 
-        $committees = User::whereIn('id',function ($query) use ($programs){
-            $query->select('uctc_user_id')->from('uctc_program_user')->whereNotIn('uctc_program_id',$programs);
-        })->get();
-
-        $committeeList = User::whereNotIn('id',function ($query) use ($programs){
-            $query->select('uctc_user_id')->from('uctc_program_user')->whereNotIn('uctc_program_id',$programs);
-        })->where('role_id',3)->get();
-
+        $tasks = $taskslist->sortByDesc('due_date');
 
         //check edit
+        $program = Program::findOrFail($action->program);
         $edit = false;
         $user = Auth::user();
         $participatedPrograms = $user->attends;
@@ -81,7 +80,8 @@ class CommitteeController extends Controller
             $edit = true;
         }
 
-        return view('2ndRoleBlades.listCommittee', compact('program','committeeList','committees','edit'));
+
+        return view('2ndRoleBlades.listTaskAction', compact('action','tasks','edit'));
     }
 
     /**
@@ -92,7 +92,8 @@ class CommitteeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $task = Task::findOrFail($id);
+        return view('2ndRoleBlades.editTaskACtion', compact('task'));
     }
 
     /**
@@ -104,7 +105,9 @@ class CommitteeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $task = Task::findOrFail($id);
+        $task->update($request->all());
+        return redirect()->route('lecturer.actionTask.show', $task->action_plan);
     }
 
     /**
@@ -115,7 +118,8 @@ class CommitteeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $task = Task::findOrFail($id);
+        $task->delete();
+        return redirect()->route('lecturer.actionTask.show', $task->action_plan);
     }
-
 }

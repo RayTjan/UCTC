@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\Lecturer;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -91,7 +91,7 @@ class UserController extends Controller
             ]);
         }
 
-        return redirect(route('staff.user.show',\Illuminate\Support\Facades\Auth::id()));
+        return redirect(route('lecturer.user.show',\Illuminate\Support\Facades\Auth::id()));
     }
 
     /**

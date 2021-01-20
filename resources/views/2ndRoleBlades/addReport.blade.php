@@ -8,7 +8,7 @@
                 <div class="height100">
 
                     @if($edit == true)
-                    <form action="{{route('staff.report.store')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('lecturer.report.store')}}" method="post" enctype="multipart/form-data">
                         {{csrf_field()}}
 
                         <h4 class="font-weight-bold">Report {{ $program->name }}</h4>

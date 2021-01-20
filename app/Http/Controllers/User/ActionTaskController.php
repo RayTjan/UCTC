@@ -49,7 +49,7 @@ class ActionTaskController extends Controller
     public function store(Request $request)
     {
         Task::create($request->all());
-        return redirect(route('staff.actionTask.show', $request->action_plan));
+        return redirect(route('student.actionTask.show', $request->action_plan));
     }
 
     /**
@@ -90,7 +90,7 @@ class ActionTaskController extends Controller
     {
         $task = Task::findOrFail($id);
         $task->update($request->all());
-        return redirect()->route('staff.actionTask.show', $task->action_plan);
+        return redirect()->route('student.actionTask.show', $task->action_plan);
     }
 
     /**
@@ -103,6 +103,6 @@ class ActionTaskController extends Controller
     {
         $task = Task::findOrFail($id);
         $task->delete();
-        return redirect()->route('staff.actionTask.show', $task->action_plan);
+        return redirect()->route('student.actionTask.show', $task->action_plan);
     }
 }

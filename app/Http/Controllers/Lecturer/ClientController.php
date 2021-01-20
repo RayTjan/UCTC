@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\Lecturer;
 
 use App\Http\Controllers\Controller;
-use App\Models\ActionPlan;
+use App\Models\Client;
 use App\Models\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ActionController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,8 @@ class ActionController extends Controller
      */
     public function index()
     {
-        //
+        $clients = Client::all();
+        return view('2ndRoleBlades.listClient', compact('clients'));
     }
 
     /**
@@ -25,10 +26,9 @@ class ActionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
-        $program = Program::findOrFail($id);
-        return view( '2ndRoleBlades.addActionPlan',compact('program'));
+        //
     }
 
     /**
@@ -39,21 +39,20 @@ class ActionController extends Controller
      */
     public function store(Request $request)
     {
-        ActionPlan::create($request->all());
-        return redirect()->route('staff.action.show', $request->program);
+        Client::create($request->all());
+        return redirect()->route('client.index');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $program = Program::findOrFail($id);
-
-        $actions = ActionPlan::where('program',$id)->get();
 
         //check edit
         $edit = false;
@@ -68,45 +67,40 @@ class ActionController extends Controller
             $edit = true;
         }
 
-        return view('2ndRoleBlades.listActionPlan', compact('program','actions', 'edit'));
+        return view('2ndRoleBlades.listClientProgram', compact('program','edit'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Client $client)
     {
-        $action = ActionPlan::findOrFail($id);
-        return view( '2ndRoleBlades.editActionPlan',compact('action'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Client $client)
     {
-        $action = ActionPlan::findOrFail($id);
-        $action->update($request->all());
-        return redirect(route('staff.action.show', $action->program));
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Client $client)
     {
-        $action = ActionPlan::findOrFail($id);
-        $action->delete();
-        return redirect()->route('staff.action.show', $action->program);
+        $client->delete();
+        return redirect()->back();
     }
 }

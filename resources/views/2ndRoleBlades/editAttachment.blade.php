@@ -7,7 +7,7 @@
             <div class="quiz-window">
                 <div class="height100">
 
-                    <form action="{{route('staff.file.update',$file->id)}}" method="post">
+                    <form action="{{route('lecturer.file.update',$file->id)}}" method="post">
                         {{csrf_field()}}
                         <input type="hidden" name="_method" value="PATCH">
                         <h4 class="font-weight-bold">Edit File Attachment</h4>

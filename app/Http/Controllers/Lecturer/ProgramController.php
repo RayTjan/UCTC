@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\Lecturer;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -131,7 +131,7 @@ class ProgramController extends Controller
         }
 
 
-        return redirect()->route('staff.program.index');
+        return redirect()->route('lecturer.program.index');
     }
 
     /**
@@ -274,7 +274,7 @@ class ProgramController extends Controller
         }
 
 
-        return redirect()->route('staff.program.show', $program);
+        return redirect()->route('lecturer.program.show', $program);
     }
 
     /**
@@ -287,7 +287,7 @@ class ProgramController extends Controller
     {
         $program = Program::findOrFail($id);
         $program->delete();
-        return redirect()->route('staff.program.index');
+        return redirect()->route('lecturer.program.index');
     }
     /**
      * @param  \Illuminate\Http\Request  $request

@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\Lecturer;
 
 use App\Http\Controllers\Controller;
-use App\Models\Client;
+use App\Models\ActionPlan;
+use App\Models\FileAttachment;
 use App\Models\Program;
+use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ClientController extends Controller
+class FileAttachmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +19,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::all();
-        return view('2ndRoleBlades.listClient', compact('clients'));
+        //
     }
 
     /**
@@ -26,9 +27,10 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $program = Program::findOrFail($id);
+        return view('2ndRoleBlades.addAttachment', compact('program'));
     }
 
     /**
@@ -39,15 +41,18 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        Client::create($request->all());
-        return redirect()->route('client.index');
-
+        FileAttachment::create([
+            'name' => $request->name,
+            'file_attachment' => $request->file_attachment,
+            'program' => $request->program,
+        ]);
+        return redirect()->route('lecturer.file.show', $request->program);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Client  $client
+     * @param  \App\Models\FileAttachment  $fileAttachment
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -67,40 +72,45 @@ class ClientController extends Controller
             $edit = true;
         }
 
-        return view('2ndRoleBlades.listClientProgram', compact('program','edit'));
+        return view('2ndRoleBlades.listFileAttachment', compact('program','edit'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Client  $client
+     * @param  \App\Models\FileAttachment  $fileAttachment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Client $client)
+    public function edit($id)
     {
+        $file = FileAttachment::findOrFail($id);
+        return view('2ndRoleBlades.editAttachment', compact('file'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Client  $client
+     * @param  \App\Models\FileAttachment  $fileAttachment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(Request $request, $id)
     {
-
+        $file = FileAttachment::findOrFail($id);
+        $file->update($request->all());
+        return redirect(route('lecturer.file.show', $request->program));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Client  $client
+     * @param  \App\Models\FileAttachment  $fileAttachment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Client $client)
+    public function destroy($id)
     {
-        $client->delete();
-        return redirect()->back();
+        $file = FileAttachment::findOrFail($id);
+        $file->delete();
+        return redirect(route('lecturer.file.show', $file->program));
     }
 }

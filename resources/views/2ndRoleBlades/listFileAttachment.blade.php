@@ -14,7 +14,7 @@
 
             @if($edit == true)
                 @if($program->status != '2')
-                    <a href="{{route('staff.file.create', $program->id)}}" role="button" aria-pressed="true">
+                    <a href="{{route('lecturer.file.create', $program->id)}}" role="button" aria-pressed="true">
                         <svg
                             aria-hidden="true"
                             focusable="false"
@@ -73,7 +73,7 @@
                                                 </a>
 
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <form action="{{ route('staff.file.edit', $file->id) }}" method="get">
+                                                    <form action="{{ route('lecturer.file.edit', $file->id) }}" method="get">
                                                         @csrf
                                                         <button type="submit" class="pl-2 btnA dropdown-item">Edit</button>
                                                     </form>
@@ -102,7 +102,7 @@
                                         </div>
                                         <!-- Modal body -->
                                         <div class="modal-body d-inline-block text-center" style="text-align: left;">
-                                            <form action="{{ route('staff.file.destroy', $file) }}" method="post" class="d-inline-block">
+                                            <form action="{{ route('lecturer.file.destroy', $file) }}" method="post" class="d-inline-block">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover widthSubmitButton">Yes</button>

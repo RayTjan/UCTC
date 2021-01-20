@@ -37,7 +37,7 @@
             @if($edit == true)
             <div class="position-static centerBottom">
                 @if($action->plansOf->status != '2')
-                <a href="{{ route('staff.actionTask.edit', $tasks[$con]->id) }}" class="btn btn-info">Edit</a>
+                <a href="{{ route('lecturer.actionTask.edit', $tasks[$con]->id) }}" class="btn btn-info">Edit</a>
                 @endif
                 <button type="button"
                         data-toggle="modal" data-target="#submitTask-{{$con}}"
@@ -72,7 +72,7 @@
             </div>
             <!-- Modal body -->
             <div class="modal-body d-inline-block text-center" style="text-align: left;">
-                <form action="{{ route('staff.actionTask.destroy', $tasks[$con]) }}" method="post" class="d-inline-block">
+                <form action="{{ route('lecturer.actionTask.destroy', $tasks[$con]) }}" method="post" class="d-inline-block">
                     @csrf
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover widthSubmitButton">Yes</button>
@@ -94,7 +94,7 @@
             </div>
             <!-- Modal body -->
             <div class="modal-body d-inline-block text-center" style="text-align: left;">
-                <form action="{{ route('staff.actionTask.update', $tasks[$con]) }}" method="post" class="d-inline-block">
+                <form action="{{ route('lecturer.actionTask.update', $tasks[$con]) }}" method="post" class="d-inline-block">
                     @csrf
                     <input type="hidden" name="_method" value="PATCH">
                     <input type="hidden" name="status" value="1">

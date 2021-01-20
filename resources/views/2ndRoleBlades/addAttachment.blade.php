@@ -7,7 +7,7 @@
         <div class="quiz-window">
             <div class="height100">
 
-                <form action="{{route('staff.file.store')}}" method="post">
+                <form action="{{route('lecturer.file.store')}}" method="post">
                     {{csrf_field()}}
 
                     <h4 class="font-weight-bold">Add File Link Attachments</h4>

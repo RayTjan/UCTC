@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\Lecturer;
 
 use App\Http\Controllers\Controller;
 use App\Models\Program;
@@ -52,7 +52,7 @@ class ProposalController extends Controller
         );
 
         Proposal::create($dataProposal);
-        return redirect(route('staff.proposal.show', $request->selected_program));
+        return redirect(route('lecturer.proposal.show', $request->selected_program));
     }
 
     /**
@@ -126,7 +126,7 @@ class ProposalController extends Controller
         $proposal->update([
             'proposal' => $dataProposal['proposal']
         ]);
-        return redirect(route('staff.proposal.show', $request->selected_program));
+        return redirect(route('lecturer.proposal.show', $request->selected_program));
     }
 
     /**
@@ -138,7 +138,7 @@ class ProposalController extends Controller
     public function destroy(Proposal $proposal)
     {
         $proposal->delete();
-        return redirect()->route('staff.proposal.show',$proposal->program);
+        return redirect()->route('lecturer.proposal.show',$proposal->program);
     }
 
 

@@ -8,7 +8,7 @@
         <div class="row">
 
             <div class="col">
-                <form action="{{route('staff.program.update', $program)}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('lecturer.program.update', $program)}}" method="post" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <input type="hidden" name="_method" value="PATCH">
                     <div class="form-group">

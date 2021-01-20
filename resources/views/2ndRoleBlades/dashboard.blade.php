@@ -14,7 +14,7 @@
             <div class="smol1">
                 <div class="position-relative">
                     <h3 class="font-weight-bold">Programs</h3>
-                    <a href="{{ route('staff.program.index') }}" class="seeall">see all</a>
+                    <a href="{{ route('lecturer.program.index') }}" class="seeall">see all</a>
                 </div>
                 <div class="d-flex boxScroll">
                     @foreach($allprogramssort as $program)
@@ -37,7 +37,7 @@
                                 <h2 class="font-weight-bold">{{$program->name}}</h2>
                                 <p>{{ str_replace("-","/",date("d-m-Y", strtotime($program->program_date))) }}</p>
                             </div>
-                            <a href="{{route('staff.program.show',$program)}}" class="small-box-footer blackhex">More info <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{route('lecturer.program.show',$program)}}" class="small-box-footer blackhex">More info <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     @endforeach
@@ -48,13 +48,13 @@
                 <div class="">
                     <div class="position-relative">
                         <h3 class="font-weight-bold">My Programs</h3>
-                        <a href="{{ route('staff.program.myprogram') }}" class="seeall">see all</a>
+                        <a href="{{ route('lecturer.program.myprogram') }}" class="seeall">see all</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card card-body card-bg-bluess" style="height: 250px;">
                         <div class="scrollWebkit p-0">
                             @foreach($programs as $program)
-                                <a href="{{route('staff.program.show',$program)}}" class="a-none">
+                                <a href="{{route('lecturer.program.show',$program)}}" class="a-none">
                             <ul class="todo-list mb-1">
                                     <li>
 
@@ -84,7 +84,7 @@
                     <div class="card card-body card-bg-change" style="height: 250px;">
                         <div class="scrollWebkit p-0">
                             @foreach($actions as $action)
-                                <a href="{{route('staff.actionTask.show',$action)}}" class="a-none gray-hover">
+                                <a href="{{route('lecturer.actionTask.show',$action)}}" class="a-none gray-hover">
                                     <ul class="todo-list mb-1">
 
                                                 <li>

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\Lecturer;
 
 use App\Http\Controllers\Controller;
-use App\Models\Fund;
 use App\Models\Program;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class FundController extends Controller
+class CommitteeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,6 @@ class FundController extends Controller
      */
     public function index()
     {
-        $requestefunds = Fund::all()->where('status', '0');
-        return view('2ndRoleBlades.listFundProgram',compact('requestefunds'));
     }
 
     /**
@@ -39,20 +37,36 @@ class FundController extends Controller
      */
     public function store(Request $request)
     {
-        Fund::create($request->all());
-        return redirect(route('staff.fund.show',$request->program));
+        $user = User::findOrFail($request->user_id);
+        if ($request->selected_program != null){
+//            dd($request->selected_program);
+            $attend = $user->attends()->syncWithoutDetaching($request->selected_program);
+            return empty($attend)?redirect()->back()->with('Fail',"Failed to add new committee") : redirect()->back()->with('Success',"Committee added successfully");
+        }
+        else{
+            return redirect()->back()->with('WHAT',"Failed to add new committee");
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\cr  $cr
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $program = Program::findOrFail($id);
-        $funds = Fund::where('program',$id)->get();
+        $programs = Program::all()->except($id)->pluck('id');
+
+        $committees = User::whereIn('id',function ($query) use ($programs){
+            $query->select('uctc_user_id')->from('uctc_program_user')->whereNotIn('uctc_program_id',$programs);
+        })->get();
+
+        $committeeList = User::whereNotIn('id',function ($query) use ($programs){
+            $query->select('uctc_user_id')->from('uctc_program_user')->whereNotIn('uctc_program_id',$programs);
+        })->where('role_id',3)->get();
+
 
         //check edit
         $edit = false;
@@ -67,13 +81,13 @@ class FundController extends Controller
             $edit = true;
         }
 
-        return view('2ndRoleBlades.listFundProgram',compact('program','funds','edit'));
+        return view('2ndRoleBlades.listCommittee', compact('program','committeeList','committees','edit'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\cr  $cr
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -85,27 +99,23 @@ class FundController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\cr  $cr
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $fund = Fund::findOrFail($id);
-        $fund->update($request->all());
-        return redirect(route('staff.fund.show',$fund->program));
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\cr  $cr
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $fund = Fund::findOrFail($id);
-        $fund->delete();
-        return redirect()->route('staff.fund.show', $fund->program);
+        //
     }
 
 }

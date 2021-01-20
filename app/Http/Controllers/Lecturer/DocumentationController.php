@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\Lecturer;
 
 use App\Http\Controllers\Controller;
-use App\Models\ActionPlan;
-use App\Models\Program;
+use App\Models\Documentation;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+class DocumentationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,19 +15,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        if (Auth::user()) {
-            $actions = ActionPlan::all();
-
-            $user = Auth::user();
-            $allprograms = Program::all();
-            $createdPrograms = $allprograms->where('created_by', $user->id);
-            $participatedPrograms = $user->attends;
-            $programs = $createdPrograms->merge($participatedPrograms);
-
-            return view('2ndRoleBlades.dashboard', compact('programs', 'actions'));
-        }
-
-        return redirect()->route('login');
+        //
     }
 
     /**
@@ -56,10 +42,10 @@ class DashboardController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Documentation  $documentation
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Documentation $documentation)
     {
         //
     }
@@ -67,10 +53,10 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Documentation  $documentation
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Documentation $documentation)
     {
         //
     }
@@ -79,10 +65,10 @@ class DashboardController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Documentation  $documentation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Documentation $documentation)
     {
         //
     }
@@ -90,10 +76,10 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Documentation  $documentation
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Documentation $documentation)
     {
         //
     }

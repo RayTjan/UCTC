@@ -8,7 +8,7 @@
         <div class="row">
 
             <div class="col">
-                <form action="{{route('staff.actionTask.store')}}" method="post">
+                <form action="{{route('lecturer.actionTask.store')}}" method="post">
                     {{csrf_field()}}
                     <div class="form-group">
                         <label >Name: </label>

@@ -11,7 +11,7 @@
             <div class="align-self-center">
                 <div class="font-weight-bold">Sort by:</div>
                 <div>
-                    <form action="{{route('staff.program.index')}}"
+                    <form action="{{route('lecturer.program.index')}}"
                           method="GET" class="d-inline-block mr-1">
                         {{ csrf_field() }}
                         @if($page == "all")
@@ -21,7 +21,7 @@
                         @endif
                     </form>
                     @foreach($types as $type)
-                        <form action="{{route('staff.program.filterProgramType')}}"
+                        <form action="{{route('lecturer.program.filterProgramType')}}"
                               method="GET" class="d-inline-block mr-1">
                             {{ csrf_field() }}
                             <input name="value" type="hidden" value="{{$type->id}}">
@@ -33,10 +33,10 @@
                                         type="submit">{{$type->name}}</button>
                             @endif
                         </form>
-                        {{--                        <a href="{{route('staff.program.filterProgram')}}" class="btn btn-primary btn-block" role="button" aria-pressed="true">$type->name</a>--}}
+                        {{--                        <a href="{{route('lecturer.program.filterProgram')}}" class="btn btn-primary btn-block" role="button" aria-pressed="true">$type->name</a>--}}
                     @endforeach
                     @foreach($categories as $category)
-                        <form action="{{route('staff.program.filterProgramCategory')}}"
+                        <form action="{{route('lecturer.program.filterProgramCategory')}}"
                               method="GET" class="d-inline-block mr-1">
                             {{ csrf_field() }}
                             <input name="value" type="hidden" value="{{$category->id}}">
@@ -47,7 +47,7 @@
                             @endif
                         </form>
                     @endforeach
-                    <form action="{{route('staff.program.filterProgramStatus')}}"
+                    <form action="{{route('lecturer.program.filterProgramStatus')}}"
                           method="GET" class="d-inline-block mr-1">
                         {{ csrf_field() }}
                         <input name="value" type="hidden" value="0">
@@ -57,7 +57,7 @@
                             <button class="btnA circular graystar font-weight-bold p-1 gray-hover widthSubmitButton" role="button"  type="submit">Pending</button>
                         @endif
                     </form>
-                    <form action="{{route('staff.program.filterProgramStatus')}}"
+                    <form action="{{route('lecturer.program.filterProgramStatus')}}"
                           method="GET" class="d-inline-block mr-1">
                         {{ csrf_field() }}
                         <input name="value" type="hidden" value="1">
@@ -67,7 +67,7 @@
                             <button class="btnA circular graystar font-weight-bold p-1 gray-hover widthSubmitButton" role="button"  type="submit">Ongoing</button>
                         @endif
                     </form>
-                    <form action="{{route('staff.program.filterProgramStatus')}}"
+                    <form action="{{route('lecturer.program.filterProgramStatus')}}"
                           method="GET" class="d-inline-block mr-1">
                         {{ csrf_field() }}
                         <input name="value" type="hidden" value="2">
@@ -77,7 +77,7 @@
                             <button class="btnA circular graystar font-weight-bold p-1 gray-hover widthSubmitButton" role="button"  type="submit">Finished</button>
                         @endif
                     </form>
-                    <form action="{{route('staff.program.filterProgramStatus')}}"
+                    <form action="{{route('lecturer.program.filterProgramStatus')}}"
                           method="GET" class="d-inline-block mr-1">
                         {{ csrf_field() }}
                         <input name="value" type="hidden" value="3">
@@ -92,7 +92,7 @@
 
             <div class="clearfix align-self-center">
                 <div class="">
-                    <a href="{{route('staff.program.create')}}" role="button" aria-pressed="true">
+                    <a href="{{route('lecturer.program.create')}}" role="button" aria-pressed="true">
                     <svg
                         aria-hidden="true"
                         focusable="false"
@@ -139,7 +139,7 @@
                                 guiz-awards-row guiz-awards-row
                             @endif
                                 quizz">
-                            <a href="{{route('staff.program.show',$program)}}" class="a-none">
+                            <a href="{{route('lecturer.program.show',$program)}}" class="a-none">
                             <li class="guiz-awards-star">
                                 <span class="
                                     @if($program->status == '0')

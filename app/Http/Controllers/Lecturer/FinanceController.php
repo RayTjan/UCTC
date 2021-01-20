@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\Lecturer;
 
 use App\Http\Controllers\Controller;
 use App\Models\Finance;
@@ -54,7 +54,7 @@ class FinanceController extends Controller
             'program' => $request->program,
             'proof_of_payment' => $payName,
         ]);
-        return redirect(route('staff.finance.show',$request->program));
+        return redirect(route('lecturer.finance.show',$request->program));
     }
 
     /**
@@ -116,7 +116,7 @@ class FinanceController extends Controller
 
             $finance->update($data);
         }
-        return redirect(route('staff.finance.show',$finance->program));
+        return redirect(route('lecturer.finance.show',$finance->program));
     }
 
     /**
@@ -128,6 +128,6 @@ class FinanceController extends Controller
     public function destroy(Finance $finance)
     {
         $finance->delete();
-        return redirect()->route('staff.finance.show', $finance->program);
+        return redirect()->route('lecturer.finance.show', $finance->program);
     }
 }

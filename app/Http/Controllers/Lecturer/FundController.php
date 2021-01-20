@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\Lecturer;
 
 use App\Http\Controllers\Controller;
-use App\Models\ActionPlan;
-use App\Models\FileAttachment;
+use App\Models\Fund;
 use App\Models\Program;
-use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class FileAttachmentController extends Controller
+class FundController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +17,8 @@ class FileAttachmentController extends Controller
      */
     public function index()
     {
-        //
+        $requestefunds = Fund::all()->where('status', '0');
+        return view('2ndRoleBlades.listFundProgram',compact('requestefunds'));
     }
 
     /**
@@ -27,10 +26,9 @@ class FileAttachmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
-        $program = Program::findOrFail($id);
-        return view('2ndRoleBlades.addAttachment', compact('program'));
+        //
     }
 
     /**
@@ -41,23 +39,20 @@ class FileAttachmentController extends Controller
      */
     public function store(Request $request)
     {
-        FileAttachment::create([
-            'name' => $request->name,
-            'file_attachment' => $request->file_attachment,
-            'program' => $request->program,
-        ]);
-        return redirect()->route('staff.file.show', $request->program);
+        Fund::create($request->all());
+        return redirect(route('lecturer.fund.show',$request->program));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\FileAttachment  $fileAttachment
+     * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $program = Program::findOrFail($id);
+        $funds = Fund::where('program',$id)->get();
 
         //check edit
         $edit = false;
@@ -72,45 +67,45 @@ class FileAttachmentController extends Controller
             $edit = true;
         }
 
-        return view('2ndRoleBlades.listFileAttachment', compact('program','edit'));
+        return view('2ndRoleBlades.listFundProgram',compact('program','funds','edit'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\FileAttachment  $fileAttachment
+     * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $file = FileAttachment::findOrFail($id);
-        return view('2ndRoleBlades.editAttachment', compact('file'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\FileAttachment  $fileAttachment
+     * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $file = FileAttachment::findOrFail($id);
-        $file->update($request->all());
-        return redirect(route('staff.file.show', $request->program));
+        $fund = Fund::findOrFail($id);
+        $fund->update($request->all());
+        return redirect(route('lecturer.fund.show',$fund->program));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\FileAttachment  $fileAttachment
+     * @param  \App\Models\cr  $cr
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $file = FileAttachment::findOrFail($id);
-        $file->delete();
-        return redirect(route('staff.file.show', $file->program));
+        $fund = Fund::findOrFail($id);
+        $fund->delete();
+        return redirect()->route('lecturer.fund.show', $fund->program);
     }
+
 }

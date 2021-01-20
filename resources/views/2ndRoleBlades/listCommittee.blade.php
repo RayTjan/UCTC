@@ -56,7 +56,7 @@
                         <!-- Modal body -->
                         <div class="modal-body" style="text-align: left;">
                             @if(count($committeeList) > 0)
-                                <form action="{{route ('staff.committee.store')}}" method="POST">
+                                <form action="{{route ('lecturer.committee.store')}}" method="POST">
                                     <div class="form-group">
                                         {{ csrf_field() }}
                                         <input name="selected_program" type="hidden" value="{{$program->id}}">
@@ -151,7 +151,7 @@
                                         </div>
                                         <!-- Modal body -->
                                         <div class="modal-body" style="text-align: left;">
-                                            <form action="{{route ('staff.committee.update', $committee)}}" method="POST">
+                                            <form action="{{route ('lecturer.committee.update', $committee)}}" method="POST">
                                                 <div class="form-group">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="_method" value="PATCH">
@@ -184,7 +184,7 @@
                                         </div>
                                         <!-- Modal body -->
                                         <div class="modal-body d-inline-block text-center" style="text-align: left;">
-                                            <form action="{{ route('staff.committee.destroy', $committee) }}" method="post" class="d-inline-block">
+                                            <form action="{{ route('lecturer.committee.destroy', $committee) }}" method="post" class="d-inline-block">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover">Yes</button>

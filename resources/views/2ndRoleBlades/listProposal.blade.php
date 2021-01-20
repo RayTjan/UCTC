@@ -49,7 +49,7 @@
                         </div>
                         <!-- Modal body -->
                         <div class="modal-body" style="text-align: left;">
-                            <form action="{{route ('staff.proposal.store')}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{route ('lecturer.proposal.store')}}" method="POST" enctype="multipart/form-data">
                                 <div class="form-group">
                                     {{ csrf_field() }}
                                     <input name="selected_program" type="hidden" value="{{$program->id}}">
@@ -135,7 +135,7 @@
                                                 </div>
                                                 <!-- Modal body -->
                                                 <div class="modal-body" style="text-align: left;">
-                                                    <form action="{{route ('staff.proposal.update', $proposal)}}" method="POST" enctype="multipart/form-data">
+                                                    <form action="{{route ('lecturer.proposal.update', $proposal)}}" method="POST" enctype="multipart/form-data">
                                                         <div class="form-group">
                                                             {{ csrf_field() }}
                                                             <input type="hidden" name="_method" value="PATCH">
@@ -188,7 +188,7 @@
                                         </div>
                                         <!-- Modal body -->
                                         <div class="modal-body d-inline-block text-center" style="text-align: left;">
-                                            <form action="{{ route('staff.proposal.destroy', $proposal) }}" method="post" class="d-inline-block">
+                                            <form action="{{ route('lecturer.proposal.destroy', $proposal) }}" method="post" class="d-inline-block">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover widthSubmitButton">Yes</button>

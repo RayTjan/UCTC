@@ -1,17 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\Lecturer;
 
 use App\Http\Controllers\Controller;
 use App\Models\ActionPlan;
 use App\Models\Program;
-use App\Models\Task;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
-class ActionTaskController extends Controller
+class ActionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,15 +27,8 @@ class ActionTaskController extends Controller
      */
     public function create($id)
     {
-        $action = ActionPlan::findORFail($id);
-
-        $programs = Program::all()->except($action->program)->pluck('id');
-
-        $committees = User::whereIn('id',function ($query) use ($programs){
-            $query->select('uctc_user_id')->from('uctc_program_user')->whereNotIn('uctc_program_id',$programs);
-        })->get();
-
-        return view('2ndRoleBlades.addTaskAction', compact('id','committees'));
+        $program = Program::findOrFail($id);
+        return view( '2ndRoleBlades.addActionPlan',compact('program'));
     }
 
     /**
@@ -49,8 +39,8 @@ class ActionTaskController extends Controller
      */
     public function store(Request $request)
     {
-        Task::create($request->all());
-        return redirect(route('staff.actionTask.show', $request->action_plan));
+        ActionPlan::create($request->all());
+        return redirect()->route('lecturer.action.show', $request->program);
     }
 
     /**
@@ -61,13 +51,11 @@ class ActionTaskController extends Controller
      */
     public function show($id)
     {
-        $action = ActionPlan::findOrFail($id);
-        $taskslist = Task::where('action_plan', $id)->where('status', '0')->get();
+        $program = Program::findOrFail($id);
 
-        $tasks = $taskslist->sortByDesc('due_date');
+        $actions = ActionPlan::where('program',$id)->get();
 
         //check edit
-        $program = Program::findOrFail($action->program);
         $edit = false;
         $user = Auth::user();
         $participatedPrograms = $user->attends;
@@ -80,8 +68,7 @@ class ActionTaskController extends Controller
             $edit = true;
         }
 
-
-        return view('2ndRoleBlades.listTaskAction', compact('action','tasks','edit'));
+        return view('2ndRoleBlades.listActionPlan', compact('program','actions', 'edit'));
     }
 
     /**
@@ -92,8 +79,8 @@ class ActionTaskController extends Controller
      */
     public function edit($id)
     {
-        $task = Task::findOrFail($id);
-        return view('2ndRoleBlades.editTaskACtion', compact('task'));
+        $action = ActionPlan::findOrFail($id);
+        return view( '2ndRoleBlades.editActionPlan',compact('action'));
     }
 
     /**
@@ -105,9 +92,9 @@ class ActionTaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $task = Task::findOrFail($id);
-        $task->update($request->all());
-        return redirect()->route('staff.actionTask.show', $task->action_plan);
+        $action = ActionPlan::findOrFail($id);
+        $action->update($request->all());
+        return redirect(route('lecturer.action.show', $action->program));
     }
 
     /**
@@ -118,8 +105,8 @@ class ActionTaskController extends Controller
      */
     public function destroy($id)
     {
-        $task = Task::findOrFail($id);
-        $task->delete();
-        return redirect()->route('staff.actionTask.show', $task->action_plan);
+        $action = ActionPlan::findOrFail($id);
+        $action->delete();
+        return redirect()->route('lecturer.action.show', $action->program);
     }
 }

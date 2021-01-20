@@ -9,7 +9,7 @@
             <h3>{{ str_replace("-","/",date("d-m-Y", strtotime($program->program_date))) }}</h3>
 
             @if($program->status == '1' || $program->status == '2')
-            <a href="{{route('staff.file.show',$program)}}" class="circular graystar font-weight-bold p-2 gray-hover">
+            <a href="{{route('lecturer.file.show',$program)}}" class="circular graystar font-weight-bold p-2 gray-hover">
                 <i class="fa fa-paperclip"></i>
                 Data link
             </a>
@@ -189,7 +189,7 @@
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body d-inline-block text-center" style="text-align: left;">
-                        <form action="{{ route('staff.program.finish', $program->id) }}" method="post" class="d-inline-block">
+                        <form action="{{ route('lecturer.program.finish', $program->id) }}" method="post" class="d-inline-block">
                             @csrf
                             <button type="submit" class="btnA circular greenstar font-weight-bold p-2 green-hover widthSubmitButton">Yes</button>
                         </form>
@@ -231,19 +231,19 @@
         <div class="d-flex justify-content-between mb-5">
             <div class="">
                 @if($program->status == '1'||$program->status == '2')
-                <a href="{{ route('staff.client.show', $program) }}" title="Client" class="circular yellowstar font-weight-bold p-2 yellow-hover mr-2">
+                <a href="{{ route('lecturer.client.show', $program) }}" title="Client" class="circular yellowstar font-weight-bold p-2 yellow-hover mr-2">
                     <i class="fa fa-user"></i>
                     Client
                 </a>
-                <a href="{{ route('staff.committee.show', $program) }}" title="Committee" class="circular cyanstar font-weight-bold p-2 cyan-hover mr-2">
+                <a href="{{ route('lecturer.committee.show', $program) }}" title="Committee" class="circular cyanstar font-weight-bold p-2 cyan-hover mr-2">
                     <i class="fa fa-user"></i>
                     Committee
                 </a>
-                <a href="{{ route('staff.action.show', $program) }}" title="Action Plan" class="circular bluestar font-weight-bold p-2 blue-hover mr-2">
+                <a href="{{ route('lecturer.action.show', $program) }}" title="Action Plan" class="circular bluestar font-weight-bold p-2 blue-hover mr-2">
                     <i class="fa fa-database"></i>
                     Action Plan
                 </a>
-                <a href="{{ route('staff.fund.show', $program) }}" title="Funds" class="circular toscastar font-weight-bold p-2 tosca-hover mr-2">
+                <a href="{{ route('lecturer.fund.show', $program) }}" title="Funds" class="circular toscastar font-weight-bold p-2 tosca-hover mr-2">
                     <i class="fa fa-money"></i>
                     Disbursement of Funds
                 </a>
@@ -261,7 +261,7 @@
 
                 @if($edit == true)
                 @if($program->status != '3'&&$program->status != '2')
-                <a href="{{ route('staff.program.edit', $program) }}" title="Edit" class="circular purplestar font-weight-bold p-2 purple-hover mr-2">
+                <a href="{{ route('lecturer.program.edit', $program) }}" title="Edit" class="circular purplestar font-weight-bold p-2 purple-hover mr-2">
                     <i class="fa fa-dashboard"></i>
                     Edit
                 </a>
@@ -269,14 +269,14 @@
                 @endif
 
                 @if($program->status == '1'||$program->status == '2')
-                <a href="{{ route('staff.proposal.show', $program) }}" title="Proposal" class="circular toscastar font-weight-bold p-2 tosca-hover mr-2">
+                <a href="{{ route('lecturer.proposal.show', $program) }}" title="Proposal" class="circular toscastar font-weight-bold p-2 tosca-hover mr-2">
                     <i class="fa fa-address-book"></i>
                     Proposal
                 </a>
 
                 @if(isset($proposal->status))
                 @if($proposal->status == "1")
-                    <a href="{{ route('staff.report.create', $program) }}" title="Report" class="circular greenstar font-weight-bold p-2 green-hover mr-2">
+                    <a href="{{ route('lecturer.report.create', $program) }}" title="Report" class="circular greenstar font-weight-bold p-2 green-hover mr-2">
                         <i class="fa fa-book"></i>
                         Report
                     </a>
@@ -334,7 +334,7 @@
                     <!-- Modal Header -->
                     <div class="modal-header card-bg-change">
                         @if($edit == true)
-                        <a href="{{ route('staff.finance.show', $program) }}" class="circular yellowstar font-weight-bold p-2 yellow-hover">
+                        <a href="{{ route('lecturer.finance.show', $program) }}" class="circular yellowstar font-weight-bold p-2 yellow-hover">
                             <i class="fa fa-money"></i>
                             Finance
                         </a>
@@ -386,7 +386,7 @@
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body d-inline-block text-center" style="text-align: left;">
-                        <form action="{{ route('staff.program.destroy', $program) }}" method="post" class="d-inline-block">
+                        <form action="{{ route('lecturer.program.destroy', $program) }}" method="post" class="d-inline-block">
                             @csrf
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover">Yes</button>

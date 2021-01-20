@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\Lecturer;
 
 use App\Http\Controllers\Controller;
 use App\Models\Program;
@@ -31,7 +31,7 @@ class ReportController extends Controller
         $program = Program::findOrFail($id);
 
         if (isset($program->hasReports[0])) {
-            return redirect(route('staff.report.show',$program));
+            return redirect(route('lecturer.report.show',$program));
         }
 
         //check edit
@@ -74,7 +74,7 @@ class ReportController extends Controller
         );
 
         Report::create($dataReport);
-        return redirect(route('staff.program.show', $request->program));
+        return redirect(route('lecturer.program.show', $request->program));
     }
 
     /**
@@ -149,7 +149,7 @@ class ReportController extends Controller
             'report' => $dataReport['report']
         ]);
 
-        return redirect(route('staff.report.show', $report->program));
+        return redirect(route('lecturer.report.show', $report->program));
     }
 
     /**
@@ -161,7 +161,7 @@ class ReportController extends Controller
     public function destroy(Report $report)
     {
         $report->delete();
-        return redirect()->route('staff.program.show',$report->program);
+        return redirect()->route('lecturer.program.show',$report->program);
     }
     public function approve($id){
         $report = Report::findOrFail($id);

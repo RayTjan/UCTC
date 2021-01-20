@@ -8,7 +8,7 @@
 
             @if($edit == true)
             @if($action->plansOf->status != '2')
-            <a href="{{route('staff.actionTask.create', $action->id)}}" role="button" aria-pressed="true">
+            <a href="{{route('lecturer.actionTask.create', $action->id)}}" role="button" aria-pressed="true">
                 <svg
                     aria-hidden="true"
                     focusable="false"
