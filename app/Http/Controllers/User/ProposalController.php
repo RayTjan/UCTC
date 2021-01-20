@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Program;
 use App\Models\Proposal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProposalController extends Controller
 {
@@ -37,7 +38,6 @@ class ProposalController extends Controller
      */
     public function store(Request $request)
     {
-
         $pdf = $request->validate([
             'proposal' => 'required|mimes:pdf|max:10000',
         ]);
@@ -52,7 +52,7 @@ class ProposalController extends Controller
         );
 
         Proposal::create($dataProposal);
-        return redirect(route('user.proposal.show', $request->selected_program));
+        return redirect(route('student.proposal.show', $request->selected_program));
     }
 
     /**
@@ -65,7 +65,29 @@ class ProposalController extends Controller
     {
         $program = Program::findOrFail($id);
         $proposals = Proposal::where('program', $id)->get();
-        return view('3rdRoleBlades.listProposal', compact('proposals', 'program'));
+
+        //check edit
+        $edit = false;
+        $user = Auth::user();
+        $participatedPrograms = $user->attends;
+        foreach ($participatedPrograms as $pprogram){
+            if ($pprogram->id == $program->id){
+                $edit = true;
+            }
+        }
+
+        if ($program->created_by == $user->id){
+            $edit = true;
+        }
+        $lastProposal = $proposals->last();
+        $addAvailability = true;
+        if ($lastProposal != null){
+            if ($lastProposal->status == '0' || $lastProposal->status == '1'){
+                $addAvailability = false;
+            }
+        }
+
+        return view('3rdRoleBlades.listProposal', compact('proposals', 'program','edit','addAvailability'));
     }
 
     /**
@@ -104,7 +126,7 @@ class ProposalController extends Controller
         $proposal->update([
             'proposal' => $dataProposal['proposal']
         ]);
-        return redirect(route('user.proposal.show', $request->selected_program));
+        return redirect(route('student.proposal.show', $request->selected_program));
     }
 
     /**
@@ -116,7 +138,9 @@ class ProposalController extends Controller
     public function destroy(Proposal $proposal)
     {
         $proposal->delete();
-        return redirect()->route('user.proposal.show',$proposal->program);
+        return redirect()->route('student.proposal.show',$proposal->program);
     }
+
+
 
 }

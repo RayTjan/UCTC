@@ -37,7 +37,23 @@ class FinanceController extends Controller
      */
     public function store(Request $request)
     {
-        Finance::create($request->all());
+        $data = $request->validate([
+            'name' => 'required|string',
+            'type' => 'required|string',
+            'value' => 'required|int',
+            'proof_of_payment' => 'image|mimes:png,jpg,jpeg,svg'
+        ]);
+
+        $payName = $data['proof_of_payment']->getClientOriginalName() . '-' . time() . '.' . $data['proof_of_payment']->extension();
+        $data['proof_of_payment']->move(public_path('/files/finance'), $payName);
+
+        Finance::create([
+            'name' => $data['name'],
+            'type' => $data['type'],
+            'value' => $data['value'],
+            'program' => $request->program,
+            'proof_of_payment' => $payName,
+        ]);
         return redirect(route('student.finance.show',$request->program));
     }
 
@@ -74,7 +90,32 @@ class FinanceController extends Controller
      */
     public function update(Request $request, Finance $finance)
     {
-        $finance->update($request->all());
+        if (isset($request->proof_of_payment)){
+            $data = $request->validate([
+                'name' => 'required|string',
+                'type' => 'required|string',
+                'value' => 'required|int',
+                'proof_of_payment' => 'image|mimes:png,jpg,jpeg,svg'
+            ]);
+
+            $payName = $data['proof_of_payment']->getClientOriginalName() . '-' . time() . '.' . $data['proof_of_payment']->extension();
+            $data['proof_of_payment']->move(public_path('/files/finance'), $payName);
+
+            $finance->update([
+                'name' => $data['name'],
+                'type' => $data['type'],
+                'value' => $data['value'],
+                'proof_of_payment' => $payName,
+            ]);
+        }else{
+            $data = $request->validate([
+                'name' => 'required|string',
+                'type' => 'required|string',
+                'value' => 'required|int',
+            ]);
+
+            $finance->update($data);
+        }
         return redirect(route('student.finance.show',$finance->program));
     }
 

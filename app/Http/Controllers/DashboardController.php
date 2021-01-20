@@ -36,10 +36,12 @@ class DashboardController extends Controller
                 $funds = Fund::all()->where('status','0');
                 return view('1stRoleBlades.dashboard', compact('allprogramssort', 'proposals','reports','funds'));
             }else if (Auth::user()->isCreator()) {
-                $actions = ActionPlan::all();
+                $allactions = ActionPlan::all();
+                $actions = $allactions->sortByDesc('program');
                 return view('2ndRoleBlades.dashboard', compact('allprogramssort','programs', 'actions'));
             }else if ((Auth::user()->isUser())) {
-                $tasks = Task::all();
+                $alltasks = Task::all()->where('PIC', Auth::id());
+                $tasks = $alltasks->sortByDesc('due_date');
                 return view('3rdRoleBlades.dashboard', compact('programs', 'tasks'));
             }
         }

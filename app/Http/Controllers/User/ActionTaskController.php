@@ -31,7 +31,8 @@ class ActionTaskController extends Controller
     public function create($id)
     {
         $action = ActionPlan::findORFail($id);
-        $programs = Program::all()->except($action->id)->pluck('id');
+
+        $programs = Program::all()->except($action->program)->pluck('id');
 
         $committees = User::whereIn('id',function ($query) use ($programs){
             $query->select('uctc_user_id')->from('uctc_program_user')->whereNotIn('uctc_program_id',$programs);
@@ -61,10 +62,28 @@ class ActionTaskController extends Controller
     public function show($id)
     {
         $action = ActionPlan::findOrFail($id);
-        $tasksall = Task::where('action_plan', $id)->where('status', '0')->get();
-        $tasks = $tasksall->where('PIC', Auth::id());
+        $taskslist = Task::where('action_plan', $id)->where('status', '0')->get();
 
-        return view('3rdRoleBlades.listTaskAction', compact('action','tasks'));
+        $taskme = $taskslist->where('PIC', Auth::id());
+
+        $tasks = $taskme->sortByDesc('due_date');
+
+        //check edit
+        $program = Program::findOrFail($action->program);
+        $edit = false;
+        $user = Auth::user();
+        $participatedPrograms = $user->attends;
+        foreach ($participatedPrograms as $pprogram){
+            if ($pprogram->id == $program->id){
+                $edit = true;
+            }
+        }
+        if ($program->created_by == $user->id){
+            $edit = true;
+        }
+
+
+        return view('3rdRoleBlades.listTaskAction', compact('action','tasks','edit'));
     }
 
     /**

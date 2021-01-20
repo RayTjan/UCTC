@@ -335,14 +335,34 @@ class ProgramController extends Controller
         return view('1stRoleBlades.listMyProgram', compact('myPrograms','types','categories','page'));
     }
 
+    public function approve($id){
+        $Program = Program::findOrFail($id);
+        $Program->update([
+            'status' => '1',
+        ]);
+
+        return empty($program) ? redirect()->back()->with('Fail', "Failed to approve")
+            : redirect()->back()->with('Success', 'Success program program: #('.$program->name.') approved');
+    }
+
+    public function suspend($id){
+        $Program = Program::findOrFail($id);
+        $Program->update([
+            'status' => '3',
+        ]);
+
+        return empty($program) ? redirect()->back()->with('Fail', "Failed to suspend")
+            : redirect()->back()->with('Success', 'Success program program: #('.$program->name.') suspended');
+    }
+
     public function finish($id){
         $Program = Program::findOrFail($id);
         $Program->update([
             'status' => '2',
         ]);
 
-        return empty($program) ? redirect()->back()->with('Fail', "Failed to approve")
-            : redirect()->back()->with('Success', 'Success program program: #('.$program->name.') approved');
+        return empty($program) ? redirect()->back()->with('Fail', "Failed to finish")
+            : redirect()->back()->with('Success', 'Success program program: #('.$program->name.') finished');
     }
 
 }

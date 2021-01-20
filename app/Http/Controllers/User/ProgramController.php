@@ -9,10 +9,12 @@ use App\Models\Documentation;
 use App\Models\Finance;
 use App\Models\Program;
 use App\Models\Proposal;
+use App\Models\Report;
 use App\Models\Type;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Scalar\String_;
 use function PHPUnit\Framework\isEmpty;
 
 class ProgramController extends Controller
@@ -27,14 +29,17 @@ class ProgramController extends Controller
         $types = Type::all();
         $categories = Category::all();
 
-        //fetch myprogram
         $user = Auth::user();
         $allprograms = Program::all();
         $createdPrograms = $allprograms->where('created_by', $user->id);
         $participatedPrograms = $user->attends;
-        $programs = $createdPrograms->merge($participatedPrograms);
+        $myPrograms = $createdPrograms->merge($participatedPrograms);
 
-        return view('3rdRoleBlades.listProgram', compact('programs','types','categories'));
+        $programs = $myPrograms->sortByDesc('name');
+
+        $page = 'all';
+
+        return view('3rdRoleBlades.listProgram', compact('programs','types','categories','page'));
     }
 
     /**
@@ -60,7 +65,31 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        Program::create($request->all());
+
+        if (isset($request->thumbnail)){
+        $data = $request->validate([
+            'thumbnail' => 'image|mimes:png,jpg,jpeg,svg'
+        ]);
+
+        $programThumbnail = $data['thumbnail']->getClientOriginalName() . '-' . time() . '.' . $data['thumbnail']->extension();
+        $data['thumbnail']->move(public_path('/img/program'), $programThumbnail);
+
+            Program::create([
+                'name' => $request->name,
+                'description' => $request->description,
+                'status' => $request->status,
+                'goal' => $request->goal,
+                'program_date' => $request->program_date,
+                'created_by' => $request->created_by,
+                'thumbnail' => $programThumbnail,
+                'category' => $request->category,
+                'type' => $request->type,
+            ]);
+
+        }else{
+            Program::create($request->all());
+        }
+
         $data = $request->all();
         $lastProgram = Program::all()->last();
 
@@ -127,19 +156,28 @@ class ProgramController extends Controller
             $query->select('uctc_client_id')->from('uctc_client_program')->whereNotIn('uctc_program_id',$programs);
         })->get();
 
-        //akan segera dihapus
+        //check edit
+        $edit = false;
+        $user = Auth::user();
+        $participatedPrograms = $user->attends;
+        foreach ($participatedPrograms as $pprogram){
+            if ($pprogram->id == $program->id){
+                $edit = true;
+            }
+        }
+        if ($program->created_by == $user->id){
+            $edit = true;
+        }
 
-        $committees = User::whereIn('id',function ($query) use ($programs){
-            $query->select('uctc_user_id')->from('uctc_program_user')->where('is_approved','1')->whereNotIn('uctc_program_id',$programs);
-        })->get();
+        //Proposal terakhir di program itu dengan id program yang sama
+        $proposals = Proposal::all()->where('program', $program->id);
+        $proposal = $proposals->last();
 
-        $committeeList = User::whereNotIn('id',function ($query) use ($programs){
-            $query->select('uctc_user_id')->from('uctc_program_user')->whereNotIn('uctc_program_id',$programs);
-        })->where('role_id',3)->get();
+        //Report terakhir di program itu dengan id program yang sama
+        $reports = Report::all()->where('program', $program->id);
+        $report = $reports->last();
 
-        //batas hapus
-
-        return view('3rdRoleBlades.detailProgram',compact('program','clients','committeeList','committees'));
+        return view('3rdRoleBlades.detailProgram',compact('program','clients','edit', 'proposal', 'report'));
     }
 
     /**
@@ -165,22 +203,44 @@ class ProgramController extends Controller
      */
     public function update(Request $request, Program $program)
     {
-        $data = $request->all();
-        $program->update($request->all());
+        if ($request->thumbnail != null){
+        $data = $request->validate([
+            'thumbnail' => 'image|mimes:png,jpg,jpeg,svg'
+        ]);
 
+        $programThumbnail = $data['thumbnail']->getClientOriginalName() . '-' . time() . '.' . $data['thumbnail']->extension();
+        $data['thumbnail']->move(public_path('/img/program'), $programThumbnail);
+
+        $program->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'goal' => $request->goal,
+            'program_date' => $request->program_date,
+            'thumbnail' => $programThumbnail,
+        ]);
+        } else{
+            $program->update($request->all);
+        }
+
+        $data = $request->all();
 
         //untuk Finances
         foreach ($data['value'] as $item => $value) {
+            if (isset($data['proof_of_payment'][$item])){
+            $payName = $data['proof_of_payment'][$item]->getClientOriginalName() . '-' . time() . '.' . $data['proof_of_payment'][$item]->extension();
+            $data['proof_of_payment'][$item]->move(public_path('/files/finance'), $payName);
+
             $dataFinance = array(
                 'name' => $data['nameBudget'][$item],
                 'value' => $data['value'][$item],
                 'type' => $data['typeFinance'][$item],
+                'proof_of_payment' => $payName,
                 'program' => $program->id,
             );
 
-            if (!isEmpty($dataFinance['name'])&&!isEmpty($dataFinance['value'])){
-                dd($dataFinance['type']);
+            if ($dataFinance['name'] != null && $dataFinance['value'] != null && $dataFinance['type'] != null && $dataFinance['proof_of_payment'] != null){
                 Finance::create($dataFinance);
+            }
             }
         }
 
@@ -243,21 +303,30 @@ class ProgramController extends Controller
 //        dd($programs);
         $types = Type::all();
         $categories = Category::all();
-        return view('3rdRoleBlades.listProgram', compact('programs','types','categories'));
+
+        $page = "type-".$request->value;
+
+        return view('3rdRoleBlades.listProgram', compact('programs','types','categories','page'));
     }
     public function filterProgramCategory(Request $request){
         $programs = Program::all()->where('category', $request->value);
 //        dd($programs);
         $types = Type::all();
         $categories = Category::all();
-        return view('3rdRoleBlades.listProgram', compact('programs','types','categories'));
+
+        $page = "category-".$request->value;
+
+        return view('3rdRoleBlades.listProgram', compact('programs','types','categories','page'));
     }
     public function filterProgramStatus(Request $request){
         $programs = Program::all()->where('status', $request->value);
 //        dd($programs);
         $types = Type::all();
         $categories = Category::all();
-        return view('3rdRoleBlades.listProgram', compact('programs','types','categories'));
+
+        $page = "status-".$request->value;
+
+        return view('3rdRoleBlades.listProgram', compact('programs','types','categories','page'));
     }
 //    public function filterProgramDate(Request $request){
 //        $programs = Program::all()->where('category', $request->value);
@@ -266,4 +335,16 @@ class ProgramController extends Controller
 //        $categories = Category::all();
 //        return view('3rdRoleBlades.listProgram', compact('programs','types','categories'));
 //    }
+
+
+    public function finish($id){
+        $Program = Program::findOrFail($id);
+        $Program->update([
+            'status' => '2',
+        ]);
+
+        return empty($program) ? redirect()->back()->with('Fail', "Failed to approve")
+            : redirect()->back()->with('Success', 'Success program program: #('.$program->name.') approved');
+    }
+
 }

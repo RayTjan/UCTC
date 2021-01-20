@@ -3,72 +3,120 @@
 @section('content')
     <div class="container clearfix" style="margin-top: 20px;">
         <div class="row">
-            <h1 class="col font-weight-bold">Program View</h1>
+            <h1 class="col font-weight-bold mb-3">Program View</h1>
         </div>
 
-        @auth()
-        <div class="clearfix">
-            {{-- auth to limit content, it cannot be accessed until login --}}
-            <div class="float-right">
-{{--                <a href="{{route('program.create')}}" class="btn btn-primary btn-block" role="button" aria-pressed="true">New Program</a>--}}
-                <a href="{{route('student.program.create')}}" role="button" aria-pressed="true">
-                <svg
-                    aria-hidden="true"
-                    focusable="false"
-                    data-prefix="fad"
-                    data-icon="angle-double-right"
-                    role="img"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 448 512"
-                    class="svg-inline--fa fa-angle-double-right fa-w-14 fa-5x iconplus float-right"
-                >
-                    <g>
-                        <path
-                            fill="#000000"
-                            d="m408,184h-136c-4.418,0 -8,-3.582 -8,-8v-136c0,-22.09 -17.91,-40 -40,-40s-40,17.91 -40,40v136c0,4.418 -3.582,8 -8,8h-136c-22.09,0 -40,17.91 -40,40s17.91,40 40,40h136c4.418,0 8,3.582 8,8v136c0,22.09 17.91,40 40,40s40,-17.91 40,-40v-136c0,-4.418 3.582,-8 8,-8h136c22.09,0 40,-17.91 40,-40s-17.91,-40 -40,-40zM408,184"
-                            class="fa-secondary">
-                        </path>
-                    </g>
-                </svg>
-                </a>
-            </div>
-        </div>
+        <div class="d-flex justify-content-between">
 
-            @endauth
+            <div class="align-self-center">
+                <div class="font-weight-bold">Sort by:</div>
+                <div>
                     <form action="{{route('student.program.index')}}"
-                          method="GET">
+                          method="GET" class="d-inline-block mr-1">
                         {{ csrf_field() }}
-                        <button class="btn btn-primary btn-block" role="button"  type="submit">All</button>
+                        @if($page == "all")
+                            <button class="btnA circular gray-pages font-weight-bold p-1 gray-hover widthSubmitButton" role="button"  type="submit" disabled="disabled">All</button>
+                        @else
+                            <button class="btnA circular graystar font-weight-bold p-1 gray-hover widthSubmitButton" role="button"  type="submit">All</button>
+                        @endif
                     </form>
                     @foreach($types as $type)
                         <form action="{{route('student.program.filterProgramType')}}"
-                              method="GET">
+                              method="GET" class="d-inline-block mr-1">
                             {{ csrf_field() }}
                             <input name="value" type="hidden" value="{{$type->id}}">
-                            <button class="btn btn-primary btn-block" role="button"  type="submit">{{$type->name}}</button>
+                            @if($page == "type-".$type->id)
+                                <button class="btnA circular font-weight-bold p-1 gray-pages gray-hover" role="button"
+                                        type="submit" disabled="disabled">{{$type->name}}</button>
+                            @else
+                                <button class="btnA circular graystar font-weight-bold p-1 gray-hover" role="button"
+                                        type="submit">{{$type->name}}</button>
+                            @endif
                         </form>
-{{--                        <a href="{{route('student.program.filterProgram')}}" class="btn btn-primary btn-block" role="button" aria-pressed="true">$type->name</a>--}}
+                        {{--                        <a href="{{route('student.program.filterProgram')}}" class="btn btn-primary btn-block" role="button" aria-pressed="true">$type->name</a>--}}
                     @endforeach
                     @foreach($categories as $category)
                         <form action="{{route('student.program.filterProgramCategory')}}"
-                              method="GET">
+                              method="GET" class="d-inline-block mr-1">
                             {{ csrf_field() }}
                             <input name="value" type="hidden" value="{{$category->id}}">
-                            <button class="btn btn-primary btn-block" role="button"  type="submit">{{$category->name}}</button>
+                            @if($page == "category-".$category->id)
+                                <button class="btnA circular gray-pages font-weight-bold p-1 gray-hover" role="button"  type="submit" disabled="disabled">{{$category->name}}</button>
+                            @else
+                                <button class="btnA circular graystar font-weight-bold p-1 gray-hover" role="button"  type="submit">{{$category->name}}</button>
+                            @endif
                         </form>
                     @endforeach
                     <form action="{{route('student.program.filterProgramStatus')}}"
-                          method="GET">
+                          method="GET" class="d-inline-block mr-1">
                         {{ csrf_field() }}
-                        <input name="value" type="hidden" value="1">
-                        <button class="btn btn-primary btn-block" role="button"  type="submit">Ongoing</button>
+                        <input name="value" type="hidden" value="0">
+                        @if($page == "status-0")
+                            <button class="btnA circular gray-pages font-weight-bold p-1 gray-hover widthSubmitButton" role="button"  type="submit" disabled="disabled">Pending</button>
+                        @else
+                            <button class="btnA circular graystar font-weight-bold p-1 gray-hover widthSubmitButton" role="button"  type="submit">Pending</button>
+                        @endif
                     </form>
                     <form action="{{route('student.program.filterProgramStatus')}}"
-                          method="GET">
+                          method="GET" class="d-inline-block mr-1">
+                        {{ csrf_field() }}
+                        <input name="value" type="hidden" value="1">
+                        @if($page == "status-1")
+                            <button class="btnA circular gray-pages font-weight-bold p-1 gray-hover widthSubmitButton" role="button"  type="submit" disabled="disabled">Ongoing</button>
+                        @else
+                            <button class="btnA circular graystar font-weight-bold p-1 gray-hover widthSubmitButton" role="button"  type="submit">Ongoing</button>
+                        @endif
+                    </form>
+                    <form action="{{route('student.program.filterProgramStatus')}}"
+                          method="GET" class="d-inline-block mr-1">
                         {{ csrf_field() }}
                         <input name="value" type="hidden" value="2">
-                        <button class="btn btn-primary btn-block" role="button"  type="submit">Finished</button>
+                        @if($page == "status-2")
+                            <button class="btnA circular gray-pages font-weight-bold p-1 gray-hover widthSubmitButton" role="button"  type="submit" disabled="disabled">Finished</button>
+                        @else
+                            <button class="btnA circular graystar font-weight-bold p-1 gray-hover widthSubmitButton" role="button"  type="submit">Finished</button>
+                        @endif
                     </form>
+                    <form action="{{route('student.program.filterProgramStatus')}}"
+                          method="GET" class="d-inline-block mr-1">
+                        {{ csrf_field() }}
+                        <input name="value" type="hidden" value="3">
+                        @if($page == "status-3")
+                            <button class="btnA circular gray-pages font-weight-bold p-1 gray-hover" role="button"  type="submit" disabled="disabled">Suspended</button>
+                        @else()
+                            <button class="btnA circular graystar font-weight-bold p-1 gray-hover" role="button"  type="submit">Suspended</button>
+                        @endif
+                    </form>
+                </div>
+            </div>
+
+            <div class="clearfix align-self-center">
+                <div class="">
+                    <a href="{{route('student.program.create')}}" role="button" aria-pressed="true">
+                    <svg
+                        aria-hidden="true"
+                        focusable="false"
+                        data-prefix="fad"
+                        data-icon="angle-double-right"
+                        role="img"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 448 512"
+                        class="svg-inline--fa fa-angle-double-right fa-w-14 fa-5x iconplus float-right"
+                    >
+                        <g>
+                            <path
+                                fill="#000000"
+                                d="m408,184h-136c-4.418,0 -8,-3.582 -8,-8v-136c0,-22.09 -17.91,-40 -40,-40s-40,17.91 -40,40v136c0,4.418 -3.582,8 -8,8h-136c-22.09,0 -40,17.91 -40,40s17.91,40 40,40h136c4.418,0 8,3.582 8,8v136c0,22.09 17.91,40 40,40s40,-17.91 40,-40v-136c0,-4.418 3.582,-8 8,-8h136c22.09,0 40,-17.91 40,-40s-17.91,-40 -40,-40zM408,184"
+                                class="fa-secondary">
+                            </path>
+                        </g>
+                    </svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
 
         <div class="row" style="margin-top: 30px;">
             <link href='//fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'>
@@ -94,10 +142,14 @@
                             <a href="{{route('student.program.show',$program)}}" class="a-none">
                             <li class="guiz-awards-star">
                                 <span class="
-                                    @if($program->category == 1)
-                                    star cyanstar
-                                    @elseif($program->category == 2)
-                                    star purplestar
+                                    @if($program->status == '0')
+                                    star yellowstar
+                                    @elseif($program->status == '1')
+                                    star toscastar
+                                    @elseif($program->status == '2')
+                                    star greenstar
+                                    @elseif($program->status == '3')
+                                    star redstar
                                     @endif
                                 "></span>
                             </li>

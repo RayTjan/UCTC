@@ -13,7 +13,8 @@
             <h1 class="col font-weight-bold">{{ $program->name }} Report</h1>
         </div>
 
-        @auth()
+        @if($edit == true)
+            @if($addAvailability == true)
             <div class="clearfix">
                 <div class="float-right">
                     <a href="#"
@@ -42,7 +43,7 @@
 
                 </div>
             </div>
-
+            @endif
             {{--            modal add report--}}
             <div class="modal fade" id="addReport">
                 <div class="modal-dialog">
@@ -71,7 +72,7 @@
                     </div>
                 </div>
             </div>
-        @endauth
+        @endif
 
         <div class="row" style="margin-top: 30px;">
             <link href='//fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'>
@@ -84,9 +85,13 @@
                         <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget card-bg-change">
                             <li class="guiz-awards-time customComittee">Name</li>
                             <li class="guiz-awards-time customComittee">Status</li>
-                            <li class="guiz-awards-time customComittee">Replace</li>
+                            @if($edit == true)
+                                <li class="guiz-awards-time customComittee">Replace</li>
+                            @endif
                             <li class="guiz-awards-time customComittee">Download</li>
-                            <li class="guiz-awards-time customComittee">Delete</li>
+                            @if($edit == true)
+                                <li class="guiz-awards-time customComittee">Delete</li>
+                            @endif
                         </ul>
 
                         @foreach($reports as $report)
@@ -104,69 +109,82 @@
                                     @elseif($report->status == '1')
                                         <div class="text-success">Approved</div>
                                     @elseif($report->status == '2')
-                                        <div class="text-danger">Rejected</div>
+                                        <div class="d-flex justify-content-center">
+                                            <button class="btnA circular redstar red-hover iconAct iconAct align-self-center mr-2" title="note"
+                                                    data-toggle="modal"
+                                                    data-target="#note-{{$report->id}}">
+                                                <div class="d-flex justify-content-center">
+                                                    <i class="fa fa-sticky-note align-self-center"></i>
+                                                </div>
+                                            </button>
+                                            <div class="text-danger d-inline-block align-self-center">Rejected</div>
+                                        </div>
                                     @endif
                                 </li>
-                                @if($report->status == 0)
-                                    <li class="guiz-awards-time customComittee">
-                                        <button type="submit" class="btn btn-primary"
-                                                title="Edit Report"
-                                                data-toggle="modal"
-                                                data-target="#replaceReport-{{$report->id}}">
-                                            Replace
-                                        </button>
-                                    </li>
+                                @if($edit == true)
+                                    @if($report->status == 0)
+                                        <li class="guiz-awards-time customComittee">
+                                            <button type="submit" class="btn btn-primary"
+                                                    title="Edit Report"
+                                                    data-toggle="modal"
+                                                    data-target="#replaceReport-{{$report->id}}">
+                                                Replace
+                                            </button>
+                                        </li>
 
-                                    {{--                                    modal edit report--}}
-                                    <div class="modal fade" id="replaceReport-{{$report->id}}">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content card-bg-change">
-                                                <!-- Modal Header -->
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title font-weight-bold">Replace Report</h4>
-                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                </div>
-                                                <!-- Modal body -->
-                                                <div class="modal-body" style="text-align: left;">
-                                                    <form action="{{route ('student.report.update', $report)}}" method="POST" enctype="multipart/form-data">
-                                                        <div class="form-group">
-                                                            {{ csrf_field() }}
-                                                            <input type="hidden" name="_method" value="PATCH">
-                                                            <input name="selected_program" type="hidden" value="{{$program->id}}">
-                                                            <label>Replace report {{ $report->report }} with ...</label>
-                                                            <input type="file" name="report" class="form-control-file" required>
-                                                        </div>
-                                                        <div class="form-group text-center">
-                                                            <button class="btnA circular bluestar p-2 blue-hover" type="submit">Replace Report</button>
-                                                        </div>
-                                                    </form>
+                                        {{--                                    modal edit report--}}
+                                        <div class="modal fade" id="replaceReport-{{$report->id}}">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content card-bg-change">
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title font-weight-bold">Replace Report</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    </div>
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body" style="text-align: left;">
+                                                        <form action="{{route ('student.report.update', $report)}}" method="POST" enctype="multipart/form-data">
+                                                            <div class="form-group">
+                                                                {{ csrf_field() }}
+                                                                <input type="hidden" name="_method" value="PATCH">
+                                                                <input name="selected_program" type="hidden" value="{{$program->id}}">
+                                                                <label>Replace report {{ $report->report }} with ...</label>
+                                                                <input type="file" name="report" class="form-control-file" required>
+                                                            </div>
+                                                            <div class="form-group text-center">
+                                                                <button class="btnA circular bluestar p-2 blue-hover" type="submit">Replace Report</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                @else
-                                    <li class="guiz-awards-time customComittee">
-                                        <form action="" method="get">
-                                            <button type="submit" class="btn btn-primary disabled">Replace</button>
-                                        </form>
-                                    </li>
+                                    @else
+                                        <li class="guiz-awards-time customComittee">
+                                            <form action="" method="get">
+                                                <button type="submit" class="btn btn-primary disabled">Replace</button>
+                                            </form>
+                                        </li>
+                                    @endif
                                 @endif
                                 <li class="guiz-awards-time customComittee">
                                     <a href="/files/report/{{ $report->report }}" class="btn btn-success">Download</a>
                                 </li>
-                                <li class="guiz-awards-time customComittee">
-                                    <button
-                                        type="button"
-                                        data-toggle="modal"
-                                        data-target="#deleteReport-{{ $report->id }}"
-                                        class="btn btn-danger">
-                                        Delete
-                                    </button>
-                                </li>
+                                @if($edit == true)
+                                    <li class="guiz-awards-time customComittee">
+                                        <button
+                                            type="button"
+                                            data-toggle="modal"
+                                            data-target="#deleteReport-{{ $report->id }}"
+                                            class="btn btn-danger">
+                                            Delete
+                                        </button>
+                                    </li>
+                                @endif
                             </ul>
 
-                            {{--        Delete Task--}}
+                            {{--        Delete Report--}}
 
                             <div class="modal fade" id="deleteReport-{{ $report->id }}">
                                 <div class="modal-dialog">
@@ -181,9 +199,26 @@
                                             <form action="{{ route('student.report.destroy', $report) }}" method="post" class="d-inline-block">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover">Yes</button>
+                                                <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover widthSubmitButton">Yes</button>
                                             </form>
-                                            <button type="button" class="btnA circular bluestar font-weight-bold p-2 blue-hover" data-dismiss="modal">No</button>
+                                            <button type="button" class="btnA circular bluestar font-weight-bold p-2 blue-hover widthSubmitButton" data-dismiss="modal">No</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{--            modal note--}}
+                            <div class="modal fade" id="note-{{$report->id}}">
+                                <div class="modal-dialog">
+                                    <div class="modal-content bg-change-red">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title font-weight-bold titlelogin">Note From Coor</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body" style="text-align: left;">
+                                            <p class="titlelogin">{{$report->note}}</p>
                                         </div>
                                     </div>
                                 </div>

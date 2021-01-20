@@ -109,8 +109,6 @@ Route::group([
     Route::resource('program', \App\Http\Controllers\User\ProgramController::class);
     Route::resource('user', \App\Http\Controllers\User\UserController::class);
     Route::resource('committee',\App\Http\Controllers\User\CommitteeController::class);
-    Route::post('committee/{id}/approve', [\App\Http\Controllers\User\CommitteeController::class, 'approve'])->name('committee.approve');
-    Route::post('committee/{id}/reject', [\App\Http\Controllers\User\CommitteeController::class, 'reject'])->name('committee.reject');
     Route::get('/file/{id}', '\App\Http\Controllers\User\FileAttachmentController@create')->name('file.create');
     Route::resource('file', \App\Http\Controllers\User\FileAttachmentController::class)->except('create');
     Route::resource('client', \App\Http\Controllers\User\ClientController::class);

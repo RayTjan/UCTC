@@ -354,8 +354,8 @@ class ProgramController extends Controller
             'status' => '2',
         ]);
 
-        return empty($program) ? redirect()->back()->with('Fail', "Failed to approve")
-            : redirect()->back()->with('Success', 'Success program program: #('.$program->name.') approved');
+        return empty($program) ? redirect()->back()->with('Fail', "Failed to finish")
+            : redirect()->back()->with('Success', 'Success program program: #('.$program->name.') finished');
     }
 
 }

@@ -14,6 +14,7 @@
         </div>
 
         @if($edit == true)
+            @if($program->status != '2')
             <div class="clearfix">
                 {{-- auth to limit content, it cannot be accessed until login --}}
                 <div class="float-right">
@@ -79,6 +80,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         @endif
 
         <div class="row" style="margin-top: 30px;">

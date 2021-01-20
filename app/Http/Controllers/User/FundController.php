@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Fund;
 use App\Models\Program;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FundController extends Controller
 {
@@ -17,7 +18,7 @@ class FundController extends Controller
     public function index()
     {
         $requestefunds = Fund::all()->where('status', '0');
-        return view('3rdRoleBlades.listFund',compact('requestefunds'));
+        return view('3rdRoleBlades.listFundProgram',compact('requestefunds'));
     }
 
     /**
@@ -52,7 +53,29 @@ class FundController extends Controller
     {
         $program = Program::findOrFail($id);
         $funds = Fund::where('program',$id)->get();
-        return view('3rdRoleBlades.listFund',compact('program','funds'));
+
+        //check edit
+        $edit = false;
+        $user = Auth::user();
+        $participatedPrograms = $user->attends;
+        foreach ($participatedPrograms as $pprogram){
+            if ($pprogram->id == $program->id){
+                $edit = true;
+            }
+        }
+        if ($program->created_by == $user->id){
+            $edit = true;
+        }
+
+        $lastFund = $funds->last();
+        $addAvailability = true;
+        if ($lastFund != null){
+            if ($lastFund->status == '0'){
+                $addAvailability = false;
+            }
+        }
+
+        return view('3rdRoleBlades.listFundProgram',compact('program','funds','edit','addAvailability'));
     }
 
     /**
