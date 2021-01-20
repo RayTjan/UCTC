@@ -61,6 +61,7 @@ class ProgramController extends Controller
         $createdPrograms = $programs->where('created_by', $id);
         $participatedPrograms = $user->attends;
         $mergePrograms = $createdPrograms->merge($participatedPrograms);
+        $mergePrograms = $mergePrograms->sortByDesc('name');
         return ProgramResource::collection($mergePrograms);
 //        return ProgramResource::collection($participatedPrograms);
 
@@ -118,6 +119,7 @@ class ProgramController extends Controller
         $pic = User::findOrFail($program->created_by);
         if ($committees!=null){
             $committees->push($pic);
+            $committees = $committees->sortByDesc('name');
             return UserResource::collection($committees);
         }
         else{
