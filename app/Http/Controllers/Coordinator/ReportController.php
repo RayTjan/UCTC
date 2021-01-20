@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Coordinator;
 
 use App\Http\Controllers\Controller;
 use App\Models\Program;
@@ -34,7 +34,7 @@ class ReportController extends Controller
         $program = Program::findOrFail($id);
 
         if (isset($program->hasReports[0])) {
-            return redirect(route('admin.report.show',$program));
+            return redirect(route('coordinator.report.show',$program));
         }
         return view('1stRoleBlades.addReport',compact('program'));
     }
@@ -63,7 +63,7 @@ class ReportController extends Controller
         );
 
         Report::create($dataReport);
-        return redirect(route('admin.program.show', $request->program));
+        return redirect(route('coordinator.program.show', $request->program));
     }
 
     /**
@@ -130,7 +130,7 @@ class ReportController extends Controller
     public function destroy(Report $report)
     {
         $report->delete();
-        return redirect()->route('admin.report.index');
+        return redirect()->route('coordinator.report.index');
     }
     public function approve($id){
         $report = Report::findOrFail($id);

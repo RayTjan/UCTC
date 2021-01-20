@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Coordinator;
 
 use App\Http\Controllers\Controller;
 use App\Models\Program;
@@ -55,7 +55,7 @@ class ProposalController extends Controller
         );
 
         Proposal::create($dataProposal);
-        return redirect(route('admin.proposal.show', $request->selected_program));
+        return redirect(route('coordinator.proposal.show', $request->selected_program));
     }
 
     /**
@@ -107,7 +107,7 @@ class ProposalController extends Controller
         $proposal->update([
             'proposal' => $dataProposal['proposal']
         ]);
-        return redirect(route('admin.proposal.show', $request->selected_program));
+        return redirect(route('coordinator.proposal.show', $request->selected_program));
     }
 
     /**

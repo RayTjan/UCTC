@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Coordinator;
 
 use App\Http\Controllers\Controller;
 use App\Models\Fund;
@@ -39,7 +39,7 @@ class FundController extends Controller
     public function store(Request $request)
     {
         Fund::create($request->all());
-        return redirect(route('admin.dana.show',$request->program));
+        return redirect(route('coordinator.dana.show',$request->program));
     }
 
     /**
@@ -77,7 +77,7 @@ class FundController extends Controller
     {
         $fund = Fund::findOrFail($id);
         $fund->update($request->all());
-        return redirect(route('admin.fund.show',$fund->program));
+        return redirect(route('coordinator.fund.show',$fund->program));
     }
 
     /**

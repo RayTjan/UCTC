@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Coordinator;
 
 use App\Http\Controllers\Controller;
 use App\Models\ActionPlan;
@@ -54,7 +54,7 @@ class FileAttachmentController extends Controller
             'file_attachment' => $request->file_attachment,
             'program' => $program->id,
         ]);
-        return redirect()->route('admin.actionTask.show', $task->action_plan);
+        return redirect()->route('coordinator.actionTask.show', $task->action_plan);
     }
 
     /**
@@ -92,7 +92,7 @@ class FileAttachmentController extends Controller
     {
         $file = FileAttachment::findOrFail($id);
         $file->update($request->all());
-        return redirect(route('admin.file.show', $request->program));
+        return redirect(route('coordinator.file.show', $request->program));
     }
 
     /**
@@ -105,6 +105,6 @@ class FileAttachmentController extends Controller
     {
         $file = FileAttachment::findOrFail($id);
         $file->delete();
-        return redirect(route('admin.file.show', $file->program));
+        return redirect(route('coordinator.file.show', $file->program));
     }
 }

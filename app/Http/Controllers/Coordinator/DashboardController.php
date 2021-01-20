@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Coordinator;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Program;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class UserController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('1stRoleBlades.listUser', compact('users'));
+        if (Auth::user()) {
+            $programs = Program::all();
+            return view('1stRoleBlades.dashboard', compact('programs'));
+        }
+
+        return redirect()->route('login');
     }
 
     /**
@@ -48,8 +53,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::findorFail($id);
-        return view('1stRoleBlades.profile',compact('user'));
+        //
     }
 
     /**
@@ -60,8 +64,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findorFail($id);
-        return view('1stRoleBlades.editProfile',compact('user'));
+        //
     }
 
     /**
@@ -73,25 +76,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if ($request->picture != null){
-            $data = $request->validate([
-                'picture' => 'image|mimes:png,jpg,jpeg,svg'
-            ]);
-
-            $imgName = $data['picture']->getClientOriginalName().'-'.time().'.'.$data['picture']->extension();
-            $data['picture']->move(public_path('/img/userPic'), $imgName);
-
-
-            User::where('id', $id)->update([
-                'picture' => $imgName,
-            ]);
-        }else {
-            User::where('id', $id)->update([
-                'picture' => null,
-            ]);
-        }
-
-        return redirect(route('admin.user.show',\Illuminate\Support\Facades\Auth::id()));
+        //
     }
 
     /**

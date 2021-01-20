@@ -49,7 +49,7 @@
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body" style="text-align: left;">
-                    <form action="{{route ('admin.fund.store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route ('coordinator.fund.store')}}" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             {{ csrf_field() }}
                             <input type="hidden" name="program" value="{{$program->id}}">
@@ -167,7 +167,7 @@
                                             </div>
                                             <!-- Modal body -->
                                             <div class="modal-body d-inline-block text-center" style="text-align: left;">
-                                                <form action="{{ route('admin.fund.destroy', $fund) }}" method="post" class="d-inline-block">
+                                                <form action="{{ route('coordinator.fund.destroy', $fund) }}" method="post" class="d-inline-block">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover widthSubmitButton">Yes</button>
@@ -224,7 +224,7 @@
                                             </div>
                                             <!-- Modal body -->
                                             <div class="modal-body" style="text-align: left;">
-                                                <form action="{{route ('admin.fund.update',$fund)}}" method="POST" enctype="multipart/form-data">
+                                                <form action="{{route ('coordinator.fund.update',$fund)}}" method="POST" enctype="multipart/form-data">
                                                     <div class="form-group">
                                                         {{ csrf_field() }}
                                                         <input type="hidden" name="_method" value="PATCH">

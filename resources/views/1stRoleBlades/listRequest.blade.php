@@ -63,7 +63,7 @@
                                             </a>
 
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                <form action="{{route('admin.proposal.approve', $proposal->id)}}"
+                                                <form action="{{route('coordinator.proposal.approve', $proposal->id)}}"
                                                       method="POST">
                                                     {{ csrf_field() }}
                                                     <button class="ml-2 dropdown-item btnA btnSuccess" title="Approve" type="submit">Accept</button>
@@ -81,7 +81,7 @@
                                                         Reject Note
                                                     </button>
                                                 @endif
-                                                <form action="{{ route('admin.proposal.destroy', $proposal ) }}" method="post">
+                                                <form action="{{ route('coordinator.proposal.destroy', $proposal ) }}" method="post">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <button type="submit" class="ml-2 dropdown-item btnA btnDelete">Delete</button>
@@ -120,7 +120,7 @@
                                         </div>
                                         <!-- Modal body -->
                                         <div class="modal-body" style="text-align: left;">
-                                            <form action="{{route('admin.proposal.reject', $proposal->id)}}" class="p-0 m-0"
+                                            <form action="{{route('coordinator.proposal.reject', $proposal->id)}}" class="p-0 m-0"
                                                   method="POST">
                                                 <div class="form-group">
                                                     {{ csrf_field() }}

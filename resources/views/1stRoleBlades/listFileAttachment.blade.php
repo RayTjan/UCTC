@@ -18,7 +18,7 @@
 {{--                --}}{{-- auth to limit content, it cannot be accessed until login --}}
 {{--                <div class="float-right">--}}
 {{--                    --}}{{--                <a href="{{route('action.create')}}" class="btn btn-primary btn-block" role="button" aria-pressed="true">New action</a>--}}
-{{--                    <a href="{{route('admin.file.create', $program->id)}}" role="button" aria-pressed="true">--}}
+{{--                    <a href="{{route('coordinator.file.create', $program->id)}}" role="button" aria-pressed="true">--}}
 {{--                        <svg--}}
 {{--                            aria-hidden="true"--}}
 {{--                            focusable="false"--}}
@@ -77,7 +77,7 @@
                                                 </a>
 
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <form action="{{ route('admin.file.edit', $file->id) }}" method="get">
+                                                    <form action="{{ route('coordinator.file.edit', $file->id) }}" method="get">
                                                         @csrf
                                                         <button type="submit" class="pl-2 btnA dropdown-item">Edit</button>
                                                     </form>
@@ -105,7 +105,7 @@
                                         </div>
                                         <!-- Modal body -->
                                         <div class="modal-body d-inline-block text-center" style="text-align: left;">
-                                            <form action="{{ route('admin.file.destroy', $file) }}" method="post" class="d-inline-block">
+                                            <form action="{{ route('coordinator.file.destroy', $file) }}" method="post" class="d-inline-block">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover">Yes</button>

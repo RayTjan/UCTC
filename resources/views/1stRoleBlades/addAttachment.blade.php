@@ -7,7 +7,7 @@
         <div class="quiz-window">
             <div class="height100">
 
-                <form action="{{route('admin.file.store')}}" method="post">
+                <form action="{{route('coordinator.file.store')}}" method="post">
                     {{csrf_field()}}
 
                     <h4 class="font-weight-bold">New File Submission</h4>

@@ -17,11 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-//Route::get('/', function () {
-////    return redirect()->route('program.index');
-//    return view('3rdRoleBlades.dashboard');
-//});
-
 Auth::routes();
 
 Route::get('/', 'App\Http\Controllers\DashboardController@index');
@@ -43,35 +38,35 @@ Route::get('activate', [\App\Http\Controllers\Auth\ActivationController::class, 
 
 
 Route::group([
-    'middleware' => 'admin',
-    'prefix' => 'admin',
-    'as' => 'admin.'
+    'middleware' => 'coordinator',
+    'prefix' => 'coordinator',
+    'as' => 'coordinator.'
 ], function () {
-    Route::get('/', 'App\Http\Controllers\Admin\DashboardController@index');
-    Route::resource('program', \App\Http\Controllers\Admin\ProgramController::class);
-    Route::post('program/{id}/approve', [\App\Http\Controllers\Admin\ProgramController::class, 'approve'])->name('program.approve');
-    Route::patch('program/{id}/suspend', [\App\Http\Controllers\Admin\ProgramController::class, 'suspend'])->name('program.suspend');
-    Route::resource('committee',\App\Http\Controllers\Admin\CommitteeController::class);
-    Route::post('committee/{id}/approve', [\App\Http\Controllers\Admin\CommitteeController::class, 'approve'])->name('committee.approve');
-    Route::post('committee/{id}/reject', [\App\Http\Controllers\Admin\CommitteeController::class, 'reject'])->name('committee.reject');
-    Route::resource('user', \App\Http\Controllers\Admin\UserController::class);
-    Route::resource('proposal', \App\Http\Controllers\Admin\ProposalController::class);
-    Route::post('proposal/{id}/approve', [\App\Http\Controllers\Admin\ProposalController::class, 'approve'])->name('proposal.approve');
-    Route::patch('proposal/{id}/reject', [\App\Http\Controllers\Admin\ProposalController::class, 'reject'])->name('proposal.reject');
-    Route::resource('report', \App\Http\Controllers\Admin\ReportController::class);
-    Route::post('report/{id}/approve', [\App\Http\Controllers\Admin\ReportController::class, 'approve'])->name('report.approve');
-    Route::patch('report/{id}/reject', [\App\Http\Controllers\Admin\ReportController::class, 'reject'])->name('report.reject');
-    Route::resource('category', \App\Http\Controllers\Admin\CategoryController::class);
+    Route::get('/', 'App\Http\Controllers\Coordinator\DashboardController@index');
+    Route::resource('program', \App\Http\Controllers\Coordinator\ProgramController::class);
+    Route::post('program/{id}/approve', [\App\Http\Controllers\Coordinator\ProgramController::class, 'approve'])->name('program.approve');
+    Route::patch('program/{id}/suspend', [\App\Http\Controllers\Coordinator\ProgramController::class, 'suspend'])->name('program.suspend');
+    Route::resource('committee',\App\Http\Controllers\Coordinator\CommitteeController::class);
+    Route::post('committee/{id}/approve', [\App\Http\Controllers\Coordinator\CommitteeController::class, 'approve'])->name('committee.approve');
+    Route::post('committee/{id}/reject', [\App\Http\Controllers\Coordinator\CommitteeController::class, 'reject'])->name('committee.reject');
+    Route::resource('user', \App\Http\Controllers\Coordinator\UserController::class);
+    Route::resource('proposal', \App\Http\Controllers\Coordinator\ProposalController::class);
+    Route::post('proposal/{id}/approve', [\App\Http\Controllers\Coordinator\ProposalController::class, 'approve'])->name('proposal.approve');
+    Route::patch('proposal/{id}/reject', [\App\Http\Controllers\Coordinator\ProposalController::class, 'reject'])->name('proposal.reject');
+    Route::resource('report', \App\Http\Controllers\Coordinator\ReportController::class);
+    Route::post('report/{id}/approve', [\App\Http\Controllers\Coordinator\ReportController::class, 'approve'])->name('report.approve');
+    Route::patch('report/{id}/reject', [\App\Http\Controllers\Coordinator\ReportController::class, 'reject'])->name('report.reject');
+    Route::resource('category', \App\Http\Controllers\Coordinator\CategoryController::class);
 
-    Route::get('file/create/{id}', ['as' => 'file.create', 'uses' => '\App\Http\Controllers\Admin\FileAttachmentController@create']);
-    Route::resource('file', \App\Http\Controllers\Admin\FileAttachmentController::class)->except('create');
-    Route::resource('client', \App\Http\Controllers\Admin\ClientController::class);
-    Route::get('action/create/{id}', ['as' => 'action.create', 'uses' => '\App\Http\Controllers\Admin\ActionController@create']);
-    Route::resource('action', \App\Http\Controllers\Admin\ActionController::class)->except('create');
-    Route::resource('finance', \App\Http\Controllers\Admin\FinanceController::class);
-    Route::resource('fund', \App\Http\Controllers\Admin\FundController::class);
-    Route::post('fund/{id}/approve', [\App\Http\Controllers\Admin\FundController::class, 'approve'])->name('fund.approve');
-    Route::patch('fund/{id}/reject', [\App\Http\Controllers\Admin\FundController::class, 'reject'])->name('fund.reject');
+    Route::get('file/create/{id}', ['as' => 'file.create', 'uses' => '\App\Http\Controllers\Coordinator\FileAttachmentController@create']);
+    Route::resource('file', \App\Http\Controllers\Coordinator\FileAttachmentController::class)->except('create');
+    Route::resource('client', \App\Http\Controllers\Coordinator\ClientController::class);
+    Route::get('action/create/{id}', ['as' => 'action.create', 'uses' => '\App\Http\Controllers\Coordinator\ActionController@create']);
+    Route::resource('action', \App\Http\Controllers\Coordinator\ActionController::class)->except('create');
+    Route::resource('finance', \App\Http\Controllers\Coordinator\FinanceController::class);
+    Route::resource('fund', \App\Http\Controllers\Coordinator\FundController::class);
+    Route::post('fund/{id}/approve', [\App\Http\Controllers\Coordinator\FundController::class, 'approve'])->name('fund.approve');
+    Route::patch('fund/{id}/reject', [\App\Http\Controllers\Coordinator\FundController::class, 'reject'])->name('fund.reject');
 });
 
 Route::group([

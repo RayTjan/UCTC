@@ -48,7 +48,7 @@
                 <input type="checkbox" class="custom-checkbox" id="checkBtn" onclick="EnableBtn (this, 'BTN-{{$con}}')">
                 already done?
                 <br>
-                <a href="{{ route('admin.actionTask.edit', $tasks[$con]->id) }}" class="btn btn-info">Edit</a>
+                <a href="{{ route('coordinator.actionTask.edit', $tasks[$con]->id) }}" class="btn btn-info">Edit</a>
                 <button type="button" disabled="disabled"
                         data-toggle="modal" data-target="#submitTask-{{$con}}"
                         class="btn btn-success" id="BTN-{{$con}}">
@@ -81,7 +81,7 @@
             </div>
             <!-- Modal body -->
             <div class="modal-body d-inline-block text-center" style="text-align: left;">
-                <form action="{{ route('admin.actionTask.destroy', $tasks[$con]) }}" method="post" class="d-inline-block">
+                <form action="{{ route('coordinator.actionTask.destroy', $tasks[$con]) }}" method="post" class="d-inline-block">
                     @csrf
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover">Yes</button>
@@ -103,10 +103,10 @@
             </div>
             <!-- Modal body -->
             <div class="modal-body text-center" style="text-align: left;">
-                <form action="{{route('admin.file.create', $tasks[$con]->id)}}" method="get" class="mt-2">
+                <form action="{{route('coordinator.file.create', $tasks[$con]->id)}}" method="get" class="mt-2">
                     <button type="submit" class="btnA circular greenstar font-weight-bold p-3 green-hover widthSubmitButton">Submit with File Attachment</button>
                 </form>
-                <form action="{{ route('admin.actionTask.update', $tasks[$con]) }}" method="post" class="mt-2">
+                <form action="{{ route('coordinator.actionTask.update', $tasks[$con]) }}" method="post" class="mt-2">
                     @csrf
                     <input type="hidden" name="_method" value="PATCH">
                     <input type="hidden" name="status" value="1">

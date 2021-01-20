@@ -64,7 +64,7 @@
                 <div class="quiz-window">
                     <div class="height100">
 
-                        <form action="{{route('admin.category.store')}}" method="post">
+                        <form action="{{route('coordinator.category.store')}}" method="post">
                         {{csrf_field()}}
 
                             <h4 class="font-weight-bold">Add New Attributes</h4>

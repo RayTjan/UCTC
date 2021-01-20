@@ -6,7 +6,7 @@
         <div class="d-flex justify-content-between">
             <h1 class="font-weight-bold">Tasks In {{$action->name}} Action Plan</h1>
             @if($action->plansOf->status != '2')
-            <a href="{{route('admin.actionTask.create', $action->id)}}" role="button" aria-pressed="true">
+            <a href="{{route('coordinator.actionTask.create', $action->id)}}" role="button" aria-pressed="true">
                 <svg
                     aria-hidden="true"
                     focusable="false"

@@ -21,7 +21,7 @@
             <div class="smol1">
                 <div class="position-relative">
                     <h3 class="font-weight-bold">Recents Program</h3>
-                    <a href="{{ route('admin.program.index') }}" class="seeall">see all</a>
+                    <a href="{{ route('coordinator.program.index') }}" class="seeall">see all</a>
                 </div>
                 <div class="d-flex boxScroll">
                 @foreach($allprogramssort as $program)
@@ -57,7 +57,7 @@
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 {{--                                                    Approve--}}
                                                     @if($program->status == '0' || $program->status == '3')
-                                                    <form action="{{ route('admin.program.approve', $program->id) }}" method="post">
+                                                    <form action="{{ route('coordinator.program.approve', $program->id) }}" method="post">
                                                         @csrf
                                                         <button type="submit" class="pl-2 btnA dropdown-item btnSuccess">Approve</button>
                                                     </form>
@@ -71,7 +71,7 @@
                                                     </button>
                                                     @endif
 {{--                                                    Delete--}}
-                                                    <form action="{{ route('admin.program.destroy', $program) }}" method="post">
+                                                    <form action="{{ route('coordinator.program.destroy', $program) }}" method="post">
                                                         @csrf
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         <button type="submit" class="pl-2 btnA dropdown-item btnDelete">Delete</button>
@@ -81,7 +81,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="{{route('admin.program.show',$program)}}" class="small-box-footer blackhex">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                <a href="{{route('coordinator.program.show',$program)}}" class="small-box-footer blackhex">More info <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     @endforeach
@@ -93,7 +93,7 @@
                 <div class="">
                     <div class="position-relative">
                         <h3 class="font-weight-bold">Report Request List</h3>
-                        <a href="{{ route('admin.report.index') }}" class="seeall">see all</a>
+                        <a href="{{ route('coordinator.report.index') }}" class="seeall">see all</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card card-body card-bg-bluess" style="height: 250px;">
@@ -114,7 +114,7 @@
 
                                             @if($report->status == '0' || $report->status == '2')
                                                 {{--                                    approve--}}
-                                                <form action="{{route('admin.report.approve', $report->id)}}" class="p-0 m-0 d-inline-block"
+                                                <form action="{{route('coordinator.report.approve', $report->id)}}" class="p-0 m-0 d-inline-block"
                                                       method="POST">
                                                     {{ csrf_field() }}
                                                     <button class="btnA circular greenstar green-hover iconAct mr-1 p-1 " title="Approve">
@@ -184,7 +184,7 @@
                 <div class="">
                     <div class="position-relative">
                         <h3 class="font-weight-bold">Proposal Request List</h3>
-                        <a href="{{ route('admin.proposal.index') }}" class="seeall">see all</a>
+                        <a href="{{ route('coordinator.proposal.index') }}" class="seeall">see all</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card card-body card-bg-change" style="height: 250px;">
@@ -205,7 +205,7 @@
 
                                             @if($proposal->status == '0' || $proposal->status == '2')
                                                 {{--                                    approve--}}
-                                                <form action="{{route('admin.proposal.approve', $proposal->id)}}" class="p-0 m-0 d-inline-block"
+                                                <form action="{{route('coordinator.proposal.approve', $proposal->id)}}" class="p-0 m-0 d-inline-block"
                                                       method="POST">
                                                     {{ csrf_field() }}
                                                     <button class="btnA circular greenstar green-hover iconAct mr-1 p-1 " title="Approve">
@@ -285,7 +285,7 @@
                                 </div>
                                 <!-- Modal body -->
                                 <div class="modal-body" style="text-align: left;">
-                                    <form action="{{route('admin.proposal.reject', $proposal->id)}}" class="p-0 m-0"
+                                    <form action="{{route('coordinator.proposal.reject', $proposal->id)}}" class="p-0 m-0"
                                           method="POST">
                                         <div class="form-group">
                                             {{ csrf_field() }}
@@ -315,7 +315,7 @@
                                 </div>
                                 <!-- Modal body -->
                                 <div class="modal-body d-inline-block text-center" style="text-align: left;">
-                                    <form action="{{ route('admin.proposal.destroy', $proposal) }}" method="post" class="d-inline-block">
+                                    <form action="{{ route('coordinator.proposal.destroy', $proposal) }}" method="post" class="d-inline-block">
                                         @csrf
                                         <input type="hidden" name="_method" value="DELETE">
                                         <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover widthSubmitButton">Yes</button>
@@ -339,7 +339,7 @@
                                 </div>
                                 <!-- Modal body -->
                                 <div class="modal-body" style="text-align: left;">
-                                    <form action="{{route('admin.report.reject', $report->id)}}" class="p-0 m-0"
+                                    <form action="{{route('coordinator.report.reject', $report->id)}}" class="p-0 m-0"
                                           method="POST">
                                         <div class="form-group">
                                             {{ csrf_field() }}
@@ -369,7 +369,7 @@
                                 </div>
                                 <!-- Modal body -->
                                 <div class="modal-body d-inline-block text-center" style="text-align: left;">
-                                    <form action="{{ route('admin.report.destroy', $report) }}" method="post" class="d-inline-block">
+                                    <form action="{{ route('coordinator.report.destroy', $report) }}" method="post" class="d-inline-block">
                                         @csrf
                                         <input type="hidden" name="_method" value="DELETE">
                                         <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover widthSubmitButton">Yes</button>
@@ -392,7 +392,7 @@
                             </div>
                             <!-- Modal body -->
                             <div class="modal-body" style="text-align: left;">
-                                <form action="{{route('admin.fund.reject', $fund->id)}}" class="p-0 m-0"
+                                <form action="{{route('coordinator.fund.reject', $fund->id)}}" class="p-0 m-0"
                                       method="POST">
                                     <div class="form-group">
                                         {{ csrf_field() }}
@@ -425,7 +425,7 @@
                             </div>
                             <!-- Modal body -->
                             <div class="modal-body" style="text-align: left;">
-                                <form action="{{route('admin.program.suspend', $program->id)}}" class="p-0 m-0"
+                                <form action="{{route('coordinator.program.suspend', $program->id)}}" class="p-0 m-0"
                                       method="POST">
                                     <div class="form-group">
                                         {{ csrf_field() }}
@@ -448,7 +448,7 @@
             <div class="smol4">
                 <div class="position-relative">
                     <h3 class="font-weight-bold">Request Disbursement of Funds</h3>
-                    <a href="{{ route('admin.fund.index') }}" class="seeall">see all</a>
+                    <a href="{{ route('coordinator.fund.index') }}" class="seeall">see all</a>
                 </div>
                 <div class="container-fluid">
                     <div class="d-flex boxScroll">
@@ -477,7 +477,7 @@
                                                     </a>
 
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                        <form action="{{ route('admin.fund.approve', $fund->id) }}" method="post">
+                                                        <form action="{{ route('coordinator.fund.approve', $fund->id) }}" method="post">
                                                             @csrf
                                                             <button type="submit" class="pl-2 btnA dropdown-item btnSuccess">Accept</button>
                                                         </form>
@@ -486,7 +486,7 @@
                                                                 data-target="#rejectNote-{{$fund->id}}">
                                                             Reject
                                                         </button>
-                                                        <form action="{{ route('admin.fund.destroy', $fund) }}" method="post">
+                                                        <form action="{{ route('coordinator.fund.destroy', $fund) }}" method="post">
                                                             @csrf
                                                             <input type="hidden" name="_method" value="DELETE">
                                                             <button type="submit" class="pl-2 btnA dropdown-item btnDelete">Delete</button>

@@ -64,7 +64,7 @@
 
                                         @if($fund->status == '0' || $fund->status == '3')
                                             {{--                                    approve--}}
-                                            <form action="{{route('admin.fund.approve', $fund->id)}}" class="p-0 m-0"
+                                            <form action="{{route('coordinator.fund.approve', $fund->id)}}" class="p-0 m-0"
                                                   method="POST">
                                                 {{ csrf_field() }}
                                                 <button class="btnA circular greenstar green-hover iconAct mr-1 p-1 " title="Approve">
@@ -92,7 +92,7 @@
                                         </button>
 
                                         {{--                                    delete--}}
-                                        <form action="{{route('admin.fund.destroy', $fund)}}"
+                                        <form action="{{route('coordinator.fund.destroy', $fund)}}"
                                               method="POST">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="_method" value="DELETE">
@@ -115,7 +115,7 @@
                                             </div>
                                             <!-- Modal body -->
                                             <div class="modal-body" style="text-align: left;">
-                                                <form action="{{route('admin.fund.reject', $fund->id)}}" class="p-0 m-0"
+                                                <form action="{{route('coordinator.fund.reject', $fund->id)}}" class="p-0 m-0"
                                                       method="POST">
                                                     <div class="form-group">
                                                         {{ csrf_field() }}
@@ -162,7 +162,7 @@
                                             </div>
                                             <!-- Modal body -->
                                             <div class="modal-body" style="text-align: left;">
-                                                <form action="{{route ('admin.fund.update',$fund)}}" method="POST" enctype="multipart/form-data">
+                                                <form action="{{route ('coordinator.fund.update',$fund)}}" method="POST" enctype="multipart/form-data">
                                                     <div class="form-group">
                                                         {{ csrf_field() }}
                                                         <input type="hidden" name="_method" value="PATCH">

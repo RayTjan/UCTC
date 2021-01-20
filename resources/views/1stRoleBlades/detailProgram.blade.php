@@ -8,7 +8,7 @@
         <div class="d-flex justify-content-between">
             <h3>{{ str_replace("-","/",date("d-m-Y", strtotime($program->program_date))) }}</h3>
 
-                <a href="{{route('admin.file.show',$program)}}" class="circular graystar font-weight-bold p-2 gray-hover">
+                <a href="{{route('coordinator.file.show',$program)}}" class="circular graystar font-weight-bold p-2 gray-hover">
                     <i class="fa fa-paperclip"></i>
                     Data link
                 </a>
@@ -154,30 +154,30 @@
 
         <div class="d-flex justify-content-between mb-5">
             <div class="">
-                    <a href="{{ route('admin.client.show', $program) }}" class="circular yellowstar font-weight-bold p-2 yellow-hover mr-2">
+                    <a href="{{ route('coordinator.client.show', $program) }}" class="circular yellowstar font-weight-bold p-2 yellow-hover mr-2">
                         <i class="fa fa-user"></i>
                         Client
                     </a>
-                    <a href="{{ route('admin.committee.show', $program) }}" class="circular cyanstar font-weight-bold p-2 cyan-hover mr-2">
+                    <a href="{{ route('coordinator.committee.show', $program) }}" class="circular cyanstar font-weight-bold p-2 cyan-hover mr-2">
                         <i class="fa fa-user"></i>
                         Committee
                     </a>
-                    <a href="{{ route('admin.action.show', $program) }}" class="circular bluestar font-weight-bold p-2 blue-hover mr-2">
+                    <a href="{{ route('coordinator.action.show', $program) }}" class="circular bluestar font-weight-bold p-2 blue-hover mr-2">
                         <i class="fa fa-database"></i>
                         Action Plan
                     </a>
-                    <a href="{{ route('admin.program.edit', $program) }}" class="circular purplestar font-weight-bold p-2 purple-hover mr-2">
+                    <a href="{{ route('coordinator.program.edit', $program) }}" class="circular purplestar font-weight-bold p-2 purple-hover mr-2">
                         <i class="fa fa-dashboard"></i>
                         Edit
                     </a>
 
-                    <a href="{{ route('admin.proposal.show', $program) }}" class="circular toscastar font-weight-bold p-2 tosca-hover mr-2">
+                    <a href="{{ route('coordinator.proposal.show', $program) }}" class="circular toscastar font-weight-bold p-2 tosca-hover mr-2">
                         <i class="fa fa-address-book"></i>
                         Proposal
                     </a>
 
                     {{--                buat report, masih belum tau ifnya apa--}}
-                        <a href="{{ route('admin.report.create', $program) }}" class="circular greenstar font-weight-bold p-2 green-hover mr-2">
+                        <a href="{{ route('coordinator.report.create', $program) }}" class="circular greenstar font-weight-bold p-2 green-hover mr-2">
                             <i class="fa fa-book"></i>
                             Report
                         </a>
@@ -207,7 +207,7 @@
                 <div class="modal-content">
                     <!-- Modal Header -->
                     <div class="modal-header card-bg-change">
-                        <a href="{{ route('admin.finance.show', $program) }}" class="circular yellowstar font-weight-bold p-2 yellow-hover">
+                        <a href="{{ route('coordinator.finance.show', $program) }}" class="circular yellowstar font-weight-bold p-2 yellow-hover">
                             <i class="fa fa-money"></i>
                             Finance
                         </a>
@@ -258,7 +258,7 @@
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body d-inline-block text-center" style="text-align: left;">
-                        <form action="{{ route('admin.program.destroy', $program) }}" method="post" class="d-inline-block">
+                        <form action="{{ route('coordinator.program.destroy', $program) }}" method="post" class="d-inline-block">
                             @csrf
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover">Yes</button>

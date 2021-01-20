@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Coordinator;
 
 use App\Http\Controllers\Controller;
-use App\Models\Role;
+use App\Models\Category;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
-class RoleController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,9 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        $types = Type::all();
+        return view('1stRoleBlades.listAttribute',compact('categories','types'));
     }
 
     /**
@@ -36,16 +39,19 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Category::create($request->all());
+        return redirect()->route(NOTICEMEFREDO);
+
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Role  $role
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Role $role)
+    public function show(Category $category)
     {
         //
     }
@@ -53,10 +59,10 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Role  $role
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Role $role)
+    public function edit(Category $category)
     {
         //
     }
@@ -65,10 +71,10 @@ class RoleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Role  $role
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -76,11 +82,13 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Role  $role
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect()->route(NOTICEMEFREDO);
     }
 }

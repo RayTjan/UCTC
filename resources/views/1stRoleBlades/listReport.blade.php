@@ -63,7 +63,7 @@
                                             </a>
 
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                <form action="{{route('admin.report.approve', $report->id)}}"
+                                                <form action="{{route('coordinator.report.approve', $report->id)}}"
                                                       method="POST">
                                                     {{ csrf_field() }}
                                                     <button class="ml-2 dropdown-item btnA btnSuccess" title="Approve" type="submit">Accept</button>
@@ -118,7 +118,7 @@
                                         </div>
                                         <!-- $report body -->
                                         <div class="modal-body" style="text-align: left;">
-                                            <form action="{{route('admin.report.reject', $report->id)}}" class="p-0 m-0"
+                                            <form action="{{route('coordinator.report.reject', $report->id)}}" class="p-0 m-0"
                                                   method="POST">
                                                 <div class="form-group">
                                                     {{ csrf_field() }}
@@ -149,7 +149,7 @@
                                         </div>
                                         <!-- Modal body -->
                                         <div class="modal-body d-inline-block text-center" style="text-align: left;">
-                                            <form action="{{ route('admin.report.destroy', $report) }}" method="post" class="d-inline-block">
+                                            <form action="{{ route('coordinator.report.destroy', $report) }}" method="post" class="d-inline-block">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover">Yes</button>

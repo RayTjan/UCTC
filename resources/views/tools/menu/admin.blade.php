@@ -37,7 +37,7 @@
     </a>
 </li>
 <li class="nav-item">
-    <a href="{{ route('admin.program.index') }}" class="nav-link">
+    <a href="{{ route('coordinator.program.index') }}" class="nav-link">
         <svg
             aria-hidden="true"
             focusable="false"
@@ -76,7 +76,7 @@
 </li>
 
 <li class="nav-item">
-    <a href="{{ route('admin.proposal.index') }}" class="nav-link">
+    <a href="{{ route('coordinator.proposal.index') }}" class="nav-link">
         <svg
             aria-hidden="true"
             focusable="false"
@@ -115,7 +115,7 @@
 </li>
 
 <li class="nav-item">
-    <a href="{{ route('admin.report.index') }}" class="nav-link">
+    <a href="{{ route('coordinator.report.index') }}" class="nav-link">
         <svg
             aria-hidden="true"
             focusable="false"
@@ -144,7 +144,7 @@
 </li>
 
 <li class="nav-item">
-    <a href="{{ route('admin.fund.index') }}" class="nav-link">
+    <a href="{{ route('coordinator.fund.index') }}" class="nav-link">
         <svg
             aria-hidden="true"
             focusable="false"
@@ -208,7 +208,7 @@
 </li>
 
 <li class="nav-item">
-    <a href="{{ route('admin.category.index') }}" class="nav-link">
+    <a href="{{ route('coordinator.category.index') }}" class="nav-link">
         <svg
             aria-hidden="true"
             focusable="false"
@@ -253,7 +253,7 @@
 </li>
 
 <li class="nav-item">
-    <a href="{{ route('admin.user.index') }}" class="nav-link">
+    <a href="{{ route('coordinator.user.index') }}" class="nav-link">
         <svg
             aria-hidden="true"
             focusable="false"
@@ -282,7 +282,7 @@
 </li>
 
 <li class="nav-item">
-    <a href="{{ route('admin.user.show',\Illuminate\Support\Facades\Auth::id()) }}" class="nav-link">
+    <a href="{{ route('coordinator.user.show',\Illuminate\Support\Facades\Auth::id()) }}" class="nav-link">
         <svg
             aria-hidden="true"
             focusable="false"
