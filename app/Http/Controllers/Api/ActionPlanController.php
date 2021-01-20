@@ -56,6 +56,7 @@ class ActionPlanController extends Controller
     {
         $actions = ActionPlan::all();
         $specificAction = $actions->where('program', $id);
+        $specificAction =$specificAction->sortByDesc('name');
         return ActionPlanResource::collection($specificAction);
     }
 
