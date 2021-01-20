@@ -41,7 +41,8 @@ class DashboardController extends Controller
                 return view('2ndRoleBlades.dashboard', compact('allprogramssort','programs', 'actions'));
             }else if ((Auth::user()->isUser())) {
                 $alltasks = Task::all()->where('PIC', Auth::id());
-                $tasks = $alltasks->sortByDesc('due_date');
+                $ongoingTask = $alltasks->where('status', '0');
+                $tasks = $ongoingTask->sortByDesc('due_date');
                 return view('3rdRoleBlades.dashboard', compact('programs', 'tasks'));
             }
         }
