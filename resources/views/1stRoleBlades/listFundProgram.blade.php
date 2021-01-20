@@ -3,8 +3,9 @@
 @section('content')
 
     <div class="d-flex justify-content-between">
-        <h1 class="col font-weight-bold">fund List {{$program->name}}</h1>
-        @auth()
+        <h1 class="col font-weight-bold">Fund List {{$program->name}}</h1>
+
+                @if($addAvailability == true)
             <div class="clearfix">
                 {{-- auth to limit content, it cannot be accessed until login --}}
                 <div class="float-right">
@@ -35,7 +36,7 @@
 
                 </div>
             </div>
-        @endauth
+                @endif
     </div>
 
     {{--            modal add fund--}}
@@ -60,7 +61,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Value: </label>
-                                <input type="text" class="form-control" name="value" required>
+                                <input type="number" class="form-control" name="value" required>
                             </div>
                             <div class="form-group">
                                 <label>Date: </label>
@@ -135,6 +136,7 @@
                                         @endif
                                     </td>
 
+                                    @if($edit == true)
                                     @if($fund->status == '0')
                                         <td class="cell100 column9 d-flex">
 
@@ -153,6 +155,7 @@
                                                 <i class="fa fa-close"></i>
                                             </button>
                                         </td>
+                                    @endif
                                     @endif
                                 </tr>
 
@@ -234,7 +237,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Value: </label>
-                                                            <input type="text" class="form-control" name="value" value="{{$fund->value}}" required>
+                                                            <input type="number" class="form-control" name="value" value="{{$fund->value}}" required>
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Date: </label>

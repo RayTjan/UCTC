@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Program;
 use App\Models\Proposal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProposalController extends Controller
 {
@@ -68,7 +69,16 @@ class ProposalController extends Controller
     {
         $program = Program::findOrFail($id);
         $proposals = Proposal::where('program', $id)->get();
-        return view('1stRoleBlades.listProposal', compact('proposals', 'program'));
+
+        $lastProposal = $proposals->last();
+        $addAvailability = true;
+        if ($lastProposal != null){
+            if ($lastProposal->status == '0' || $lastProposal->status == '1'){
+                $addAvailability = false;
+            }
+        }
+
+        return view('1stRoleBlades.listProposalProgram', compact('proposals', 'program','addAvailability'));
     }
 
     /**

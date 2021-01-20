@@ -7,6 +7,7 @@
 
         @if($edit == true)
             @if($program->status != '2')
+                @if($addAvailability == true)
             <div class="clearfix">
                 {{-- auth to limit content, it cannot be accessed until login --}}
                 <div class="float-right">
@@ -37,6 +38,7 @@
 
                 </div>
             </div>
+                @endif
             @endif
         @endif
     </div>

@@ -9,39 +9,32 @@
     </script>
 
     <div class="container clearfix" style="margin-top: 20px;">
-        <div class="row">
-            <h1 class="col font-weight-bold">List Attachments Links {{ $program->name }}</h1>
+        <div class="d-flex justify-content-between mb-3">
+            <h1 class="font-weight-bold">List Attachment Links {{$program->name}}</h1>
+
+                @if($program->status != '2')
+                    <a href="{{route('coordinator.file.create', $program->id)}}" role="button" aria-pressed="true">
+                        <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            data-prefix="fad"
+                            data-icon="angle-double-right"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 448 512"
+                            class="svg-inline--fa fa-angle-double-right fa-w-14 fa-5x iconplus float-right"
+                        >
+                            <g>
+                                <path
+                                    fill="#000000"
+                                    d="m408,184h-136c-4.418,0 -8,-3.582 -8,-8v-136c0,-22.09 -17.91,-40 -40,-40s-40,17.91 -40,40v136c0,4.418 -3.582,8 -8,8h-136c-22.09,0 -40,17.91 -40,40s17.91,40 40,40h136c4.418,0 8,3.582 8,8v136c0,22.09 17.91,40 40,40s40,-17.91 40,-40v-136c0,-4.418 3.582,-8 8,-8h136c22.09,0 40,-17.91 40,-40s-17.91,-40 -40,-40zM408,184"
+                                    class="fa-secondary">
+                                </path>
+                            </g>
+                        </svg>
+                    </a>
+                @endif
         </div>
-
-{{--        @auth()--}}
-{{--            <div class="clearfix">--}}
-{{--                --}}{{-- auth to limit content, it cannot be accessed until login --}}
-{{--                <div class="float-right">--}}
-{{--                    --}}{{--                <a href="{{route('action.create')}}" class="btn btn-primary btn-block" role="button" aria-pressed="true">New action</a>--}}
-{{--                    <a href="{{route('coordinator.file.create', $program->id)}}" role="button" aria-pressed="true">--}}
-{{--                        <svg--}}
-{{--                            aria-hidden="true"--}}
-{{--                            focusable="false"--}}
-{{--                            data-prefix="fad"--}}
-{{--                            data-icon="angle-double-right"--}}
-{{--                            role="img"--}}
-{{--                            xmlns="http://www.w3.org/2000/svg"--}}
-{{--                            viewBox="0 0 448 512"--}}
-{{--                            class="svg-inline--fa fa-angle-double-right fa-w-14 fa-5x iconplus float-right"--}}
-{{--                        >--}}
-{{--                            <g>--}}
-{{--                                <path--}}
-{{--                                    fill="#000000"--}}
-{{--                                    d="m408,184h-136c-4.418,0 -8,-3.582 -8,-8v-136c0,-22.09 -17.91,-40 -40,-40s-40,17.91 -40,40v136c0,4.418 -3.582,8 -8,8h-136c-22.09,0 -40,17.91 -40,40s17.91,40 40,40h136c4.418,0 8,3.582 8,8v136c0,22.09 17.91,40 40,40s40,-17.91 40,-40v-136c0,-4.418 3.582,-8 8,-8h136c22.09,0 40,-17.91 40,-40s-17.91,-40 -40,-40zM408,184"--}}
-{{--                                    class="fa-secondary">--}}
-{{--                                </path>--}}
-{{--                            </g>--}}
-{{--                        </svg>--}}
-{{--                    </a>--}}
-
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        @endauth--}}
 
         <div class="row" style="margin-top: 30px;">
             <link href='//fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'>
@@ -64,9 +57,10 @@
                                             {{$file->name}}
                                         </label>
                                         <div class="guiz-awards-subtitle">
-                                            <a href="{{$file->file_attachment}}">{{$file->file_attachment}}</a>
+                                            <a href="//{{$file->file_attachment}}">{{$file->file_attachment}}</a>
                                         </div>
                                     </li>
+                                @if($program->status != '2')
                                     <li class="guiz-awards-time text-right">
                                         <div class="dropdown">
                                             <div class="dropdown show">
@@ -91,9 +85,10 @@
                                             </div>
                                         </div>
                                     </li>
+                                @endif
                             </ul>
 
-                            {{--        Delete Action Plan--}}
+                            {{--        Delete File--}}
 
                             <div class="modal fade" id="deleteAction-{{$file->id}}">
                                 <div class="modal-dialog">
@@ -108,9 +103,9 @@
                                             <form action="{{ route('coordinator.file.destroy', $file) }}" method="post" class="d-inline-block">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover">Yes</button>
+                                                <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover widthSubmitButton">Yes</button>
                                             </form>
-                                            <button type="button" class="btnA circular bluestar font-weight-bold p-2 blue-hover" data-dismiss="modal">No</button>
+                                            <button type="button" class="btnA circular bluestar font-weight-bold p-2 blue-hover widthSubmitButton" data-dismiss="modal">No</button>
                                         </div>
                                     </div>
                                 </div>

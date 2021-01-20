@@ -7,6 +7,7 @@ use App\Models\Program;
 use App\Models\Proposal;
 use App\Models\Report;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReportController extends Controller
 {
@@ -76,7 +77,15 @@ class ReportController extends Controller
     {
         $program = Program::findOrFail($id);
         $reports = Report::where('program',$id)->get();
-        return view('1stRoleBlades.listReport',compact('program','reports'));
+
+        $lastReport = $reports->last();
+        $addAvailability = true;
+        if ($lastReport != null){
+            if ($lastReport->status == '0' || $lastReport->status == '1'){
+                $addAvailability = false;
+            }
+        }
+        return view('1stRoleBlades.listReportProgram',compact('program','reports','addAvailability'));
     }
 
     /**

@@ -67,7 +67,15 @@ class FundController extends Controller
             $edit = true;
         }
 
-        return view('2ndRoleBlades.listFundProgram',compact('program','funds','edit'));
+        $lastFund = $funds->last();
+        $addAvailability = true;
+        if ($lastFund != null){
+            if ($lastFund->status == '0'){
+                $addAvailability = false;
+            }
+        }
+
+        return view('2ndRoleBlades.listFundProgram',compact('program','funds','edit','addAvailability'));
     }
 
     /**

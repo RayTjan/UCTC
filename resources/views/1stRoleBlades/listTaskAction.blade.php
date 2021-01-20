@@ -3,8 +3,9 @@
 @section('content')
 
     <div class="container clearfix" style="margin-top: 20px;">
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between mb-3">
             <h1 class="font-weight-bold">Tasks In {{$action->name}} Action Plan</h1>
+
             @if($action->plansOf->status != '2')
             <a href="{{route('coordinator.actionTask.create', $action->id)}}" role="button" aria-pressed="true">
                 <svg
@@ -33,10 +34,10 @@
             <div class="card-task card-bg-change">
                 <div class="quiz-window">
                     <div class="card-bg-change scrollWebkit height100">
-
+                        @if(isset($tasks[0]))
                         @for($con = 0;$con < sizeof($tasks);$con++)
                         <a onclick="detailShow('detailTask-{{ $con }}')" class="a-none">
-                            <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin quizz mb-2">
+                            <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin quizz borderquiz mb-2">
                                     <li class="guiz-awards-title blackhex">{{ $tasks[$con]->name }}
 
                                         <?php
@@ -52,8 +53,15 @@
                             </ul>
                         </a>
                         @endfor
-
                     </div>
+                        @else
+                        <div class="card-bg-change d-flex justify-content-center height100">
+                            <div class="align-self-center">
+                                No Tasks List
+                            </div>
+                        </div>
+                        @endif
+
                 </div>
             </div>
 

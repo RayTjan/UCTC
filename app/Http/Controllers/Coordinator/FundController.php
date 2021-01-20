@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Fund;
 use App\Models\Program;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FundController extends Controller
 {
@@ -52,7 +53,16 @@ class FundController extends Controller
     {
         $program = Program::findOrFail($id);
         $funds = Fund::where('program',$id)->get();
-        return view('1stRoleBlades.listFundProgram',compact('program','funds'));
+
+        $lastFund = $funds->last();
+        $addAvailability = true;
+        if ($lastFund != null){
+            if ($lastFund->status == '0'){
+                $addAvailability = false;
+            }
+        }
+
+        return view('1stRoleBlades.listFundProgram',compact('program','funds','addAvailability'));
     }
 
     /**
