@@ -203,7 +203,7 @@ class ProgramController extends Controller
      */
     public function update(Request $request, Program $program)
     {
-        if ($request->thumbnail != null){
+        if (isset($request->thumbnail)){
         $data = $request->validate([
             'thumbnail' => 'image|mimes:png,jpg,jpeg,svg'
         ]);
@@ -219,7 +219,12 @@ class ProgramController extends Controller
             'thumbnail' => $programThumbnail,
         ]);
         } else{
-            $program->update($request->all);
+            $program->update([
+                'name' => $request->name,
+                'description' => $request->description,
+                'goal' => $request->goal,
+                'program_date' => $request->program_date,
+                ]);
         }
 
         $data = $request->all();

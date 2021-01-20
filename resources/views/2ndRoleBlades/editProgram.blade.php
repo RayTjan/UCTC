@@ -77,7 +77,7 @@
 
                     <div class="form-group">
                         <label >Thumbnail:</label>
-                        <input type="file" class="form-control-file" name="thumbnail" title="thumbnail program" required>
+                        <input type="file" class="form-control-file" name="thumbnail" title="thumbnail program">
                     </div>
 
                     <div class="text-center">
