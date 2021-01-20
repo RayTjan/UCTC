@@ -173,7 +173,12 @@ class ProgramController extends Controller
         $users = User::all();
         $categories = Category::all();
         $types = Type::all();
-        return view('1stRoleBlades.editProgram',compact('program','users','categories','types'));
+
+        //Report terakhir di program itu dengan id program yang sama
+        $reports = Report::all()->where('program', $program->id);
+        $report = $reports->last();
+
+        return view('1stRoleBlades.editProgram',compact('program','users','categories','types', 'report'));
     }
 
     /**

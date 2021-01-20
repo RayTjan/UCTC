@@ -162,47 +162,6 @@
 
         @endif
 
-        @if(isset($report->id))
-        @if($report->status == '1')
-        @if($program->status != '2')
-        <div class="text-center">
-            <h5>Report approved, finish program Now!</h5>
-            <div>
-                <button type="button"
-                        data-toggle="modal"
-                        data-target="#finishProgram"
-                        class="btnA circular greenstar font-weight-bold pr-4 pl-4 pb-3 pt-3 green-hover">
-                    <i class="fa fa-check"></i>
-                    Finish Program
-                </button>
-            </div>
-        </div>
-
-        {{--        Finish Program--}}
-        <div class="modal fade" id="finishProgram">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Finish {{$program->name}} now ?</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <!-- Modal body -->
-                    <div class="modal-body d-inline-block text-center" style="text-align: left;">
-                        <form action="{{ route('lecturer.program.finish', $program->id) }}" method="post" class="d-inline-block">
-                            @csrf
-                            <button type="submit" class="btnA circular greenstar font-weight-bold p-2 green-hover widthSubmitButton">Yes</button>
-                        </form>
-                        <button type="button" class="btnA circular redstar font-weight-bold p-2 red-hover widthSubmitButton" data-dismiss="modal">No</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endif
-        @endif
-        @endif
-
-
         {{--        Option Menu--}}
         <?php
             $total = 0;
