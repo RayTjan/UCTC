@@ -17,7 +17,6 @@
             <div class="clearfix">
                 {{-- auth to limit content, it cannot be accessed until login --}}
                 <div class="float-right">
-                    {{--                <a href="{{route('program.create')}}" class="btn btn-primary btn-block" role="button" aria-pressed="true">New Program</a>--}}
                     <a href="#"
                             title="Add Committee"
                             data-toggle="modal"
@@ -92,22 +91,24 @@
 
                         <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget card-bg-change">
                             <li class="guiz-awards-time customComittee">Name</li>
-                            <li class="guiz-awards-time customComittee">Role</li>
+                            <li class="guiz-awards-time customComittee">Gender</li>
                             <li class="guiz-awards-time customComittee">Email</li>
-                            <li class="guiz-awards-time customComittee">Status</li>
+                            <li class="guiz-awards-time customComittee">Access</li>
                             <li class="guiz-awards-time customComittee">Action</li>
                         </ul>
 
                         @foreach($program->committees as $committee)
                         <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget">
                             <li class="guiz-awards-time customComittee">{{ $committee->identity->name }}</li>
-                            <li class="guiz-awards-time customComittee">{{ $committee->role->name }}</li>
-                            <li class="guiz-awards-time customComittee">{{ $committee->identity->email }}</li>
                             <li class="guiz-awards-time customComittee">
-                                @if($committee->pivot->is_approved == 0) <div class="text-primary">Pending</div>
-                                @elseif($committee->pivot->is_approved == 1) <div class="text-success">Approved</div>
-                                @else <div class="text-danger">Rejected</div> @endif
+                                @if($committee->identity->gender == 'M')
+                                    Male
+                                @elseif($committee->identity->gender == 'F')
+                                    Female
+                                @endif
                             </li>
+                            <li class="guiz-awards-time customComittee">{{ $committee->identity->email }}</li>
+                            <li class="guiz-awards-time customComittee">{{ $committee->role->name }}</li>
                             @if($edit == true)
                             @if($committee->pivot->is_approved == 0)
                             <li class="guiz-awards-time customComittee">
@@ -120,17 +121,16 @@
                                         </a>
 
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <form action="{{route('staff.committee.approve', $committee->id)}}"
-                                                         method="POST">
-                                                {{ csrf_field() }}
-                                                <input name="selected_program" type="hidden" value="{{$program->id}}">
-                                                <button class="ml-2 dropdown-item btnA btnSuccess" title="Approve" type="submit">Accept</button>
-                                            </form>
-                                            <form action="{{route('staff.committee.reject', $committee->id)}}"
-                                                  method="POST">
-                                                {{ csrf_field() }}
-                                                <input name="selected_program" type="hidden" value="{{$program->id}}">
-                                                <button class="ml-2 dropdown-item btnA btnDelete" title="Reject" type="submit">Reject</button>
+                                            <button class="ml-2 dropdown-item btnA" title="Edit" type="submit"
+                                                    data-toggle="modal"
+                                                    data-target="#editCom-{{$committee->id}}">
+                                                Edit
+                                            </button>
+                                            <button class="ml-2 dropdown-item btnA btnDelete" title="Reject" type="submit"
+                                                    data-toggle="modal"
+                                                    data-target="#deleteCom-{{$committee->id}}">
+                                                Delete
+                                            </button>
                                             </form>
                                         </div>
                                     </div>
@@ -139,6 +139,62 @@
                             @endif
                             @endif
                         </ul>
+
+                            {{--                                    modal edit proposal--}}
+                            <div class="modal fade" id="editCom-{{$committee->id}}">
+                                <div class="modal-dialog">
+                                    <div class="modal-content card-bg-change">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title font-weight-bold">Edit Access {{$committee->identity->name}}</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body" style="text-align: left;">
+                                            <form action="{{route ('staff.committee.update', $committee)}}" method="POST">
+                                                <div class="form-group">
+                                                    {{ csrf_field() }}
+                                                    <input type="hidden" name="_method" value="PATCH">
+                                                    <div class="form-group">
+                                                        <label>Set Access To:</label>
+                                                        <select name="category" class="custom-select">
+                                                            <option value="0">Team</option>
+                                                            <option value="1">PIC</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group text-center">
+                                                    <button class="btnA circular purplestar p-2 purple-hover" type="submit">Set Access</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{--        Delete Commitee--}}
+
+                            <div class="modal fade" id="deleteCom-{{ $committee->id }}">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Are you sure want to remove {{ $committee->identity->name }} form this program ?</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body d-inline-block text-center" style="text-align: left;">
+                                            <form action="{{ route('staff.committee.destroy', $committee) }}" method="post" class="d-inline-block">
+                                                @csrf
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover">Yes</button>
+                                            </form>
+                                            <button type="button" class="btnA circular bluestar font-weight-bold p-2 blue-hover" data-dismiss="modal">No</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         @endforeach
 
 

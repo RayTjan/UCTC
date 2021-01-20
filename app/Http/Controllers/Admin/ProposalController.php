@@ -119,7 +119,8 @@ class ProposalController extends Controller
     public function destroy(Proposal $proposal)
     {
         $proposal->delete();
-        return redirect()->route('admin.proposal.index');
+        return empty($proposal) ? redirect()->back()->with('Fail', "Failed to delete")
+            : redirect()->back()->with('Success', 'Success delete proposal');
     }
 
     public function approve($id){

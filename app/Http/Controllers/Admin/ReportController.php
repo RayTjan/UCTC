@@ -117,7 +117,8 @@ class ReportController extends Controller
             'report' => $dataReport['report']
         ]);
 
-        return redirect(route('admin.report.show', $report->program));
+        return empty($report) ? redirect()->back()->with('Fail', "Failed to delete")
+            : redirect()->back()->with('Success', 'Success delete report');
     }
 
     /**

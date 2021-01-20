@@ -40,20 +40,12 @@ class FileAttachmentController extends Controller
      */
     public function store(Request $request)
     {
-        $task = Task::findOrFail($request->idTask);
-        $task->update([
-            'status' => $request->status,
-        ]);
-
-        //call program
-        $action = ActionPlan::findOrFail($task->action_plan);
-
         FileAttachment::create([
             'name' => $request->name,
             'file_attachment' => $request->file_attachment,
-            'program' => $action->program,
+            'program' => $request->program,
         ]);
-        return redirect()->route('staff.actionTask.show', $task->action_plan);
+        return redirect()->route('staff.actionTask.show', $request->action_plan);
     }
 
     /**

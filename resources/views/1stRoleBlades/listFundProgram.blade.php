@@ -1,18 +1,18 @@
 @extends('layouts.app')
-@section('title', 'Dana')
+@section('title', 'Fund')
 @section('content')
 
     <div class="d-flex justify-content-between">
-        <h1 class="col font-weight-bold">Dana List {{$program->name}}</h1>
+        <h1 class="col font-weight-bold">fund List {{$program->name}}</h1>
         @auth()
             <div class="clearfix">
                 {{-- auth to limit content, it cannot be accessed until login --}}
                 <div class="float-right">
                     {{--                <a href="{{route('action.create')}}" class="btn btn-primary btn-block" role="button" aria-pressed="true">New action</a>--}}
                     <a role="button" aria-pressed="true"
-                       title="Add dana"
+                       title="Add fund"
                        data-toggle="modal"
-                       data-target="#adddana">
+                       data-target="#addfund">
                         <svg
                             aria-hidden="true"
                             focusable="false"
@@ -38,18 +38,18 @@
         @endauth
     </div>
 
-    {{--            modal add dana--}}
-    <div class="modal fade" id="adddana">
+    {{--            modal add fund--}}
+    <div class="modal fade" id="addfund">
         <div class="modal-dialog">
             <div class="modal-content card-bg-change">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title font-weight-bold">Add dana </h4>
+                    <h4 class="modal-title font-weight-bold">Add fund </h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body" style="text-align: left;">
-                    <form action="{{route ('staff.dana.store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route ('admin.fund.store')}}" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             {{ csrf_field() }}
                             <input type="hidden" name="program" value="{{$program->id}}">
@@ -72,7 +72,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <button class="btnA circular bluestar font-weight-bold p-2 blue-hover" type="submit">Add dana</button>
+                            <button class="btnA circular bluestar font-weight-bold p-2 blue-hover" type="submit">Add fund</button>
                         </div>
                     </form>
                 </div>
@@ -98,35 +98,35 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($danas as $dana)
+                            @foreach($funds as $fund)
                                 <tr class="row100 body">
                                     <td class="cell100 column2">
-                                        {{$dana->name}}
+                                        {{$fund->name}}
                                     </td>
                                     <td class="cell100 column6">
-                                        Rp. {{$dana->value}}
+                                        Rp. {{$fund->value}}
                                     </td>
 
                                     <td class="cell100 column3">
                                         <a data-toggle="modal"
-                                           data-target="#desc-{{$dana->id}}"
+                                           data-target="#desc-{{$fund->id}}"
                                            class="btn btn-primary titlelogin">
                                             Desc
                                         </a>
                                     </td>
                                     <td class="cell100 column3">
-                                        @if($dana->status == '0')
+                                        @if($fund->status == '0')
                                             <div class="text-primary">Pending</div>
-                                        @elseif($dana->status == '1')
+                                        @elseif($fund->status == '1')
                                             <div class="text-success">Approved</div>
-                                        @elseif($dana->status == '2')
+                                        @elseif($fund->status == '2')
                                             <div class="text-danger">Rejected</div>
                                         @endif
                                     </td>
                                     <td class="cell100 column3">
-                                        @if($dana->status == '2')
+                                        @if($fund->status == '2')
                                             <a data-toggle="modal"
-                                               data-target="#note-{{$dana->id}}"
+                                               data-target="#note-{{$fund->id}}"
                                                class="btn btn-danger titlelogin">
                                                 Coor's Note
                                             </a>
@@ -135,33 +135,52 @@
                                         @endif
                                     </td>
 
-                                    @if($dana->status == '0')
+                                    @if($fund->status == '0')
                                         <td class="cell100 column9 d-flex">
 
                                             {{--                                    edit--}}
 
                                             <button class="btnA circular purplestar purple-hover iconAct mr-1 p-1" title="Edit"
                                                     data-toggle="modal"
-                                                    data-target="#editdana-{{$dana->id}}">
+                                                    data-target="#editfund-{{$fund->id}}">
                                                 <i class="fa fa-pencil"></i>
                                             </button>
 
                                             {{--                                    delete--}}
-                                            <form action="{{route('staff.dana.destroy', $dana)}}"
-                                                  method="POST">
-                                                {{ csrf_field() }}
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <button class="btnA circular redstar red-hover iconAct mr-1 p-1" title="Delete">
-                                                    <i class="fa fa-close"></i>
-                                                </button>
-                                            </form>
-
+                                            <button class="btnA circular redstar red-hover iconAct mr-1 p-1" title="Delete"
+                                                    data-toggle="modal"
+                                                    data-target="#deletefund-{{$fund->id}}">
+                                                <i class="fa fa-close"></i>
+                                            </button>
                                         </td>
                                     @endif
                                 </tr>
 
+{{--                                delete fund--}}
+                                <div class="modal fade" id="deletefund-{{ $fund->id }}">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Are you sure want to delete this {{ $fund->name }} ?</h4>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <!-- Modal body -->
+                                            <div class="modal-body d-inline-block text-center" style="text-align: left;">
+                                                <form action="{{ route('admin.fund.destroy', $fund) }}" method="post" class="d-inline-block">
+                                                    @csrf
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover widthSubmitButton">Yes</button>
+                                                </form>
+                                                <button type="button" class="btnA circular bluestar font-weight-bold p-2 blue-hover widthSubmitButton" data-dismiss="modal">No</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
                                 {{--            modal desc--}}
-                                <div class="modal fade" id="desc-{{$dana->id}}">
+                                <div class="modal fade" id="desc-{{$fund->id}}">
                                     <div class="modal-dialog">
                                         <div class="modal-content card-bg-change">
                                             <!-- Modal Header -->
@@ -171,14 +190,14 @@
                                             </div>
                                             <!-- Modal body -->
                                             <div class="modal-body" style="text-align: left;">
-                                                <p>{{$dana->description}}</p>
+                                                <p>{{$fund->description}}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 {{--            modal note--}}
-                                <div class="modal fade" id="note-{{$dana->id}}">
+                                <div class="modal fade" id="note-{{$fund->id}}">
                                     <div class="modal-dialog">
                                         <div class="modal-content bg-change-red">
                                             <!-- Modal Header -->
@@ -188,46 +207,46 @@
                                             </div>
                                             <!-- Modal body -->
                                             <div class="modal-body" style="text-align: left;">
-                                                <p class="titlelogin">{{$dana->note}}</p>
+                                                <p class="titlelogin">{{$fund->note}}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                {{--            modal edit dana--}}
-                                <div class="modal fade" id="editdana-{{$dana->id}}">
+                                {{--            modal edit fund--}}
+                                <div class="modal fade" id="editfund-{{$fund->id}}">
                                     <div class="modal-dialog">
                                         <div class="modal-content card-bg-change">
                                             <!-- Modal Header -->
                                             <div class="modal-header">
-                                                <h4 class="modal-title font-weight-bold">Edit {{$dana->name}} </h4>
+                                                <h4 class="modal-title font-weight-bold">Edit {{$fund->name}} </h4>
                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             </div>
                                             <!-- Modal body -->
                                             <div class="modal-body" style="text-align: left;">
-                                                <form action="{{route ('staff.dana.update',$dana)}}" method="POST" enctype="multipart/form-data">
+                                                <form action="{{route ('admin.fund.update',$fund)}}" method="POST" enctype="multipart/form-data">
                                                     <div class="form-group">
                                                         {{ csrf_field() }}
                                                         <input type="hidden" name="_method" value="PATCH">
                                                         <div class="form-group">
                                                             <label>Name: </label>
-                                                            <input type="text" class="form-control" name="name" value="{{$dana->name}}" required>
+                                                            <input type="text" class="form-control" name="name" value="{{$fund->name}}" required>
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Value: </label>
-                                                            <input type="text" class="form-control" name="value" value="{{$dana->value}}" required>
+                                                            <input type="text" class="form-control" name="value" value="{{$fund->value}}" required>
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Date: </label>
-                                                            <input type="date" class="form-control" name="date" value="{{ $dana->date }}" required>
+                                                            <input type="date" class="form-control" name="date" value="{{ $fund->date }}" required>
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Description: </label>
-                                                            <textarea type="text" class="form-control" name="description" required>{{ $dana->description }}</textarea>
+                                                            <textarea type="text" class="form-control" name="description" required>{{ $fund->description }}</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <button class="btnA circular bluestar font-weight-bold p-2 blue-hover" type="submit">Edit dana</button>
+                                                        <button class="btnA circular bluestar font-weight-bold p-2 blue-hover" type="submit">Edit fund</button>
                                                     </div>
                                                 </form>
                                             </div>

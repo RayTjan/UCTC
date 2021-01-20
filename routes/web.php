@@ -69,9 +69,9 @@ Route::group([
     Route::get('action/create/{id}', ['as' => 'action.create', 'uses' => '\App\Http\Controllers\Admin\ActionController@create']);
     Route::resource('action', \App\Http\Controllers\Admin\ActionController::class)->except('create');
     Route::resource('finance', \App\Http\Controllers\Admin\FinanceController::class);
-    Route::resource('dana', \App\Http\Controllers\Admin\PencairanDanaController::class);
-    Route::post('dana/{id}/approve', [\App\Http\Controllers\Admin\PencairanDanaController::class, 'approve'])->name('dana.approve');
-    Route::patch('dana/{id}/reject', [\App\Http\Controllers\Admin\PencairanDanaController::class, 'reject'])->name('dana.reject');
+    Route::resource('fund', \App\Http\Controllers\Admin\FundController::class);
+    Route::post('fund/{id}/approve', [\App\Http\Controllers\Admin\FundController::class, 'approve'])->name('fund.approve');
+    Route::patch('fund/{id}/reject', [\App\Http\Controllers\Admin\FundController::class, 'reject'])->name('fund.reject');
 });
 
 Route::group([
@@ -103,7 +103,7 @@ Route::group([
     Route::get('file/create/{id}', ['as' => 'file.create', 'uses' => '\App\Http\Controllers\Staff\FileAttachmentController@create']);
     Route::resource('file', \App\Http\Controllers\Staff\FileAttachmentController::class)->except('create');
     Route::resource('finance', \App\Http\Controllers\Staff\FinanceController::class);
-    Route::resource('dana', \App\Http\Controllers\Staff\PencairanDanaController::class);
+    Route::resource('fund', \App\Http\Controllers\Staff\FundController::class);
 });
 
 Route::group([
@@ -136,5 +136,5 @@ Route::group([
     Route::get('file/create/{id}', ['as' => 'file.create', 'uses' => '\App\Http\Controllers\User\FileAttachmentController@create']);
     Route::resource('file', \App\Http\Controllers\User\FileAttachmentController::class)->except('create');
     Route::resource('finance', \App\Http\Controllers\User\FinanceController::class);
-    Route::resource('dana', \App\Http\Controllers\User\PencairanDanaController::class);
+    Route::resource('fund', \App\Http\Controllers\User\FundController::class);
 });

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UctcPencairanDana extends Migration
+class UctcDisbursementOfFunds extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class UctcPencairanDana extends Migration
      */
     public function up()
     {
-        Schema::create('uctc_pencairan_danas', function (Blueprint $table) {
+        Schema::create('uctc_disbursement_of_funds', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->integer('value');
@@ -34,6 +34,6 @@ class UctcPencairanDana extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('uctc_pencairan_danas');
+        Schema::dropIfExists('uctc_disbursement_of_funds');
     }
 }

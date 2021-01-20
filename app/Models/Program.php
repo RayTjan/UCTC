@@ -52,7 +52,7 @@ class Program extends Model
         return $this->belongsTo(User::class,'created_by','id');
     }
     public function committees(){
-        return $this->belongsToMany(User::class,'uctc_program_user','uctc_program_id', 'uctc_user_id')->withPivot('is_approved')->withTimestamps();
+        return $this->belongsToMany(User::class,'uctc_program_user','uctc_program_id', 'uctc_user_id')->withTimestamps();
     }
     public function clients(){
         return $this->belongsToMany(Client::class, 'uctc_client_program','uctc_program_id', 'uctc_client_id')->withTimestamps();

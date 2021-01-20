@@ -75,12 +75,24 @@
                 @endif
             </div>
 
+            @if(isset($proposal->id))
             <div class="row align-items-center">
                 <h6 class="col-1 font-weight-bold float-left pr-1">Proposal :</h6>
-                <p class="col-md-1 font-weight-bold circular greenstar">
-                    Approved
-                </p>
+                @if($proposal->status == '0')
+                    <p class="col-md-1 font-weight-bold circular yellowstar">
+                        Pending
+                    </p>
+                @elseif($proposal->status == '1')
+                    <p class="col-md-1 font-weight-bold circular greenstar">
+                        Approved
+                    </p>
+                @elseif($proposal->status == '2')
+                    <p class="col-md-1 font-weight-bold circular redstar">
+                        Rejected
+                    </p>
+                @endif
             </div>
+            @endif
 
             <h6 class="font-weight-bold">Description</h6>
             <p class="ml-3">{{$program->description}}</p>
@@ -171,9 +183,9 @@
                     <i class="fa fa-database"></i>
                     Action Plan
                 </a>
-                <a href="{{ route('staff.dana.show', $program) }}" title="Dana" class="circular toscastar font-weight-bold p-2 tosca-hover mr-2">
+                <a href="{{ route('staff.fund.show', $program) }}" title="Funds" class="circular toscastar font-weight-bold p-2 tosca-hover mr-2">
                     <i class="fa fa-money"></i>
-                   Pengajuan Dana
+                    Disbursement of Funds
                 </a>
                 @endif
 
@@ -202,12 +214,13 @@
                     Proposal
                 </a>
 
-{{--                buat report, masih belum tau ifnya apa--}}
-                @if(isset($program->hasProposals[0]->id))
+                @if(isset($proposal->status))
+                @if($proposal->status == "1")
                     <a href="{{ route('staff.report.create', $program) }}" title="Report" class="circular greenstar font-weight-bold p-2 green-hover mr-2">
                         <i class="fa fa-book"></i>
                         Report
                     </a>
+                @endif
                 @endif
                 @endif
                 @if($edit == true)

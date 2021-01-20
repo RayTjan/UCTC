@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Dana extends Model
+class Fund extends Model
 {
     use HasFactory;
-    public $table = 'uctc_pencairan_danas';
+    public $table = 'uctc_disbursement_of_funds';
 
     protected $fillable= [
         'name',

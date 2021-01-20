@@ -40,34 +40,12 @@ class CommitteeController extends Controller
         $user = User::findOrFail($request->user_id);
         if ($request->selected_program != null){
 //            dd($request->selected_program);
-            $attend = $user->attends()->syncWithoutDetaching($request->selected_program, ['is_approved'=>'0']);
+            $attend = $user->attends()->syncWithoutDetaching($request->selected_program);
             return empty($attend)?redirect()->back()->with('Fail',"Failed to add new committee") : redirect()->back()->with('Success',"Committee added successfully");
         }
         else{
             return redirect()->back()->with('WHAT',"Failed to add new committee");
         }
-    }
-    public function approve($id, Request $request){
-        $user = User::findOrFail($id);
-        $program = $user->attends->where('id','=',$request->selected_program)->first();
-        $program->pivot->update([
-            'is_approved' => '1',
-        ]);
-
-        return empty($program) ? redirect()->back()->with('Fail', "Failed to update status")
-            : redirect()->back()->with('Success', 'Success guest: #('.$user->identity->name.') approved');
-
-    }
-    public  function reject($id, Request $request)
-    {
-        $user = User::findOrFail($id);
-        $program = $user->attends->where('id', '=', $request->selected_program)->first();
-        $program->pivot->update([
-            'is_approved' => '2',
-        ]);
-
-        return empty($program) ? redirect()->back()->with('Fail', "Failed to update status")
-            : redirect()->back()->with('Success', 'Success guest: #('.$user->identity->name.') approved');
     }
 
     /**
