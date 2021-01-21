@@ -37,6 +37,18 @@ class ProgramController extends Controller
         return view('1stRoleBlades.listProgram', compact('programs','types','categories','page'));
     }
 
+    public function coor()
+    {
+        $types = Type::all();
+        $categories = Category::all();
+        $allprograms = Program::all();
+        $programs = $allprograms->sortByDesc('name');
+
+        $page = 'all';
+
+        return view('1stRoleBlades.listProgramCoor', compact('programs','types','categories','page'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -298,7 +310,7 @@ class ProgramController extends Controller
 
         $page = "type-".$request->value;
 
-        return view('1stRoleBlades.listProgram', compact('programs','types','categories','page'));
+        return view('1stRoleBlades.listProgramCoor', compact('programs','types','categories','page'));
     }
     public function filterProgramCategory(Request $request){
         $programs = Program::all()->where('category', $request->value);
@@ -308,7 +320,7 @@ class ProgramController extends Controller
 
         $page = "category-".$request->value;
 
-        return view('1stRoleBlades.listProgram', compact('programs','types','categories','page'));
+        return view('1stRoleBlades.listProgramCoor', compact('programs','types','categories','page'));
     }
     public function filterProgramStatus(Request $request){
         $programs = Program::all()->where('status', $request->value);
@@ -318,7 +330,7 @@ class ProgramController extends Controller
 
         $page = "status-".$request->value;
 
-        return view('1stRoleBlades.listProgram', compact('programs','types','categories','page'));
+        return view('1stRoleBlades.listProgramCoor', compact('programs','types','categories','page'));
     }
 //    public function filterProgramDate(Request $request){
 //        $programs = Program::all()->where('category', $request->value);
@@ -342,7 +354,7 @@ class ProgramController extends Controller
         $myPrograms = $amyPrograms->sortByDesc('name');
         $page = "all";
 
-        return view('1stRoleBlades.listMyProgram', compact('myPrograms','types','categories','page'));
+        return view('1stRoleBlades.listProgramCoor', compact('myPrograms','types','categories','page'));
     }
 
     public function approve($id){
