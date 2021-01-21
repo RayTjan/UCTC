@@ -16,4 +16,9 @@ class Client extends Model
         'address',
         'email',
     ];
+
+    public function attends(){
+        return $this->belongsToMany(Program::class, 'uctc_client_program','uctc_client_id','uctc_program_id')->withTimestamps();
+    }
+
 }

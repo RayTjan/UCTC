@@ -21,9 +21,26 @@ class Program extends Model
         'created_by',
         'type',
         'category',
+        'note',
+        'thumbnail',
     ];
     public function hasPlans(){
         return $this->hasMany(ActionPlan::class, 'program','id');
+    }
+    public function hasFinances(){
+        return $this->hasMany(Finance::class, 'program','id');
+    }
+    public function hasDocs(){
+        return $this->hasMany(Documentation::class, 'program','id');
+    }
+    public function hasProposals(){
+        return $this->hasMany(Proposal::class, 'program','id');
+    }
+    public function hasReports(){
+        return $this->hasMany(Report::class, 'program','id');
+    }
+    public function hasAttachments(){
+        return $this->hasMany(FileAttachment::class, 'program','id');
     }
     public function categorized(){
         return $this->belongsTo(Category::class,'category','id');
@@ -35,6 +52,9 @@ class Program extends Model
         return $this->belongsTo(User::class,'created_by','id');
     }
     public function committees(){
-        return $this->belongsToMany(User::class,'uctc_program_user','uctc_program_id', 'uctc_user_id')->withPivot('is_approved')->withTimestamps();
+        return $this->belongsToMany(User::class,'uctc_program_user','uctc_program_id', 'uctc_user_id')->withTimestamps();
+    }
+    public function clients(){
+        return $this->belongsToMany(Client::class, 'uctc_client_program','uctc_program_id', 'uctc_client_id')->withTimestamps();
     }
 }

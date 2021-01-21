@@ -30,13 +30,28 @@ class LoginController extends Controller
             'is_active'=>'1',
             'is_verified'=>'1',
         ];
-
-        $check = DB::table('users')->where('email',$request->email)->first();
+        $staff = [
+            'email'=>$request->email,
+            'password'=>$request->password,
+            'role_id'=>2,
+            'is_login'=>'0',
+            'is_active'=>'1',
+            'is_verified'=>'1',
+        ];
+        $admin = [
+            'email'=>$request->email,
+            'password'=>$request->password,
+            'role_id'=>1,
+            'is_login'=>'0',
+            'is_active'=>'1',
+            'is_verified'=>'1',
+        ];
+        $check = DB::table('uctc_users')->where('email',$request->email)->first();
 
         if ($check->is_verified == '1'){
             if ($check->is_active =='1'){
                 if ($check->is_login =='0'){
-                    if (Auth::attempt($user)){
+                    if (Auth::attempt($user)||Auth::attempt($staff)||Auth::attempt($admin)){
                         $this->isLogin(Auth::id());
                         $response = $http->post('http://uctc.test/oauth/token',[
                             'form_params'=>[
@@ -106,13 +121,13 @@ class LoginController extends Controller
     }
 
     public function logout(){
-        $user = Auth::user();
+        $currentUser = Auth::user();
         $accessToken = Auth::user()->token();
         DB::table("oauth_refresh_tokens")
             ->where('access_token_id', $accessToken->id)
             ->update(['revoked'=>true]);
 
-        $user->update([
+        $currentUser->update([
             'is_login' => '0',
         ]);
         $accessToken->revoke();

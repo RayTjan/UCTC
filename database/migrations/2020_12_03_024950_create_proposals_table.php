@@ -16,8 +16,11 @@ class CreateProposalsTable extends Migration
         Schema::create('uctc_proposals', function (Blueprint $table) {
             $table->id();
             $table->string('proposal');
-            $table->string('status');
+            $table->enum('status',['0','1','2'])->default('0');
+            $table->text('note')->nullable();
+            $table->unsignedBigInteger('program')->nullable();
             $table->timestamps();
+            $table->foreign('program')->references('id')->on('uctc_programs')->onDelete('cascade');
         });
     }
 

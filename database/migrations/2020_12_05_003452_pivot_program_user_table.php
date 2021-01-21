@@ -15,15 +15,14 @@ class PivotProgramUserTable extends Migration
     {
         Schema::create('uctc_program_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('uctc_program_id')->constrained();
-            $table->foreignId('uctc_user_id')->constrained();
-            $table->enum('is_approved', ['0','1','2'])->default('0')->comment('0 = Pending, 1 = Approved, 2 = Rejected');
+            $table->foreignId('uctc_program_id')->constrained()->onDelete('cascade');
+            $table->foreignId('uctc_user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
 
     /**
-     * Reverse the migrations.
+     *
      *
      * @return void
      */

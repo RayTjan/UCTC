@@ -45,37 +45,38 @@ class LoginController extends Controller
             'email'=>$request->email,
             'password'=>$request->password,
             'role_id'=>1,
-//            'is_login'=>'0',
-//            'is_active'=>'1',
-//            'is_verified'=>'1',
+            'is_login'=>'0',
+            'is_active'=>'1',
+            'is_verified'=>'1',
         ];
         $creator = [
             'email'=>$request->email,
             'password'=>$request->password,
             'role_id'=>2,
-//            'is_login'=>'0',
-//            'is_active'=>'1',
-//            'is_verified'=>'1',
+            'is_login'=>'0',
+            'is_active'=>'1',
+            'is_verified'=>'1',
         ];
         $user = [
             'email'=>$request->email,
             'password'=>$request->password,
             'role_id'=>3,
-//            'is_login'=>'0',
-//            'is_active'=>'1',
-//            'is_verified'=>'1',
+            'is_login'=>'0',
+            'is_active'=>'1',
+            'is_verified'=>'1',
         ];
 
         if (Auth::attempt($admin)) {
             $this->isLogin(Auth::id());
-            return redirect()->route('program.index');
+            return redirect()->route('coordinator.program.index');
         } elseif (Auth::attempt($creator)) {
             $this->isLogin(Auth::id());
-            return redirect()->route('program.index');
+            return redirect()->route('lecturer.program.index');
         } elseif (Auth::attempt($user)) {
             $this->isLogin(Auth::id());
-            return redirect()->route('program.index');
+            return redirect()->route('student.program.index');
         }
+
         return redirect()->route('login');
 
     }
@@ -91,9 +92,9 @@ class LoginController extends Controller
     }
 
     private function isLogin(int $id){
-//        $acc = User::findOrFail($id);
-//        return $acc->update([
-//            'is_login' => '1',
-//        ]);
+        $acc = User::findOrFail($id);
+        return $acc->update([
+            'is_login' => '1',
+        ]);
     }
 }

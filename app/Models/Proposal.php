@@ -13,5 +13,12 @@ class Proposal extends Model
     protected $fillable = [
         'proposal',
         'status',
+        'program',
+        'note',
     ];
+
+    public function belongProgram(){
+        return $this->belongsTo(Program::class,'program','id');
+    }
+
 }

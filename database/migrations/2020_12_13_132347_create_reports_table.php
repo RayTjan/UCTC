@@ -16,8 +16,11 @@ class CreateReportsTable extends Migration
         Schema::create('uctc_reports', function (Blueprint $table) {
             $table->id();
             $table->string('report');
-            $table->string('status');
+            $table->enum('status',['0','1','2'])->default("0");;
+            $table->unsignedBigInteger('program')->nullable();
+            $table->text('note')->nullable();
             $table->timestamps();
+            $table->foreign('program')->references('id')->on('uctc_programs')->onDelete('cascade');
         });
     }
 
