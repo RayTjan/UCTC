@@ -20,13 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c65294d-07bd-4a7d-a67f-97ac44bb5c5d" name="Default Changelist" comment="">
+
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-<<<<<<< Updated upstream
+
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/customStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/customStyle.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/3rdRoleBlades/detailProgram.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/3rdRoleBlades/detailProgram.blade.php" afterDir="false" />
-=======
->>>>>>> Stashed changes
+
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,6 +181,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -251,11 +254,10 @@
       <workItem from="1608174602622" duration="1198000" />
       <workItem from="1608185743498" duration="2538000" />
       <workItem from="1608222489602" duration="2374000" />
-<<<<<<< Updated upstream
       <workItem from="1608250770354" duration="3287000" />
-=======
       <workItem from="1608252327658" duration="602000" />
->>>>>>> Stashed changes
+      <workItem from="1607979870619" duration="643000" />
+      <workItem from="1608219614757" duration="282000" />
     </task>
     <servers />
   </component>
@@ -306,6 +308,14 @@
     </state>
     <state x="482" y="232" width="577" height="566" key="find.popup/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1608231160042" />
     <state x="2319" y="124" width="557" height="566" key="find.popup/0.0.1536.864/1920.0.1280.720@1920.0.1280.720" timestamp="1608229118100" />
+
+    <state x="603" y="279" width="722" height="682" key="find.popup" timestamp="1608219657584">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="482" y="232" width="577" height="566" key="find.popup/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1607956474496" />
+    <state x="2319" y="124" width="557" height="566" key="find.popup/0.0.1536.864/1920.0.1280.720@1920.0.1280.720" timestamp="1607850079535" />
+    <state x="603" y="279" width="722" height="682" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1608219657584" />
+
     <state x="425" y="197" key="run.anything.popup" timestamp="1607050812602">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
