@@ -23,6 +23,7 @@ class ProgramController extends Controller
     public function index()
     {
         $programs = Program::all();
+        $programs = $programs->sortByDesc('updated_at');
         return ProgramResource::collection($programs);
     }
     private $client;
