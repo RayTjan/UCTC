@@ -36,7 +36,7 @@
             <div class="heightName">
                 <div>
                     <h4 class="font-weight-bold">{{$user->identity->name}}</h4>
-                    <p style="font-size: 12px;" class="mb-0">uh ah ah eh wowoo woaoawo dkaokdoakodkasadasdadssadsad</p>
+                    <p style="font-size: 12px;" class="mb-0">{{$user->identity->description}}</p>
                 </div>
             </div>
             <div class="social">
@@ -57,7 +57,7 @@
                         </a>
 
                         <div class="dropdown-content">
-                            <div class="dropdown-item" >081357160052</div>
+                            <div class="dropdown-item" >{{$user->identity->phone}}</div>
                         </div>
                     </div>
 
@@ -67,7 +67,7 @@
                         </a>
 
                         <div class="dropdown-content">
-                            <div class="dropdown-item" >Griya Sono Indah</div>
+                            <div class="dropdown-item" >{{$user->identity->line_acc}}</div>
                         </div>
                     </div>
 

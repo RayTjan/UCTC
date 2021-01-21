@@ -243,10 +243,10 @@
                     <i class="fa fa-database"></i>
                     Action Plan
                 </a>
-                <a href="{{ route('student.fund.show', $program) }}" title="Funds" class="circular toscastar font-weight-bold p-2 tosca-hover mr-2">
-                    <i class="fa fa-money"></i>
-                    Disbursement of Funds
-                </a>
+{{--                <a href="{{ route('student.fund.show', $program) }}" title="Funds" class="circular toscastar font-weight-bold p-2 tosca-hover mr-2">--}}
+{{--                    <i class="fa fa-money"></i>--}}
+{{--                    Disbursement of Funds--}}
+{{--                </a>--}}
                 @endif
 
                 @if($program->status == '3')
@@ -259,43 +259,23 @@
                 </a>
                 @endif
 
-                @if($edit == true)
-                @if($program->status != '3'&&$program->status != '2')
-                <a href="{{ route('student.program.edit', $program) }}" title="Edit" class="circular purplestar font-weight-bold p-2 purple-hover mr-2">
-                    <i class="fa fa-dashboard"></i>
-                    Edit
-                </a>
-                @endif
-                @endif
+{{--                @if($program->status == '1'||$program->status == '2')--}}
+{{--                <a href="{{ route('student.proposal.show', $program) }}" title="Proposal" class="circular toscastar font-weight-bold p-2 tosca-hover mr-2">--}}
+{{--                    <i class="fa fa-address-book"></i>--}}
+{{--                    Proposal--}}
+{{--                </a>--}}
 
-                @if($program->status == '1'||$program->status == '2')
-                <a href="{{ route('student.proposal.show', $program) }}" title="Proposal" class="circular toscastar font-weight-bold p-2 tosca-hover mr-2">
-                    <i class="fa fa-address-book"></i>
-                    Proposal
-                </a>
+{{--                @if(isset($proposal->status))--}}
+{{--                @if($proposal->status == "1")--}}
+{{--                    <a href="{{ route('student.report.create', $program) }}" title="Report" class="circular greenstar font-weight-bold p-2 green-hover mr-2">--}}
+{{--                        <i class="fa fa-book"></i>--}}
+{{--                        Report--}}
+{{--                    </a>--}}
+{{--                @endif--}}
+{{--                @endif--}}
 
-                @if(isset($proposal->status))
-                @if($proposal->status == "1")
-                    <a href="{{ route('student.report.create', $program) }}" title="Report" class="circular greenstar font-weight-bold p-2 green-hover mr-2">
-                        <i class="fa fa-book"></i>
-                        Report
-                    </a>
-                @endif
-                @endif
+{{--                @endif--}}
 
-                @endif
-                @if($edit == true)
-                @if($program->status != '2')
-                <button type="button"
-                        title="Delete"
-                        data-toggle="modal"
-                        data-target="#deleteProgram"
-                        class="btnA circular redstar font-weight-bold p-2 red-hover">
-                    <i class="fa fa-close"></i>
-                    Delete
-                </button>
-                @endif
-                @endif
             </div>
             @if($program->status == '1' || $program->status == '2')
             <div>

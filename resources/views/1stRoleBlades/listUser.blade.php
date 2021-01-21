@@ -46,7 +46,7 @@
         <link href='//fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <div class="quiz-window quiz-padding">
-            <div class="quiz-window-body">
+            <div class="">
                 <div class="gui-window-awards">
 
 
@@ -62,7 +62,7 @@
                     <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget">
                         <li class="guiz-awards-time customComittee">{{$user->identity->name}}</li>
                         <li class="guiz-awards-time customComittee">{{$user->email}}</li>
-                        <li class="guiz-awards-time customComittee">{{$user->role_id}}</li>
+                        <li class="guiz-awards-time customComittee">{{$user->role->name}}</li>
                         <li class="guiz-awards-time customComittee">ntah</li>
                         <li class="guiz-awards-time customComittee">
                             <div class="dropdown">
@@ -75,12 +75,38 @@
 
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                         <a class="dropdown-item" href="#">Edit</a>
-                                        <a class="dropdown-item btnDelete" href="#">Delete</a>
+                                        <a class="dropdown-item btnDelete" href="#"
+                                                data-toggle="modal"
+                                                data-target="#delete-{{$user->id}}">Delete</a>
                                     </div>
                                 </div>
                             </div>
                         </li>
                     </ul>
+
+                        {{--        Delete User--}}
+
+                        <div class="modal fade" id="delete-{{ $user->id }}">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Are you sure want to delete this user {{ $user->identity->name }} ?</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <!-- Modal body -->
+                                    <div class="modal-body d-inline-block text-center" style="text-align: left;">
+                                        <form action="{{ route('coordinator.user.destroy', $user) }}" method="post" class="d-inline-block">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" class="btnA circular redstar font-weight-bold p-2 red-hover widthSubmitButton">Yes</button>
+                                        </form>
+                                        <button type="button" class="btnA circular bluestar font-weight-bold p-2 blue-hover widthSubmitButton" data-dismiss="modal">No</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     @endforeach
 
                 </div>

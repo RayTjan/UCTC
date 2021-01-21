@@ -49,6 +49,7 @@
     <link href="{{ '/css/table.css' }}" rel="stylesheet" type="text/css" >
     <link href="{{ '/css/customStyle.css' }}" rel="stylesheet" type="text/css" >
 
+    <link rel="icon" href="/img/icon.svg">
 
 </head>
 <body>

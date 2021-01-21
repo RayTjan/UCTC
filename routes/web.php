@@ -22,18 +22,10 @@ Auth::routes();
 Route::get('/', 'App\Http\Controllers\DashboardController@index');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//Route::resource('program', \App\Http\Controllers\ProgramController::class);
-//Route::resource('user', \App\Http\Controllers\UserController::class);
 
 Route::get('activate', [\App\Http\Controllers\Auth\ActivationController::class, 'activate'])->name('activate');
+Route::get('info', ['as' => 'info', 'uses' => '\App\Http\Controllers\InfoController@info']);
 
-//Route::resource('action', \App\Http\Controllers\ActionPlanController::class);
-//Route::resource('task', \App\Http\Controllers\TaskController::class);
-//Route::resource('client', \App\Http\Controllers\ClientController::class);
-//Route::resource('proposal', \App\Http\Controllers\ProposalController::class);
-//Route::resource('committee',\App\Http\Controllers\CommitteeController::class);
-//Route::post('committee/{id}/approve', [\App\Http\Controllers\CommitteeController::class, 'approve'])->name('committee.approve');
-//Route::post('committee/{id}/reject', [\App\Http\Controllers\CommitteeController::class, 'reject'])->name('committee.reject');
 
 
 

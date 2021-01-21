@@ -28,6 +28,8 @@ class User extends Authenticatable
         'is_active',
         'is_verified',
         'picture',
+        'identity_id',
+        'identity_type'
     ];
 
     /**

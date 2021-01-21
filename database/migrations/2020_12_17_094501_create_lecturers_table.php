@@ -20,7 +20,7 @@ class CreateLecturersTable extends Migration
             $table->string("name");
             $table->string("email");
             $table->string("description");
-            $table->text("photo");
+            $table->text("photo")->nullable();
             $table->enum('gender',['M','F'])->default('M');
             $table->string("phone");
             $table->string("line_account");
