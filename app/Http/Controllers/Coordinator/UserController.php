@@ -39,6 +39,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        
         if ($request->identity_type == "App\Models\Student"){
             $identity = Student::create([
                 'nim'=>$request->nim,
