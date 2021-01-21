@@ -110,8 +110,9 @@ Route::group([
     Route::resource('program', \App\Http\Controllers\User\ProgramController::class);
     Route::resource('user', \App\Http\Controllers\User\UserController::class);
     Route::resource('committee',\App\Http\Controllers\User\CommitteeController::class);
-    Route::get('/file/{id}', '\App\Http\Controllers\User\FileAttachmentController@create')->name('file.create');
     Route::resource('file', \App\Http\Controllers\User\FileAttachmentController::class)->except('create');
+
+    Route::get('/file/{id}', '\App\Http\Controllers\User\FileAttachmentController@create')->name('file.create');
     Route::resource('client', \App\Http\Controllers\User\ClientController::class);
 
     Route::get('filterProgramType', [\App\Http\Controllers\User\ProgramController::class,'filterProgramType'])->name('program.filterProgramType');
