@@ -29,6 +29,10 @@
 
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
 
+
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_13_132725_additions_to_programs.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_13_132725_additions_to_programs.php" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,6 +262,7 @@
       <workItem from="1608252327658" duration="602000" />
       <workItem from="1607979870619" duration="643000" />
       <workItem from="1608219614757" duration="282000" />
+      <workItem from="1610279902310" duration="1674000" />
     </task>
     <servers />
   </component>
