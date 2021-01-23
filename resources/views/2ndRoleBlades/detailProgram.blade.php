@@ -2,6 +2,18 @@
 @section('title', 'Detail Program')
 @section('content')
     <div class="container" style="margin-top: 20px;">
+
+{{--        navigation--}}
+        <div>
+            <a href="" class="a-none blackhex d-inline-block">
+                <h6>Program</h6>
+            </a>
+            <i class="fa fa-angle-right d-inline-block mr-1 ml-1"></i>
+            <a href="{{route('lecturer.program.show',$program)}}" class="a-none blackhex d-inline-block">
+                <h6>Detail</h6>
+            </a>
+        </div>
+
         <div class="position-relative">
             <div>
                 <div class="d-flex flex-row">
@@ -26,7 +38,7 @@
                         @endif
                     </div>
                 </div>
-                <h3>{{ str_replace("-","/",date("d-m-Y", strtotime($program->program_date))) }}</h3>
+                <h5>{{ str_replace("-","/",date("d-m-Y", strtotime($program->program_date))) }}</h5>
             </div>
             @if($program->status == '1' || $program->status == '2')
             <div class="card-finance card-bg-change position-absolute">
@@ -47,10 +59,14 @@
                 }
                 ?>
                     <div class="clearfix">
-                        <h5 class="float-right font-weight-bold">Budgeting</h5>
+                        <h5 class="float-right font-weight-bold">Balance</h5>
                     </div>
                     <div class="clearfix mb-2">
-                        <h3 class="float-right">Rp. {{$total}}</h3>
+                        @if($total<0)
+                            <h3 class="float-right text-danger">Rp. {{$total}}</h3>
+                        @else
+                            <h3 class="float-right">Rp. {{$total}}</h3>
+                        @endif
                     </div>
 
                 @if($program->status == '1' || $program->status == '2')
@@ -66,84 +82,84 @@
 
         </div>
 
-        <div class="">
+        <div class="mt-3">
 
             @if(isset($clients[0]))
             <div class="row align-items-center">
                 <h6 class="col-md-1 font-weight-bold float-left">Client&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </h6>
                 @for($i=0;$i<sizeof($clients);$i++)
-                <p class="">
+                <div class="">
                     @if($i == (sizeof($clients)-1))
                         {{ $clients[$i]->name }}
                     @else
-                        {{ $clients[$i]->name.', ' }}
+                        {{ $clients[$i]->name.',' }}&nbsp;
                     @endif
 
-                </p>
+                </div>
                 @endfor
             </div>
             @endif
 
             <div class="row align-items-center">
                 <h6 class="col-md-1 font-weight-bold float-left">Creator&nbsp;&nbsp;&nbsp;&nbsp;: </h6>
-                <p class="">
+                <div class="">
                     {{$program->creator->identity->name}}
-                </p>
+                </div>
             </div>
 
             <div class="row align-items-center">
                 <h6 class="col-md-1 font-weight-bold float-left tab1">Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </h6>
-                <p class="">
+                <div class="">
                     {{$program->classified->name}}
-                </p>
+                </div>
             </div>
 
             <div class="row align-items-center">
                 <h6 class="col-md-1 font-weight-bold float-left tab1">Category&nbsp;&nbsp;: </h6>
-                <p class="">
+                <div class="">
                     {{$program->categorized->name}}
-                </p>
+                </div>
             </div>
 
             @if(isset($proposal->id))
             <div class="row align-items-center">
                 <h6 class="col-1 font-weight-bold float-left pr-1">Proposal&nbsp;&nbsp;&nbsp;:</h6>
                 @if($proposal->status == '0')
-                    <p class="text-primary">
+                    <div class="text-primary">
                         Pending
-                    </p>
+                    </div>
                 @elseif($proposal->status == '1')
-                    <p class="text-success">
+                    <div class="text-success">
                         Approved
-                    </p>
+                    </div>
                 @elseif($proposal->status == '2')
-                    <p class="text-danger">
+                    <div class="text-danger">
                         Rejected
-                    </p>
+                    </div>
                 @endif
             </div>
             @endif
 
             @if(isset($report->id))
                 <div class="row align-items-center">
-                    <h6 class="col-1 font-weight-bold float-left pr-1">Report&nbsp;&nbsp;&nbsp;&nbsp;:</h6>
+                    <h6 class="col-1 font-weight-bold float-left pr-1">Report&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</h6>
                     @if($report->status == '0')
-                        <p class="text-primary">
+                        <div class="text-primary">
                             Pending
-                        </p>
+                        </div>
                     @elseif($report->status == '1')
-                        <p class="text-success">
+                        <div class="text-success">
                             Approved
-                        </p>
+                        </div>
                     @elseif($report->status == '2')
-                        <p class="text-danger">
+                        <div class="text-danger">
                             Rejected
-                        </p>
+                        </div>
                     @endif
                 </div>
             @endif
 
-            <div class="row align-items-center">
+            <div class="row align-items-center mt-3">
                 <h6 class="col-md-1 font-weight-bold float-left">Goal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </h6>
                 <p class="">
                     {{ $program->goal }}
@@ -166,14 +182,14 @@
 {{--        image--}}
         @if(isset($program->hasDocs[0]->id))
         <div class="">
-            <h2 class="col font-weight-bold text-center">Documentations</h2>
+            <h2 class="col font-weight-bold text-left">Documentations</h2>
 
             <div class="container-fluid py-3">
                 <div class="d-flex colorScroll heightPic">
 
                     @foreach($program->hasDocs as $doc)
-                    <div class="col-lg-3 col-6" style="padding: 10px;">
-                        <div class="hover hover-5 text-white rounded">
+                    <div class="col-lg-3 col-6" id="picDoc" style="padding: 10px;">
+                        <div class="hover hover-5 text-white rounded" >
                             <img src="/img/documentation/{{$doc->documentation}}" alt="image">
                             <button type="button"
                                data-toggle="modal"
@@ -214,13 +230,9 @@
                     <i class="fa fa-user"></i>
                     Client
                 </a>
-                <a href="{{ route('lecturer.committee.show', $program) }}" title="Committee" class="circular cyanstar font-weight-bold p-2 cyan-hover mr-2">
+                <a href="{{ route('lecturer.committee.show', $program) }}" title="Committee" class="circular yellowstar font-weight-bold p-2 yellow-hover mr-2">
                     <i class="fa fa-user"></i>
                     Committee
-                </a>
-                <a href="{{ route('lecturer.action.show', $program) }}" title="Action Plan" class="circular bluestar font-weight-bold p-2 blue-hover mr-2">
-                    <i class="fa fa-database"></i>
-                    Action Plan
                 </a>
                 <a href="{{ route('lecturer.fund.show', $program) }}" title="Funds" class="circular toscastar font-weight-bold p-2 tosca-hover mr-2">
                     <i class="fa fa-money"></i>
@@ -246,7 +258,7 @@
 
                 @if(isset($proposal->status))
                 @if($proposal->status == "1")
-                    <a href="{{ route('lecturer.report.create', $program) }}" title="Report" class="circular greenstar font-weight-bold p-2 green-hover mr-2">
+                    <a href="{{ route('lecturer.report.create', $program) }}" title="Report" class="circular toscastar font-weight-bold p-2 tosca-hover mr-2">
                         <i class="fa fa-book"></i>
                         Report
                     </a>
@@ -255,6 +267,11 @@
                 @endif
 
                 @if($program->status == '1' || $program->status == '2')
+                    <a href="{{ route('lecturer.action.show', $program) }}" title="Action Plan" class="circular bluestar font-weight-bold p-2 blue-hover mr-2">
+                        <i class="fa fa-database"></i>
+                        Action Plan
+                    </a>
+
                     <a href="{{route('lecturer.file.show',$program)}}" class="circular graystar font-weight-bold p-2 gray-hover mr-2">
                         <i class="fa fa-clipboard"></i>
                         Data link
@@ -265,7 +282,7 @@
                 @if($edit == true)
                 @if($program->status != '3'&&$program->status != '2')
                     <a href="{{ route('lecturer.program.edit', $program) }}" title="Edit" class="circular purplestar font-weight-bold p-2 purple-hover mr-2">
-                        <i class="fa fa-dashboard"></i>
+                        <i class="fa fa-pencil"></i>
                         Edit
                     </a>
                 @endif
@@ -326,4 +343,6 @@
             </div>
         </div>
     </div>
+
+
 @endsection

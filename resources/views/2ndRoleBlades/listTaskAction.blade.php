@@ -3,6 +3,26 @@
 @section('content')
 
     <div class="container clearfix" style="margin-top: 20px;">
+
+        {{--        navigation--}}
+        <div>
+            <a href="{{route('lecturer.program.show',$action->program)}}" class="a-none blackhex d-inline-block">
+                <h6>Program</h6>
+            </a>
+            <i class="fa fa-angle-right d-inline-block mr-1 ml-1"></i>
+            <a href="{{route('lecturer.program.show',$action->program)}}" class="a-none blackhex d-inline-block">
+                <h6>Detail</h6>
+            </a>
+            <i class="fa fa-angle-right d-inline-block mr-1 ml-1"></i>
+            <a href="{{route('lecturer.action.show',$action->program)}}" class="a-none blackhex d-inline-block">
+                <h6>Action Plan</h6>
+            </a>
+            <i class="fa fa-angle-right d-inline-block mr-1 ml-1"></i>
+            <a href="{{route('lecturer.action.show',$action)}}" class="a-none blackhex d-inline-block">
+                <h6>Task</h6>
+            </a>
+        </div>
+
         <div class="d-flex justify-content-between mb-3">
             <h1 class="font-weight-bold">Tasks In {{$action->name}} Action Plan</h1>
 

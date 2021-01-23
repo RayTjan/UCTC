@@ -1,9 +1,38 @@
-
 <?php $__env->startSection('title', 'Finance'); ?>
 <?php $__env->startSection('content'); ?>
 
+    
+    <div>
+        <a href="<?php echo e(route('lecturer.program.show',$program)); ?>" class="a-none blackhex d-inline-block">
+            <h6>Program</h6>
+        </a>
+        <i class="fa fa-angle-right d-inline-block mr-1 ml-1"></i>
+        <a href="<?php echo e(route('lecturer.program.show',$program)); ?>" class="a-none blackhex d-inline-block">
+            <h6>Detail</h6>
+        </a>
+        <i class="fa fa-angle-right d-inline-block mr-1 ml-1"></i>
+        <a href="<?php echo e(route('lecturer.finance.show',$program)); ?>" class="a-none blackhex d-inline-block">
+            <h6>Saldo</h6>
+        </a>
+    </div>
     <div class="d-flex justify-content-between">
-        <h1 class="col font-weight-bold">Finance List <?php echo e($program->name); ?></h1>
+        <h1 class="col font-weight-bold">Detail Saldo <?php echo e($program->name); ?></h1>
+
+        <?php
+        $total = 0;
+
+
+
+        foreach ($program->hasFinances as $finance){
+            //0 income 1 expenditure
+            if ($finance->type == '0') {
+                $total = $total + $finance->value;
+            }else if ($finance->type == '1') {
+                $total = $total - $finance->value;
+            }
+        }
+        ?>
+
         <?php if(auth()->guard()->check()): ?>
             <div class="clearfix">
                 
@@ -126,7 +155,7 @@
                                     <td class="cell100 column4">
                                         <a data-toggle="modal"
                                            data-target="#imgview-<?php echo e($finance->id); ?>"
-                                           class="btn btn-primary titlelogin">See Detail</a>
+                                           class="btn btn-primary titlelogin">View</a>
                                     </td>
                                     <td class="cell100 column9 d-flex">
 
@@ -236,6 +265,11 @@
                                 </div>
 
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <tr class="row100 head">
+                                <th class="cell100 column2">Total</th>
+                                <th class="cell100 column6">&nbsp;</th>
+                                <th class="cell100 column6">Rp. <?php echo e($total); ?></th>
+                            </tr>
                             </tbody>
                         </table>
                     </div>

@@ -20,16 +20,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c65294d-07bd-4a7d-a67f-97ac44bb5c5d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/plugins/font/leaguespartan-bold-webfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/font/leaguespartan-bold-webfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/arrowright.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Coordinator/ProgramController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Coordinator/ProgramController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/customStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/customStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/1stRoleBlades/listFund.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/1stRoleBlades/listFund.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/css/adminlte.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/css/adminlte.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/css/adminlte.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/css/adminlte.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/2ndRoleBlades/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/2ndRoleBlades/dashboard.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/2ndRoleBlades/detailProgram.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/2ndRoleBlades/detailProgram.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/2ndRoleBlades/listMyProgram.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/2ndRoleBlades/listMyProgram.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/2ndRoleBlades/listActionPlan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/2ndRoleBlades/listActionPlan.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/2ndRoleBlades/listClient.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/2ndRoleBlades/listClient.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/2ndRoleBlades/listCommittee.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/2ndRoleBlades/listCommittee.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/2ndRoleBlades/listFileAttachment.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/2ndRoleBlades/listFileAttachment.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/2ndRoleBlades/listFinance.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/2ndRoleBlades/listFinance.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/2ndRoleBlades/listFundProgram.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/2ndRoleBlades/listFundProgram.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/2ndRoleBlades/listProposal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/2ndRoleBlades/listProposal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/2ndRoleBlades/listReport.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/2ndRoleBlades/listReport.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/2ndRoleBlades/listTaskAction.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/2ndRoleBlades/listTaskAction.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/6ZTfCoOtmWkuHtrIZaxhmTD3TtHcMZ5X05We46Q4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/7qBfFGO4ifrYTIKNwwUTFWSkrnKY7cs1uvNbjarB" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/vPqsB3erdENnrYIJMkG2Vk4GCC6sT0v0PquQe4pn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/11fd1bab03bfc10eb709cab0a0cc9fd0358add20.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/11fd1bab03bfc10eb709cab0a0cc9fd0358add20.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/32a38b938834749557f67e1f2683e725842780aa.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/32a38b938834749557f67e1f2683e725842780aa.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/32cc346323845015acda3ebcf5073e4014928339.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/32cc346323845015acda3ebcf5073e4014928339.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/4abb7689204dc1564bd89767be13fb8037da1630.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/4abb7689204dc1564bd89767be13fb8037da1630.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/500618411df4cfb64f7cd47d79c6c4ae07defb5a.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/500618411df4cfb64f7cd47d79c6c4ae07defb5a.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/53fd325910d02a8fce00a90b3808a0977e73d372.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/53fd325910d02a8fce00a90b3808a0977e73d372.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/55cfcdeaf58eff0ae27afdfdc3a2bda64cbc2f05.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/55cfcdeaf58eff0ae27afdfdc3a2bda64cbc2f05.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/56ff721ea07857c069c00973985a571197d831b3.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/56ff721ea07857c069c00973985a571197d831b3.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/719e7ce22b01f7b82df5cd79e4eb83f25ff53aa5.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/719e7ce22b01f7b82df5cd79e4eb83f25ff53aa5.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/883a199c2feb5de1f53882f5731ad093a8bedc53.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/883a199c2feb5de1f53882f5731ad093a8bedc53.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/972a6ffd732bc5da1585f5ae2493ecd2a355136d.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/972a6ffd732bc5da1585f5ae2493ecd2a355136d.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/9f6f5cd0435b3d3c5c0ffba843ebe5a381d33daf.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/9f6f5cd0435b3d3c5c0ffba843ebe5a381d33daf.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +197,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/plugins/font" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/img" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -264,6 +286,8 @@
       <workItem from="1610279902310" duration="1674000" />
       <workItem from="1611274286871" duration="6567000" />
       <workItem from="1611328548283" duration="9490000" />
+      <workItem from="1611389361025" duration="7207000" />
+      <workItem from="1611414094274" duration="12846000" />
     </task>
     <servers />
   </component>
@@ -316,9 +340,10 @@
     <state x="482" y="232" width="577" height="566" key="find.popup/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1607956474496" />
     <state x="2319" y="124" width="557" height="566" key="find.popup/0.0.1536.864/1920.0.1280.720@1920.0.1280.720" timestamp="1607850079535" />
     <state x="603" y="279" width="722" height="682" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1608219657584" />
-    <state x="425" y="197" key="run.anything.popup" timestamp="1607050812602">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state x="354" y="155" key="run.anything.popup" timestamp="1611425435366">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state x="354" y="155" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1611425435366" />
     <state x="425" y="197" key="run.anything.popup/0.0.1536.864/1920.0.1280.720@0.0.1536.864" timestamp="1607050812602" />
     <state x="364" y="49" width="807" height="814" key="search.everywhere.popup" timestamp="1607964510304">
       <screen x="0" y="0" width="1536" height="864" />

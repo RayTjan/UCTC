@@ -8,6 +8,22 @@
     </script>
 
     <div class="container clearfix" style="margin-top: 20px;">
+
+        
+        <div>
+            <a href="<?php echo e(route('lecturer.program.show',$program)); ?>" class="a-none blackhex d-inline-block">
+                <h6>Program</h6>
+            </a>
+            <i class="fa fa-angle-right d-inline-block mr-1 ml-1"></i>
+            <a href="<?php echo e(route('lecturer.program.show',$program)); ?>" class="a-none blackhex d-inline-block">
+                <h6>Detail</h6>
+            </a>
+            <i class="fa fa-angle-right d-inline-block mr-1 ml-1"></i>
+            <a href="<?php echo e(route('lecturer.report.show',$program)); ?>" class="a-none blackhex d-inline-block">
+                <h6>Report</h6>
+            </a>
+        </div>
+
         <div class="row">
             <h1 class="col font-weight-bold"><?php echo e($program->name); ?> Report</h1>
         </div>

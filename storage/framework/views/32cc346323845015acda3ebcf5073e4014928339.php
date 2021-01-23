@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('title', 'Edit Profile'); ?>
 <?php $__env->startSection('content'); ?>
     <div class="container" style="margin-top: 20px;">

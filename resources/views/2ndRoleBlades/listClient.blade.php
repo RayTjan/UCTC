@@ -3,6 +3,22 @@
 @section('content')
 
     <div class="container clearfix" style="margin-top: 20px;">
+
+        {{--        navigation--}}
+        <div>
+            <a href="{{route('lecturer.program.show',$program)}}" class="a-none blackhex d-inline-block">
+                <h6>Program</h6>
+            </a>
+            <i class="fa fa-angle-right d-inline-block mr-1 ml-1"></i>
+            <a href="{{route('lecturer.program.show',$program)}}" class="a-none blackhex d-inline-block">
+                <h6>Detail</h6>
+            </a>
+            <i class="fa fa-angle-right d-inline-block mr-1 ml-1"></i>
+            <a href="{{route('lecturer.client.show',$program)}}" class="a-none blackhex d-inline-block">
+                <h6>Client</h6>
+            </a>
+        </div>
+
         <div class="row">
             <h1 class="col font-weight-bold">Client List</h1>
         </div>
@@ -15,7 +31,7 @@
                         <a href="#"
                            title="Add Committee"
                            data-toggle="modal"
-                           data-target="#addCommittee">
+                           data-target="#addClient">
                             <svg
                                 aria-hidden="true"
                                 focusable="false"
@@ -39,8 +55,8 @@
                     </div>
                 </div>
 
-                {{--            modal add committee--}}
-                <div class="modal fade" id="addCommittee">
+                {{--            modal add client--}}
+                <div class="modal fade" id="addClient">
                     <div class="modal-dialog">
                         <div class="modal-content card-bg-change">
                             <!-- Modal Header -->

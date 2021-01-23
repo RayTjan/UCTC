@@ -7,6 +7,8 @@
 
 }
 
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+
 html,body
 {
     margin: 0;
@@ -14,8 +16,13 @@ html,body
     overflow-x: hidden;
 }
 
+.blacktest {
+    background-color: #F5F5F5;
+}
+
 h1 {
     font-family: 'league_spartanbold', league_spartanbold;
+    color: #0E2F56;
     font-weight:normal;
     font-style:normal;
 }
@@ -514,6 +521,13 @@ button, select, input {
     border-color: #F9C03D;
     color: black;
 }
+
+.yellstar {
+    background: #FFD576;
+    border-color: #FFD576;
+    color: black;
+}
+
 .purplestar {
     border-color: #A10CCE;
     background: #A10CCE;
@@ -618,6 +632,8 @@ button, select, input {
 
 .hover img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
@@ -794,6 +810,36 @@ button, select, input {
     position: absolute;
     bottom: 0;
     right: 0;
+}
+
+.starCard {
+    content: '';
+    width: 10px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    display: block;
+    z-index: 999;
+}
+
+.shadowCard {
+    box-shadow: 1px 2px 3px #ededed;
+}
+
+.maxline {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+
+.maxlineP {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+    -webkit-box-orient: vertical;
 }
 
 .boxScroll {
@@ -1143,6 +1189,7 @@ p.titlelogin{
     border-radius: 2vh;
     padding: 2% 2% 2% 2% ;
 
+    min-width: 222px;
     right: 0;
     top: 0;
 }
@@ -1385,6 +1432,56 @@ p.titlelogin{
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
     right: 0px;
 }
+
+/*button slider*/
+.btnSlider {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-decoration: none;
+    font-family: Montserrat;
+    transition: 0.02s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
+}
+.btnSlider::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 100%;
+    bottom: 0;
+    background: #A10CCE;
+    transition: 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1), left 0.3s cubic-bezier(0.1, 0, 0.1, 1);
+    z-index: -1;
+}
+.btnSlider::after {
+    content: "";
+    display: inline-block;
+    background-image: url("../img/arrowright.svg") ;
+    position: absolute;
+    top: 0;
+    left: calc(100% - 3em);
+    right: 3em;
+    bottom: 0;
+    background-size: 1.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: right 0.3s cubic-bezier(0.1, 0, 0.1, 1);
+}
+.btnSlider:hover {
+    padding: 0em 3.5em 0em 0.5em;
+}
+.btnSlider:hover::before {
+    left: calc(100% - 3em);
+    right: 0;
+    transition: 0.3s cubic-bezier(0.1, 0, 0.1, 1), left 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
+}
+.btnSlider:hover::after {
+    right: 0;
+    transition: right 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
+}
+
 
 /*jscript adduser*/
 #staffForm {

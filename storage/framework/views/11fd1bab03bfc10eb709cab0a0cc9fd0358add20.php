@@ -8,6 +8,22 @@
     </script>
 
     <div class="container clearfix" style="margin-top: 20px;">
+
+        
+        <div>
+            <a href="<?php echo e(route('lecturer.program.show',$program)); ?>" class="a-none blackhex d-inline-block">
+                <h6>Program</h6>
+            </a>
+            <i class="fa fa-angle-right d-inline-block mr-1 ml-1"></i>
+            <a href="<?php echo e(route('lecturer.program.show',$program)); ?>" class="a-none blackhex d-inline-block">
+                <h6>Detail</h6>
+            </a>
+            <i class="fa fa-angle-right d-inline-block mr-1 ml-1"></i>
+            <a href="<?php echo e(route('lecturer.file.show',$program)); ?>" class="a-none blackhex d-inline-block">
+                <h6>File Attachments</h6>
+            </a>
+        </div>
+
         <div class="d-flex justify-content-between mb-3">
             <h1 class="font-weight-bold">List Attachment Links <?php echo e($program->name); ?></h1>
 

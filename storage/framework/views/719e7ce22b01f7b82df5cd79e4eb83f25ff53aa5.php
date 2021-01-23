@@ -1,9 +1,23 @@
-
 <?php $__env->startSection('title', 'Fund'); ?>
 <?php $__env->startSection('content'); ?>
 
+
+    
+    <div>
+        <a href="<?php echo e(route('lecturer.program.show',$program)); ?>" class="a-none blackhex d-inline-block">
+            <h6>Program</h6>
+        </a>
+        <i class="fa fa-angle-right d-inline-block mr-1 ml-1"></i>
+        <a href="<?php echo e(route('lecturer.program.show',$program)); ?>" class="a-none blackhex d-inline-block">
+            <h6>Detail</h6>
+        </a>
+        <i class="fa fa-angle-right d-inline-block mr-1 ml-1"></i>
+        <a href="<?php echo e(route('lecturer.fund.show',$program)); ?>" class="a-none blackhex d-inline-block">
+            <h6>Reimburse</h6>
+        </a>
+    </div>
     <div class="d-flex justify-content-between">
-        <h1 class="col font-weight-bold">Fund List <?php echo e($program->name); ?></h1>
+        <h1 class="col font-weight-bold">Reimburse List <?php echo e($program->name); ?></h1>
 
         <?php if($edit == true): ?>
             <?php if($program->status != '2'): ?>
