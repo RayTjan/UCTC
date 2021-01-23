@@ -1,8 +1,23 @@
+@font-face {
+    font-family: 'league_spartanbold';
+    src: url('/plugins/font/leaguespartan-bold-webfont.woff2') format('woff2'),
+    url('/plugins/font/leaguespartan-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 html,body
 {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+}
+
+h1 {
+    font-family: 'league_spartanbold', league_spartanbold;
+    font-weight:normal;
+    font-style:normal;
 }
 
 .special {
@@ -282,7 +297,7 @@ main {
     border: 0.5vh solid #bdc2c1;
     border-color: #d6d6d6;
     background: #d6d6d6;
-    border-radius: 4vh;
+    border-radius: 1vh;
     text-align: center;
 }
 
@@ -560,19 +575,23 @@ button, select, input {
 
 /*icon++*/
 .iconplus {
-    width: 13%;
-    border: 1vh solid #F9C03D;
-    background-color: #F9C03D;
-    border-radius: 2vh;
+    border: 2vh solid #0E2F56;
+    background-color: #0E2F56;
+    border-radius: 4vh;
     cursor: pointer;
+    color: #ffffff;
 
-    width: 3rem;
-    height: 3rem;
+    margin-right: 20px;
+    padding: 2px;
+    width: 2.8rem;
+    height: 2.8rem;
     stroke-width: 0;
+
+    box-shadow: 2px 3px 5px #888888;
 }
 .iconplus:hover {
-    background-color: #EFB93D;
-    border-color: #EFB93D;
+    background-color: #0B2340;
+    border-color: #0B2340;
 }
 
 .iconAct {
@@ -1115,6 +1134,25 @@ p.titlelogin{
     border-radius: 2vh;
     width: 45%;
     height: 75vh;
+    padding: 2% 2% 2% 2% ;
+}
+
+.card-finance {
+    border: 1px solid #666666;
+    background-color: #F1F1E6;
+    border-radius: 2vh;
+    padding: 2% 2% 2% 2% ;
+
+    right: 0;
+    top: 0;
+}
+
+.card-desc {
+    border: 1px solid #666666;
+    background-color: #F1F1E6;
+    border-radius: 2vh;
+    width: 45%;
+    height: 45vh;
     padding: 2% 2% 2% 2% ;
 }
 

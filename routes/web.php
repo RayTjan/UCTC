@@ -35,7 +35,12 @@ Route::group([
     'as' => 'coordinator.'
 ], function () {
     Route::get('/', 'App\Http\Controllers\Coordinator\DashboardController@index');
+    Route::get('program/coor', ['as' => 'program.coor', 'uses' => '\App\Http\Controllers\Coordinator\ProgramController@coor']);
     Route::resource('program', \App\Http\Controllers\Coordinator\ProgramController::class);
+    Route::get('filterProgramType', [\App\Http\Controllers\Coordinator\ProgramController::class,'filterProgramType'])->name('program.filterProgramType');
+    Route::get('filterProgramCategory', [\App\Http\Controllers\Coordinator\ProgramController::class,'filterProgramCategory'])->name('program.filterProgramCategory');
+    Route::get('filterProgramStatus', [\App\Http\Controllers\Coordinator\ProgramController::class,'filterProgramStatus'])->name('program.filterProgramStatus');
+    Route::get('filterProgramDate', [\App\Http\Controllers\Coordinator\ProgramController::class,'filterProgramDate'])->name('program.filterProgramDate');
     Route::post('program/{id}/approve', [\App\Http\Controllers\Coordinator\ProgramController::class, 'approve'])->name('program.approve');
     Route::patch('program/{id}/suspend', [\App\Http\Controllers\Coordinator\ProgramController::class, 'suspend'])->name('program.suspend');
     Route::resource('committee',\App\Http\Controllers\Coordinator\CommitteeController::class);

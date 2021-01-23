@@ -33,8 +33,15 @@
                         <label >Goal: </label>
                         <input type="text" class="form-control" name="goal" required>
                     </div>
-                    <input type="hidden" name="status" value="0">
-                    <input type="hidden" name="created_by" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
+                    <input type="hidden" name="status" value="1">
+                    <div class="form-group">
+                        <label>PIC:</label>
+                        <select name="created_by" class="custom-select">
+                            @foreach($users as $user)
+                                <option value="{{$user->id}}">{{$user->identity->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label>Program Date / Deadline:</label>
                         <input type="date" class="form-control" name="program_date" required>
