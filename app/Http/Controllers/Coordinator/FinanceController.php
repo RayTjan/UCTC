@@ -39,7 +39,7 @@ class FinanceController extends Controller
     public function store(Request $request)
     {
         Finance::create($request->all());
-        return redirect(route('admin.finance.show',$request->program));
+        return redirect(route('coordinator.finance.show',$request->program));
     }
 
     /**
@@ -76,7 +76,7 @@ class FinanceController extends Controller
     public function update(Request $request, Finance $finance)
     {
         $finance->update($request->all());
-        return redirect(route('admin.finance.show',$finance->program));
+        return redirect(route('coordinator.finance.show',$finance->program));
     }
 
     /**
@@ -88,7 +88,7 @@ class FinanceController extends Controller
     public function destroy(Finance $finance)
     {
         $finance->delete();
-        return redirect()->route('admin.finance.show', $finance->program);
+        return redirect()->route('coordinator.finance.show', $finance->program);
     }
 
 }

@@ -16,7 +16,7 @@
                             <thead>
                             <tr class="row100 head">
                                 <th class="cell100 column2">Name</th>
-                                <th class="cell100 column6">Type</th>
+                                <th class="cell100 column6">Date</th>
                                 <th class="cell100 column6">Value</th>
                                 <th class="cell100 column6">Attachment</th>
                                 <th class="cell100 column6">Status</th>
@@ -30,14 +30,14 @@
                                         {{$fund->name}}
                                     </td>
                                     <td class="cell100 column3">
-                                        Apa ini
+                                        {{ str_replace("-","/",date("d-m-Y", strtotime($fund->date))) }}
                                     </td>
                                     <td class="cell100 column6">
                                         {{$fund->value}}
                                     </td>
                                     <td class="cell100 column4">
                                         <a data-toggle="modal"
-                                           data-target="#imgview-{{$fund->id}}"
+                                           data-target="#desc-{{$fund->id}}"
                                            class="btn btn-primary titlelogin">See Detail</a>
                                     </td>
                                     <td class="cell100 column3">
@@ -191,14 +191,18 @@
                                     </div>
                                 </div>
 
-                                {{--                    modal image--}}
-                                <div class="modal fade" id="imgview-{{$fund->id}}">
+                                {{--            modal desc--}}
+                                <div class="modal fade" id="desc-{{$fund->id}}">
                                     <div class="modal-dialog">
-                                        <div class="modalpic-content">
+                                        <div class="modal-content card-bg-change">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title font-weight-bold">Description </h4>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
                                             <!-- Modal body -->
-                                            <div class="modalpic-body text-center">
-                                                <button type="button" class="close btn-modal" data-dismiss="modal">&times;</button>
-                                                <img src="/files/fund/{{$fund->proof_of_payment}}" alt="image" class="card-img">
+                                            <div class="modal-body" style="text-align: left;">
+                                                <p>{{$fund->description}}</p>
                                             </div>
                                         </div>
                                     </div>
