@@ -91,14 +91,14 @@
 
 
                         <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget card-bg-change">
-                            <li class="guiz-awards-time customComittee">Name</li>
-                            <li class="guiz-awards-time customComittee">Status</li>
+                            <li class="guiz-awards-time customComittee font-weight-bold">Name</li>
+                            <li class="guiz-awards-time customComittee font-weight-bold">Status</li>
                             <?php if($edit == true): ?>
-                            <li class="guiz-awards-time customComittee">Replace</li>
+                            <li class="guiz-awards-time customComittee font-weight-bold">Replace</li>
                             <?php endif; ?>
-                            <li class="guiz-awards-time customComittee">Download</li>
+                            <li class="guiz-awards-time customComittee font-weight-bold">Download</li>
                             <?php if($edit == true): ?>
-                            <li class="guiz-awards-time customComittee">Delete</li>
+                            <li class="guiz-awards-time customComittee font-weight-bold">Delete</li>
                             <?php endif; ?>
                         </ul>
 

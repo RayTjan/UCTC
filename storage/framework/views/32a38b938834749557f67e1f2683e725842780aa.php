@@ -3,7 +3,7 @@
 
     <div class="container clearfix" style="margin-top: 20px;">
 
-        
+
         <div>
             <a href="<?php echo e(route('lecturer.program.show',$program)); ?>" class="a-none blackhex d-inline-block">
                 <h6>Program</h6>
@@ -25,7 +25,7 @@
         <?php if($edit == true): ?>
             <?php if($program->status != '2'): ?>
                 <div class="clearfix">
-                    
+
                     <div class="float-right">
                         <a href="#"
                            title="Add Committee"
@@ -43,7 +43,7 @@
                             >
                                 <g>
                                     <path
-                                        fill="#000000"
+                                        fill="#fff"
                                         d="m408,184h-136c-4.418,0 -8,-3.582 -8,-8v-136c0,-22.09 -17.91,-40 -40,-40s-40,17.91 -40,40v136c0,4.418 -3.582,8 -8,8h-136c-22.09,0 -40,17.91 -40,40s17.91,40 40,40h136c4.418,0 8,3.582 8,8v136c0,22.09 17.91,40 40,40s40,-17.91 40,-40v-136c0,-4.418 3.582,-8 8,-8h136c22.09,0 40,-17.91 40,-40s-17.91,-40 -40,-40zM408,184"
                                         class="fa-secondary">
                                     </path>
@@ -54,7 +54,7 @@
                     </div>
                 </div>
 
-                
+
                 <div class="modal fade" id="addClient">
                     <div class="modal-dialog">
                         <div class="modal-content card-bg-change">
@@ -102,10 +102,10 @@
 
 
                         <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget card-bg-change">
-                            <li class="guiz-awards-time customComittee25">Name</li>
-                            <li class="guiz-awards-time customComittee25">Phone</li>
-                            <li class="guiz-awards-time customComittee25">Address</li>
-                            <li class="guiz-awards-time customComittee25">Email</li>
+                            <li class="guiz-awards-time customComittee25 font-weight-bold">Name</li>
+                            <li class="guiz-awards-time customComittee25 font-weight-bold">Phone</li>
+                            <li class="guiz-awards-time customComittee25 font-weight-bold">Address</li>
+                            <li class="guiz-awards-time customComittee25 font-weight-bold">Email</li>
                         </ul>
 
                         <?php $__currentLoopData = $program->clients; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $client): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

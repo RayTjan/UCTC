@@ -14,6 +14,8 @@ html,body
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    font-family: Montserrat;
+    background-color: #F5F5F5;
 }
 
 .blacktest {
@@ -358,6 +360,11 @@ main {
     background: #DADAD1;
 }
 
+.truegray-hover:hover {
+    border-color: #dbdbdb;
+    background: #dbdbdb;
+}
+
 .gray-pages {
     color: #898989;
     border-color: #DADAD1;
@@ -397,7 +404,7 @@ button, select, input {
     width: 100%;
     height: 100%;
     border-radius: 4px;
-    background: #fff;
+    background: #F5F5F5;
     overflow: hidden;
 }
 .quiz-window-header {
@@ -512,6 +519,16 @@ button, select, input {
     border: 2px solid #bdc2c1;
     background: #d6d6d6;
 }
+
+.ministar {
+    display:block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid #bdc2c1;
+    background: #d6d6d6;
+}
+
 .cyanstar {
     background: #02DABD;
     border-color: #02DABD;
@@ -775,7 +792,7 @@ button, select, input {
 }
 
 .card-bg-bluess {
-    background-color: #085A9F;
+    background-color: #0E2F56;
 }
 
 .bg-change-red {
@@ -950,7 +967,7 @@ button, select, input {
 }
 
 .login100-form-btn {
-    /*font-family: Montserrat-Bold;*/
+    font-family: Montserrat-Bold;
     font-size: 15px;
     line-height: 1.5;
     color: #fff;
@@ -1451,7 +1468,7 @@ p.titlelogin{
     left: 0;
     right: 100%;
     bottom: 0;
-    background: #A10CCE;
+    background: #0E2F56;
     transition: 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1), left 0.3s cubic-bezier(0.1, 0, 0.1, 1);
     z-index: -1;
 }

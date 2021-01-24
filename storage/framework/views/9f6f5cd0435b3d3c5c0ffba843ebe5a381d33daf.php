@@ -102,10 +102,10 @@
 
 
                         <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget card-bg-change">
-                            <li class="guiz-awards-time customComittee25">Name</li>
-                            <li class="guiz-awards-time customComittee25">Gender</li>
-                            <li class="guiz-awards-time customComittee25">Email</li>
-                            <li class="guiz-awards-time customComittee25">Access</li>
+                            <li class="guiz-awards-time customComittee25 font-weight-bold">Name</li>
+                            <li class="guiz-awards-time customComittee25 font-weight-bold">Gender</li>
+                            <li class="guiz-awards-time customComittee25 font-weight-bold">Email</li>
+                            <li class="guiz-awards-time customComittee25 font-weight-bold">Access</li>
                         </ul>
 
                         <?php $__currentLoopData = $program->committees; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $committee): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

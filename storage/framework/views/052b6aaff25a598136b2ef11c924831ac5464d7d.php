@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('title', 'Edit Program'); ?>
 <?php $__env->startSection('content'); ?>
     <div class="container" style="margin-top: 20px;">
@@ -44,10 +43,13 @@
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                     </div>
+
+                    <?php if($proposal == null): ?>
                     <div class="form-group">
                         <label>Proposal:</label>
                         <input type="file" name="proposal" class="form-control-file">
                     </div>
+                    <?php endif; ?>
 
                     <div class="form-group">
                         <label>Add Finance:</label>

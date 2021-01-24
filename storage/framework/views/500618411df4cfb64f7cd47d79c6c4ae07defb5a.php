@@ -9,7 +9,7 @@
 
     <div class="container clearfix" style="margin-top: 20px;">
 
-        
+
         <div>
             <a href="<?php echo e(route('lecturer.program.show',$program)); ?>" class="a-none blackhex d-inline-block">
                 <h6>Program</h6>
@@ -48,7 +48,7 @@
                         >
                             <g>
                                 <path
-                                    fill="#000000"
+                                    fill="#fff"
                                     d="m408,184h-136c-4.418,0 -8,-3.582 -8,-8v-136c0,-22.09 -17.91,-40 -40,-40s-40,17.91 -40,40v136c0,4.418 -3.582,8 -8,8h-136c-22.09,0 -40,17.91 -40,40s17.91,40 40,40h136c4.418,0 8,3.582 8,8v136c0,22.09 17.91,40 40,40s40,-17.91 40,-40v-136c0,-4.418 3.582,-8 8,-8h136c22.09,0 40,-17.91 40,-40s-17.91,-40 -40,-40zM408,184"
                                     class="fa-secondary">
                                 </path>
@@ -59,7 +59,7 @@
                 </div>
             </div>
             <?php endif; ?>
-            
+
             <div class="modal fade" id="addReport">
                 <div class="modal-dialog">
                     <div class="modal-content card-bg-change">
@@ -150,7 +150,7 @@
                                             </button>
                                         </li>
 
-                                        
+
                                         <div class="modal fade" id="replaceReport-<?php echo e($report->id); ?>">
                                             <div class="modal-dialog">
                                                 <div class="modal-content card-bg-change">
@@ -203,7 +203,7 @@
                                 <?php endif; ?>
                             </ul>
 
-                            
+
 
                             <div class="modal fade" id="deleteReport-<?php echo e($report->id); ?>">
                                 <div class="modal-dialog">
@@ -226,7 +226,7 @@
                                 </div>
                             </div>
 
-                            
+
                             <div class="modal fade" id="note-<?php echo e($report->id); ?>">
                                 <div class="modal-dialog">
                                     <div class="modal-content bg-change-red">

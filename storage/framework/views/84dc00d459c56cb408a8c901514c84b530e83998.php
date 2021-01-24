@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('title', 'Edit Program'); ?>
 <?php $__env->startSection('content'); ?>
     <div class="container" style="margin-top: 20px;">
@@ -31,6 +30,16 @@
                     <div class="form-group">
                         <label>Category:</label>
                         <select name="category" class="custom-select">
+
+                            <option hidden value="<?php echo e($program->category); ?>">
+                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($category->id == $program->category): ?>
+                                        <?php echo e($category->name); ?>
+
+                                    <?php endif; ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </option>
+
                             <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -39,15 +48,28 @@
                     <div class="form-group">
                         <label>Type:</label>
                         <select name="type" class="custom-select">
+
+                            <option hidden value="<?php echo e($program->type); ?>">
+                                <?php $__currentLoopData = $types; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($type->id == $program->type): ?>
+                                        <?php echo e($type->name); ?>
+
+                                    <?php endif; ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </option>
+
                             <?php $__currentLoopData = $types; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <option value="<?php echo e($type->id); ?>"><?php echo e($type->name); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                     </div>
+
+                    <?php if($proposal == null): ?>
                     <div class="form-group">
                         <label>Proposal:</label>
                         <input type="file" name="proposal" class="form-control-file">
                     </div>
+                    <?php endif; ?>
 
                     <div class="form-group">
                         <label>Add Finance:</label>

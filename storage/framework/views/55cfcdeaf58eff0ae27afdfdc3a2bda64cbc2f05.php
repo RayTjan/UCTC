@@ -1,7 +1,7 @@
 <?php $__env->startSection('title', 'Finance'); ?>
 <?php $__env->startSection('content'); ?>
 
-    
+
     <div>
         <a href="<?php echo e(route('lecturer.program.show',$program)); ?>" class="a-none blackhex d-inline-block">
             <h6>Program</h6>
@@ -33,11 +33,11 @@
         }
         ?>
 
-        <?php if(auth()->guard()->check()): ?>
+        <?php if($edit == true): ?>
             <div class="clearfix">
-                
+
                 <div class="float-right">
-                    
+
                     <a role="button" aria-pressed="true"
                        title="Add Finance"
                        data-toggle="modal"
@@ -54,7 +54,7 @@
                         >
                             <g>
                                 <path
-                                    fill="#000000"
+                                    fill="#fff"
                                     d="m408,184h-136c-4.418,0 -8,-3.582 -8,-8v-136c0,-22.09 -17.91,-40 -40,-40s-40,17.91 -40,40v136c0,4.418 -3.582,8 -8,8h-136c-22.09,0 -40,17.91 -40,40s17.91,40 40,40h136c4.418,0 8,3.582 8,8v136c0,22.09 17.91,40 40,40s40,-17.91 40,-40v-136c0,-4.418 3.582,-8 8,-8h136c22.09,0 40,-17.91 40,-40s-17.91,-40 -40,-40zM408,184"
                                     class="fa-secondary">
                                 </path>
@@ -67,7 +67,7 @@
         <?php endif; ?>
     </div>
 
-    
+
     <div class="modal fade" id="addFinance">
         <div class="modal-dialog">
             <div class="modal-content card-bg-change">
@@ -159,7 +159,7 @@
                                     </td>
                                     <td class="cell100 column9 d-flex">
 
-                                        
+
 
                                         <button class="btnA circular purplestar purple-hover iconAct mr-1 p-1" title="Edit"
                                                 data-toggle="modal"
@@ -167,7 +167,7 @@
                                             <i class="fa fa-pencil"></i>
                                         </button>
 
-                                        
+
                                         <button class="btnA circular redstar red-hover iconAct mr-1 p-1" title="Delete"
                                                 data-toggle="modal"
                                                 data-target="#deleteFinance-<?php echo e($finance->id); ?>">
@@ -177,7 +177,7 @@
                                     </td>
                                 </tr>
 
-                                
+
 
                                 <div class="modal fade" id="deleteFinance-<?php echo e($finance->id); ?>">
                                     <div class="modal-dialog">
@@ -200,7 +200,7 @@
                                     </div>
                                 </div>
 
-                                
+
                                 <div class="modal fade" id="editFinance-<?php echo e($finance->id); ?>">
                                     <div class="modal-dialog">
                                         <div class="modal-content card-bg-change">
@@ -251,7 +251,7 @@
                                     </div>
                                 </div>
 
-                                
+
                                 <div class="modal fade" id="imgview-<?php echo e($finance->id); ?>">
                                     <div class="modal-dialog">
                                         <div class="modalpic-content">

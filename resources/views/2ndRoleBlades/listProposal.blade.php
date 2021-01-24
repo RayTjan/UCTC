@@ -43,7 +43,7 @@
                         >
                             <g>
                                 <path
-                                    fill="#000000"
+                                    fill="#fff"
                                     d="m408,184h-136c-4.418,0 -8,-3.582 -8,-8v-136c0,-22.09 -17.91,-40 -40,-40s-40,17.91 -40,40v136c0,4.418 -3.582,8 -8,8h-136c-22.09,0 -40,17.91 -40,40s17.91,40 40,40h136c4.418,0 8,3.582 8,8v136c0,22.09 17.91,40 40,40s40,-17.91 40,-40v-136c0,-4.418 3.582,-8 8,-8h136c22.09,0 40,-17.91 40,-40s-17.91,-40 -40,-40zM408,184"
                                     class="fa-secondary">
                                 </path>
@@ -91,14 +91,14 @@
 
 
                         <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget card-bg-change">
-                            <li class="guiz-awards-time customComittee">Name</li>
-                            <li class="guiz-awards-time customComittee">Status</li>
+                            <li class="guiz-awards-time customComittee font-weight-bold">Name</li>
+                            <li class="guiz-awards-time customComittee font-weight-bold">Status</li>
                             @if($edit == true)
-                            <li class="guiz-awards-time customComittee">Replace</li>
+                            <li class="guiz-awards-time customComittee font-weight-bold">Replace</li>
                             @endif
-                            <li class="guiz-awards-time customComittee">Download</li>
+                            <li class="guiz-awards-time customComittee font-weight-bold">Download</li>
                             @if($edit == true)
-                            <li class="guiz-awards-time customComittee">Delete</li>
+                            <li class="guiz-awards-time customComittee font-weight-bold">Delete</li>
                             @endif
                         </ul>
 

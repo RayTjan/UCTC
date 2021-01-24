@@ -189,8 +189,15 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $departments = Department::all();
+        $titles = Title::all();
+        $jakas = Jaka::all();
+
         $user = User::findorFail($id);
-        return view('1stRoleBlades.editProfile',compact('user'));
+
+        $identity = array();
+
+        return view('1stRoleBlades.editProfile',compact('user', 'identity','departments','titles','jakas'));
     }
 
     /**
@@ -202,25 +209,89 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $pic = null;
+
+        $request->validate([
+            'password' => 'min:6|required_with:bpassword|same:bpassword',
+            'newpassword' => 'min:6|required_with:repassword|same:repassword',
+            'repassword' => 'min:6'
+        ]);
+
+        $user = User::findOrFail($id);
+
         if ($request->picture != null){
-            $data = $request->validate([
-                'picture' => 'image|mimes:png,jpg,jpeg,svg'
-            ]);
-
-            $imgName = $data['picture']->getClientOriginalName().'-'.time().'.'.$data['picture']->extension();
-            $data['picture']->move(public_path('/img/userPic'), $imgName);
-
-
-            User::where('id', $id)->update([
-                'picture' => $imgName,
-            ]);
+            $pic = $request->picture->getClientOriginalName() . '-' . time() . '.' . $request->picture->extension();
+            $request->picture->move(public_path('/img/userPic'), $pic);
         }else {
-            User::where('id', $id)->update([
-                'picture' => null,
-            ]);
+            $pic = $user->picture;
         }
 
-        return redirect(route('coordinator.user.show',\Illuminate\Support\Facades\Auth::id()));
+        if ($user->identity_type == "App\Models\Student"){
+            $identity = Student::findOrFail($user->identity_id);
+            $identity->update([
+                'nim'=>$request->nim,
+                'name'=>$request->name,
+                'email'=>$request->email,
+                'batch'=>$request->batch,
+                'description'=>$request->description,
+                'photo'=>$pic,
+                'gender'=>$request->gender,
+                'phone'=>$request->phone,
+                'line_account'=>$request->line_acc,
+                'department_id'=>$request->department_id,
+            ]);
+
+        }
+        else if($user->identity_type == "App\Models\Staff"){
+            $identity = Staff::findOrFail($user->identity_id);
+            $identity->update([
+                'nip'=>$request->nip,
+                'name'=>$request->name,
+                'email'=>$request->email,
+                'batch'=>$request->batch,
+                'description'=>$request->description,
+                'photo'=>$pic,
+                'gender'=>$request->gender,
+                'phone'=>$request->phone,
+                'line_account'=>$request->line_acc,
+                'department_id'=>$request->department_id,
+                'title_id'=>$request->title_id,
+            ]);
+
+        }
+        else{
+            $identity = Lecturer::findOrFail($user->identity_id);
+            $identity->update([
+                'nip'=>$request->nip,
+                'nidn'=>$request->nidn,
+                'name'=>$request->name,
+                'email'=>$request->email,
+                'batch'=>$request->batch,
+                'description'=>$request->description,
+                'photo'=>$pic,
+                'gender'=>$request->gender,
+                'phone'=>$request->phone,
+                'line_account'=>$request->line_acc,
+                'department_id'=>$request->department_id,
+                'title_id'=>$request->title_id,
+                'jaka_id'=>$request->jaka_id,
+            ]);
+
+        }
+
+        $user->update([
+                'email' => $request->email,
+                'role_id' => $request->role,
+                'password' => Hash::make($request->password),
+                'is_active'=>"1",
+                'is_verified'=>"1",
+                'picture'=>$pic,
+            ]
+        );
+
+
+
+        return redirect(route('coordinator.user.index'));
     }
 
     /**

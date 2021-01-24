@@ -37,7 +37,7 @@
                         <?php endif; ?>
                     </div>
                 </div>
-                <h5><?php echo e(str_replace("-","/",date("d-m-Y", strtotime($program->program_date)))); ?></h5>
+                <h4 class="mt-2"><?php echo e(str_replace("-","/",date("d-m-Y", strtotime($program->program_date)))); ?></h4>
             </div>
             <?php if($program->status == '1' || $program->status == '2'): ?>
             <div class="card-finance card-bg-change position-absolute">
@@ -85,7 +85,8 @@
 
             <?php if(isset($clients[0])): ?>
             <div class="row align-items-center">
-                <h6 class="col-md-1 font-weight-bold float-left">Client&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </h6>
+                <h6 class="col-md-1 font-weight-bold float-left">Client</h6>
+                <h6 class="font-weight-bold float-left">:&nbsp;</h6>
                 <?php for($i=0;$i<sizeof($clients);$i++): ?>
                 <div class="">
                     <?php if($i == (sizeof($clients)-1)): ?>
@@ -101,7 +102,8 @@
             <?php endif; ?>
 
             <div class="row align-items-center">
-                <h6 class="col-md-1 font-weight-bold float-left">Creator&nbsp;&nbsp;&nbsp;&nbsp;: </h6>
+                <h6 class="col-md-1 font-weight-bold float-left">Creator</h6>
+                <h6 class="font-weight-bold float-left">:&nbsp;</h6>
                 <div class="">
                     <?php echo e($program->creator->identity->name); ?>
 
@@ -109,7 +111,8 @@
             </div>
 
             <div class="row align-items-center">
-                <h6 class="col-md-1 font-weight-bold float-left tab1">Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </h6>
+                <h6 class="col-md-1 font-weight-bold float-left tab1">Type</h6>
+                <h6 class="font-weight-bold float-left">:&nbsp;</h6>
                 <div class="">
                     <?php echo e($program->classified->name); ?>
 
@@ -117,7 +120,8 @@
             </div>
 
             <div class="row align-items-center">
-                <h6 class="col-md-1 font-weight-bold float-left tab1">Category&nbsp;&nbsp;: </h6>
+                <h6 class="col-md-1 font-weight-bold float-left tab1">Category</h6>
+                <h6 class="font-weight-bold float-left">:&nbsp;</h6>
                 <div class="">
                     <?php echo e($program->categorized->name); ?>
 
@@ -126,7 +130,8 @@
 
             <?php if(isset($proposal->id)): ?>
             <div class="row align-items-center">
-                <h6 class="col-1 font-weight-bold float-left pr-1">Proposal&nbsp;&nbsp;&nbsp;:</h6>
+                <h6 class="col-1 font-weight-bold float-left pr-1">Proposal</h6>
+                <h6 class="font-weight-bold float-left">:&nbsp;</h6>
                 <?php if($proposal->status == '0'): ?>
                     <div class="text-primary">
                         Pending
@@ -145,7 +150,8 @@
 
             <?php if(isset($report->id)): ?>
                 <div class="row align-items-center">
-                    <h6 class="col-1 font-weight-bold float-left pr-1">Report&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</h6>
+                    <h6 class="col-1 font-weight-bold float-left pr-1">Report</h6>
+                    <h6 class="font-weight-bold float-left">:&nbsp;</h6>
                     <?php if($report->status == '0'): ?>
                         <div class="text-primary">
                             Pending
@@ -163,11 +169,12 @@
             <?php endif; ?>
 
             <div class="row align-items-center mt-3">
-                <h6 class="col-md-1 font-weight-bold float-left">Goal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </h6>
-                <p class="">
+                <h6 class="col-md-1 font-weight-bold float-left">Goal</h6>
+                <h6 class="font-weight-bold float-left">:&nbsp;</h6>
+                <div class="">
                     <?php echo e($program->goal); ?>
 
-                </p>
+                </div>
             </div>
 
         </div>
@@ -278,7 +285,7 @@
 
                     <a href="<?php echo e(route('lecturer.file.show',$program)); ?>" class="circular graystar font-weight-bold p-2 gray-hover mr-2">
                         <i class="fa fa-clipboard"></i>
-                        Data link
+                        Data Link
                     </a>
                 <?php endif; ?>
             </div>

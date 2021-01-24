@@ -30,7 +30,7 @@
                     >
                         <g>
                             <path
-                                fill="#000000"
+                                fill="#fff"
                                 d="m408,184h-136c-4.418,0 -8,-3.582 -8,-8v-136c0,-22.09 -17.91,-40 -40,-40s-40,17.91 -40,40v136c0,4.418 -3.582,8 -8,8h-136c-22.09,0 -40,17.91 -40,40s17.91,40 40,40h136c4.418,0 8,3.582 8,8v136c0,22.09 17.91,40 40,40s40,-17.91 40,-40v-136c0,-4.418 3.582,-8 8,-8h136c22.09,0 40,-17.91 40,-40s-17.91,-40 -40,-40zM408,184"
                                 class="fa-secondary">
                             </path>
@@ -51,11 +51,11 @@
 
 
                     <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget card-bg-change">
-                        <li class="guiz-awards-time customComittee">Name</li>
-                        <li class="guiz-awards-time customComittee">Email</li>
-                        <li class="guiz-awards-time customComittee">Role</li>
-                        <li class="guiz-awards-time customComittee">Event (Create/Joined)</li>
-                        <li class="guiz-awards-time customComittee">Action</li>
+                        <li class="guiz-awards-time customComittee font-weight-bold">Name</li>
+                        <li class="guiz-awards-time customComittee font-weight-bold">Email</li>
+                        <li class="guiz-awards-time customComittee font-weight-bold">Role</li>
+                        <li class="guiz-awards-time customComittee font-weight-bold">Status</li>
+                        <li class="guiz-awards-time customComittee font-weight-bold">Action</li>
                     </ul>
 
                     @foreach($users as $user)
@@ -63,7 +63,15 @@
                         <li class="guiz-awards-time customComittee">{{$user->identity->name}}</li>
                         <li class="guiz-awards-time customComittee">{{$user->email}}</li>
                         <li class="guiz-awards-time customComittee">{{$user->role->name}}</li>
-                        <li class="guiz-awards-time customComittee">ntah</li>
+                        <li class="guiz-awards-time customComittee">
+                            @if($user->identity_type == 'App\Models\Lecturer')
+                                Lecturer
+                            @elseif($user->identity_type == 'App\Models\Staff')
+                                Staff
+                            @elseif($user->identity_type == 'App\Models\Student')
+                                Student
+                            @endif
+                        </li>
                         <li class="guiz-awards-time customComittee">
                             <div class="dropdown">
                                 <div class="dropdown show">
@@ -74,7 +82,7 @@
                                     </a>
 
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Edit</a>
+                                        <a class="dropdown-item" href="{{route('coordinator.user.edit',$user)}}">Edit</a>
                                         <a class="dropdown-item btnDelete" href="#"
                                                 data-toggle="modal"
                                                 data-target="#delete-{{$user->id}}">Delete</a>

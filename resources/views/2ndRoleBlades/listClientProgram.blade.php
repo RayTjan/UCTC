@@ -22,11 +22,11 @@
 
 
                         <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget card-bg-change">
-                            <li class="guiz-awards-time customComittee">Name</li>
-                            <li class="guiz-awards-time customComittee">Phone</li>
-                            <li class="guiz-awards-time customComittee">Address</li>
-                            <li class="guiz-awards-time customComittee">Email</li>
-                            <li class="guiz-awards-time customComittee">Action</li>
+                            <li class="guiz-awards-time customComittee font-weight-bold">Name</li>
+                            <li class="guiz-awards-time customComittee font-weight-bold">Phone</li>
+                            <li class="guiz-awards-time customComittee font-weight-bold">Address</li>
+                            <li class="guiz-awards-time customComittee font-weight-bold">Email</li>
+                            <li class="guiz-awards-time customComittee font-weight-bold">Action</li>
                         </ul>
 
                         @foreach($program->clients as $client)

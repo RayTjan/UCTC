@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('title', 'List User'); ?>
 <?php $__env->startSection('content'); ?>
 
@@ -51,11 +50,11 @@
 
 
                     <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget card-bg-change">
-                        <li class="guiz-awards-time customComittee">Name</li>
-                        <li class="guiz-awards-time customComittee">Email</li>
-                        <li class="guiz-awards-time customComittee">Role</li>
-                        <li class="guiz-awards-time customComittee">Event (Create/Joined)</li>
-                        <li class="guiz-awards-time customComittee">Action</li>
+                        <li class="guiz-awards-time customComittee font-weight-bold">Name</li>
+                        <li class="guiz-awards-time customComittee font-weight-bold">Email</li>
+                        <li class="guiz-awards-time customComittee font-weight-bold">Role</li>
+                        <li class="guiz-awards-time customComittee font-weight-bold">Status</li>
+                        <li class="guiz-awards-time customComittee font-weight-bold">Action</li>
                     </ul>
 
                     <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -63,7 +62,15 @@
                         <li class="guiz-awards-time customComittee"><?php echo e($user->identity->name); ?></li>
                         <li class="guiz-awards-time customComittee"><?php echo e($user->email); ?></li>
                         <li class="guiz-awards-time customComittee"><?php echo e($user->role->name); ?></li>
-                        <li class="guiz-awards-time customComittee">ntah</li>
+                        <li class="guiz-awards-time customComittee">
+                            <?php if($user->identity_type == 'App\Models\Lecturer'): ?>
+                                Lecturer
+                            <?php elseif($user->identity_type == 'App\Models\Staff'): ?>
+                                Staff
+                            <?php elseif($user->identity_type == 'App\Models\Student'): ?>
+                                Student
+                            <?php endif; ?>
+                        </li>
                         <li class="guiz-awards-time customComittee">
                             <div class="dropdown">
                                 <div class="dropdown show">
@@ -74,7 +81,7 @@
                                     </a>
 
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Edit</a>
+                                        <a class="dropdown-item" href="<?php echo e(route('coordinator.user.edit',$user)); ?>">Edit</a>
                                         <a class="dropdown-item btnDelete" href="#"
                                                 data-toggle="modal"
                                                 data-target="#delete-<?php echo e($user->id); ?>">Delete</a>

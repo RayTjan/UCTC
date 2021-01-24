@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Lecturer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Lecturer;
+use App\Models\Staff;
+use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -61,7 +64,17 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findorFail($id);
-        return view('2ndRoleBlades.editProfile',compact('user'));
+        $identity = array();
+
+        if ($user->identity_type == 'App\Models\Lecturer') {
+            $identity = Lecturer::findOrFail($user->identity_id);
+        }else if ($user->identity_type == 'App\Models\Staff') {
+            $identity = Staff::findOrFail($user->identity_id);
+        }else if ($user->identity_type == 'App\Models\Student') {
+            $identity = Student::findOrFail($user->identity_id);
+        }
+
+        return view('2ndRoleBlades.editProfile',compact('user', 'identity'));
     }
 
     /**
