@@ -3,10 +3,10 @@
 <?php $__env->startSection('content'); ?>
 
     <div class="d-flex justify-content-between">
-        <h1 class="col font-weight-bold">Request Pencairan fund ist</h1>
+        <h1 class="col font-weight-bold">Request Reimburse ist</h1>
     </div>
 
-    <div class="container-table100">
+    <div class="container-table100 scrollWebkit">
         <div class="wrap-table100">
             <div class="table100 ver1">
 

@@ -1,79 +1,24 @@
-
-
 <?php $__env->startSection('content'); ?>
 <div class="bglogin">
 
     <div class="position-relative">
         <div class="position-absolute">
-            <h1 class="titlelogin font-weight-bold">UCTC</h1>
-            <p class="titlelogin">manage your life better</p>
+            <div class="d-flex">
+                <img src="/img/icon.svg" class=" sizeForm align-self-center">
+                <div class="align-self-center">
+                    <h1 class="titlelogin login font-weight-bold">UCTC</h1>
+                    <div class="titlelogin">manage your life better</div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="row justify-content-sm-end">
-        <div class="col-md-8">
-            <div class="card-login">
+    <div class="d-flex justify-content-end height100">
+            <div class="card-login align-self-center mr-lg-5">
 
                 <div class="card-body">
                     <form method="POST" action="<?php echo e(route('login')); ?>">
                         <?php echo csrf_field(); ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                         <span class="login100-form-title">
 						    Sign in
@@ -127,7 +72,6 @@ unset($__errorArgs, $__bag); ?>
                     </form>
                 </div>
             </div>
-        </div>
     </div>
 </div>
 <?php $__env->stopSection(); ?>

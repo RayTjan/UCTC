@@ -29,6 +29,10 @@ h1 {
     font-style:normal;
 }
 
+.login {
+    font-family: Montserrat;
+}
+
 .special {
     background-color: black;
     color: red;
@@ -55,7 +59,7 @@ h1 {
 
 body {
     color: black;
-    background-color: white;
+    background-color: #F5F5F5;
     margin: 0;
     padding: 0;
 }
@@ -539,10 +543,10 @@ button, select, input {
     color: black;
 }
 
-.yellstar {
-    background: #FFD576;
-    border-color: #FFD576;
-    color: black;
+.darkbluestar {
+    background: #0E2F56;
+    border-color: #0E2F56;
+    color: white;
 }
 
 .purplestar {
@@ -877,6 +881,12 @@ button, select, input {
     border-radius: 1vh;
 }
 
+.actionDash {
+    position: absolute;
+    right: 5%;
+    top: 10%;
+}
+
 /*login*/
 .login100-form-title {
     font-size: 24px;
@@ -967,7 +977,6 @@ button, select, input {
 }
 
 .login100-form-btn {
-    font-family: Montserrat-Bold;
     font-size: 15px;
     line-height: 1.5;
     color: #fff;
@@ -1001,7 +1010,7 @@ button, select, input {
     -ms-flex-direction: column;
     flex-direction: column;
     min-width: 0;
-    width: 50%;
+    width: 35%;
     float: right;
     word-wrap: break-word;
     background-color: #fff;
@@ -1019,7 +1028,7 @@ button, select, input {
     width: 100%;
     background-position: center;
     background-size: cover;
-    padding: 5% 5% 0 5%;
+    padding: 3% 3% 3% 3%;
     margin: 0;
     box-sizing: border-box;
     position: relative;
@@ -1048,6 +1057,26 @@ p.titlelogin{
 .profilePic {
     width: 100px;
     height: 100px;
+}
+
+.miniPic {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+}
+
+.vmiddle {
+    vertical-align: middle;
+}
+
+.profilePic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.3s;
 }
 
 .miniOption {
@@ -1324,6 +1353,10 @@ p.titlelogin{
 /*form*/
 .budgetForm {
     width: 90%;
+}
+
+.nameForm {
+    width: 85%;
 }
 
 .sizeForm {

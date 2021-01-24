@@ -105,7 +105,7 @@
                         @foreach($proposals as $proposal)
                             <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget">
                                 <li class="guiz-awards-time customComittee">
-                                    @if(strlen($proposal->proposal) > 35)
+                                    @if(strlen($proposal->proposal) > 20)
                                         {{ substr($proposal->proposal,0,20)."..." }}
                                     @else
                                         {{ $proposal->proposal }}

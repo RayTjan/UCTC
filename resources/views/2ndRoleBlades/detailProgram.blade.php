@@ -293,9 +293,7 @@
                         Edit
                     </a>
                 @endif
-                @endif
 
-                @if($edit == true)
                 @if($program->status != '2')
                     <button type="button"
                             title="Delete"
@@ -305,7 +303,7 @@
                                 <i class="fa fa-close"></i>
                                 Delete
                     </button>
-                    @endif
+                @endif
                 @endif
             </div>
         </div>

@@ -59,15 +59,6 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Batch:</label>
-                                <select name="batch" class="custom-select">
-                                    @for($year = 2008;$year <= 2021;$year++)
-                                    <option value="{{$year}}">{{$year}}</option>
-                                    @endfor
-                                </select>
-                            </div>
-
-                            <div class="form-group">
                                 <label >Description: </label>
                                 <textarea class="form-control" name="description" required></textarea>
                             </div>
@@ -167,15 +158,6 @@
                             <div class="form-group">
                                 <label >NIP: </label>
                                 <input type="number" class="form-control" name="nip" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Batch:</label>
-                                <select name="batch" class="custom-select">
-                                    @for($year = 2008;$year <= 2021;$year++)
-                                        <option value="{{$year}}">{{$year}}</option>
-                                    @endfor
-                                </select>
                             </div>
 
                             <div class="form-group">

@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('title', 'Program'); ?>
 <?php $__env->startSection('content'); ?>
 
@@ -6,7 +5,7 @@
         <h1 class="col font-weight-bold">Program List</h1>
     </div>
 
-    <div class="container-table100">
+    <div class="container-table100 scrollWebkit">
         <div class="wrap-table100">
             <div class="table100 ver1">
                 <div class="table100-firstcol">
@@ -57,20 +56,6 @@
                                     <?php endif; ?>
                                 </td>
                                 <td class="cell100 column3"><?php echo e($program->creator->identity->name); ?></td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                 <td class="cell100 column6"><?php echo e(str_replace("-","/",date("d-m-Y", strtotime($program->program_date)))); ?></td>
                                 <td class="cell100 column7"><?php echo e($program->classified->name); ?></td>
                                 <td class="cell100 column8"><?php echo e($program->categorized->name); ?></td>

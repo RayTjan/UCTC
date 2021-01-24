@@ -5,7 +5,7 @@
         <h1 class="col font-weight-bold">Request Pencairan Dana ist</h1>
     </div>
 
-    <div class="container-table100">
+    <div class="container-table100 scrollWebkit">
         <div class="wrap-table100">
             <div class="table100 ver1">
 

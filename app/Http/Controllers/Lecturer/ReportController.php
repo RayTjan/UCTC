@@ -61,8 +61,7 @@ class ReportController extends Controller
         //perubahan status pada program
 
         $pdf = $request->validate([
-//            'report' => 'required|max:50000|mimes:xlsx,doc,docx,ppt,pptx,ods,odt,odp',
-            'report' => 'required|mimes:pdf|max:10000',
+            'report' => 'required|max:10000|mimes:xlsx,doc,docx,ppt,pptx,ods,odt,odp,pdf',
         ]);
 
         $pdfName = $pdf['report']->getClientOriginalName().'-'.time().'.'.$pdf['report']->extension();
@@ -132,8 +131,7 @@ class ReportController extends Controller
     public function update(Request $request, Report $report)
     {
         $pdf = $request->validate([
-//            'report' => 'required|max:50000|mimes:xlsx,doc,docx,ppt,pptx,ods,odt,odp',
-            'report' => 'required|mimes:pdf|max:10000',
+            'report' => 'required|max:10000|mimes:xlsx,doc,docx,ppt,pptx,ods,odt,odp,pdf',
         ]);
 
         $pdfName = $pdf['report']->getClientOriginalName().'-'.time().'.'.$pdf['report']->extension();

@@ -32,7 +32,7 @@
                         @foreach($reports as $report)
                             <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget">
                                 <li class="guiz-awards-time customComittee">
-                                    @if(strlen($report->report) > 35)
+                                    @if(strlen($report->report) > 20)
                                         {{ substr($report->report,0,20)."..." }}
                                     @else
                                         {{ $report->report }}

@@ -9,6 +9,22 @@
     </script>
 
     <div class="container clearfix" style="margin-top: 20px;">
+
+        {{--        navigation--}}
+        <div>
+            <a href="{{route('coordinator.program.show',$program)}}" class="a-none blackhex d-inline-block">
+                <h6>Program</h6>
+            </a>
+            <i class="fa fa-angle-right d-inline-block mr-1 ml-1"></i>
+            <a href="{{route('coordinator.program.show',$program)}}" class="a-none blackhex d-inline-block">
+                <h6>Detail</h6>
+            </a>
+            <i class="fa fa-angle-right d-inline-block mr-1 ml-1"></i>
+            <a href="{{route('coordinator.report.show',$program)}}" class="a-none blackhex d-inline-block">
+                <h6>Report</h6>
+            </a>
+        </div>
+
         <div class="row">
             <h1 class="col font-weight-bold">{{ $program->name }} Report</h1>
         </div>
@@ -81,17 +97,17 @@
 
 
                         <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget card-bg-change">
-                            <li class="guiz-awards-time customComittee">Name</li>
-                            <li class="guiz-awards-time customComittee">Status</li>
-                                <li class="guiz-awards-time customComittee">Replace</li>
-                            <li class="guiz-awards-time customComittee">Download</li>
-                                <li class="guiz-awards-time customComittee">Delete</li>
+                            <li class="guiz-awards-time customComittee font-weight-bold">Name</li>
+                            <li class="guiz-awards-time customComittee font-weight-bold">Status</li>
+                            <li class="guiz-awards-time customComittee font-weight-bold">Replace</li>
+                            <li class="guiz-awards-time customComittee font-weight-bold">Download</li>
+                            <li class="guiz-awards-time customComittee font-weight-bold">Delete</li>
                         </ul>
 
                         @foreach($reports as $report)
                             <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget">
                                 <li class="guiz-awards-time customComittee">
-                                    @if(strlen($report->report) > 35)
+                                    @if(strlen($report->report) > 20)
                                         {{ substr($report->report,0,20)."..." }}
                                     @else
                                         {{ $report->report }}

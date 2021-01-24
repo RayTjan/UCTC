@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('title', 'Profile'); ?>
 <?php $__env->startSection('content'); ?>
 
@@ -29,7 +28,7 @@
                 /img/userpic/<?php echo e($user->picture); ?>
 
             <?php else: ?>
-                https://www.mgretails.com/assets/img/default.png
+                /img/default.jpg
             <?php endif; ?>
 
             );

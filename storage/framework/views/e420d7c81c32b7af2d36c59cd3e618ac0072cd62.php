@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('title', 'Profile'); ?>
 <?php $__env->startSection('content'); ?>
 
@@ -37,7 +38,7 @@
             <div class="heightName">
                 <div>
                     <h4 class="font-weight-bold"><?php echo e($user->identity->name); ?></h4>
-                    <p style="font-size: 12px;" class="mb-0">uh ah ah eh wowoo woaoawo dkaokdoakodkasadasdadssadsad</p>
+                    <p style="font-size: 12px;" class="mb-0"><?php echo e($user->identity->description); ?></p>
                 </div>
             </div>
             <div class="social">
@@ -58,7 +59,7 @@
                         </a>
 
                         <div class="dropdown-content">
-                            <div class="dropdown-item" >081357160052</div>
+                            <div class="dropdown-item" ><?php echo e($user->identity->phone); ?></div>
                         </div>
                     </div>
 
@@ -68,7 +69,7 @@
                         </a>
 
                         <div class="dropdown-content">
-                            <div class="dropdown-item" >Griya Sono Indah</div>
+                            <div class="dropdown-item" ><?php echo e($user->identity->line_acc); ?></div>
                         </div>
                     </div>
 

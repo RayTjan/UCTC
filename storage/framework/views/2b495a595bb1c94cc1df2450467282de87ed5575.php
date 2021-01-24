@@ -39,6 +39,15 @@
                             <label >NIM: </label>
                             <input type="number" class="form-control" name="nim" value="<?php echo e($user->identity->nim); ?>" required>
                         </div>
+                        <div class="form-group">
+                            <label>Batch:</label>
+                            <select name="batch" class="custom-select">
+                                <option value="<?php echo e($user->identity->batch); ?>" hidden><?php echo e($user->identity->batch); ?></option>
+                                <?php for($year = 2008;$year <= 2021;$year++): ?>
+                                    <option value="<?php echo e($year); ?>"><?php echo e($year); ?></option>
+                                <?php endfor; ?>
+                            </select>
+                        </div>
                     <?php elseif($user->identity_type == 'App\Models\Staff'): ?>
                         <div class="form-group">
                             <label >NIP: </label>
@@ -114,16 +123,6 @@
                     <?php endif; ?>
 
                     <div class="form-group">
-                        <label>Batch:</label>
-                        <select name="batch" class="custom-select">
-                            <option value="<?php echo e($user->identity->batch); ?>" hidden><?php echo e($user->identity->batch); ?></option>
-                            <?php for($year = 2008;$year <= 2021;$year++): ?>
-                                <option value="<?php echo e($year); ?>"><?php echo e($year); ?></option>
-                            <?php endfor; ?>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
                         <label >Description: </label>
                         <textarea class="form-control" name="description" required><?php echo e($user->identity->description); ?></textarea>
                     </div>
@@ -177,13 +176,12 @@
                         <input type="text" class="form-control" name="email" value="<?php echo e($user->email); ?>" required>
                     </div>
 
+                    <input type="hidden" name="password" value="<?php echo e($user->password); ?>">
                     <?php if($user->id == \Illuminate\Support\Facades\Auth::id()): ?>
-
-                    <input type="hidden" name="bpassword" value="<?php echo e($user->password); ?>">
 
                     <div class="form-group">
                         <label >Password: </label>
-                        <input type="password" class="form-control" name="password" required>
+                        <input type="password" class="form-control" name="bpassword" required>
                     </div>
 
                     <div class="form-group">

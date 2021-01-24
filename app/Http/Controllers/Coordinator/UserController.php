@@ -211,11 +211,13 @@ class UserController extends Controller
     {
         $pic = null;
 
-        $request->validate([
-            'password' => 'min:6|required_with:bpassword|same:bpassword',
-            'newpassword' => 'min:6|required_with:repassword|same:repassword',
-            'repassword' => 'min:6'
-        ]);
+        if ($request->newpassword != null) {
+            $request->validate([
+                'bpassword' => 'min:6|required_with:password|same:password',
+                'newpassword' => 'min:6|required_with:repassword|same:repassword',
+                'repassword' => 'min:6'
+            ]);
+        }
 
         $user = User::findOrFail($id);
 
@@ -248,7 +250,6 @@ class UserController extends Controller
                 'nip'=>$request->nip,
                 'name'=>$request->name,
                 'email'=>$request->email,
-                'batch'=>$request->batch,
                 'description'=>$request->description,
                 'photo'=>$pic,
                 'gender'=>$request->gender,
@@ -266,7 +267,6 @@ class UserController extends Controller
                 'nidn'=>$request->nidn,
                 'name'=>$request->name,
                 'email'=>$request->email,
-                'batch'=>$request->batch,
                 'description'=>$request->description,
                 'photo'=>$pic,
                 'gender'=>$request->gender,

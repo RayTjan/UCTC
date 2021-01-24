@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('title', 'Report'); ?>
 <?php $__env->startSection('content'); ?>
 
@@ -32,7 +31,7 @@
                         <?php $__currentLoopData = $reports; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $report): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget">
                                 <li class="guiz-awards-time customComittee">
-                                    <?php if(strlen($report->report) > 35): ?>
+                                    <?php if(strlen($report->report) > 20): ?>
                                         <?php echo e(substr($report->report,0,20)."..."); ?>
 
                                     <?php else: ?>

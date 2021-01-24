@@ -33,7 +33,7 @@
                                 @endif
                                 <div class="inner ml-2">
                                     <h2 class="reduceWidth maxline font">{{$program->name}}</h2>
-                                    <p>{{ str_replace("-","/",date("d-m-Y", strtotime($program->program_date))) }}</p>
+                                    <div>{{ str_replace("-","/",date("d-m-Y", strtotime($program->program_date))) }}</div>
                                 </div>
                                 <a href="{{route('lecturer.program.show',$program)}}" class="small-box-footer blackhex">More info <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
@@ -88,32 +88,6 @@
                     <div class="position-relative mb-2">
                         <h3 class="font-weight-bold">Action Plans</h3>
                     </div>
-{{--                    <!-- /.card-header -->--}}
-{{--                    <div class="card card-body card-bg-change" style="height: 250px;">--}}
-{{--                        <div class="scrollWebkit p-0">--}}
-{{--                            @foreach($actions as $action)--}}
-{{--                                <a href="{{route('lecturer.actionTask.show',$action)}}" class="a-none gray-hover">--}}
-{{--                                    <ul class="todo-list mb-1">--}}
-
-{{--                                                <li>--}}
-
-{{--                                                    <span class="text">--}}
-{{--                                                        {{$action->name}}--}}
-{{--                                                    </span>--}}
-{{--                                                    <div class="float-right">--}}
-{{--                                                        {{$action->plansOf->name}}--}}
-{{--                                                    </div>--}}
-
-{{--                                                </li>--}}
-
-{{--                                    </ul>--}}
-{{--                                </a>--}}
-{{--                            @endforeach--}}
-
-
-{{--                        </div>--}}
-{{--                    </div>--}}
-
                     <div class="card card-body card-bg-change" style="height: 250px;">
                         <div class="scrollWebkit p-0">
                             <div class="row">
@@ -135,9 +109,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
 
                 </div>
             </div>

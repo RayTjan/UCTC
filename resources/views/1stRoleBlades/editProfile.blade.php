@@ -39,6 +39,15 @@
                             <label >NIM: </label>
                             <input type="number" class="form-control" name="nim" value="{{$user->identity->nim}}" required>
                         </div>
+                        <div class="form-group">
+                            <label>Batch:</label>
+                            <select name="batch" class="custom-select">
+                                <option value="{{$user->identity->batch}}" hidden>{{$user->identity->batch}}</option>
+                                @for($year = 2008;$year <= 2021;$year++)
+                                    <option value="{{$year}}">{{$year}}</option>
+                                @endfor
+                            </select>
+                        </div>
                     @elseif($user->identity_type == 'App\Models\Staff')
                         <div class="form-group">
                             <label >NIP: </label>
@@ -111,16 +120,6 @@
                     @endif
 
                     <div class="form-group">
-                        <label>Batch:</label>
-                        <select name="batch" class="custom-select">
-                            <option value="{{$user->identity->batch}}" hidden>{{$user->identity->batch}}</option>
-                            @for($year = 2008;$year <= 2021;$year++)
-                                <option value="{{$year}}">{{$year}}</option>
-                            @endfor
-                        </select>
-                    </div>
-
-                    <div class="form-group">
                         <label >Description: </label>
                         <textarea class="form-control" name="description" required>{{$user->identity->description}}</textarea>
                     </div>
@@ -173,13 +172,12 @@
                         <input type="text" class="form-control" name="email" value="{{$user->email}}" required>
                     </div>
 
+                    <input type="hidden" name="password" value="{{$user->password}}">
                     @if($user->id == \Illuminate\Support\Facades\Auth::id())
-
-                    <input type="hidden" name="bpassword" value="{{$user->password}}">
 
                     <div class="form-group">
                         <label >Password: </label>
-                        <input type="password" class="form-control" name="password" required>
+                        <input type="password" class="form-control" name="bpassword" required>
                     </div>
 
                     <div class="form-group">

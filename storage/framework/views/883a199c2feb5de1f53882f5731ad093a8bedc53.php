@@ -297,9 +297,7 @@
                         Edit
                     </a>
                 <?php endif; ?>
-                <?php endif; ?>
 
-                <?php if($edit == true): ?>
                 <?php if($program->status != '2'): ?>
                     <button type="button"
                             title="Delete"
@@ -309,7 +307,7 @@
                                 <i class="fa fa-close"></i>
                                 Delete
                     </button>
-                    <?php endif; ?>
+                <?php endif; ?>
                 <?php endif; ?>
             </div>
         </div>
