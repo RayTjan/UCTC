@@ -25,6 +25,7 @@
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Coordinator/ProposalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Coordinator/ProposalController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Coordinator/ReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Coordinator/ReportController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Coordinator/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Coordinator/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InfoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InfoController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lecturer/ProposalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lecturer/ProposalController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lecturer/ReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lecturer/ReportController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Lecturer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Lecturer.php" afterDir="false" />
@@ -36,6 +37,7 @@
       <change beforePath="$PROJECT_DIR$/resources/views/1stRoleBlades/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/1stRoleBlades/dashboard.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/1stRoleBlades/detailProgram.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/1stRoleBlades/detailProgram.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/1stRoleBlades/editProfile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/1stRoleBlades/editProfile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/1stRoleBlades/info.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/info.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/1stRoleBlades/listActionPlan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/1stRoleBlades/listActionPlan.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/1stRoleBlades/listClient.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/1stRoleBlades/listClient.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/1stRoleBlades/listCommittee.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/1stRoleBlades/listCommittee.blade.php" afterDir="false" />
@@ -252,6 +254,7 @@
       <recent name="E:\Program\XAMPP\htdocs\sem3\UAS\uctc\uctcweb\public\plugins\font" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Program\XAMPP\htdocs\sem3\UAS\uctc\uctcweb\resources\views" />
       <recent name="C:\xampp\htdocs\uctcweb\resources\views\tools" />
       <recent name="C:\Users\Ray\Documents\GitHub\uctcweb\app\Http\Controllers\Auth" />
     </key>
@@ -327,7 +330,7 @@
       <workItem from="1611328548283" duration="9490000" />
       <workItem from="1611389361025" duration="7207000" />
       <workItem from="1611414094274" duration="13628000" />
-      <workItem from="1611458977874" duration="29893000" />
+      <workItem from="1611458977874" duration="30570000" />
     </task>
     <servers />
   </component>
