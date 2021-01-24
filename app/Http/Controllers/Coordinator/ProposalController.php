@@ -43,7 +43,7 @@ class ProposalController extends Controller
     public function store(Request $request)
     {
         $pdf = $request->validate([
-            'proposal' => 'required|mimes:pdf|max:10000',
+            'proposal' => 'required|max:10000|mimes:xlsx,doc,docx,ppt,pptx,ods,odt,odp,pdf',
         ]);
 
         $pdfName = $pdf['proposal']->getClientOriginalName().'-'.time().'.'.$pdf['proposal']->extension();
@@ -102,7 +102,7 @@ class ProposalController extends Controller
     public function update(Request $request, Proposal $proposal)
     {
         $pdf = $request->validate([
-            'proposal' => 'required|mimes:pdf|max:10000',
+            'proposal' => 'required|max:10000|mimes:xlsx,doc,docx,ppt,pptx,ods,odt,odp,pdf',
         ]);
 
         $pdfName = $pdf['proposal']->getClientOriginalName().'-'.time().'.'.$pdf['proposal']->extension();

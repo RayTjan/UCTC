@@ -30,6 +30,15 @@
                     <div class="form-group">
                         <label>Category:</label>
                         <select name="category" class="custom-select">
+
+                            <option hidden value="{{$program->category}}">
+                                @foreach($categories as $category)
+                                    @if($category->id == $program->category)
+                                        {{$category->name}}
+                                    @endif
+                                @endforeach
+                            </option>
+
                             @foreach($categories as $category)
                                 <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
@@ -38,15 +47,27 @@
                     <div class="form-group">
                         <label>Type:</label>
                         <select name="type" class="custom-select">
+
+                            <option hidden value="{{$program->type}}">
+                                @foreach($types as $type)
+                                    @if($type->id == $program->type)
+                                        {{$type->name}}
+                                    @endif
+                                @endforeach
+                            </option>
+
                             @foreach($types as $type)
                                 <option value="{{$type->id}}">{{$type->name}}</option>
                             @endforeach
                         </select>
                     </div>
+
+                    @if($proposal == null)
                     <div class="form-group">
                         <label>Proposal:</label>
                         <input type="file" name="proposal" class="form-control-file">
                     </div>
+                    @endif
 
                     <div class="form-group">
                         <label>Add Finance:</label>

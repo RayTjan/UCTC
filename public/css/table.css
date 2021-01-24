@@ -101,7 +101,6 @@ iframe {
 .container-table100 {
   max-width: 1366px;
   margin: 0 auto;
-  min-height: 50vh;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;

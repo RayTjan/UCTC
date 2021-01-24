@@ -24,4 +24,9 @@ class Student extends Model
     public function user(){
         return $this->morphOne(User::class,'identity');
     }
+
+    public function department(){
+        return $this->belongsTo(Department::class,'department_id','id');
+    }
+
 }

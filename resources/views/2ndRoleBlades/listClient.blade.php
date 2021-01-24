@@ -3,6 +3,22 @@
 @section('content')
 
     <div class="container clearfix" style="margin-top: 20px;">
+
+        {{--        navigation--}}
+        <div>
+            <a href="{{route('lecturer.program.show',$program)}}" class="a-none blackhex d-inline-block">
+                <h6>Program</h6>
+            </a>
+            <i class="fa fa-angle-right d-inline-block mr-1 ml-1"></i>
+            <a href="{{route('lecturer.program.show',$program)}}" class="a-none blackhex d-inline-block">
+                <h6>Detail</h6>
+            </a>
+            <i class="fa fa-angle-right d-inline-block mr-1 ml-1"></i>
+            <a href="{{route('lecturer.client.show',$program)}}" class="a-none blackhex d-inline-block">
+                <h6>Client</h6>
+            </a>
+        </div>
+
         <div class="row">
             <h1 class="col font-weight-bold">Client List</h1>
         </div>
@@ -15,7 +31,7 @@
                         <a href="#"
                            title="Add Committee"
                            data-toggle="modal"
-                           data-target="#addCommittee">
+                           data-target="#addClient">
                             <svg
                                 aria-hidden="true"
                                 focusable="false"
@@ -28,7 +44,7 @@
                             >
                                 <g>
                                     <path
-                                        fill="#000000"
+                                        fill="#fff"
                                         d="m408,184h-136c-4.418,0 -8,-3.582 -8,-8v-136c0,-22.09 -17.91,-40 -40,-40s-40,17.91 -40,40v136c0,4.418 -3.582,8 -8,8h-136c-22.09,0 -40,17.91 -40,40s17.91,40 40,40h136c4.418,0 8,3.582 8,8v136c0,22.09 17.91,40 40,40s40,-17.91 40,-40v-136c0,-4.418 3.582,-8 8,-8h136c22.09,0 40,-17.91 40,-40s-17.91,-40 -40,-40zM408,184"
                                         class="fa-secondary">
                                     </path>
@@ -39,8 +55,8 @@
                     </div>
                 </div>
 
-                {{--            modal add committee--}}
-                <div class="modal fade" id="addCommittee">
+                {{--            modal add client--}}
+                <div class="modal fade" id="addClient">
                     <div class="modal-dialog">
                         <div class="modal-content card-bg-change">
                             <!-- Modal Header -->
@@ -86,10 +102,10 @@
 
 
                         <ul class="quiz-window-body guiz-awards-row guiz-awards-row-margin mb-2 budget card-bg-change">
-                            <li class="guiz-awards-time customComittee25">Name</li>
-                            <li class="guiz-awards-time customComittee25">Phone</li>
-                            <li class="guiz-awards-time customComittee25">Address</li>
-                            <li class="guiz-awards-time customComittee25">Email</li>
+                            <li class="guiz-awards-time customComittee25 font-weight-bold">Name</li>
+                            <li class="guiz-awards-time customComittee25 font-weight-bold">Phone</li>
+                            <li class="guiz-awards-time customComittee25 font-weight-bold">Address</li>
+                            <li class="guiz-awards-time customComittee25 font-weight-bold">Email</li>
                         </ul>
 
                         @foreach($program->clients as $client)

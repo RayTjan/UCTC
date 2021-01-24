@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit139722cfdc80db46be516fb631ac0e3a
+class ComposerStaticInit5e6123799f66210e74f4204bc3e777d1
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -580,6 +580,21 @@ class ComposerStaticInit139722cfdc80db46be516fb631ac0e3a
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Events\\ActivationEvent' => __DIR__ . '/../..' . '/app/Events/ActivationEvent.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\Admin\\ActionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ActionController.php',
+        'App\\Http\\Controllers\\Admin\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CategoryController.php',
+        'App\\Http\\Controllers\\Admin\\ClientController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ClientController.php',
+        'App\\Http\\Controllers\\Admin\\CommitteeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CommitteeController.php',
+        'App\\Http\\Controllers\\Admin\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/DashboardController.php',
+        'App\\Http\\Controllers\\Admin\\FileAttachmentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/FileAttachmentController.php',
+        'App\\Http\\Controllers\\Admin\\FinanceController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/FinanceController.php',
+        'App\\Http\\Controllers\\Admin\\PencairanDanaController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/PencairanDanaController.php',
+        'App\\Http\\Controllers\\Admin\\ProgramController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ProgramController.php',
+        'App\\Http\\Controllers\\Admin\\ProposalController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ProposalController.php',
+        'App\\Http\\Controllers\\Admin\\ReportController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ReportController.php',
+        'App\\Http\\Controllers\\Admin\\RoleController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/RoleController.php',
+        'App\\Http\\Controllers\\Admin\\TitleController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/TitleController.php',
+        'App\\Http\\Controllers\\Admin\\TypeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/TypeController.php',
+        'App\\Http\\Controllers\\Admin\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/UserController.php',
         'App\\Http\\Controllers\\Api\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/Auth/LoginController.php',
         'App\\Http\\Controllers\\Api\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Api\\ProgramController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/ProgramController.php',
@@ -592,40 +607,25 @@ class ComposerStaticInit139722cfdc80db46be516fb631ac0e3a
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
-        'App\\Http\\Controllers\\Coordinator\\ActionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Coordinator/ActionController.php',
-        'App\\Http\\Controllers\\Coordinator\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Coordinator/CategoryController.php',
-        'App\\Http\\Controllers\\Coordinator\\ClientController' => __DIR__ . '/../..' . '/app/Http/Controllers/Coordinator/ClientController.php',
-        'App\\Http\\Controllers\\Coordinator\\CommitteeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Coordinator/CommitteeController.php',
-        'App\\Http\\Controllers\\Coordinator\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Coordinator/DashboardController.php',
-        'App\\Http\\Controllers\\Coordinator\\FileAttachmentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Coordinator/FileAttachmentController.php',
-        'App\\Http\\Controllers\\Coordinator\\FinanceController' => __DIR__ . '/../..' . '/app/Http/Controllers/Coordinator/FinanceController.php',
-        'App\\Http\\Controllers\\Coordinator\\FundController' => __DIR__ . '/../..' . '/app/Http/Controllers/Coordinator/FundController.php',
-        'App\\Http\\Controllers\\Coordinator\\ProgramController' => __DIR__ . '/../..' . '/app/Http/Controllers/Coordinator/ProgramController.php',
-        'App\\Http\\Controllers\\Coordinator\\ProposalController' => __DIR__ . '/../..' . '/app/Http/Controllers/Coordinator/ProposalController.php',
-        'App\\Http\\Controllers\\Coordinator\\ReportController' => __DIR__ . '/../..' . '/app/Http/Controllers/Coordinator/ReportController.php',
-        'App\\Http\\Controllers\\Coordinator\\RoleController' => __DIR__ . '/../..' . '/app/Http/Controllers/Coordinator/RoleController.php',
-        'App\\Http\\Controllers\\Coordinator\\TitleController' => __DIR__ . '/../..' . '/app/Http/Controllers/Coordinator/TitleController.php',
-        'App\\Http\\Controllers\\Coordinator\\TypeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Coordinator/TypeController.php',
-        'App\\Http\\Controllers\\Coordinator\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Coordinator/UserController.php',
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\DepartmentController' => __DIR__ . '/../..' . '/app/Http/Controllers/DepartmentController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\JakaController' => __DIR__ . '/../..' . '/app/Http/Controllers/JakaController.php',
         'App\\Http\\Controllers\\LecturerController' => __DIR__ . '/../..' . '/app/Http/Controllers/LecturerController.php',
-        'App\\Http\\Controllers\\Lecturer\\ActionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Lecturer/ActionController.php',
-        'App\\Http\\Controllers\\Lecturer\\ActionTaskController' => __DIR__ . '/../..' . '/app/Http/Controllers/Lecturer/ActionTaskController.php',
-        'App\\Http\\Controllers\\Lecturer\\ClientController' => __DIR__ . '/../..' . '/app/Http/Controllers/Lecturer/ClientController.php',
-        'App\\Http\\Controllers\\Lecturer\\CommitteeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Lecturer/CommitteeController.php',
-        'App\\Http\\Controllers\\Lecturer\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Lecturer/DashboardController.php',
-        'App\\Http\\Controllers\\Lecturer\\DocumentationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Lecturer/DocumentationController.php',
-        'App\\Http\\Controllers\\Lecturer\\FileAttachmentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Lecturer/FileAttachmentController.php',
-        'App\\Http\\Controllers\\Lecturer\\FinanceController' => __DIR__ . '/../..' . '/app/Http/Controllers/Lecturer/FinanceController.php',
-        'App\\Http\\Controllers\\Lecturer\\FundController' => __DIR__ . '/../..' . '/app/Http/Controllers/Lecturer/FundController.php',
-        'App\\Http\\Controllers\\Lecturer\\ProgramController' => __DIR__ . '/../..' . '/app/Http/Controllers/Lecturer/ProgramController.php',
-        'App\\Http\\Controllers\\Lecturer\\ProposalController' => __DIR__ . '/../..' . '/app/Http/Controllers/Lecturer/ProposalController.php',
-        'App\\Http\\Controllers\\Lecturer\\ReportController' => __DIR__ . '/../..' . '/app/Http/Controllers/Lecturer/ReportController.php',
-        'App\\Http\\Controllers\\Lecturer\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Lecturer/UserController.php',
         'App\\Http\\Controllers\\StaffController' => __DIR__ . '/../..' . '/app/Http/Controllers/StaffController.php',
+        'App\\Http\\Controllers\\Staff\\ActionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Staff/ActionController.php',
+        'App\\Http\\Controllers\\Staff\\ActionTaskController' => __DIR__ . '/../..' . '/app/Http/Controllers/Staff/ActionTaskController.php',
+        'App\\Http\\Controllers\\Staff\\ClientController' => __DIR__ . '/../..' . '/app/Http/Controllers/Staff/ClientController.php',
+        'App\\Http\\Controllers\\Staff\\CommitteeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Staff/CommitteeController.php',
+        'App\\Http\\Controllers\\Staff\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Staff/DashboardController.php',
+        'App\\Http\\Controllers\\Staff\\DocumentationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Staff/DocumentationController.php',
+        'App\\Http\\Controllers\\Staff\\FileAttachmentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Staff/FileAttachmentController.php',
+        'App\\Http\\Controllers\\Staff\\FinanceController' => __DIR__ . '/../..' . '/app/Http/Controllers/Staff/FinanceController.php',
+        'App\\Http\\Controllers\\Staff\\PencairanDanaController' => __DIR__ . '/../..' . '/app/Http/Controllers/Staff/PencairanDanaController.php',
+        'App\\Http\\Controllers\\Staff\\ProgramController' => __DIR__ . '/../..' . '/app/Http/Controllers/Staff/ProgramController.php',
+        'App\\Http\\Controllers\\Staff\\ProposalController' => __DIR__ . '/../..' . '/app/Http/Controllers/Staff/ProposalController.php',
+        'App\\Http\\Controllers\\Staff\\ReportController' => __DIR__ . '/../..' . '/app/Http/Controllers/Staff/ReportController.php',
+        'App\\Http\\Controllers\\Staff\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Staff/UserController.php',
         'App\\Http\\Controllers\\StudentController' => __DIR__ . '/../..' . '/app/Http/Controllers/StudentController.php',
         'App\\Http\\Controllers\\User\\ActionController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/ActionController.php',
         'App\\Http\\Controllers\\User\\ActionTaskController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/ActionTaskController.php',
@@ -635,7 +635,7 @@ class ComposerStaticInit139722cfdc80db46be516fb631ac0e3a
         'App\\Http\\Controllers\\User\\DocumentationController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/DocumentationController.php',
         'App\\Http\\Controllers\\User\\FileAttachmentController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/FileAttachmentController.php',
         'App\\Http\\Controllers\\User\\FinanceController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/FinanceController.php',
-        'App\\Http\\Controllers\\User\\FundController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/FundController.php',
+        'App\\Http\\Controllers\\User\\PencairanDanaController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/PencairanDanaController.php',
         'App\\Http\\Controllers\\User\\ProgramController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/ProgramController.php',
         'App\\Http\\Controllers\\User\\ProposalController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/ProposalController.php',
         'App\\Http\\Controllers\\User\\ReportController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/ReportController.php',
@@ -643,13 +643,13 @@ class ComposerStaticInit139722cfdc80db46be516fb631ac0e3a
         'App\\Http\\Controllers\\api\\ActionPlanController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/ActionPlanController.php',
         'App\\Http\\Controllers\\api\\TaskController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/TaskController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
+        'App\\Http\\Middleware\\Admin' => __DIR__ . '/../..' . '/app/Http/Middleware/Admin.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
-        'App\\Http\\Middleware\\Coordinator' => __DIR__ . '/../..' . '/app/Http/Middleware/Coordinator.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
-        'App\\Http\\Middleware\\Lecturer' => __DIR__ . '/../..' . '/app/Http/Middleware/Lecturer.php',
         'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => __DIR__ . '/../..' . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
         'App\\Http\\Middleware\\RouteMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/RouteMiddleware.php',
+        'App\\Http\\Middleware\\Staff' => __DIR__ . '/../..' . '/app/Http/Middleware/Staff.php',
         'App\\Http\\Middleware\\Student' => __DIR__ . '/../..' . '/app/Http/Middleware/Student.php',
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
@@ -658,7 +658,6 @@ class ComposerStaticInit139722cfdc80db46be516fb631ac0e3a
         'App\\Http\\Resources\\Api\\ProgramResource' => __DIR__ . '/../..' . '/app/Http/Resources/Api/ProgramResource.php',
         'App\\Http\\Resources\\Api\\UserResource' => __DIR__ . '/../..' . '/app/Http/Resources/Api/UserResource.php',
         'App\\Http\\Resources\\api\\ActionPlanResource' => __DIR__ . '/../..' . '/app/Http/Resources/Api/ActionPlanResource.php',
-        'App\\Http\\Resources\\api\\DocumentationResource' => __DIR__ . '/../..' . '/app/Http/Resources/Api/DocumentationResource.php',
         'App\\Http\\Resources\\api\\TaskResource' => __DIR__ . '/../..' . '/app/Http/Resources/Api/TaskResource.php',
         'App\\Listeners\\ActivationListener' => __DIR__ . '/../..' . '/app/Listeners/ActivationListener.php',
         'App\\Listeners\\AdminListener' => __DIR__ . '/../..' . '/app/Listeners/AdminListener.php',
@@ -667,11 +666,11 @@ class ComposerStaticInit139722cfdc80db46be516fb631ac0e3a
         'App\\Models\\ActionPlan' => __DIR__ . '/../..' . '/app/Models/ActionPlan.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Client' => __DIR__ . '/../..' . '/app/Models/Client.php',
+        'App\\Models\\Dana' => __DIR__ . '/../..' . '/app/Models/Dana.php',
         'App\\Models\\Department' => __DIR__ . '/../..' . '/app/Models/Department.php',
         'App\\Models\\Documentation' => __DIR__ . '/../..' . '/app/Models/Documentation.php',
         'App\\Models\\FileAttachment' => __DIR__ . '/../..' . '/app/Models/FileAttachment.php',
         'App\\Models\\Finance' => __DIR__ . '/../..' . '/app/Models/Finance.php',
-        'App\\Models\\Fund' => __DIR__ . '/../..' . '/app/Models/Fund.php',
         'App\\Models\\Jaka' => __DIR__ . '/../..' . '/app/Models/Jaka.php',
         'App\\Models\\Lecturer' => __DIR__ . '/../..' . '/app/Models/Lecturer.php',
         'App\\Models\\Program' => __DIR__ . '/../..' . '/app/Models/Program.php',
@@ -5528,10 +5527,10 @@ class ComposerStaticInit139722cfdc80db46be516fb631ac0e3a
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit139722cfdc80db46be516fb631ac0e3a::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit139722cfdc80db46be516fb631ac0e3a::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit139722cfdc80db46be516fb631ac0e3a::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit139722cfdc80db46be516fb631ac0e3a::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit5e6123799f66210e74f4204bc3e777d1::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit5e6123799f66210e74f4204bc3e777d1::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit5e6123799f66210e74f4204bc3e777d1::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit5e6123799f66210e74f4204bc3e777d1::$classMap;
 
         }, null, ClassLoader::class);
     }

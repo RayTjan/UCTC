@@ -6,7 +6,7 @@
         <h1 class="col font-weight-bold">Program List</h1>
     </div>
 
-    <div class="container-table100">
+    <div class="container-table100 scrollWebkit">
         <div class="wrap-table100">
             <div class="table100 ver1">
                 <div class="table100-firstcol">
@@ -57,20 +57,6 @@
                                     @endif
                                 </td>
                                 <td class="cell100 column3">{{$program->creator->identity->name}}</td>
-{{--                                <td class="cell100 column4">--}}
-{{--                                    <select name="category" class="custom-select">--}}
-{{--                                        @foreach($clients as $client)--}}
-{{--                                            <option value="">{{$client->name}}</option>--}}
-{{--                                        @endforeach--}}
-{{--                                    </select>--}}
-{{--                                </td>--}}
-{{--                                <td class="cell100 column5">--}}
-{{--                                    <select name="category" class="custom-select">--}}
-{{--                                        @foreach($committees as $committee)--}}
-{{--                                            <option value="">{{$committee->name}}</option>--}}
-{{--                                        @endforeach--}}
-{{--                                    </select>--}}
-{{--                                </td>--}}
                                 <td class="cell100 column6">{{ str_replace("-","/",date("d-m-Y", strtotime($program->program_date))) }}</td>
                                 <td class="cell100 column7">{{$program->classified->name}}</td>
                                 <td class="cell100 column8">{{$program->categorized->name}}</td>

@@ -27,7 +27,7 @@
             @if($user->picture != null)
                 /img/userpic/{{$user->picture}}
             @else
-                https://www.mgretails.com/assets/img/default.png
+                /img/default.jpg
             @endif
 
             );

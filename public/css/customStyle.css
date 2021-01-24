@@ -7,17 +7,30 @@
 
 }
 
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+
 html,body
 {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    font-family: Montserrat;
+    background-color: #F5F5F5;
+}
+
+.blacktest {
+    background-color: #F5F5F5;
 }
 
 h1 {
     font-family: 'league_spartanbold', league_spartanbold;
+    color: #0E2F56;
     font-weight:normal;
     font-style:normal;
+}
+
+.login {
+    font-family: Montserrat;
 }
 
 .special {
@@ -46,7 +59,7 @@ h1 {
 
 body {
     color: black;
-    background-color: white;
+    background-color: #F5F5F5;
     margin: 0;
     padding: 0;
 }
@@ -351,6 +364,11 @@ main {
     background: #DADAD1;
 }
 
+.truegray-hover:hover {
+    border-color: #dbdbdb;
+    background: #dbdbdb;
+}
+
 .gray-pages {
     color: #898989;
     border-color: #DADAD1;
@@ -390,7 +408,7 @@ button, select, input {
     width: 100%;
     height: 100%;
     border-radius: 4px;
-    background: #fff;
+    background: #F5F5F5;
     overflow: hidden;
 }
 .quiz-window-header {
@@ -505,6 +523,16 @@ button, select, input {
     border: 2px solid #bdc2c1;
     background: #d6d6d6;
 }
+
+.ministar {
+    display:block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid #bdc2c1;
+    background: #d6d6d6;
+}
+
 .cyanstar {
     background: #02DABD;
     border-color: #02DABD;
@@ -514,6 +542,13 @@ button, select, input {
     border-color: #F9C03D;
     color: black;
 }
+
+.darkbluestar {
+    background: #0E2F56;
+    border-color: #0E2F56;
+    color: white;
+}
+
 .purplestar {
     border-color: #A10CCE;
     background: #A10CCE;
@@ -618,6 +653,8 @@ button, select, input {
 
 .hover img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
@@ -759,7 +796,7 @@ button, select, input {
 }
 
 .card-bg-bluess {
-    background-color: #085A9F;
+    background-color: #0E2F56;
 }
 
 .bg-change-red {
@@ -796,6 +833,36 @@ button, select, input {
     right: 0;
 }
 
+.starCard {
+    content: '';
+    width: 10px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    display: block;
+    z-index: 999;
+}
+
+.shadowCard {
+    box-shadow: 1px 2px 3px #ededed;
+}
+
+.maxline {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+
+.maxlineP {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+
 .boxScroll {
     overflow-x: auto;
 }
@@ -812,6 +879,12 @@ button, select, input {
 .boxScroll::-webkit-scrollbar-thumb {
     background: #aaa;
     border-radius: 1vh;
+}
+
+.actionDash {
+    position: absolute;
+    right: 5%;
+    top: 10%;
 }
 
 /*login*/
@@ -904,7 +977,6 @@ button, select, input {
 }
 
 .login100-form-btn {
-    /*font-family: Montserrat-Bold;*/
     font-size: 15px;
     line-height: 1.5;
     color: #fff;
@@ -938,7 +1010,7 @@ button, select, input {
     -ms-flex-direction: column;
     flex-direction: column;
     min-width: 0;
-    width: 50%;
+    width: 35%;
     float: right;
     word-wrap: break-word;
     background-color: #fff;
@@ -956,7 +1028,7 @@ button, select, input {
     width: 100%;
     background-position: center;
     background-size: cover;
-    padding: 5% 5% 0 5%;
+    padding: 3% 3% 3% 3%;
     margin: 0;
     box-sizing: border-box;
     position: relative;
@@ -985,6 +1057,26 @@ p.titlelogin{
 .profilePic {
     width: 100px;
     height: 100px;
+}
+
+.miniPic {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+}
+
+.vmiddle {
+    vertical-align: middle;
+}
+
+.profilePic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.3s;
 }
 
 .miniOption {
@@ -1143,6 +1235,7 @@ p.titlelogin{
     border-radius: 2vh;
     padding: 2% 2% 2% 2% ;
 
+    min-width: 222px;
     right: 0;
     top: 0;
 }
@@ -1260,6 +1353,10 @@ p.titlelogin{
 /*form*/
 .budgetForm {
     width: 90%;
+}
+
+.nameForm {
+    width: 85%;
 }
 
 .sizeForm {
@@ -1385,6 +1482,56 @@ p.titlelogin{
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
     right: 0px;
 }
+
+/*button slider*/
+.btnSlider {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-decoration: none;
+    font-family: Montserrat;
+    transition: 0.02s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
+}
+.btnSlider::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 100%;
+    bottom: 0;
+    background: #0E2F56;
+    transition: 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1), left 0.3s cubic-bezier(0.1, 0, 0.1, 1);
+    z-index: -1;
+}
+.btnSlider::after {
+    content: "";
+    display: inline-block;
+    background-image: url("../img/arrowright.svg") ;
+    position: absolute;
+    top: 0;
+    left: calc(100% - 3em);
+    right: 3em;
+    bottom: 0;
+    background-size: 1.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: right 0.3s cubic-bezier(0.1, 0, 0.1, 1);
+}
+.btnSlider:hover {
+    padding: 0em 3.5em 0em 0.5em;
+}
+.btnSlider:hover::before {
+    left: calc(100% - 3em);
+    right: 0;
+    transition: 0.3s cubic-bezier(0.1, 0, 0.1, 1), left 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
+}
+.btnSlider:hover::after {
+    right: 0;
+    transition: right 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
+}
+
 
 /*jscript adduser*/
 #staffForm {

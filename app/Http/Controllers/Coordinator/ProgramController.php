@@ -190,7 +190,11 @@ class ProgramController extends Controller
         $reports = Report::all()->where('program', $program->id);
         $report = $reports->last();
 
-        return view('1stRoleBlades.editProgram',compact('program','users','categories','types', 'report'));
+        //Proposal terakhir di program itu dengan id program yang sama
+        $proposals = Proposal::all()->where('program', $program->id);
+        $proposal = $proposals->last();
+
+        return view('1stRoleBlades.editProgram',compact('program','users','categories','types', 'report', 'proposal'));
     }
 
     /**

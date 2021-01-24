@@ -2,8 +2,23 @@
 @section('title', 'Fund')
 @section('content')
 
+
+    {{--        navigation--}}
+    <div>
+        <a href="{{route('lecturer.program.show',$program)}}" class="a-none blackhex d-inline-block">
+            <h6>Program</h6>
+        </a>
+        <i class="fa fa-angle-right d-inline-block mr-1 ml-1"></i>
+        <a href="{{route('lecturer.program.show',$program)}}" class="a-none blackhex d-inline-block">
+            <h6>Detail</h6>
+        </a>
+        <i class="fa fa-angle-right d-inline-block mr-1 ml-1"></i>
+        <a href="{{route('lecturer.fund.show',$program)}}" class="a-none blackhex d-inline-block">
+            <h6>Reimburse</h6>
+        </a>
+    </div>
     <div class="d-flex justify-content-between">
-        <h1 class="col font-weight-bold">Fund List {{$program->name}}</h1>
+        <h1 class="col font-weight-bold">Reimburse List {{$program->name}}</h1>
 
         @if($edit == true)
             @if($program->status != '2')
@@ -28,7 +43,7 @@
                         >
                             <g>
                                 <path
-                                    fill="#000000"
+                                    fill="#fff"
                                     d="m408,184h-136c-4.418,0 -8,-3.582 -8,-8v-136c0,-22.09 -17.91,-40 -40,-40s-40,17.91 -40,40v136c0,4.418 -3.582,8 -8,8h-136c-22.09,0 -40,17.91 -40,40s17.91,40 40,40h136c4.418,0 8,3.582 8,8v136c0,22.09 17.91,40 40,40s40,-17.91 40,-40v-136c0,-4.418 3.582,-8 8,-8h136c22.09,0 40,-17.91 40,-40s-17.91,-40 -40,-40zM408,184"
                                     class="fa-secondary">
                                 </path>
@@ -60,7 +75,7 @@
                             <input type="hidden" name="program" value="{{$program->id}}">
                             <input type="hidden" name="status" value="0">
                             <div class="form-group">
-                                <label>Name: </label>
+                                <label>Subject: </label>
                                 <input type="text" class="form-control" name="name" required>
                             </div>
                             <div class="form-group">
@@ -85,7 +100,7 @@
         </div>
     </div>
 
-    <div class="container-table100">
+    <div class="container-table100 scrollWebkit">
         <div class="wrap-table100">
             <div class="table100 ver1">
 
@@ -94,7 +109,7 @@
                         <table>
                             <thead>
                             <tr class="row100 head">
-                                <th class="cell100 column2">Name</th>
+                                <th class="cell100 column2">Subject</th>
                                 <th class="cell100 column6">Value</th>
                                 <th class="cell100 column6">Description</th>
                                 <th class="cell100 column6">Status</th>
@@ -236,7 +251,7 @@
                                                         {{ csrf_field() }}
                                                         <input type="hidden" name="_method" value="PATCH">
                                                         <div class="form-group">
-                                                            <label>Name: </label>
+                                                            <label>Subject: </label>
                                                             <input type="text" class="form-control" name="name" value="{{$fund->name}}" required>
                                                         </div>
                                                         <div class="form-group">
